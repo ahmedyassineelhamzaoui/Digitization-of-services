@@ -1,6 +1,6 @@
-## Laravel 9  Project
+## Laravel 9 Servicing digitization Project
 
-This is a personal blog project built with Laravel 9 that features CRUD operations for posts, categories, subcategories, comments, replies, likes, and tags. The project is designed to allow users to easily create and manage their own blog content, as well as interact with other users by commenting, liking, and filtering posts.
+This is a Servicing digitization project built with Laravel 9 that features CRUD operations for posts, categories, subcategories, comments, replies, likes, and tags. The project is designed to allow users to easily create and manage their own blog content, as well as interact with other users by commenting, liking, and filtering posts.
 
 ## Getting Started
 
