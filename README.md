@@ -14,7 +14,7 @@
 5 - Run php artisan jwt:secret // to generate jwt secret key & paste it to .env file
 6 - Name your database in .env file
 7 - Run php artisan migrate
-8 - Run php artisan serv
+8 - Run php artisan serve 
 
 
 
