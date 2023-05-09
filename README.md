@@ -23,6 +23,15 @@
 ## Code of Conduct
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## To use this project 
+1 - Clone the repo
+2 - Create your database
+3 - Copy .env.example to .env
+4 - Run composer install
+5 - Run php artisan jwt:secret // to generate jwt secret key & paste it to .env file
+6 - Name your database in .env file
+7 - Run php artisan migrate
+8 - Run php artisan serv
 
 ## Security Vulnerabilities
 
