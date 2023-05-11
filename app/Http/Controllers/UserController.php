@@ -83,4 +83,45 @@ class UserController extends Controller
             'message' => 'user not found'
         ]);
     }
+    public function updateUser(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required|string|max:255|min:3',
+            'last_name' => 'required|string|max:255|min:2',
+            'email' => 'required|string|email|max:255',
+        ]);
+        $user = User::find($request->id)->first();
+        if($user){
+               if($request->has('first_name')){
+                   $user->first_name = $request->first_name;
+               }
+               if($request->has('last_name')){
+                   $user->last_name = $request->last_name;
+               }
+               if($request->has('email')){
+                   $useremail=User::where('email',$request->email)->first();
+                   if($useremail){
+                        if($useremail->email == $user->email){
+                            $user->email = $request->email;
+                        }else{
+                            return response()->json([
+                                'status'  => 'error',
+                                'message' => 'email has already been token',
+                            ]);
+                        }
+                    }else{
+                        $user->email = $request->email;
+                    }
+               }
+                $user->save();
+               return response()->json([
+                     'status' => 'success',
+                     'message' => 'user updated successfuly'
+               ]);
+        }
+        return response()->json([
+            'status' => 'error',
+            'message' => 'user not found'
+        ]);
+    }
 }
