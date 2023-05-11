@@ -25,4 +25,5 @@ Route::controller(AuthController::class)->group(function(){
 });
 Route::controller(UserController::class)->group(function(){
     Route::put('updateProfile','updateProfile');
+    Route::delete('deleteProfile','deleteProfile');
 });

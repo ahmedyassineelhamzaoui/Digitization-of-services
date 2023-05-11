@@ -53,4 +53,19 @@ class UserController extends Controller
               'message' => 'user not found'
          ]);
     }   
+    public function deleteProfile(Request $request)
+    {
+        $userAuth = auth()->user();
+        if($userAuth){
+             $userAuth->delete();
+             return response()->json([
+                'status' => 'success',
+                'message' => 'Profile has been delete successfuly'
+             ]);
+        }
+        return response()->json([
+            'status' => 'error',
+            'message' => 'user not found'
+        ]);
+    }
 }
