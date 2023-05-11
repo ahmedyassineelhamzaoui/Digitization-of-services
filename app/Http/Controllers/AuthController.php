@@ -47,7 +47,16 @@ namespace App\Http\Controllers;
             $user = Auth::user();
             return response()->json([
                     'status' => 'success',
-                    'message' => 'welcom'.$user->first_name
+                    'message' => 'welcome '.$user->first_name,
+                    'token' => $token
+            ]);
+        }
+        public function logout()
+        {
+            Auth::logout();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successfully logged out',
             ]);
         }
     }
