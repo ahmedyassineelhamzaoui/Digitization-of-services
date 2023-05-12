@@ -34,6 +34,6 @@ Route::get('/login', function () {
 Route::get('/', function () {
     return view('home');
 });
-Route::form('formulaire',function () {
+Route::get('formulaire',function () {
     return view('form');
 });
