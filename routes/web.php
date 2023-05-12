@@ -1,6 +1,8 @@
 <?php
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,26 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::controller(AuthController::class)->group(function(){
+    Route::post('register','register');
+    Route::post('login','login');
+    Route::post('logout', 'logout');
+});
+Route::controller(UserController::class)->group(function(){
+    Route::put('updateProfile','updateProfile');
+    Route::delete('deleteProfile','deleteProfile');
+    Route::delete('deleteUser','deleteUser');
+    Route::put('updateUser','updateUser');
+});
+Route::get('/register', function () {
+    return view('register');
+});
+Route::get('/login', function () {
+    return view('login')->name('login');
+});
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+Route::form('formulaire',function () {
+    return view('form');
 });

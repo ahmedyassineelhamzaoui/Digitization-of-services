@@ -25,10 +25,7 @@ namespace App\Http\Controllers;
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);  
-            return response()->json([
-            'status' => 'success',
-            'message' => 'user created successfuly'
-            ]);
+            return redirect()->route('login')->with('success','user created succesfuly');
         }
         public function login(Request $request)
         {

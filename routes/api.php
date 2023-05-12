@@ -15,17 +15,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-Route::controller(AuthController::class)->group(function(){
-    Route::post('register','register');
-    Route::post('login','login');
-    Route::post('logout', 'logout');
-});
-Route::controller(UserController::class)->group(function(){
-    Route::put('updateProfile','updateProfile');
-    Route::delete('deleteProfile','deleteProfile');
-    Route::delete('deleteUser','deleteUser');
-    Route::put('updateUser','updateUser');
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
