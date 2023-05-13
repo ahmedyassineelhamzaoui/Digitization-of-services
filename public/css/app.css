@@ -1,0 +1,79 @@
+:root{
+    --primary-color : #ff9900;
+    --dark-color : #374151 ;
+    --download-buttoncolor : #005e73;
+    --download-buttonhover : #015163;
+    --white-color : rgb(240, 240, 240);
+}
+
+
+/* steper component style */
+.steper-content .steper-componnet {
+    margin-top: 30px;
+  }
+  .steper-content .steper-componnet .progress-empty {
+    background-color: var(--dark-color);
+    border-radius: 10px;
+    height: 4px;
+    width: 80%;
+    margin-left: 10%;
+    position: relative;
+    top: 21px;
+    z-index: -1;
+  }
+  .steper-content .steper-componnet .progress-empty .progress-full {
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: 0.5s;
+  }
+  .steper-content .steper-componnet .cercles-steper {
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    width: 80%;
+  }
+  .steper-content .steper-componnet .cercles-steper .cercle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    background-color: var(--dark-color);
+    font-weight: bold;
+    display: flex;
+    color: var(--primary-color);
+    justify-content: center;
+    align-items: center;
+  }
+  .steper-content .steper-componnet .cercles-steper .cercle .first-info{
+    position : absolute;
+    color:var(--dark-color);
+    top:4.5em;
+  }
+  .steper-content .steper-componnet .cercles-steper .cercle .second-info{
+    position : absolute;
+    color:var(--dark-color);
+    top:4.5em;
+  }
+  .steper-content .steper-componnet .cercles-steper .cercle .third-info{
+    position : absolute;
+    color:var(--dark-color);
+    top:4.5em;
+  }
+  .steper-content .steper-componnet .cercles-steper .cercle .fourth-info{
+    position : absolute;
+    color:var(--dark-color);
+    top:4.5em;
+  }
+  .fin .download-pdf{
+    background-color: var(--download-buttoncolor);
+    padding: 8px 10px;
+    color: var(--white-color);
+  }
+  .fin .download-pdf:hover{
+    background-color: var(--download-buttonhover);
+    color: var(--white-color);
+  }
+  /*  end steper component style */
