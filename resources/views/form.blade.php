@@ -34,31 +34,30 @@
             <div class="row g-3">
                 <div class="col-md-2">
                     <label for="inputZip" class="form-label">Matricule</label>
-                    <input type="text" class="form-control" name="input-matricule" id="input-matricule">
+                    <input type="text" class="form-control" name="input_matricule" id="input-matricule" required>
                 </div>
                 <div class="col-md-6">
                     <label for="inputCity" class="form-label">Nom</label>
-                    <input type="text" class="form-control" name="input-nom" id="input-nom">
+                    <input type="text" class="form-control" name="input_nom" id="input-nom" required>
                 </div>
                 <div class="col-md-4">
                     <label for="inputState" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" name="input-prenom" id="input-prenom">
+                    <input type="text" class="form-control" name="input_prenom" id="input-prenom" required>
                 </div>
                 <div class="col-md-2">
                     <label for="input-sexe" class="form-label">Sexe</label>
-                    <select id="input-sexe" name="form-select" class="form-select">
-                        <option selected>Choose...</option>
-                        <option value="masculin">masculin</option>
+                    <select id="input-sexe" name="form_select" class="form-select">
                         <option value="femme">femme</option>
+                        <option value="homme">homme</option>
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label for="inputCity" class="form-label">Date naissance</label>
-                    <input type="date" class="form-control" name="input-nom" id="input-nom">
+                    <input type="date" class="form-control" name="input_nom" id="input-nom" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-naissance" class="form-label">Lieu de naissance</label>
-                    <select id="input-naissance" name="input-naissance" class="form-select">
+                    <select id="input-naissance" name="input_naissance" class="form-select">
                         <option value="abengourou">Abengourou</option>
                         <option value="abidjan">Abidjan</option>
                         <option value="aboisso">Aboisso</option>
@@ -114,30 +113,30 @@
                 </div>
                 <div class="col-md-6">
                     <label for="input-email" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="input-email" id="input-email" placeholder="example@gmail.com">
+                    <input type="email" class="form-control" name="input_email" id="input-email" placeholder="example@gmail.com" required>
                 </div>
                 <div class="col-md-2">
                     <label for="input-telephone" class="form-label">Téléphone</label>
-                    <input type="text" class="form-control" name="input-telephone" id="input-telephone" placeholder="n° Téléphone">
+                    <input type="text" class="form-control" name="input_telephone" id="input-telephone" placeholder="n° Téléphone" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-adresse" class="form-label">Adresse</label>
-                    <input type="text" class="form-control" name="input-adresse" id="input-adresse">
+                    <input type="text" class="form-control" name="input_adresse" id="input-adresse" required>
                 </div>
                 <div class="col-md-6">
                     <label for="input-typepiece" class="form-label">Type de pièce</label>
-                    <select id="input-typepiece" name="input-typepiece" class="form-select">
+                    <select id="input-typepiece" name="input_typepiece" class="form-select">
                         <option value="carte">Carte nationale d'identité</option>
                         <option value="passeport">Passeport</option>
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label for="input-numeropiece" class="form-label">Numéro de la pièce</label>
-                    <input type="text" class="form-control" name="input-numeropiece" id="input-numeropiece" placeholder="N° de la pièce d'identité">
+                    <input type="text" class="form-control" name="input_numeropiece" id="input-numeropiece" placeholder="N° de la pièce d'identité" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-region" class="form-label">Région</label>
-                    <select id="input-region" name="input-region" class="form-select">
+                    <select id="input-region" name="input_region" class="form-select">
                         <option value="Agnéby">Agnéby</option>
                         <option value="Bafing">Bafing</option>
                         <option value="Bas-Sassandra">Bas-Sassandra</option>
@@ -161,7 +160,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="input-localite" class="form-label">Localité</label>
-                    <select id="input-localite" name="input-localite" class="form-select">
+                    <select id="input-localite" name="input_localite" class="form-select" >
                         <option value="abengourou">Abengourou</option>
                         <option value="abidjan">Abidjan</option>
                         <option value="aboisso">Aboisso</option>
@@ -217,114 +216,115 @@
                 </div>
                 <div class="col-md-4">
                     <label for="input-corsauntirieur" class="form-label">Corps Antérieur</label>
-                    <select id="input-corsauntirieur" name="input-corsauntirieur" class="form-select">
-                        <option selected>Aucun Corps</option>
-                        <option value="Avocat(e)">Avocat(e)</option>
+                    <select id="input-corsauntirieur" name="input_corsauntirieur" class="form-select">
+                        <option value="Aucun Corps" selected>Aucun Corps</option>
+                        <option value="Avocat">Avocat(e)</option>
                         <option value="Architecte">Architecte</option>
                         <option value="Artiste">Artiste</option>
-                        <option value="Agriculteur(rice)">Agriculteur(rice)</option>
-                        <option value="Banquier(ière)">Banquier(ière)</option>
+                        <option value="Agriculteur">Agriculteur(rice)</option>
+                        <option value="Banquier">Banquier(ière)</option>
                         <option value="Bibliothécaire">Bibliothécaire</option>
-                        <option value="Boucher(ère)">Boucher(ère)</option>
-                        <option value="Boulanger(ère)">Boulanger(ère)</option>
-                        <option value="Chirurgien(ne)">Chirurgien(ne)</option>
-                        <option value="Chercheur(euse)">Chercheur(euse)</option>
+                        <option value="Boucher">Boucher(ère)</option>
+                        <option value="Boulanger">Boulanger(ère)</option>
+                        <option value="Chirurgien">Chirurgien(ne)</option>
+                        <option value="Chercheur">Chercheur(euse)</option>
                         <option value="Comptable">Comptable</option>
-                        <option value="Consultant(e)">Consultant(e)</option>
-                        <option value="Cuisinier(ère)">Cuisinier(ère)</option>
+                        <option value="Consultant">Consultant(e)</option>
+                        <option value="Cuisinier">Cuisinier(ère)</option>
                         <option value="Dentiste">Dentiste</option>
                         <option value="Designer">Designer</option>
-                        <option value="Développeur(euse) web">Développeur(euse) web</option>
-                        <option value="Écrivain(e)">Écrivain(e)</option>
-                        <option value="Électricien(ne)">Électricien(ne)</option>
-                        <option value="Enseignant(e)">Enseignant(e)</option>
-                        <option value="Entrepreneur(euse)">Entrepreneur(euse)</option>
-                        <option value="Étudiant(e)">Étudiant(e)</option>
-                        <option value="Facteur(trice)">Facteur(trice)</option>
+                        <option value="Développeur web">Développeur(euse) web</option>
+                        <option value="Écrivain">Écrivain(e)</option>
+                        <option value="Électricien">Électricien(ne)</option>
+                        <option value="Enseignant">Enseignant(e)</option>
+                        <option value="Entrepreneur">Entrepreneur(euse)</option>
+                        <option value="Étudiant">Étudiant(e)</option>
+                        <option value="Facteur">Facteur(trice)</option>
                         <option value="Gestionnaire">Gestionnaire</option>
                         <option value="Graphiste">Graphiste</option>
-                        <option value="Ingénieur(e)">Ingénieur(e)</option>
-                        <option value="Infirmier(ère)">Infirmier(ère)</option>
+                        <option value="Ingénieur">Ingénieur(e)</option>
+                        <option value="Infirmier">Infirmier(ère)</option>
                         <option value="Journaliste">Journaliste</option>
                         <option value="Juge">Juge</option>
                         <option value="Kinésithérapeute">Kinésithérapeute</option>
-                        <option value="Maçon(ne)">Maçon(ne)</option>
-                        <option value="Mécanicien(ne)">Mécanicien(ne)</option>
+                        <option value="Maçon">Maçon(ne)</option>
+                        <option value="Mécanicien">Mécanicien(ne)</option>
                         <option value="Médecin">Médecin</option>
-                        <option value="Musicien(ne)">Musicien(ne)</option>
+                        <option value="Musicien">Musicien(ne)</option>
                         <option value="Notaire">Notaire</option>
-                        <option value="Opticien(ne)">Opticien(ne)</option>
-                        <option value="Pharmacien(ne)">Pharmacien(ne)</option>
+                        <option value="Opticien">Opticien(ne)</option>
+                        <option value="Pharmacien">Pharmacien(ne)</option>
                         <option value="Photographe">Photographe</option>
-                        <option value="Plombier(ère)">Plombier(ère)</option>
-                        <option value="Policier(ère)">Policier(ère)</option>
-                        <option value="Professeur(e)">Professeur(e)</option>
+                        <option value="Plombier">Plombier(ère)</option>
+                        <option value="Policier">Policier(ère)</option>
+                        <option value="Professeur">Professeur(e)</option>
                         <option value="Psychologue">Psychologue</option>
-                        <option value="Réalisateur(trice)">Réalisateur(trice)</option>
+                        <option value="Réalisateur">Réalisateur(trice)</option>
                         <option value="Scientifique">Scientifique</option>
                         <option value="Secrétaire">Secrétaire</option>
-                        <option value="Soudeur(euse)">Soudeur(euse)</option>
-                        <option value="Technicien(ne)">Technicien(ne)</option>
-                        <option value="Traducteur(trice)">Traducteur(trice)</option>
-                        <option value="Vendeur(euse)">Vendeur(euse)</option>
+                        <option value="Soudeur">Soudeur(euse)</option>
+                        <option value="Technicien">Technicien(ne)</option>
+                        <option value="Traducteur">Traducteur(trice)</option>
+                        <option value="Vendeur">Vendeur(euse)</option>
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="input-region" class="form-label">Corps</label>
-                    <select id="input-region" name="input-region" class="form-select">
-                        <option value="Avocat(e)">Avocat(e)</option>
+                    <label for="input-corps" class="form-label">Corps</label>
+                    <select id="input-corps" name="input_corps" class="form-select">
+                        <option value="Aucun Corps" >Aucun Corps</option>
+                        <option value="Avocat">Avocat(e)</option>
                         <option value="Architecte">Architecte</option>
                         <option value="Artiste">Artiste</option>
-                        <option value="Agriculteur(rice)">Agriculteur(rice)</option>
-                        <option value="Banquier(ière)">Banquier(ière)</option>
+                        <option value="Agriculteur">Agriculteur(rice)</option>
+                        <option value="Banquier">Banquier(ière)</option>
                         <option value="Bibliothécaire">Bibliothécaire</option>
-                        <option value="Boucher(ère)">Boucher(ère)</option>
-                        <option value="Boulanger(ère)">Boulanger(ère)</option>
-                        <option value="Chirurgien(ne)">Chirurgien(ne)</option>
-                        <option value="Chercheur(euse)">Chercheur(euse)</option>
+                        <option value="Boucher">Boucher(ère)</option>
+                        <option value="Boulanger">Boulanger(ère)</option>
+                        <option value="Chirurgien">Chirurgien(ne)</option>
+                        <option value="Chercheur">Chercheur(euse)</option>
                         <option value="Comptable">Comptable</option>
-                        <option value="Consultant(e)">Consultant(e)</option>
-                        <option value="Cuisinier(ère)">Cuisinier(ère)</option>
+                        <option value="Consultant">Consultant(e)</option>
+                        <option value="Cuisinier">Cuisinier(ère)</option>
                         <option value="Dentiste">Dentiste</option>
                         <option value="Designer">Designer</option>
-                        <option value="Développeur(euse) web">Développeur(euse) web</option>
-                        <option value="Écrivain(e)">Écrivain(e)</option>
-                        <option value="Électricien(ne)">Électricien(ne)</option>
-                        <option value="Enseignant(e)">Enseignant(e)</option>
-                        <option value="Entrepreneur(euse)">Entrepreneur(euse)</option>
-                        <option value="Étudiant(e)">Étudiant(e)</option>
-                        <option value="Facteur(trice)">Facteur(trice)</option>
+                        <option value="Développeur web">Développeur(euse) web</option>
+                        <option value="Écrivain">Écrivain(e)</option>
+                        <option value="Électricien">Électricien(ne)</option>
+                        <option value="Enseignant">Enseignant(e)</option>
+                        <option value="Entrepreneur">Entrepreneur(euse)</option>
+                        <option value="Étudiant">Étudiant(e)</option>
+                        <option value="Facteur">Facteur(trice)</option>
                         <option value="Gestionnaire">Gestionnaire</option>
                         <option value="Graphiste">Graphiste</option>
-                        <option value="Ingénieur(e)">Ingénieur(e)</option>
-                        <option value="Infirmier(ère)">Infirmier(ère)</option>
+                        <option value="Ingénieur">Ingénieur(e)</option>
+                        <option value="Infirmier">Infirmier(ère)</option>
                         <option value="Journaliste">Journaliste</option>
                         <option value="Juge">Juge</option>
                         <option value="Kinésithérapeute">Kinésithérapeute</option>
-                        <option value="Maçon(ne)">Maçon(ne)</option>
-                        <option value="Mécanicien(ne)">Mécanicien(ne)</option>
+                        <option value="Maçon">Maçon(ne)</option>
+                        <option value="Mécanicien">Mécanicien(ne)</option>
                         <option value="Médecin">Médecin</option>
-                        <option value="Musicien(ne)">Musicien(ne)</option>
+                        <option value="Musicien">Musicien(ne)</option>
                         <option value="Notaire">Notaire</option>
-                        <option value="Opticien(ne)">Opticien(ne)</option>
-                        <option value="Pharmacien(ne)">Pharmacien(ne)</option>
+                        <option value="Opticien">Opticien(ne)</option>
+                        <option value="Pharmacien">Pharmacien(ne)</option>
                         <option value="Photographe">Photographe</option>
-                        <option value="Plombier(ère)">Plombier(ère)</option>
-                        <option value="Policier(ère)">Policier(ère)</option>
-                        <option value="Professeur(e)">Professeur(e)</option>
+                        <option value="Plombier">Plombier(ère)</option>
+                        <option value="Policier">Policier(ère)</option>
+                        <option value="Professeur">Professeur(e)</option>
                         <option value="Psychologue">Psychologue</option>
-                        <option value="Réalisateur(trice)">Réalisateur(trice)</option>
+                        <option value="Réalisateur">Réalisateur(trice)</option>
                         <option value="Scientifique">Scientifique</option>
                         <option value="Secrétaire">Secrétaire</option>
-                        <option value="Soudeur(euse)">Soudeur(euse)</option>
-                        <option value="Technicien(ne)">Technicien(ne)</option>
-                        <option value="Traducteur(trice)">Traducteur(trice)</option>
-                        <option value="Vendeur(euse)">Vendeur(euse)</option>
+                        <option value="Soudeur">Soudeur(euse)</option>
+                        <option value="Technicien">Technicien(ne)</option>
+                        <option value="Traducteur">Traducteur(trice)</option>
+                        <option value="Vendeur">Vendeur(euse)</option>
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="input-localite" class="form-label">Ministère Antérieur</label>
-                    <select id="input-localite" name="input-localite" class="form-select">
+                    <label for="input-minstereAnterieur" class="form-label">Ministère Antérieur</label>
+                    <select id="input-minstereAnterieur" name="input_minstereAnterieur" class="form-select">
                         <option value="ministere_de_la_communication_et_des_medias">Ministère de la Communication et des Médias</option>
                         <option value="ministere_de_l_economie_et_des_finances">Ministère de l'Économie et des Finances</option>
                         <option value="ministere_de_l_education_nationale_de_l_enseignement_technique_et_de_la_formation_professionnelle">Ministère de l'Éducation Nationale, de l'Enseignement Technique et de la Formation Professionnelle</option>
@@ -357,8 +357,8 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="input-corsauntirieur" class="form-label">Ministère</label>
-                    <select id="input-corsauntirieur" name="input-corsauntirieur" class="form-select">
+                    <label for="input-minstere" class="form-label">Ministère</label>
+                    <select id="input-minstere" name="input_minstere" class="form-select">
                         <option value="ministere_de_la_communication_et_des_medias">Ministère de la Communication et des Médias</option>
                         <option value="ministere_de_l_economie_et_des_finances">Ministère de l'Économie et des Finances</option>
                         <option value="ministere_de_l_education_nationale_de_l_enseignement_technique_et_de_la_formation_professionnelle">Ministère de l'Éducation Nationale, de l'Enseignement Technique et de la Formation Professionnelle</option>
@@ -392,35 +392,35 @@
                 </div>
                 <div class="col-md-4">
                     <label for="input-infoFonctionAnterieur" class="form-label">Fonction Antérieur</label>
-                    <input type="text" class="form-control" id="input-infoFonctionAnterieur" name="input-infoFonctionAnterieur">
+                    <input type="text" class="form-control" id="input-infoFonctionAnterieur" name="input_infoFonctionAnterieur" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-infoFonction" class="form-label">Fonction</label>
-                    <input type="text" class="form-control" id="input-infoFonction" name="input-infoFonction">
+                    <input type="text" class="form-control" id="input-infoFonction" name="input_infoFonction" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-service" class="form-label">Service / Etablissement</label>
-                    <input type="text" class="form-control" id="input-service" name="input-service">
+                    <input type="text" class="form-control" id="input-service" name="input_service" required>
                 </div>
                 <div class="col-md-6">
                     <label for="input-arret" class="form-label">Décret/Arret</label>
-                    <input type="text" id="input-arret" name="input-arret" class="form-control">
+                    <input type="text" id="input-arret" name="input_arret" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label for="input-nomination" class="form-label">Date nommination</label>
-                    <input type="date" class="form-control" name="input-nomination" id="input-nomination">
+                    <input type="date" class="form-control" name="input_nomination" id="input-nomination" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-effet" class="form-label">Date d'effet</label>
-                    <input type="date" class="form-control" id="input-effet" name="input-effet">
+                    <input type="date" class="form-control" id="input-effet" name="input_effet" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-fin" class="form-label">Date de fin</label>
-                    <input type="date" class="form-control" id="input-fin" name="input-fin">
+                    <input type="date" class="form-control" id="input-fin" name="input_fin" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-matrimoniale" class="form-label">Situation matrimoniale</label>
-                    <select id="input-matrimoniale" name="input-matrimoniale" class="form-select">
+                    <select id="input-matrimoniale" name="input_matrimoniale" class="form-select">
                         <option value="marie">Marié.e</option>
                         <option value="celibataire">Célibataire</option>
                     </select>
@@ -428,69 +428,69 @@
                 <h3 class="mt-5">Informations conjoint.e</h3>
                 <div class="col-md-4">
                     <label for="input-nomprenom" class="form-label"> Nom & Prénom</label>
-                    <input type="text" class="form-control" name="input-nomprenom" id="input-nomprenom">
+                    <input type="text" class="form-control" name="input_nomprenom" id="input-nomprenom" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-fonction" class="form-label">Fonction</label>
-                    <input type="text" class="form-control" name="input-fonction" id="input-fonction">
+                    <input type="text" class="form-control" name="input_fonction" id="input-fonction" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="input-matricule" class="form-label">Matricule</label>
-                    <input type="text" class="form-control" name="input-matricule" id="input-matricule">
+                    <label for="input-matriculeConjoint" class="form-label">Matricule</label>
+                    <input type="text" class="form-control" name="input_matriculeConjoint" id="input-matriculeConjoint" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-serviceempolyeur" class="form-label"> Service employeur</label>
-                    <input type="text" class="form-control" name="input-serviceempolyeur" id="input-serviceempolyeur">
+                    <input type="text" class="form-control" name="input_serviceempolyeur" id="input-serviceempolyeur">
                 </div>
                 <div class="col-md-4">
                     <label for="input-dateembauche" class="form-label">Date d'embauche</label>
-                    <input type="date" class="form-control" name="input-dateembauche" id="input-dateembauche">
+                    <input type="date" class="form-control" name="input_dateembauche" id="input-dateembauche" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input-adressconjoint" class="form-label">Adresse</label>
-                    <input type="text" class="form-control" name="input-adressconjoint" id="input-adressconjoint">
+                    <input type="text" class="form-control" name="input_adressconjoint" id="input-adressconjoint" required>
                 </div>
                 <div class="col-md-6">
                     <label for="input-regime" class="form-label">Régime</label>
-                    <input type="text" id="input-regime" name="input-regime" class="form-control">
+                    <input type="text" id="input-regime" name="input_regime" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label for="input-indemnite" class="form-label">Taux d'indemnité</label>
-                    <input type="text" class="form-control" name="input-indemnite" id="input-indemnite">
+                    <input type="text" class="form-control" name="input_indemnite" id="input-indemnite" required>
                 </div>
                 <h3>Habitation précédante</h3>
                 <div class="col-md-3">
                     <label for="input-villeprece" class="form-label">Ville</label>
-                    <input type="text" id="input-villeprece" name="input-villeprece" class="form-control">
+                    <input type="text" id="input-villeprece" name="input_villeprece" class="form-control" >
                 </div>
                 <div class="col-md-3">
                     <label for="input-quartierprec" class="form-label">Quartier</label>
-                    <input type="text" class="form-control" name="input-quartierprec" id="input-quartierprec">
+                    <input type="text" class="form-control" name="input_quartierprec" id="input-quartierprec" >
                 </div>
                 <div class="col-md-3">
                     <label for="input-lotprec" class="form-label">Lot n°</label>
-                    <input type="text" id="input-lotprec" name="input-lotprec" class="form-control">
+                    <input type="text" id="input-lotprec" name="input_lotprec" class="form-control" >
                 </div>
                 <div class="col-md-3">
                     <label for="input-liberation" class="form-label">Date libération</label>
-                    <input type="date" class="form-control" name="input-liberation" id="input-liberation">
+                    <input type="date" class="form-control" name="input_liberation" id="input-liberation" >
                 </div>
                 <h3>Habitation actuelle</h3>
                 <div class="col-md-3">
                     <label for="input-villeactuell" class="form-label">Ville</label>
-                    <input type="text" id="input-villeactuell" name="input-villeactuell" class="form-control">
+                    <input type="text" id="input-villeactuell" name="input_villeactuell" class="form-control" required>
                 </div>
                 <div class="col-md-3">
                     <label for="input-quartieractuell" class="form-label">Quartier</label>
-                    <input type="text" class="form-control" name="input-quartieractuell" id="input-quartieractuell">
+                    <input type="text" class="form-control" name="input_quartieractuell" id="input-quartieractuell" required>
                 </div>
                 <div class="col-md-3">
                     <label for="input-lotactuell" class="form-label">Lot n°</label>
-                    <input type="text" id="input-lotactuell" name="input-lotactuell" class="form-control">
+                    <input type="text" id="input-lotactuell" name="input_lotactuell" class="form-control" required>
                 </div>
                 <div class="col-md-3">
                     <label for="input-occupation" class="form-label">Date d'occupation</label>
-                    <input type="date" class="form-control" name="input-occupation" id="input-occupation">
+                    <input type="date" class="form-control" name="input_occupation" id="input-occupation" required>
                 </div>
                 <div class="col-md-4">
                     <label for="input- heberge" class="form-label">Etes-vous hébergé par un parent ou un ami ?</label>
@@ -509,7 +509,7 @@
                 </div>
                 <div class="col-md-8">
                     <label for="input-nomparentami" class="form-label">Nom de ce parent ou ami</label>
-                    <input type="text" class="form-control" name="input-nomparentami" id="input-nomparentami">
+                    <input type="text" class="form-control" name="input_nomparentami" id="input-nomparentami">
                 </div>
             </div>
         </div>
@@ -518,43 +518,43 @@
             <div class="row g-3">
                 <div class="mb-3 col-md-6">
                     <label for="form-decisionnomination" class="form-label">Décision de nommination</label>
-                    <input class="form-control" type="file" name="form-decisionnomination" id="form-decisionnomination">
+                    <input class="form-control" type="file" name="form_decisionnomination" id="form-decisionnomination">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-decisionaffectation" class="form-label">Décision d'affectation ou page fonctionnaire</label>
-                    <input class="form-control" type="file" name="form-decisionaffectation" id="form-decisionaffectation">
+                    <input class="form-control" type="file" name="form_decisionaffectation" id="form-decisionaffectation">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-certificatpriseservice" class="form-label">Certificat de 1ère prise de service</label>
-                    <input class="form-control" type="file" name="form-certificatpriseservice" id="form-certificatpriseservice">
+                    <input class="form-control" type="file" name="form_certificatpriseservice" id="form-certificatpriseservice">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-Bulletinsoldeavant" class="form-label">Bulletin de solde avant nomination</label>
-                    <input class="form-control" type="file" name="form-Bulletinsoldeavant" id="form-Bulletinsoldeavant">
+                    <input class="form-control" type="file" name="form_Bulletinsoldeavant" id="form-Bulletinsoldeavant">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-Bulletinsoldeapres" class="form-label">Bulletin de solde après nommination</label>
-                    <input class="form-control" type="file" name="form-Bulletinsoldeapres" id="form-Bulletinsoldeapres">
+                    <input class="form-control" type="file" name="form_Bulletinsoldeapres" id="form-Bulletinsoldeapres">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-certifcatnomhebergement" class="form-label">Certificat de non hébergement</label>
-                    <input class="form-control" type="file" name="form-certifcatnomhebergement" id="form-certifcatnomhebergement">
+                    <input class="form-control" type="file" name="form_certifcatnomhebergement" id="form-certifcatnomhebergement">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-attestationhonneurlegalise" class="form-label">Attestation sur l'honneur légalisée</label>
-                    <input class="form-control" type="file" name="form-attestationhonneurlegalise" id="form-attestationhonneurlegalise">
+                    <input class="form-control" type="file" name="form_attestationhonneurlegalise" id="form-attestationhonneurlegalise">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-certificatresidence" class="form-label">certificat de résidence</label>
-                    <input class="form-control" type="file" name="form-certificatresidence" id="form-certificatresidence">
+                    <input class="form-control" type="file" name="form_certificatresidence" id="form-certificatresidence">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-pieceidentite" class="form-label">Pièce d'identité</label>
-                    <input class="form-control" type="file" name="form-pieceidentite" id="form-pieceidentite">
+                    <input class="form-control" type="file" name="form_pieceidentite" id="form-pieceidentite">
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="form-actemariage" class="form-label">Acte de mariage</label>
-                    <input class="form-control" type="file" name="form-actemariage" id="form-actemariage">
+                    <input class="form-control" type="file" name="form_actemariage" id="form-actemariage">
                 </div>
             </div>
         </div>
@@ -565,13 +565,13 @@
                     <div class="mt-4 mb-4">
                         <div class="">
                             <label for="input-phonepaiment" class="form-label">N° de téléphone</label>
-                            <input type="text" class="form-control" name="input-phonepaiment" id="input-phonepaiment">
+                            <input type="text" class="form-control" name="input_phonepaiment" id="input-phonepaiment" required>
                         </div>
                     </div>
                     <div class="mt-4 mb-4">
                         <div class="">
                             <label for="input-refrencepaiment" class="form-label">Reférence du paiement</label>
-                            <input type="text" class="form-control" name="input-refrencepaiment" id="input-refrencepaiment">
+                            <input type="text" class="form-control" name="input_refrencepaiment" id="input-refrencepaiment" required>
                         </div>
                     </div>
                 </div>
@@ -583,10 +583,10 @@
             <div class="d-flex justify-content-center text-center mt-5">
                 <div>
                     <div class="mb-3">
-                        <button type="submit" name="print-info" class="btn download-pdf">Imprimer votre fichier d'inscription</button>
+                        <button type="submit" name="print_info" class="btn download-pdf">Imprimer votre fichier d'inscription</button>
                     </div>
                     <div class="mb-3">
-                        <button type="submit" name="print-payment"  class="btn download-pdf">Imprimer votre reçu de paiement</button>
+                        <button type="submit" name="print_payment"  class="btn download-pdf">Imprimer votre reçu de paiement</button>
                     </div>
                 </div>
             </div>
