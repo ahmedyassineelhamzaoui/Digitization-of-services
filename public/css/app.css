@@ -1,9 +1,9 @@
 :root{
-    --primary-color : #ff9900;
-    --dark-color : #374151 ;
-    --download-buttoncolor : #005e73;
-    --download-buttonhover : #015163;
-    --white-color : rgb(240, 240, 240);
+    --primary-color : #f79400;
+    --dark-color : #005e73 ;
+    --download-buttoncolor :#015163 ;
+    --download-buttonhover : #0694b4;
+    --white-color : white;
 }
 
 
@@ -39,7 +39,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     background-color: var(--dark-color);
     font-weight: bold;
     display: flex;
@@ -66,6 +66,21 @@
     position : absolute;
     color:var(--dark-color);
     top:4.5em;
+  }
+  .persone-infos{
+    display: block;
+  }
+  .join-file{
+    display: none;
+  }
+  .paiement{
+    display: none;
+  }
+  .fin{
+    display: none;
+  }
+  .paiement .finmargin{
+    margin-bottom:150px ;
   }
   .fin .download-pdf{
     background-color: var(--download-buttoncolor);
