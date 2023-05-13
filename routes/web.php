@@ -3,6 +3,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FormController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,9 @@ Route::controller(UserController::class)->group(function(){
     Route::delete('deleteProfile','deleteProfile');
     Route::delete('deleteUser','deleteUser');
     Route::put('updateUser','updateUser');
+});
+Route::controller(FormController::class)->group(function(){
+   Route::post('storeInformation','storeInformation')->name('send.Information');
 });
 Route::get('/register', function () {
     return view('register');

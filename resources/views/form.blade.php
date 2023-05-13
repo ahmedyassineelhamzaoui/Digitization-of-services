@@ -27,7 +27,7 @@
             </span>
         </div>
     </div>
-    <form action="" method="post" class="mb-3">
+    <form action="{{route('send.Information')}}" method="post" class="mb-3">
         @csrf
         <div class="step persone-infos">
             <h3 class="mt-5">Les informations personnelles </h3>
@@ -36,28 +36,40 @@
                     <label for="inputZip" class="form-label">Matricule</label>
                     <input type="text" class="form-control" name="input_matricule" id="input-matricule" required>
                 </div>
+                @error('input_matricule')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-6">
                     <label for="inputCity" class="form-label">Nom</label>
                     <input type="text" class="form-control" name="input_nom" id="input-nom" required>
                 </div>
+                @error('input_nom')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="inputState" class="form-label">Prénom</label>
                     <input type="text" class="form-control" name="input_prenom" id="input-prenom" required>
                 </div>
+                @error('input_prenom')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-2">
                     <label for="input-sexe" class="form-label">Sexe</label>
-                    <select id="input-sexe" name="form_select" class="form-select">
+                    <select id="input-sexe" name="form_sexe" class="form-select">
                         <option value="femme">femme</option>
                         <option value="homme">homme</option>
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label for="inputCity" class="form-label">Date naissance</label>
-                    <input type="date" class="form-control" name="input_nom" id="input-nom" required>
+                    <input type="date" class="form-control" name="input_datenaissance" id="input-nom" required>
                 </div>
+                @error('input_datenaissance')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-naissance" class="form-label">Lieu de naissance</label>
-                    <select id="input-naissance" name="input_naissance" class="form-select">
+                    <select id="input-naissance" name="input_lieunaissance" class="form-select">
                         <option value="abengourou">Abengourou</option>
                         <option value="abidjan">Abidjan</option>
                         <option value="aboisso">Aboisso</option>
@@ -115,14 +127,23 @@
                     <label for="input-email" class="form-label">Email</label>
                     <input type="email" class="form-control" name="input_email" id="input-email" placeholder="example@gmail.com" required>
                 </div>
+                @error('input_email')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-2">
                     <label for="input-telephone" class="form-label">Téléphone</label>
                     <input type="text" class="form-control" name="input_telephone" id="input-telephone" placeholder="n° Téléphone" required>
                 </div>
+                @error('input_telephone')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-adresse" class="form-label">Adresse</label>
                     <input type="text" class="form-control" name="input_adresse" id="input-adresse" required>
                 </div>
+                @error('input_adresse')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-6">
                     <label for="input-typepiece" class="form-label">Type de pièce</label>
                     <select id="input-typepiece" name="input_typepiece" class="form-select">
@@ -134,6 +155,9 @@
                     <label for="input-numeropiece" class="form-label">Numéro de la pièce</label>
                     <input type="text" class="form-control" name="input_numeropiece" id="input-numeropiece" placeholder="N° de la pièce d'identité" required>
                 </div>
+                @error('input_numeropiece')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-region" class="form-label">Région</label>
                     <select id="input-region" name="input_region" class="form-select">
@@ -394,30 +418,51 @@
                     <label for="input-infoFonctionAnterieur" class="form-label">Fonction Antérieur</label>
                     <input type="text" class="form-control" id="input-infoFonctionAnterieur" name="input_infoFonctionAnterieur" required>
                 </div>
+                @error('input_infoFonctionAnterieur')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-infoFonction" class="form-label">Fonction</label>
                     <input type="text" class="form-control" id="input-infoFonction" name="input_infoFonction" required>
                 </div>
+                @error('input_infoFonction')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-service" class="form-label">Service / Etablissement</label>
                     <input type="text" class="form-control" id="input-service" name="input_service" required>
                 </div>
+                @error('input_service')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-6">
                     <label for="input-arret" class="form-label">Décret/Arret</label>
                     <input type="text" id="input-arret" name="input_arret" class="form-control" required>
                 </div>
+                @error('input_arret')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-6">
                     <label for="input-nomination" class="form-label">Date nommination</label>
                     <input type="date" class="form-control" name="input_nomination" id="input-nomination" required>
                 </div>
+                @error('input_nomination')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-effet" class="form-label">Date d'effet</label>
                     <input type="date" class="form-control" id="input-effet" name="input_effet" required>
                 </div>
+                @error('input_effet')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-fin" class="form-label">Date de fin</label>
                     <input type="date" class="form-control" id="input-fin" name="input_fin" required>
                 </div>
+                @error('input_fin')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-matrimoniale" class="form-label">Situation matrimoniale</label>
                     <select id="input-matrimoniale" name="input_matrimoniale" class="form-select">
@@ -430,34 +475,58 @@
                     <label for="input-nomprenom" class="form-label"> Nom & Prénom</label>
                     <input type="text" class="form-control" name="input_nomprenom" id="input-nomprenom" required>
                 </div>
+                @error('input_nomprenom')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-fonction" class="form-label">Fonction</label>
                     <input type="text" class="form-control" name="input_fonction" id="input-fonction" required>
                 </div>
+                @error('input_fonction')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-matriculeConjoint" class="form-label">Matricule</label>
                     <input type="text" class="form-control" name="input_matriculeConjoint" id="input-matriculeConjoint" required>
                 </div>
+                @error('input_matriculeConjoint')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-serviceempolyeur" class="form-label"> Service employeur</label>
                     <input type="text" class="form-control" name="input_serviceempolyeur" id="input-serviceempolyeur">
                 </div>
+                @error('input_serviceempolyeur')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-dateembauche" class="form-label">Date d'embauche</label>
                     <input type="date" class="form-control" name="input_dateembauche" id="input-dateembauche" required>
                 </div>
+                @error('input_dateembauche')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-4">
                     <label for="input-adressconjoint" class="form-label">Adresse</label>
                     <input type="text" class="form-control" name="input_adressconjoint" id="input-adressconjoint" required>
                 </div>
+                @error('input_adressconjoint')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-6">
                     <label for="input-regime" class="form-label">Régime</label>
                     <input type="text" id="input-regime" name="input_regime" class="form-control" required>
                 </div>
+                @error('input_regime')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <div class="col-md-6">
                     <label for="input-indemnite" class="form-label">Taux d'indemnité</label>
                     <input type="text" class="form-control" name="input_indemnite" id="input-indemnite" required>
                 </div>
+                @error('input_indemnite')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
                 <h3>Habitation précédante</h3>
                 <div class="col-md-3">
                     <label for="input-villeprece" class="form-label">Ville</label>
@@ -592,9 +661,10 @@
             </div>
                 
         </div>
+        <div class="d-flex justify-content-end mt-3">
+            <button type="submit" id="click-next" class="btn btn-warning fs-5 px-3">Suivant</button>
+        </div>
     </form>
-    <div class="d-flex justify-content-end mb-3">
-        <button id="click-next" class="btn btn-warning fs-5 px-3">Suivant</button>
-    </div>
+    
 </div>
 @endsection
