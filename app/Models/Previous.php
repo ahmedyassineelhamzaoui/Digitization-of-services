@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Previous extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'personelinfos_id',
+        'ville_precedant' ,
+        'quartier_precedant',
+        'lot_precedant',
+        'date_liberation',
+];
 }

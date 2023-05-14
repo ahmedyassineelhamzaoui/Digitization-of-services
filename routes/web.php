@@ -28,7 +28,7 @@ Route::controller(UserController::class)->group(function(){
     Route::put('updateUser','updateUser');
 });
 Route::controller(FormController::class)->group(function(){
-   Route::post('storeInformation','storeInformation')->name('send.Information');
+   Route::post('/formulaire','storeInformation')->name('send.Information');
 });
 Route::get('/register', function () {
     return view('register');

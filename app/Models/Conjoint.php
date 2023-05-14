@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Conjoint extends Model
 {
     use HasFactory;
+    protected $fillable =[
+        'personelinfos_id',
+        'nom_prenom',
+        'fonction',
+        'matricule_Conjoint',
+        'service_empolyeur',
+        'date_embauche',
+        'adress_conjoint',
+        'regime',
+        'taux_indemnite',
+    ];
 }

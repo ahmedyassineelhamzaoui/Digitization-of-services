@@ -8,12 +8,11 @@ let progressFull = document.querySelector(".progress-full");
 cercle[compt].style.background="black";
 color="#005e73";
 // clickNext.onclick = () => {
-    $(document).ready(function() {
+$(document).ready(function() {
 
     $('#click-next').submit(function(event) {
         $('.invalid-feedback').remove();
         event.preventDefault();
-
           var formData = $(this).serialize();
           var url = $(this).attr('action');
           $.ajax({
@@ -41,19 +40,17 @@ color="#005e73";
                     progressFull.style.width = `${compt * 33}%`;
                 }
                 $('.message-success-updated').text(response.message);
-                $('#updated-success').addClass('flex'); 
-                $('#updated-success').removeClass('hidden')
             },
             error: function(xhr) {
               var errors = xhr.responseJSON.errors;
-              // clear any existing error messages
               $.each(errors, function(key, value) {
-                $('#' + key).after('<span class="text-red-500"><strong>' + value + '</strong></span>');
+                console.log(key);
+                console.log(value)
+                $('#' + key).after('<span class="text-danger"><strong>' + value + '</strong></span>');
             });
             }
-          });
+        });
    
-
-});
+    });
 });
 // }

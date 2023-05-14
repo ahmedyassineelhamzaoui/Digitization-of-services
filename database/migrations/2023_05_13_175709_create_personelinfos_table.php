@@ -36,8 +36,9 @@ return new class extends Migration
             $table->string('fonction_anterieur');
             $table->string('service');
             $table->string('arret');
-            $table->string('date_nomination');
-            $table->string('date_effet');
+            $table->date('date_nomination');
+            $table->date('date_effet');
+            $table->date('date_fin');
             $table->string('situation_matrimoniale');
             $table->timestamps();
         });
