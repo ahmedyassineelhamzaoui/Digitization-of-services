@@ -11,6 +11,11 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+
+    public function index(){
+        return view('home');
+    }
+
     public function updateProfile(Request $request)
     {
          $authUser = auth()->user();
@@ -52,7 +57,7 @@ class UserController extends Controller
               'status' => 'error',
               'message' => 'user not found'
          ]);
-    }   
+    }
     public function deleteProfile(Request $request)
     {
         $userAuth = auth()->user();
