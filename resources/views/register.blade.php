@@ -27,11 +27,6 @@
                             <label class="form-label" for="form2Example17">Full Name</label>
                         </div>
 
-                        {{-- <div class="form-outline mb-4">
-                            <input type="text" name="last_name" id="form2Example17" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example17">Last Name</label>
-                        </div> --}}
-
                         <div class="form-outline mb-4">
                             <input type="email" name="email" id="form2Example18" class="form-control form-control-lg" />
                             <label class="form-label" for="form2Example18">Email address</label>
