@@ -2,16 +2,69 @@
 let step = document.querySelectorAll(".step");
 let compt =0;
 let clickNext =document.querySelector("#click-next")
+let clickPrevious=document.querySelector("#click-previous")
 let cercle = document.querySelectorAll(".cercle");
 let progressEmpty = document.querySelector(".progress-empty");
 let progressFull = document.querySelector(".progress-full");
 cercle[compt].style.background="black";
 color="#005e73";
+// let submitForm = document.querySelector("#submit-form");
+// submitForm.style.display="none";
 // clickNext.onclick = () => {
-$(document).ready(function() {
+    if(compt==0){
+        clickPrevious.style.display="none"
+    }
+function clickNextbutton()
+{
 
-    $('#click-next').submit(function(event) {
-        $('.invalid-feedback').remove();
+    if (compt < 4) {
+        clickPrevious.style.display="block"
+        compt++;
+        cercle[compt].style.background = "black";
+        cercle[compt - 1].style.background = color;
+        if (compt == 3) {
+            document.querySelector("#next-previous").classList.add('d-none');
+            document.querySelector("#next-previous").classList.remove('d-block');
+            cercle[compt].style.background = color
+            cercle[compt - 1].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
+            cercle[compt].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
+        }else{
+            cercle[compt - 1].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
+        }
+        // content of divs
+        step[compt].style.display ="block";
+        step[compt-1].style.display ="none";
+        // end
+        progressFull.style.width = `${compt * 33}%`;
+    }
+    console.log(compt)
+
+}
+function clickPreviousButton() {
+    step[compt].style.display ="none";
+    step[compt-1].style.display ="block";
+    compt--;
+    if(compt==1){
+        cercle[compt+1].style.background = color
+        cercle[compt].innerHTML = '<i class="fa-solid fa-upload "></i><p class="second-info">Upload</p>'
+        cercle[compt].style.background = 'black'
+        progressFull.style.width = `${(compt ) * 33}%`;
+    }else if(compt==2){
+        cercle[compt+1].style.background = color
+        cercle[compt].innerHTML = '<i class="fa-solid fa-credit-card"></i><p class="third-info">Paiement</p>'
+        progressFull.style.width = `${(compt ) * 33}%`;
+    }else{
+         cercle[compt+1].style.background = color
+         cercle[compt].innerHTML = '<i class="fa-solid fa-user"></i><p class="first-info">Informations</p>'
+         cercle[compt].style.background = 'black'
+         clickPrevious.style.display="none"
+    }
+    console.log(compt)
+
+}
+$(document).ready(function() {
+    let curent = compt+1;
+    $(`#step-1-form`).submit(function(event) {
         event.preventDefault();
           var formData = $(this).serialize();
           var url = $(this).attr('action');
@@ -20,37 +73,47 @@ $(document).ready(function() {
             type: 'POST',
             data: formData,
             success: function(response) {
-                if (compt < 4) {
-                    compt++;
-                    cercle[compt].style.background = "black";
-                    cercle[compt - 1].style.background = color;
-                    if (compt == 3) {
-                        clickNext.style.display = "none";
-                        cercle[compt].style.background = color
-                        cercle[compt - 1].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
-                        cercle[compt].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
-                    }else{
-                        cercle[compt - 1].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
-                    }
-                    // content of divs
-                    step[compt].style.display = "block";
-                    step[compt - 1].style.display = "none";
-                    // end
-                   
-                    progressFull.style.width = `${compt * 33}%`;
-                }
-                $('.message-success-updated').text(response.message);
+                $("#personel-id").val(response.personel_id);
+                $("#personel-idpaiment").val(response.personel_id);
+                console.log(response.message);
+                clickNextbutton();
             },
             error: function(xhr) {
               var errors = xhr.responseJSON.errors;
               $.each(errors, function(key, value) {
-                console.log(key);
                 console.log(value)
-                $('#' + key).after('<span class="text-danger"><strong>' + value + '</strong></span>');
+                console.log(key)
+                $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
             });
             }
         });
    
     });
+    $('#step-2-form').submit(function(event) {
+        event.preventDefault();
+      
+        var formData = new FormData(this); // Create a new FormData instance
+      
+        var url = $(this).attr('action');
+      
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: formData, // Pass the FormData instance as the data
+          processData: false, // Prevent jQuery from processing the data
+          contentType: false, // Tell jQuery not to set the content type
+          success: function(response) {
+            console.log(response.message);
+            clickNextbutton();
+          },
+          error: function(xhr) {
+            var errors = xhr.responseJSON.errors;
+            $.each(errors, function(key, value) {
+              $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
+            });
+          }
+        });
+    });
+   
 });
 // }

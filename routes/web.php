@@ -29,6 +29,7 @@ Route::controller(UserController::class)->group(function(){
 });
 Route::controller(FormController::class)->group(function(){
    Route::post('/formulaire','storeInformation')->name('send.Information');
+//    Route::post('/formulaires','storeFiles')->name('send.join');
 });
 Route::get('/register', function () {
     return view('register');
@@ -40,5 +41,5 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('formulaire',function () {
-    return view('form');
+    return view('personelInfo');
 });
