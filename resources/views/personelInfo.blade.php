@@ -597,8 +597,8 @@
                         <input type="text" class="form-control" name="parent_name" id="parent_name">
                     </div>
                 </div>
-                <div>
-                    <button class="btn btn-warning" type="submit">send info</button>
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-warning">Suivant</button>
                 </div>
             </form>
         </div>
@@ -681,37 +681,50 @@
                         @enderror
                     </div> 
                 </div>
-                <div>
-                    <button type="submit" class='btn btn-warning'>send join</button>
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-warning">Suivant</button>
                 </div>
             </form>
         </div>
      
         <div class="step paiement ">
-            <div class="finmargin d-flex justify-content-center">
-                <div class="col-md-8">
-                    <h3 class="mt-4">paiement</h3>
-                    <input type="hidden" name="curent_number" value="3">
-                    <input type="hidden" name="personel_id" id="personel-idpaiment">
-                    <div class="mt-4 mb-4">
-                        <div class="">
-                            <label for="input-phonepaiment" class="form-label">N° de téléphone</label>
-                            <input type="text" class="form-control" name="input_phonepaiment" id="input-phonepaiment" >
+            <form id="step-3-form" action="{{route('send.Information')}}" method="post" class="mb-3">
+                <div class="finmargin d-flex justify-content-center">
+                    @csrf
+                    <div class="col-md-8">
+                        <h3 class="mt-4">paiement</h3>
+                        <input type="hidden" name="curent_number" value="3">
+                        <input type="hidden" name="personel_id" id="personel-idpaiment">
+                        <div class="mt-4 mb-4">
+                            <div class="">
+                                <label for="input-phonepaiment" class="form-label">N° de téléphone</label>
+                                <input type="text" class="form-control" name="phone_paiment" id="phone_paiment" >
+                                @error('phone_paiment')
+                                <span class="text-danger fs-7">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="mt-4 mb-4">
-                        <div class="">
-                            <label for="input-refrencepaiment" class="form-label">Reférence du paiement</label>
-                            <input type="text" class="form-control" name="input_refrencepaiment" id="input-refrencepaiment" >
+                        <div class="mt-4 mb-4">
+                            <div class="">
+                                <label for="input-refrencepaiment" class="form-label">Reférence du paiement</label>
+                                <input type="text" class="form-control" name="refrence_paiment" id="refrence_paiment" >
+                                @error('refrence_paiment')
+                                <span class="text-danger fs-7">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-warning">Suivant</button>
+                </div>
+            </form>
+        
         </div>
-    <div id="next-previous" class="d-flex justify-content-between mt-3">
+    {{-- <div id="next-previous" class="d-flex justify-content-between mt-3">
         <button id="click-previous"  onclick="clickPreviousButton()" class="btn btn-warning fs-5 px-3">précedant</button>
         <button id="click-next" onclick='clickNextbutton()'  type="submit"  class="btn btn-warning fs-5 px-3">suivant</button>
-    </div>
+    </div> --}}
         <div class="step fin">
             <h3 class="mt-4">Votre demande d'ANL a été validée avec succès </h3>
             <p>Un e-mail de confirmation vous a été envoyé avec vos identifiants de connexion pour le suivi de votre dossier !</p>

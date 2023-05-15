@@ -7,6 +7,8 @@ use App\Models\Current;
 use App\Models\File;
 use App\Models\personelinfo;
 use App\Models\Previous;
+use App\Models\Paiment;
+
 
 
 use Illuminate\Http\Request;
@@ -107,9 +109,10 @@ class FormController extends Controller
                 return response()->json([
                     'message' => 'les information a été bien créer',
                     'personel_id' => $personelinfo->id,
-            ]);
+             ]);
 
-            }else if($request->curent_number==2){
+            }
+            else if($request->curent_number==2){
 
                 $request->validate([
                     'appointment_decision' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
@@ -180,6 +183,21 @@ class FormController extends Controller
                   ]);
                   
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
+            }
+            else if($request->curent_number==3){
+                 $request->validate([
+                     'phone_paiment' => 'required|max:20',
+                     'refrence_paiment' => 'required|min:10',
+                 ]);
+
+                 Paiment::create([
+                    'personelinfos_id' => $request->personel_id,
+                    'telephone' => $request->phone_paiment,
+                    'paiment_reference' => $request->refrence_paiment
+                 ]);
+                 return response()->json([
+                   'message' => 'paiment a été créer avec succés'
+                 ]);
             }
                 
          
