@@ -46,6 +46,9 @@ $(document).ready(function() {
             success: function(response) {
                 $("#personel-id").val(response.personel_id);
                 $("#personel-idpaiment").val(response.personel_id);
+                $("#personel-idinscription").val(response.personel_id)
+                $("#personel-idreçupaiment").val(response.personel_id)
+
                 clickNextbutton();
             },
             error: function(xhr) {

@@ -8,7 +8,7 @@ use App\Models\File;
 use App\Models\personelinfo;
 use App\Models\Previous;
 use App\Models\Paiment;
-
+use Dompdf\Dompdf;
 
 
 use Illuminate\Http\Request;
@@ -16,7 +16,18 @@ use Illuminate\Validation\ValidationException;
 
 class FormController extends Controller
 {
-    public  $person_id ;
+        public function index($id)
+        {
+            $personelinfo = personelinfo::where('personelinfos_id',$id)->first();
+            Previous::where('personelinfos_id',$id)->first();
+            personelinfo::where('personelinfos_id',$id)->first();
+            Current::where('personelinfos_id',$id)->first();
+            Paiment::where('personelinfos_id',$id)->first();
+            Conjoint::where('personelinfos_id',$id)->first();
+
+            
+            return view('download',compact('personelinfo'));
+        }
         public function storeInformation(Request $request)
         {
             if($request->curent_number==1){
@@ -198,6 +209,52 @@ class FormController extends Controller
                  return response()->json([
                    'message' => 'paiment a été créer avec succés'
                  ]);
+            }else if($request->curent_number == 4){
+
+                $personelinfo = personelinfo::where('id',$request->personel_id)->first();
+                $previous =Previous::where('personelinfos_id',$request->personel_id)->first();
+                $current =Current::where('personelinfos_id',$request->personel_id)->first();
+                $conjoint =Conjoint::where('personelinfos_id',$request->personel_id)->first();
+                // dd($data);
+                $dompdf = new Dompdf();
+            
+                // Render the view as HTML
+                $html = view('inscription', compact('personelinfo','previous','current','conjoint'))->render();
+                
+                // Load the HTML into dompdf
+                $dompdf->loadHtml($html);
+                
+                // Set the paper size and orientation
+                $dompdf->setPaper('A4', 'portrait');
+                
+                // Render the PDF
+                $dompdf->render();
+                $output = $dompdf->output();
+                return response($output, 200)
+                        ->header('Content-Type', 'application/pdf')
+                        ->header('Content-Disposition', 'attachment; filename="commande.pdf"');
+                return redirect()->back()->with('succès','votre commande a été bien télecharger');
+            }else if($request->curent_number == 5){
+                $paiment =Paiment::where('personelinfos_id',$request->personel_id)->first();
+                // dd($data);
+                $dompdf = new Dompdf();
+            
+                // Render the view as HTML
+                $html = view('paiment', compact('paiment'))->render();
+                
+                // Load the HTML into dompdf
+                $dompdf->loadHtml($html);
+                
+                // Set the paper size and orientation
+                $dompdf->setPaper('A4', 'portrait');
+                
+                // Render the PDF
+                $dompdf->render();
+                $output = $dompdf->output();
+                return response($output, 200)
+                        ->header('Content-Type', 'application/pdf')
+                        ->header('Content-Disposition', 'attachment; filename="paiment.pdf"');
+                return redirect()->back()->with('succès','votre commande a été bien télecharger');
             }
                 
          

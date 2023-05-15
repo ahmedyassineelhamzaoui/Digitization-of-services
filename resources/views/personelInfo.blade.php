@@ -721,20 +721,26 @@
             </form>
         
         </div>
-    {{-- <div id="next-previous" class="d-flex justify-content-between mt-3">
-        <button id="click-previous"  onclick="clickPreviousButton()" class="btn btn-warning fs-5 px-3">précedant</button>
-        <button id="click-next" onclick='clickNextbutton()'  type="submit"  class="btn btn-warning fs-5 px-3">suivant</button>
-    </div> --}}
         <div class="step fin">
             <h3 class="mt-4">Votre demande d'ANL a été validée avec succès </h3>
             <p>Un e-mail de confirmation vous a été envoyé avec vos identifiants de connexion pour le suivi de votre dossier !</p>
             <div class="d-flex justify-content-center text-center mt-5">
                 <div>
                     <div class="mb-3">
-                        <button type="submit" name="print_info" class="btn download-pdf">Imprimer votre fichier d'inscription</button>
+                        <form id="" action="{{route('send.Information')}}" method="post" class="mb-3">
+                            @csrf
+                            <input type="hidden" name="curent_number" value="4">
+                            <input type="hidden" name="personel_id" id="personel-idinscription">
+                            <button type="submit" name="print_info" class="btn download-pdf">Imprimer votre fichier d'inscription</button>
+                        </form>
                     </div>
                     <div class="mb-3">
-                        <button type="submit" name="print_payment"  class="btn download-pdf">Imprimer votre reçu de paiement</button>
+                        <form id="" action="{{route('send.Information')}}" method="post" class="mb-3">
+                            @csrf
+                            <input type="hidden" name="curent_number" value="5">
+                            <input type="hidden" name="personel_id" id="personel-idreçupaiment">
+                            <button type="submit" name="print_payment"  class="btn download-pdf">Imprimer votre reçu de paiement</button>
+                        </form>
                     </div>
                 </div>
             </div>
