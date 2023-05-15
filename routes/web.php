@@ -18,8 +18,11 @@ use App\Http\Controllers\FormController;
 */
 Route::controller(AuthController::class)->group(function(){
     Route::post('register','register');
-    Route::post('login','login');
+    Route::post('login','login')->name('connection');
     Route::post('logout', 'logout');
+    Route::get('login', 'index')->name('login');
+    Route::get('home', 'home')->name('home');
+
 });
 Route::controller(UserController::class)->group(function(){
     Route::put('updateProfile','updateProfile');
@@ -33,12 +36,15 @@ Route::controller(FormController::class)->group(function(){
 Route::get('/register', function () {
     return view('register');
 });
-Route::get('/login', function () {
-    return view('login')->name('login');
-});
+
 Route::get('/', function () {
     return view('home');
 });
 Route::get('formulaire',function () {
     return view('form');
+});
+
+/* anl detail route */
+Route::get('anl-detail',function () {
+    return view('anl-detail');
 });
