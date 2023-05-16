@@ -101,6 +101,30 @@ body{
     color: var(--white-color);
   }
   /*  end steper component style */
+/* pdf  */
+.hr-line{
+    border: 2px solid black;
+    margin: 1em 1em;
+}
+.footer-paimentpdf{
+  position: relative;
+  bottom: 10px;
+}
+.paiment-title{
+  text-align: center;
+}
+.content-paiment{
+  display: flex;
+  justify-content: center;
+}
+.titles-inscriptions{
+  text-decoration:underline;
+}
+.align-fourelement{
+  display: flex;
+  justify-content: space-between;
+}
+/* end pdf */
 
 
 /* Styling the home page and the register pages */

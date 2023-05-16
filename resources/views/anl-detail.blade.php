@@ -59,16 +59,14 @@
                                 <button class="btn btn-warning btn-lg btn-block w-50 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;">Je rempli le formulaire</button>
                             </div> --}}
 
-                            @if (!Route::has('login'))
-                                <div class="pt-1 mb-4">
-                                    <a href="/register" class="btn btn-warning btn-lg btn-block w-100 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;">connectez-vous pour remplir le formulaire</a>
-                                </div>
-
+                            @if (auth()->check())
+                            <div class="pt-1 mb-4 text-center">
+                                <a href="{{url('formulaire')}}" class="btn btn-warning btn-lg btn-block w-50 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;">rempli le formulaire</a>
+                            </div>
                             @else
-                                <div class="pt-1 mb-4 text-center">
-                                    <button class="btn btn-warning btn-lg btn-block w-50 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;">rempli le formulaire</button>
-                                </div>
-
+                            <div class="pt-1 mb-4">
+                                <a href="{{url('register')}}" class="btn btn-warning btn-lg btn-block w-100 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;">connectez-vous pour remplir le formulaire</a>
+                            </div>
                             @endif
                         </div>
                     </div>

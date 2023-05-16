@@ -50,7 +50,7 @@
                             <button class="btn btn-warning btn-lg btn-block text-white w-100" type="submit" style="padding: .5rem 2.5rem;">Sign Up</button>
                         </div>
 
-                        <p>Do you have an account? <a href="signin.html" class="link-warning">Login here</a></p>
+                        <p>Do you have an account? <a href="{{url('login')}}" class="link-warning">Login here</a></p>
 
                     </form>
 

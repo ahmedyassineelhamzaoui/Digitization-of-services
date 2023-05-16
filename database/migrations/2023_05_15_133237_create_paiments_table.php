@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('previouses', function (Blueprint $table) {
+        Schema::create('paiments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('personelinfos_id');
+            $table->unsignedBigInteger('personelinfos_id');            
             $table->foreign('personelinfos_id')->references('id')->on('personelinfos');
-            $table->string('ville_precedant')->nullable();
-            $table->string('quartier_precedant')->nullable();
-            $table->string('lot_precedant')->nullable();
-            $table->date('date_liberation')->nullable();
+            $table->string('telephone');
+            $table->string('paiment_reference');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('previous_dwelling');
+        Schema::dropIfExists('paiments');
     }
 };
