@@ -7,12 +7,23 @@ let progressEmpty = document.querySelector(".progress-empty");
 let progressFull = document.querySelector(".progress-full");
 cercle[compt].style.background="black";
 color="#005e73";
-// let parentName =document.querySelector("#parent_name")
-// let responseNon=document.querySelector("#response-non")
-// let responseOui=document.querySelector("#response-oui")
-// if(responseOui.checked){
-//   console.log('ok');
-// }
+
+let radioOui = document.getElementById('response-oui');
+let inputParentName = document.getElementById('parent_name');
+let radioNon = document.querySelector("#response-non")
+radioOui.addEventListener('change', function() {
+    // If the "Oui" radio button is checked, enable the input field
+    if (this.checked) {
+        inputParentName.disabled = false;
+    }
+});
+radioNon.addEventListener('change', function() {
+  if (this.checked) {
+    inputParentName.disabled = true;
+  }
+});
+
+
 function clickNextbutton()
 {
     if (compt < 4) {

@@ -1,7 +1,5 @@
 @extends('layouts.app')
-@section('title')
-   formulaire
-@endsection
+@section('title', 'Formulaire')
 @section('content')
 <div class="steper-content container">
     <div class="steper-componnet">
@@ -594,7 +592,7 @@
                     </div>
                     <div class="col-md-8">
                         <label for="parent-name" class="form-label">Nom de ce parent ou ami</label>
-                        <input type="text" class="form-control" name="parent_name"  id="parent_name">
+                        <input type="text" class="form-control" name="parent_name" disabled id="parent_name">
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-3">
