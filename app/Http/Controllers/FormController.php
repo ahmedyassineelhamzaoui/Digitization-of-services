@@ -16,7 +16,15 @@ use Illuminate\Validation\ValidationException;
 
 class FormController extends Controller
 {
-       
+        public function __construct()
+        {
+            $this->middleware('auth');
+        }
+       public function index()
+       {
+           return view('personelInfo');
+       } 
+
         public function storeInformation(Request $request)
         {
             if($request->curent_number==1){
