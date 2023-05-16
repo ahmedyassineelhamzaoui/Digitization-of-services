@@ -7,12 +7,15 @@
 
     @extends('layouts.navbar')
 
-    <header>
+
+    <header class="">
+
         <div class="header-title">
             <p>
                 Bienvenue sur le site de demande d'Attestation de Non Logement
             </p>
         </div>
+
     </header>
 
     <main class="mb-5">
@@ -104,6 +107,57 @@
                     <span class="text-danger"> &hearts; </span></p>
             </div>
         </footer>
+@endsection
+
+@section('script')
+
+
+    <script>
+        $(document).ready(function() {
+    // Check if the session message exists
+    if ("{{ session('success') }}") {
+        // Create the alert element
+        var alertElement = $('<div class="alert header-alert alert-success alert-dismissible fade show w-30" role="alert">' +
+            '{{ session('success') }}' +
+            // '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+            '</div>');
+
+        // Add custom styles to the alert element
+        alertElement.css({
+            'position': 'absolute',
+            'top': '5px',
+            'right': '0px',
+            'z-index': '9999',
+            'opacity': '0',
+            'border-radius': '0',
+            'background-color': '#f79400',
+            'color': 'white',
+            'border': 'none'
+        });
+
+        // Append the alert to the header
+        $('.header-title').after(alertElement);
+
+        // Apply fade-in animation
+        setTimeout(function() {
+            alertElement.css('opacity', '1');
+        }, 100);
+
+        // Automatically close the alert after 5 seconds
+        setTimeout(function() {
+            // Apply fade-out animation
+            alertElement.css('opacity', '0');
+
+            // Remove the alert from the DOM after the animation ends
+            setTimeout(function() {
+                alertElement.alert('close');
+            }, 300);
+        }, 10000);
+    }
+});
+
+    </script>
+
 @endsection
 
 

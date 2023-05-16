@@ -56,7 +56,15 @@ namespace App\Http\Controllers;
 
 
             $user = Auth::user();
-            return redirect()->route('home')->with('success', 'Welcome '.$user->first_name)->with('token', $token);
+            return redirect()->route('home')->with('success', 'Welcome To Anl');
+
+            // return redirect()->route('home')->with([
+            //     'success' => 'Welcome',
+            //     'token' => $token
+            // ]);
+
+
+
         }
 
         public function logout()
