@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable Implements JWTSubject
+class User extends Authenticatable 
 {
     use HasApiTokens, HasFactory, Notifiable,softDeletes;
 
@@ -21,8 +21,8 @@ class User extends Authenticatable Implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'full_name',
+        // 'last_name',
         'email',
         'password',
     ];
