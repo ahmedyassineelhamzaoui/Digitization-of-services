@@ -11,11 +11,10 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-
-    public function index(){
-        return view('home');
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
-
     public function updateProfile(Request $request)
     {
          $authUser = auth()->user();

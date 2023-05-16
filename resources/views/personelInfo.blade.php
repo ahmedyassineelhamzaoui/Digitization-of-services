@@ -618,63 +618,63 @@
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="assignment-decision" class="form-label">Décision d'affectation ou page fonctionnaire</label>
-                        <input class="form-control" type="file" name="assignment_decision" id="assignment_decision" >
+                        <input class="form-control" type="file" name="assignment_decision" id="assignment_decision" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" >
                         @error('assignment_decision')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="service-certificate" class="form-label">Certificat de 1ère prise de service</label>
-                        <input class="form-control" type="file" name="service_certificate" id="service_certificate" >
+                        <input class="form-control" type="file" name="service_certificate" id="service_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                         @error('service_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="before-appointment" class="form-label">Bulletin de solde avant nomination</label>
-                        <input class="form-control" type="file" name="before_appointment" id="before_appointment" >
+                        <input class="form-control" type="file" name="before_appointment" id="before_appointment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" >
                         @error('before_appointment')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="after-appointment" class="form-label">Bulletin de solde après nommination</label>
-                        <input class="form-control" type="file" name="after_appointment" id="after_appointment" >
+                        <input class="form-control" type="file" name="after_appointment" id="after_appointment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                         @error('after_appointment')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="nonaccommodation-certificate" class="form-label">Certificat de non hébergement</label>
-                        <input class="form-control" type="file" name="nonaccommodation_certificate" id="nonaccommodation_certificate" >
+                        <input class="form-control" type="file" name="nonaccommodation_certificate" id="nonaccommodation_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                         @error('nonaccommodation_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="sworn-statement" class="form-label">Attestation sur l'honneur légalisée</label>
-                        <input class="form-control" type="file" name="sworn_statement" id="sworn_statement" >
+                        <input class="form-control" type="file" name="sworn_statement" id="sworn_statement" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                         @error('sworn_statement')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="residence-certificate" class="form-label">certificat de résidence</label>
-                        <input class="form-control" type="file" name="residence_certificate" id="residence_certificate" >
+                        <input class="form-control" type="file" name="residence_certificate" id="residence_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                         @error('residence_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="identity-document" class="form-label">Pièce d'identité</label>
-                        <input class="form-control" type="file" name="identity_document" id="identity_document" >
+                        <input class="form-control" type="file" name="identity_document" id="identity_document" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                         @error('identity_document')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="marriage-certificate" class="form-label">Acte de mariage</label>
-                        <input class="form-control" type="file" name="marriage_certificate" id="marriage_certificate" >
+                        <input class="form-control" type="file" name="marriage_certificate" id="marriage_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                         @error('marriage_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
