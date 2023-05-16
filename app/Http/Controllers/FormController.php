@@ -232,7 +232,7 @@ class FormController extends Controller
                 $output = $dompdf->output();
                 return response($output, 200)
                         ->header('Content-Type', 'application/pdf')
-                        ->header('Content-Disposition', 'attachment; filename="commande.pdf"');
+                        ->header('Content-Disposition', 'attachment; filename="inscription.pdf"');
                 return redirect()->back()->with('succès','votre commande a été bien télecharger');
             }else if($request->curent_number == 5){
                 $paiment =Paiment::where('personelinfos_id',$request->personel_id)->first();

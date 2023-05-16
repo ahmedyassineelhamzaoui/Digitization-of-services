@@ -594,7 +594,7 @@
                     </div>
                     <div class="col-md-8">
                         <label for="parent-name" class="form-label">Nom de ce parent ou ami</label>
-                        <input type="text" class="form-control" name="parent_name" id="parent_name">
+                        <input type="text" class="form-control" name="parent_name"  id="parent_name">
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-3">

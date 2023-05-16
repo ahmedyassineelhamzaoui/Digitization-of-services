@@ -7,10 +7,12 @@ let progressEmpty = document.querySelector(".progress-empty");
 let progressFull = document.querySelector(".progress-full");
 cercle[compt].style.background="black";
 color="#005e73";
-// let submitForm = document.querySelector("#submit-form");
-// submitForm.style.display="none";
-// clickNext.onclick = () => {
-
+// let parentName =document.querySelector("#parent_name")
+// let responseNon=document.querySelector("#response-non")
+// let responseOui=document.querySelector("#response-oui")
+// if(responseOui.checked){
+//   console.log('ok');
+// }
 function clickNextbutton()
 {
     if (compt < 4) {
@@ -34,6 +36,7 @@ function clickNextbutton()
 }
 
 $(document).ready(function() {
+    
     let curent = compt+1;
     $(`#step-1-form`).submit(function(event) {
         event.preventDefault();

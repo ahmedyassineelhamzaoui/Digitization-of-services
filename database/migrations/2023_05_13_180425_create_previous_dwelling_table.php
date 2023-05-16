@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('personelinfos_id');
             $table->foreign('personelinfos_id')->references('id')->on('personelinfos');
-            $table->string('ville_precedant');
-            $table->string('quartier_precedant');
-            $table->string('lot_precedant');
-            $table->date('date_liberation');
+            $table->string('ville_precedant')->nullable();
+            $table->string('quartier_precedant')->nullable();
+            $table->string('lot_precedant')->nullable();
+            $table->date('date_liberation')->nullable();
             $table->timestamps();
         });
     }

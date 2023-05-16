@@ -108,4 +108,11 @@
   display: flex;
   justify-content: center;
 }
+.titles-inscriptions{
+  text-decoration:underline;
+}
+.align-fourelement{
+  display: flex;
+  justify-content: space-between;
+}
 /* end pdf */
