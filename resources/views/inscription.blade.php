@@ -85,19 +85,35 @@
         <div class="">
             <label class="form-label">Etes-vous hébergé par un parent ou un ami ?</label>
             <div class="form-check">
+                @if($current->nom_parent)
+                <input class="form-check-input" type="radio" name="gridRadios" id="response-oui" value="oui" checked>
+                <label class="form-check-label" for="response-oui">
+                Oui
+                </label>
+                @else
                 <input class="form-check-input" type="radio" name="gridRadios" id="response-oui" value="oui" >
                 <label class="form-check-label" for="response-oui">
                 Oui
                 </label>
+                @endif
             </div>
             <div class="form-check">
+                @if(!$current->nom_parent)
+                <input class="form-check-input" type="radio" name="gridRadios" id="response-non" value="non" checked>
+                <label class="form-check-label" for="response-non">
+                Non
+                </label>
+                @else
                 <input class="form-check-input" type="radio" name="gridRadios" id="response-non" value="non" >
                 <label class="form-check-label" for="response-non">
                 Non
                 </label>
+                @endif
             </div>
         </div>
         <div class="">
-            <p>Nom de ce parent ou ami</p>
+            @if($current->nom_parent)
+            <pre><span style="font-weight: bold" >Nom de ce parent ou ami : </span> {{$current->nom_parent}}</pre>
+            @endif
         </div>
  @endsection

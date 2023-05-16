@@ -5,23 +5,30 @@ let clickNext =document.querySelector("#click-next")
 let cercle = document.querySelectorAll(".cercle");
 let progressEmpty = document.querySelector(".progress-empty");
 let progressFull = document.querySelector(".progress-full");
-cercle[compt].style.background="black";
+if(cercle){
+  cercle[compt].style.background="black";
+}
+
 color="#005e73";
 
 let radioOui = document.getElementById('response-oui');
 let inputParentName = document.getElementById('parent_name');
 let radioNon = document.querySelector("#response-non")
-radioOui.addEventListener('change', function() {
-    // If the "Oui" radio button is checked, enable the input field
+if(radioOui){
+  radioOui.addEventListener('change', function() {
     if (this.checked) {
         inputParentName.disabled = false;
     }
 });
-radioNon.addEventListener('change', function() {
-  if (this.checked) {
-    inputParentName.disabled = true;
-  }
-});
+}
+if(radioNon){
+  radioNon.addEventListener('change', function() {
+    if (this.checked) {
+      inputParentName.disabled = true;
+    }
+  });
+}
+
 
 
 function clickNextbutton()
@@ -47,31 +54,38 @@ function clickNextbutton()
 }
 
 $(document).ready(function() {
-    
     let curent = compt+1;
     $(`#step-1-form`).submit(function(event) {
         event.preventDefault();
-          var formData = $(this).serialize();
-          var url = $(this).attr('action');
-          $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-                $("#personel-id").val(response.personel_id);
-                $("#personel-idpaiment").val(response.personel_id);
-                $("#personel-idinscription").val(response.personel_id)
-                $("#personel-idreçupaiment").val(response.personel_id)
-
-                clickNextbutton();
-            },
-            error: function(xhr) {
-              var errors = xhr.responseJSON.errors;
-              $.each(errors, function(key, value) {
-                $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
+          if(!inputParentName.disabled && inputParentName.value == ''){
+            event.preventDefault();
+            document.querySelector("#error-parentname").innerText="Veuiller remplir ce champ";
+          }else{
+            var formData = $(this).serialize();
+            var url = $(this).attr('action');
+            
+            $.ajax({
+              url: url,
+              type: 'POST',
+              data: formData,
+              success: function(response) {
+                  $("#personel-id").val(response.personel_id);
+                  $("#personel-idpaiment").val(response.personel_id);
+                  $("#personel-idinscription").val(response.personel_id)
+                  $("#personel-idreçupaiment").val(response.personel_id)
+  
+                  clickNextbutton();
+              },
+              error: function(xhr) {
+                var errors = xhr.responseJSON.errors;
+                $.each(errors, function(key, value) {
+                  $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
+              });
+              }
             });
-            }
-        });
+        }
+        
+          
    
     });
     $('#step-2-form').submit(function(event) {

@@ -16,18 +16,7 @@ use Illuminate\Validation\ValidationException;
 
 class FormController extends Controller
 {
-        public function index($id)
-        {
-            $personelinfo = personelinfo::where('personelinfos_id',$id)->first();
-            Previous::where('personelinfos_id',$id)->first();
-            personelinfo::where('personelinfos_id',$id)->first();
-            Current::where('personelinfos_id',$id)->first();
-            Paiment::where('personelinfos_id',$id)->first();
-            Conjoint::where('personelinfos_id',$id)->first();
-
-            
-            return view('download',compact('personelinfo'));
-        }
+       
         public function storeInformation(Request $request)
         {
             if($request->curent_number==1){

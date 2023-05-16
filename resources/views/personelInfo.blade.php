@@ -593,6 +593,7 @@
                     <div class="col-md-8">
                         <label for="parent-name" class="form-label">Nom de ce parent ou ami</label>
                         <input type="text" class="form-control" name="parent_name" disabled id="parent_name">
+                        <span class="text-danger fs-7" id="error-parentname"></span>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-3">
@@ -729,7 +730,7 @@
                             @csrf
                             <input type="hidden" name="curent_number" value="4">
                             <input type="hidden" name="personel_id" id="personel-idinscription">
-                            <button type="submit" name="print_info" class="btn download-pdf">Imprimer votre fichier d'inscription</button>
+                            <button type="submit" name="print_info" class="btn download-pdf"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger votre fichier d'inscription</button>
                         </form>
                     </div>
                     <div class="mb-3">
@@ -737,7 +738,7 @@
                             @csrf
                             <input type="hidden" name="curent_number" value="5">
                             <input type="hidden" name="personel_id" id="personel-idreçupaiment">
-                            <button type="submit" name="print_payment"  class="btn download-pdf">Imprimer votre reçu de paiement</button>
+                            <button type="submit" name="print_payment"  class="btn download-pdf"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span>Télécharger votre reçu de paiement</button>
                         </form>
                     </div>
                 </div>

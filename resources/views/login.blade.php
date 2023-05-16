@@ -14,7 +14,12 @@
                     <img src="assets/images/logo/logo1.png" alt="">
                 </a>
             </div>
-
+            @if(session('error'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{session('error')}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            @endif
             <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
                 <form style="width: 23rem;" action="{{ route('connection') }}" method="POST">
