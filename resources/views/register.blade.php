@@ -23,18 +23,27 @@
                         <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Up</h3>
 
                         <div class="form-outline mb-4">
-                            <input type="text" name="full_name" id="form2Example17" class="form-control form-control-lg" />
                             <label class="form-label" for="form2Example17">Full Name</label>
+                            <input type="text" name="full_name" value="{{ old('full_name') }}" id="form2Example17" class="form-control form-control-lg @error('full_name') is-invalid @enderror" />
+                            @error('full_name')
+                                <div class="invalid-feedback text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="email" name="email" id="form2Example18" class="form-control form-control-lg" />
                             <label class="form-label" for="form2Example18">Email address</label>
+                            <input type="email" name="email" value="{{ old('email') }}" id="form2Example18" class="form-control form-control-lg @error('email') is-invalid @enderror" />
+                            @error('email')
+                                <div class="invalid-feedback text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="password" name="password" id="form2Example28" class="form-control form-control-lg" />
                             <label class="form-label" for="form2Example28">Password</label>
+                            <input type="password" name="password" value="{{ old('password') }}" id="form2Example28" class="form-control form-control-lg @error('password') is-invalid @enderror" />
+                            @error('password')
+                                <div class="invalid-feedback text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="pt-1 mb-4">

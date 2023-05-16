@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
+    use Illuminate\Support\Facades\Validator;
     use Illuminate\Support\Str;
     use Illuminate\Validation\Rule;
     use App\Models\User;
@@ -36,28 +37,7 @@ namespace App\Http\Controllers;
             ]);
             return redirect()->route('login')->with('success','user created succesfuly');
         }
-        // public function login(Request $request)
-        // {
-        //     $request->validate([
-        //         'email'    => 'required|email',
-        //         'password' => 'required|min:8|string'
-        //     ]);
-        //     $credentials = $request->only('email', 'password');
-        //     $token = Auth::attempt($credentials);
-        //     if (!$token) {
-        //         // return response()->json([
-        //         //     'status' => 'error',
-        //         //     'message' => 'invalid email or password'
-        //         // ]);
 
-        //     }
-        //     $user = Auth::user();
-        //     return response()->json([
-        //             'status' => 'success',
-        //             'message' => 'welcome '.$user->first_name,
-        //             'token' => $token
-        //     ]);
-        // }
 
         public function login(Request $request)
         {
@@ -71,7 +51,9 @@ namespace App\Http\Controllers;
 
             if (!$token) {
                 return redirect()->back()->with('error', 'Invalid email or password')->withInput();
+
             }
+
 
             $user = Auth::user();
             return redirect()->route('home')->with('success', 'Welcome '.$user->first_name)->with('token', $token);
