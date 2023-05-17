@@ -197,6 +197,12 @@
                                 </div>
                                 <div class="menu-text">Scrum Board</div>
                             </a>
+                            <a href="index.html" class="menu-link">
+                                <div class="menu-icon">
+                                    <i class="fa fa-list-check"></i>
+                                </div>
+                                <div class="menu-text">Users</div>
+                            </a>
                         </div>
 
                         <!-- BEGIN minify-button -->
