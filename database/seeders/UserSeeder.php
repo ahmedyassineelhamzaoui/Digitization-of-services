@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use App\models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-class CreateRoleSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,27 +17,27 @@ class CreateRoleSeeder extends Seeder
     public function run()
     {
             $admin = User::create([
-                'name' => 'khaled', 
+                'full_name' => 'khaled', 
                 'email' => 'admin@adminable.com',
                 'password' => bcrypt('eRROR404@'),
             ]);
-            $admin->assignRole('admin');
+            $admin->assignRole('Administrateur');
         
             $commercial = User::create([
-                'name' => 'ahmed', 
+                'full_name' => 'ahmed', 
                 'email' => 'ahmed@gmail.com',
                 'password' => bcrypt('Password123!'),
             ]);
         
-            $commercial->assignRole('commercial');
+            $commercial->assignRole('utilisateur');
         
             $user = User::create([
-                'name' => 'said', 
+                'full_name' => 'said', 
                 'email' => 'said@gmail.com',
                 'password' => bcrypt('12345678'),
             ]);
         
-            $user->assignRole('user');
+            $user->assignRole('contrôleur');
     
     }
 }

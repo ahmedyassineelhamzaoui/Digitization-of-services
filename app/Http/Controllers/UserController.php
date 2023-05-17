@@ -26,10 +26,7 @@ class UserController extends Controller
     
         $roles = Role::all();
         $users=User::all();
-        return view('layouts.dashboard.user-dash',[
-            'roles' => $roles,
-            'users' => $users,
-        ]);
+        return view('layouts.dashboard.user-dash',compact('users'));
     }
     public function updateProfile(Request $request)
     {

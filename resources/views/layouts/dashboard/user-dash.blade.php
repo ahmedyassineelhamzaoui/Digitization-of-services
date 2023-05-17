@@ -3,7 +3,6 @@
 @section('title', 'utilisateur')
 
 @section('content')
-    <h1 class="text-danger">Hello from user page</h1>
     <table class="table">
         <thead class="table-dark">
             <tr>
@@ -20,7 +19,8 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->full_name}}</td>
                 <td>{{$item->email}}</td>
-                <td>{{$item->id}}</td>
+                <td>{{$item->roles[0]->name}}</td>
+                <th scope="col">Action</th>
               </tr>
             @endforeach
         </tbody>

@@ -202,7 +202,7 @@
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
-                                <div class="menu-text">Users</div>
+                                <div class="menu-text">Utilisateurs</div>
                             </a>
                         </div>
 
@@ -225,12 +225,12 @@
                 <div class="d-flex align-items-center mb-3">
                     <div>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-                            <li class="breadcrumb-item active">Scrum Board </li>
+                            <li class="breadcrumb-item"><a href="javascript:;">Accueille</a></li>
+                            <li class="breadcrumb-item active">tableau de bord</li>
                         </ol>
                         <!-- BEGIN page-header -->
                         <h1 class="page-header mb-0">
-                            Scrum Board
+                            Bienvenu {{auth()->user()->full_name}}
                         </h1>
                         <!-- END page-header -->
                     </div>
