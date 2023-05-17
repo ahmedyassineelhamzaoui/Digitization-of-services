@@ -403,23 +403,4 @@
     </body>
 
 
-<!-- ================== BEGIN core-js ================== -->
-{{-- @livewireScripts --}}
-
-{{-- <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script> --}}
-
-<!-- ================== select js ================== -->
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script> --}}
-
-{{-- <script src="assets/js/vendor.min.js"></script> --}}
-{{-- <script src={{url('assets/js/vendor.min.js')}}></script> --}}
-    {{-- <script src="assets/js/app.min.js"></script> --}}
-    {{-- <script src={{url('assets/js/app.min.js')}}></script> --}}
-
-
-	<!-- ================== END core-js ================== -->
-	{{-- <script src={{url('js/main.js')}}></script>
-    @yield('script') --}}
-
 </html>
