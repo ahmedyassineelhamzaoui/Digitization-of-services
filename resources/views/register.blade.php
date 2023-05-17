@@ -58,9 +58,9 @@
 
             </div>
             <div class="col-sm-6 px-0 d-none d-sm-block shadow">
-            <img src="assets/images/login1.jpg"
-                alt="Login image" class="w-100 h-100"
-                style="object-fit: cover; object-position: left;">
+                <img src="assets/images/login1.jpg"
+                    alt="Login image" class="w-100 vh-100"
+                    style="object-fit: cover; object-position: left; box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;">
             </div>
         </div>
         </div>
