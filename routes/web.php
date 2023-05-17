@@ -25,6 +25,7 @@ Route::controller(AuthController::class)->group(function(){
 
 });
 Route::controller(UserController::class)->group(function(){
+    Route::get('users','index');
     Route::put('updateProfile','updateProfile');
     Route::delete('deleteProfile','deleteProfile');
     Route::delete('deleteUser','deleteUser');
@@ -51,3 +52,4 @@ Route::get('anl-detail',function () {
 Route::get('dashboard',function(){
    return view('layouts.dashboard.common-dash');
 });
+

@@ -7,7 +7,8 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-
+    
+    <link rel="icon" href="assets/images/logo_sogepie.jpg">
 
 	<!-- ================== BEGIN core-css ================== -->
     {{-- <link rel="stylesheet" href="assets/css/vendor.min.css"> --}}
@@ -38,7 +39,7 @@
             <div id="header" class="app-header">
                 <!-- BEGIN navbar-header -->
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-1">YouCode</b> Projects</a>
+                    <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-1">ANL</b></a>
                     <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>

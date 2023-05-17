@@ -5,7 +5,7 @@ use App\Models\User;
 use App\Models\Conjoint;
 use App\Models\Current;
 use App\Models\File;
-use App\Models\personelinfo;
+use App\Models\Personelinfo;
 use App\Models\Previous;
 use App\Models\Paiment;
 use Dompdf\Dompdf;

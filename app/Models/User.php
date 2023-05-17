@@ -10,10 +10,10 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
-
+use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable 
 {
-    use HasApiTokens, HasFactory, Notifiable,softDeletes;
+    use HasApiTokens, HasFactory, Notifiable,softDeletes,HasRoles;
 
     /**
      * The attributes that are mass assignable.

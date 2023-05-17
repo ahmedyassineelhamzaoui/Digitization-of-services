@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Models\User;
 
 class UserController extends Controller
@@ -14,6 +16,20 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    public function index()
+    {
+        $user=auth()->user();
+        if(!$user){
+            return view('errors.404');
+         }
+    
+        $roles = Role::all();
+        $users=User::all();
+        return view('layouts.dashboard.user-dash',[
+            'roles' => $roles,
+            'users' => $users,
+        ]);
     }
     public function updateProfile(Request $request)
     {
