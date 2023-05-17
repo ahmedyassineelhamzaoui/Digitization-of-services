@@ -46,6 +46,8 @@ Route::get('/', function () {
 Route::get('anl-detail',function () {
     return view('anl-detail');
 });
+
+
 Route::get('dashboard',function(){
    return view('layouts.dashboard.common-dash');
 });
