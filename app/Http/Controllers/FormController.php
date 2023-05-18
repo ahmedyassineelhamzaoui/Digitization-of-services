@@ -11,6 +11,14 @@ use App\Models\Paiment;
 use Dompdf\Dompdf;
 
 
+// use Illuminate\Support\Facades\Mail;
+// use App\Mail\OrderCreated;
+
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
+
+
+
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -23,7 +31,7 @@ class FormController extends Controller
        public function index()
        {
            return view('personelInfo');
-       } 
+       }
 
         public function storeInformation(Request $request)
         {
@@ -104,7 +112,7 @@ class FormController extends Controller
                     'ville_precedant' => $request->previous_city ,
                     'quartier_precedant' => $request->previous_neighborhood ,
                     'lot_precedant' => $request->previous_batch ,
-                    'date_liberation' => $request->release_date 
+                    'date_liberation' => $request->release_date
                 ]);
                 Current::create([
                     'personelinfos_id' => $personelinfo->id,
@@ -134,8 +142,8 @@ class FormController extends Controller
                     'identity_document' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
                     'marriage_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
                 ]);
-                
-                  
+
+
                   $appointmentDecisionPath = $request->file('appointment_decision');
                   $assignmentDecisionPath = $request->file('assignment_decision');
                   $serviceCertificatePath = $request->file('service_certificate');
@@ -172,8 +180,8 @@ class FormController extends Controller
                   $marriageCertificatePath->move('uploads',$filename10);
 
 
-                  
-                
+
+
 
 
                   File::create([
@@ -189,7 +197,7 @@ class FormController extends Controller
                     'pieceidentite_path' => 'uploads/'.$filename9,
                     'actemariage_path' => 'uploads/'.$filename10,
                   ]);
-                  
+
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
             }
             else if($request->curent_number==3){
@@ -197,15 +205,23 @@ class FormController extends Controller
                      'phone_paiment' => 'required|max:20',
                      'refrence_paiment' => 'required|min:10',
                  ]);
-                 
+
                  Paiment::create([
                     'personelinfos_id' => $request->personel_id,
                     'telephone' => $request->phone_paiment,
                     'paiment_reference' => $request->refrence_paiment
                  ]);
+
+                 $user = auth()->user();
+                 Mail::to($user->email)->send(new WelcomeEmail($user));
+
+
+
                  return response()->json([
                    'message' => 'paiment a été créer avec succés'
                  ]);
+
+
             }else if($request->curent_number == 4){
 
                 $personelinfo = personelinfo::where('id',$request->personel_id)->first();
@@ -214,16 +230,16 @@ class FormController extends Controller
                 $conjoint =Conjoint::where('personelinfos_id',$request->personel_id)->first();
                 // dd($data);
                 $dompdf = new Dompdf();
-            
+
                 // Render the view as HTML
                 $html = view('inscription', compact('personelinfo','previous','current','conjoint'))->render();
-                
+
                 // Load the HTML into dompdf
                 $dompdf->loadHtml($html);
-                
+
                 // Set the paper size and orientation
                 $dompdf->setPaper('A4', 'portrait');
-                
+
                 // Render the PDF
                 $dompdf->render();
                 $output = $dompdf->output();
@@ -235,16 +251,16 @@ class FormController extends Controller
                 $paiment =Paiment::where('personelinfos_id',$request->personel_id)->first();
                 // dd($data);
                 $dompdf = new Dompdf();
-            
+
                 // Render the view as HTML
                 $html = view('paiment', compact('paiment'))->render();
-                
+
                 // Load the HTML into dompdf
                 $dompdf->loadHtml($html);
-                
+
                 // Set the paper size and orientation
                 $dompdf->setPaper('A4', 'portrait');
-                
+
                 // Render the PDF
                 $dompdf->render();
                 $output = $dompdf->output();
@@ -253,8 +269,8 @@ class FormController extends Controller
                         ->header('Content-Disposition', 'attachment; filename="paiment.pdf"');
                 return redirect()->back()->with('succès','votre commande a été bien télecharger');
             }
-                
-         
+
+
         }
 
 }
