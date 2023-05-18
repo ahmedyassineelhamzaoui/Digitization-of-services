@@ -52,6 +52,10 @@ function clickNextbutton()
 
 }
 
+function deleteUser(id){
+  document.querySelector('#user_deletedId').value=id
+}
+
 $(document).ready(function() {
     $(`#step-1-form`).submit(function(event) {
         event.preventDefault();
@@ -205,6 +209,5 @@ $(document).ready(function() {
           });
           }
         });
-    });
-   
+    }); 
 });

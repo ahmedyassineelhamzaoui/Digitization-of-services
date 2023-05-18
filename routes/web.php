@@ -29,7 +29,7 @@ Route::controller(UserController::class)->group(function(){
     Route::get('modifier-utilisateur/{id}','editUser');
     Route::put('updateProfile','updateProfile');
     Route::delete('deleteProfile','deleteProfile');
-    Route::delete('deleteUser','deleteUser');
+    Route::delete('utilisateurs','deleteUser')->name('delete.user');
     Route::put('utilisateurs','updateUser')->name('update.user');
     Route::post('utilisateurs','createUser')->name('create.user');
 });

@@ -107,18 +107,12 @@ class UserController extends Controller
     }
     public function deleteUser(Request $request)
     {
-        $user = User::find($request->id);
+        $user = User::find($request->user_deletedId);
         if($user){
             $user->delete();
-            return response()->json([
-                'status' => 'success',
-                'message' => 'user deleted successfuly'
-            ]);
+            return redirect()->back()->with('success','l\'utilisateur a été bien supprimer');
         }
-        return response()->json([
-            'status' => 'error',
-            'message' => 'user not found'
-        ]);
+        return redirect()->back()->with('error','l\'utilisateur n\'éxiste pas');
     }
     public function updateUser(Request $request)
     {
@@ -133,7 +127,7 @@ class UserController extends Controller
                    $user->full_name = $request->full_name;
                }
                if($request->has('role_name')){
-                  $user->assignRole($request->role_name);            
+                   $user->syncRoles([$request->input('role_name')]);        
                }
                if($request->has('email')){
                    $useremail=User::where('email',$request->email)->first();
