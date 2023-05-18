@@ -197,7 +197,7 @@ class FormController extends Controller
                      'phone_paiment' => 'required|max:20',
                      'refrence_paiment' => 'required|min:10',
                  ]);
-
+                 
                  Paiment::create([
                     'personelinfos_id' => $request->personel_id,
                     'telephone' => $request->phone_paiment,

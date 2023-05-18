@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.common-dash')
 
 @section('title', 'utilisateur')
-
+@section('button-name','ajouter utilisateur')
 @section('content')
     <table class="table">
         <thead class="table-dark">
@@ -31,7 +31,7 @@
                             </button>
                         </div>
                     </div>
-                </th>
+                <th>
               </tr>
             @endforeach
         </tbody>
