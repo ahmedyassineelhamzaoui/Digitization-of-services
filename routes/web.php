@@ -40,6 +40,7 @@ Route::controller(FormController::class)->group(function(){
 
 Route::controller(RoleController::class)->group(function(){
    Route::get('roles','getRoles');
+   Route::post('roles','createRole')->name('create.role');
 });
 Route::get('/register', function () {
     return view('register');

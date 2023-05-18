@@ -198,13 +198,13 @@
                                 </div>
                                 <div class="menu-text">Scrum Board</div>
                             </a>
-                            <a href="index.html" class="menu-link">
+                            <a href="{{url('Utilisateurs')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
                                 <div class="menu-text">Utilisateurs</div>
                             </a>
-                            <a href="index.html" class="menu-link">
+                            <a href="{{url('roles')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>

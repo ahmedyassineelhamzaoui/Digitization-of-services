@@ -210,4 +210,25 @@ $(document).ready(function() {
           }
         });
     }); 
+    $('#create-role').submit(function(e){
+      e.preventDefault();
+     var formData = $(this).serialize();
+     var url = $(this).attr('action');
+     $.ajax({
+        url : url,
+        type : 'POST',
+        data : formData,
+        success : function(response) {
+           $("#role-create-alert").addClass('show')
+           $("#role-create-alert").removeClass('hide')
+           $('.create-role-success').text(response.message);
+        },
+        error: function(xhr,status,error) {
+          var errors = xhr.responseJSON.errors;
+         $.each(errors, function(key, value) {
+           $('#' + key).after('<span class="text-red-500"><strong>' + value + '</strong></span>');
+         });
+        }
+     });
+    });
 });
