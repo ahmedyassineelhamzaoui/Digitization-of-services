@@ -26,10 +26,11 @@ Route::controller(AuthController::class)->group(function(){
 });
 Route::controller(UserController::class)->group(function(){
     Route::get('utilisateurs','index');
+    Route::get('modifier-utilisateur/{id}','editUser');
     Route::put('updateProfile','updateProfile');
     Route::delete('deleteProfile','deleteProfile');
     Route::delete('deleteUser','deleteUser');
-    Route::put('updateUser','updateUser');
+    Route::put('utilisateurs','updateUser')->name('update.user');
     Route::post('utilisateurs','createUser')->name('create.user');
 });
 Route::controller(FormController::class)->group(function(){

@@ -29,6 +29,25 @@ class UserController extends Controller
         $roles=Role::all();
         return view('layouts.dashboard.user-dash',compact('users','roles'));
     }
+    public function editUser($id)
+    {
+        $roles =Role::all();
+        $user = User::find($id);
+        if($user){
+            if(!auth()->user()->hasPermissionTo('modifier-utilisateur')){
+                return view('errors.403');
+            }
+            return response()->json([
+                'user' => $user,
+                'roles' => $roles,
+                'role_name' => $user->roles[0]->name
+            ]);
+        }
+        return response()->json([
+            'message' => 'utilisateur n\'éxiste pas'
+        ],404);
+        
+    }
     public function updateProfile(Request $request)
     {
          $authUser = auth()->user();

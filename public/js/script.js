@@ -53,7 +53,6 @@ function clickNextbutton()
 }
 
 $(document).ready(function() {
-    let curent = compt+1;
     $(`#step-1-form`).submit(function(event) {
         event.preventDefault();
           if(!inputParentName.disabled && inputParentName.value == ''){
@@ -101,7 +100,6 @@ $(document).ready(function() {
           processData: false, // Prevent jQuery from processing the data
           contentType: false, // Tell jQuery not to set the content type
           success: function(response) {
-            console.log(response.message);
             clickNextbutton();
           },
           error: function(xhr) {
@@ -121,7 +119,6 @@ $(document).ready(function() {
             type: 'POST',
             data: formData,
             success: function(response) {
-               console.log(response.message)
                 clickNextbutton();
             },
             error: function(xhr) {
@@ -154,4 +151,39 @@ $(document).ready(function() {
         }
       });
     })
+    let editUserbutton = document.querySelectorAll('.edit-userbutton');
+    editUserbutton.forEach(element => {
+      element.addEventListener('click', function() {
+        // get the user data from the server
+        var userId = $(this).data('user-id');
+        $.ajax({
+            type: 'GET',
+            url: '/modifier-utilisateur/'+userId, // replace with your Laravel route
+            success: function(response) {
+            // populate the form fields with the user data
+            $('#full_nameedit').val(response.user.full_name);
+            $('#email_edit').val(response.user.email);
+            $('#password_edit').val(response.user.password);
+            
+            // check if the role_name option exists in the dropdown
+            var role_name= response.role_name;
+            var roles = response.roles;
+            var select = $('#role_nameedit');
+                select.empty();
+                $.each(roles, function(index, role) {
+                    if(role_name == role.name ){
+                    select.append('<option selected value="' + role.name + '">' + role.name + '</option>');
+                    }else{
+                    select.append('<option value="' + role.name + '">' + role.name + '</option>');
+                    }
+                });
+            $('#password').val(response.password);
+            },
+            error: function(xhr, status, error) {
+            
+            }
+        });
+      });
+    });
+   
 });
