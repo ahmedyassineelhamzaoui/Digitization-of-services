@@ -34,10 +34,10 @@ class RoleController extends Controller
         if(!$user){
             return view('errors.404');
          }
-        if($user->hasPermissionTo('role-list')){
+        // if($user->hasPermissionTo('role-list')){
             $roles = Role::paginate(5);
-            return view('pages.roles', compact('roles'));
-        }
-         return view('errors.403');
+            return view('layouts.dashboard.role-dash', compact('roles'));
+        // }
+        return view('errors.403');
     }
 }

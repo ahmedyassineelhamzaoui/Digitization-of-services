@@ -204,6 +204,12 @@
                                 </div>
                                 <div class="menu-text">Utilisateurs</div>
                             </a>
+                            <a href="index.html" class="menu-link">
+                                <div class="menu-icon">
+                                    <i class="fa fa-list-check"></i>
+                                </div>
+                                <div class="menu-text">Rôles</div>
+                            </a>
                         </div>
 
                         <!-- BEGIN minify-button -->
@@ -236,7 +242,7 @@
                     </div>
 
                     <div class="ms-auto">
-                    <a href="#modal-task" id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add Task</a>
+                    <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> @yield('button-name')</a>
                     </div>
                 </div>
 

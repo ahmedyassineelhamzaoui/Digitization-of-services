@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
-
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,7 @@ Route::controller(AuthController::class)->group(function(){
 
 });
 Route::controller(UserController::class)->group(function(){
-    Route::get('users','index');
+    Route::get('utilisateurs','index');
     Route::put('updateProfile','updateProfile');
     Route::delete('deleteProfile','deleteProfile');
     Route::delete('deleteUser','deleteUser');
@@ -34,6 +34,10 @@ Route::controller(UserController::class)->group(function(){
 Route::controller(FormController::class)->group(function(){
    Route::post('/formulaire','storeInformation')->name('send.Information');
    Route::get('/formulaire','index');
+});
+
+Route::controller(RoleController::class)->group(function(){
+   Route::get('roles','getRoles');
 });
 Route::get('/register', function () {
     return view('register');
