@@ -20,7 +20,16 @@
                 <td>{{$item->full_name}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->roles[0]->name}}</td>
-                <th scope="col">Action</th>
+                <th>
+                    <div class="d-flex align-items-center">
+                        <button class="btn">
+                            <i class="fa-regular fa-trash-can text-danger"></i>
+                        </button>
+                        <button class="btn">
+                            <i class="fa-solid fa-pen-to-square text-success"></i>
+                        </button>
+                    </div>
+                </th>
               </tr>
             @endforeach
         </tbody>
