@@ -28,6 +28,7 @@
                     <th scope="col">Nom complet</th>
                     <th scope="col">Email</th>
                     <th scope="col">Rôle</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -38,6 +39,21 @@
                     <td>{{$item->full_name}}</td>
                     <td>{{$item->email}}</td>
                     <td>{{$item->roles[0]->name}}</td>
+                    <td class="">
+                        @if ($item->status == 'online')
+                          <div class="d-flex align-items-center">
+                            <div class="online-indicator">
+                                <span class="blink"></span>
+                            </div>
+                            <span >en ligne</span>
+                          </div>
+                        @else
+                        <div class="d-flex align-items-center">
+                            <div class="rounded-circle border-danger" style="width: 1.2em; height: 1.2em;background-color:red;border:3px solid"></div>                                       
+                            <span class="ms-2">hors ligne</span>
+                        </div>  
+                        @endif
+                    </td>
                     <th>
                         <div class="d-flex align-items-center">
                             <div class="d-flex align-items-center">

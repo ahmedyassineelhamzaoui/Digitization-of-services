@@ -13,7 +13,7 @@
 	<!-- ================== BEGIN core-css ================== -->
     {{-- <link rel="stylesheet" href="assets/css/vendor.min.css"> --}}
     <link rel="stylesheet" href={{url('assets/css/vendor.min.css')}}>
-
+    <link rel="stylesheet" href="css/app.css">
         {{-- <link rel="stylesheet" href="assets/css/default/app.min.css"> --}}
     <link rel="stylesheet" href={{url('assets/css/default/app.min.css')}}>
 

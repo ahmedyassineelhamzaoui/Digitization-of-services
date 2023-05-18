@@ -125,7 +125,37 @@ body{
   justify-content: space-between;
 }
 /* end pdf */
+/* status decoration */
+div.online-indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  
+  background-color: #0fcc45;
+  border-radius: 50%;
+  
+  position: relative;
+}
+span.blink {
+  display: block;
+  width: 15px;
+  height: 15px;
+  
+  background-color: #0fcc45;
+  opacity: 0.7;
+  border-radius: 50%;
+  
+  animation: blink 1s linear infinite;
+}  
+/*Animations*/
 
+@keyframes blink {
+  100% { transform: scale(2, 2); 
+          opacity: 0;
+        }
+}
+/* end decoration status*/
 
 /* Styling the home page and the register pages */
 /* styling the navbar */
@@ -335,3 +365,5 @@ footer .copyright p{
 
 /* `xxl` applies to x-large devices (large desktops, less than 1400px)
 @media (max-width: 1399.98px) { ... }  */
+
+
