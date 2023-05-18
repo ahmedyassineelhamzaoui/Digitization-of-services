@@ -1,11 +1,10 @@
-
 let step = document.querySelectorAll(".step");
 let compt =0;
 let clickNext =document.querySelector("#click-next")
 let cercle = document.querySelectorAll(".cercle");
 let progressEmpty = document.querySelector(".progress-empty");
 let progressFull = document.querySelector(".progress-full");
-if(cercle){
+if(cercle && cercle[compt]){
   cercle[compt].style.background="black";
 }
 
@@ -134,5 +133,25 @@ $(document).ready(function() {
         });
    
     });
+    $('#create-user').submit(function(e){
+      e.preventDefault();
+      var formData = $(this).serialize();
+      var url = $(this).attr('action');
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: formData,
+        success: function(response) {
+            $("#user-create-alert").addClass('show')
+            $("#user-create-alert").removeClass('hide')
+            $(".cretae-user-success").text(response.message);
+        },
+        error: function(xhr) {
+          var errors = xhr.responseJSON.errors;
+          $.each(errors, function(key, value) {
+            $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
+        });
+        }
+      });
+    })
 });
-// }

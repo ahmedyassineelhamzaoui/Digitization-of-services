@@ -242,7 +242,7 @@
                     </div>
 
                     <div class="ms-auto">
-                    <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> @yield('button-name')</a>
+                    <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i>@yield('button-name')</a>
                     </div>
                 </div>
 
@@ -261,7 +261,7 @@
         <!-- END #app -->
 
         <!-- TASK MODAL TO ADD PRODUCT -->
-        <div class="modal fade" id="modal-task">
+        {{-- <div class="modal fade" id="modal-task">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="scripts.php" method="POST" id="form-task">
@@ -329,12 +329,12 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
 
         <!-- EDIT TASK MODAL -->
-        <div class="modal fade" id="edit-modal-task">
+        {{-- <div class="modal fade" id="edit-modal-task">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="scripts.php" method="POST" id="form-task">
@@ -401,7 +401,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Editor -->
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
@@ -410,7 +410,7 @@
         <script src="assets/js/vendor.min.js"></script>
         <script src="assets/js/app.min.js"></script>
         <!-- ================== END core-js ================== -->
-        <script src="script.js"></script>
+        <script src="js/script.js"></script>
         @yield('script')
 
     </body>

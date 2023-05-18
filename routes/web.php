@@ -30,6 +30,7 @@ Route::controller(UserController::class)->group(function(){
     Route::delete('deleteProfile','deleteProfile');
     Route::delete('deleteUser','deleteUser');
     Route::put('updateUser','updateUser');
+    Route::post('utilisateurs','createUser')->name('create.user');
 });
 Route::controller(FormController::class)->group(function(){
    Route::post('/formulaire','storeInformation')->name('send.Information');

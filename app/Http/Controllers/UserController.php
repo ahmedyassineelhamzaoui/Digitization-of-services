@@ -26,7 +26,8 @@ class UserController extends Controller
     
         $roles = Role::all();
         $users=User::all();
-        return view('layouts.dashboard.user-dash',compact('users'));
+        $roles=Role::all();
+        return view('layouts.dashboard.user-dash',compact('users','roles'));
     }
     public function updateProfile(Request $request)
     {
@@ -139,6 +140,30 @@ class UserController extends Controller
         return response()->json([
             'status' => 'error',
             'message' => 'user not found'
+        ]);
+    }
+    public function createUser(Request $request)
+    {
+        $user=auth()->user();
+        if(!$user){
+            return view('errors.404');
+        }
+        if(!$user->hasPermissionTo('créer-utilisateur')){
+            return view('errors.403');
+        }
+        $request->validate([
+            'full_name' => 'required|string|max:255|min:3',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+        $user=User::create([
+            'full_name' => $request->full_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $user->assignRole($request->role_name);
+        return response()->json([
+            'message' => 'l\'utilisateur a été bien créer'
         ]);
     }
 }
