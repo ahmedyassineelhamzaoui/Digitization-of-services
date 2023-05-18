@@ -123,17 +123,17 @@ class UserController extends Controller
     public function updateUser(Request $request)
     {
         $request->validate([
-            'first_name' => 'required|string|max:255|min:3',
-            'last_name' => 'required|string|max:255|min:2',
+            'full_name' => 'required|string|max:255|min:3',
             'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:8',
         ]);
-        $user = User::find($request->id)->first();
+        $user = User::find($request->user_editId);
         if($user){
-               if($request->has('first_name')){
-                   $user->first_name = $request->first_name;
+               if($request->has('full_name')){
+                   $user->full_name = $request->full_name;
                }
-               if($request->has('last_name')){
-                   $user->last_name = $request->last_name;
+               if($request->has('role_name')){
+                  $user->assignRole($request->role_name);            
                }
                if($request->has('email')){
                    $useremail=User::where('email',$request->email)->first();
@@ -143,22 +143,23 @@ class UserController extends Controller
                         }else{
                             return response()->json([
                                 'status'  => 'error',
-                                'message' => 'email has already been token',
+                                'message' => 'email has already been taken',
                             ]);
                         }
                     }else{
                         $user->email = $request->email;
                     }
                }
-                $user->save();
+               if($request->has('password')){
+                    $user->password= $request->password;
+               }
+               $user->save();
                return response()->json([
-                     'status' => 'success',
-                     'message' => 'user updated successfuly'
+                     'message' => 'l\'utilisateur a été bien modifier'
                ]);
         }
         return response()->json([
-            'status' => 'error',
-            'message' => 'user not found'
+            'message' => 'l\'utilisateur n\'éxiste pas'
         ]);
     }
     public function createUser(Request $request)

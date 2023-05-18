@@ -160,10 +160,10 @@ $(document).ready(function() {
             type: 'GET',
             url: '/modifier-utilisateur/'+userId, // replace with your Laravel route
             success: function(response) {
-            // populate the form fields with the user data
+            $('#user-updateId').val(response.user.id);
             $('#full_nameedit').val(response.user.full_name);
-            $('#email_edit').val(response.user.email);
-            $('#password_edit').val(response.user.password);
+            $('#emailedit').val(response.user.email);
+            $('#passwordedit').val(response.user.password);
             
             // check if the role_name option exists in the dropdown
             var role_name= response.role_name;
@@ -184,6 +184,27 @@ $(document).ready(function() {
             }
         });
       });
+    });
+    $('#update-user').submit(function(event) {
+      event.preventDefault();
+        var formData = $(this).serialize();
+        var url = $(this).attr('action');
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: formData,
+          success: function(response) {
+              $("#user-edit-alert").addClass('show')
+              $("#user-edit-alert").removeClass('hide')
+              $('.edit-user-success').text(response.message)
+          },
+          error: function(xhr,status,error) {
+             var errors = xhr.responseJSON.errors;
+            $.each(errors, function(key, value) {
+              $('#' + key+'edit').after('<span class="text-red-500"><strong>' + value + '</strong></span>');
+          });
+          }
+        });
     });
    
 });

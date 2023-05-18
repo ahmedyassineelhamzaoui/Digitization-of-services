@@ -86,13 +86,16 @@
     <div class="modal fade" id="edit-user">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="{{route('update.user')}}" method="POST" id="update-user">
+                <form a}tion="{{route('update.user')}}" method="POST" id="update-user">
+                    @method('PUT')
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Modifier</h5>
                         <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
                     </div>
                     <div class="modal-body">
+                        <input type="hidden" id="user-updateId" name="user_editId">
+
                             <div id="user-edit-alert" class="alert alert-primary alert-dismissible fade hide align-middle" role="alert" style="height: 50px;">
                                 <p class="d-flex align-items-center"><strong class="me-2">Succés</strong><span class="edit-user-success"></span></p>
                                 <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -111,11 +114,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email_edit" id="email_edit" placeholder="example@gmail.com"/>
+                                <input type="email" class="form-control" name="email" id="emailedit" placeholder="example@gmail.com"/>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Mot de passe</label>
-                                <input type="password" class="form-control" name="password_edit" id="password_edit"/>
+                                <input type="password" class="form-control" name="password" id="passwordedit"/>
                             </div>
 
                     </div>
