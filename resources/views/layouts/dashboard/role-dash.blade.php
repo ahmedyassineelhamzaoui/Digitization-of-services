@@ -105,8 +105,11 @@
                         <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" id="role-updateId" name="role_editId">
-
+                        <input type="hidden" id="role_editId" name="role_editId">
+                        <div id="role-edit-error" class="alert alert-danger alert-dismissible fade hide align-middle" role="alert" style="height: 50px;">
+                            <p class="d-flex align-items-center"><strong class="me-2">Erreur  </strong><span class="edit-role-error"></span></p>
+                            <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                         <div id="role-edit-alert" class="alert alert-primary alert-dismissible fade hide align-middle" role="alert" style="height: 50px;">
                             <p class="d-flex align-items-center"><strong class="me-2">Succés</strong><span class="edit-role-success"></span></p>
                             <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -116,8 +119,7 @@
                             <input type="text" name="name" class="form-control" id="name-edit"/>
                         </div>
                         <div class="mb-3" id="picalty">
-                            <label for="permissions" class="form-label">Permissions</label>
-                            
+                            <label for="permissions-edit" class="form-label">Permissions</label>
                         </div>
                     </div>
                     <div class="modal-footer">

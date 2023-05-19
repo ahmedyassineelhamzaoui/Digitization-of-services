@@ -228,7 +228,7 @@ $(document).ready(function() {
         error: function(xhr,status,error) {
           var errors = xhr.responseJSON.errors;
          $.each(errors, function(key, value) {
-           $('#' + key).after('<span class="text-red-500"><strong>' + value + '</strong></span>');
+           $('#' + key).after('<span class="text-danger"><strong>' + value + '</strong></span>');
          });
         }
      });
@@ -241,9 +241,10 @@ $(document).ready(function() {
                 url: '/modifier-role/' + roleId,
                 type: 'GET',
                 success: function(response) {
+                    $('#role_editId').val(response.role.id);
                     $('#name-edit').val(response.role.name);
                     var permissionsDiv = $('<div>', {
-                        id: 'permissions',
+                        id: 'permissions-edit',
                         class: 'bg-light border border-secondary text-secondary text-sm rounded-lg focus-ring border-0 form-control overflow-auto',
                         style: 'max-height: 300px;',
                         rows: '10',
@@ -280,5 +281,35 @@ $(document).ready(function() {
                 }
             });
         });
+    });
+    $('#update-role').submit(function(e){
+     e.preventDefault();
+     var formData = $(this).serialize();
+     var url = $(this).attr('action');
+     $.ajax({
+        url : url,
+        type : 'POST',
+        data : formData,
+        success : function(response) {
+          console.log(response.error)
+          if(response.error){
+            console.log(response.error)
+            $("#role-edit-error").addClass('show')
+            $("#role-edit-error").removeClass('hide')
+            $(".edit-role-error").text(response.error)
+          }else{
+            $("#role-edit-alert").addClass('show')
+            $("#role-edit-alert").removeClass('hide')
+            $(".edit-role-success").text(response.message);
+          }
+           
+        },
+        error: function(xhr,status,error) {
+          var errors = xhr.responseJSON.errors;
+          $.each(errors, function(key, value) {
+            $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
+          });
+        }
+     });
     });
 });

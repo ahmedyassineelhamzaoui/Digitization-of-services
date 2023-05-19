@@ -94,4 +94,36 @@ class RoleController extends Controller
         $role->delete();
         return redirect()->back()->with('success','le role a été bien supprimer');
     }
+    public function updateRole(Request $request)
+    {
+        $user=auth()->user();
+        if(!$user){
+            return view('errors.404');
+        }
+        if($user->hasPermissionTo('modifier-rôle')){
+            $request->validate( [
+                'name' => [
+                    'required',
+                    'min:3'
+                ],
+            ]);
+            $role = Role::find($request->role_editId);
+            $role_exist = Role::where('name',$request->name)->first();
+            if($role_exist){
+                if($role_exist->name == $role->name){
+                    $role->name = $request->name;
+                    $role->syncPermissions($request->permission);
+                    $role->save();
+            
+                    return response()->json([
+                        'message' => 'le rôle a été bien modifier '
+                    ]);
+                }
+                return response()->json([
+                    'error' => 'ce rôle déja existe '
+                ]);
+            }
+        }
+        return view('errors.403');
+    }
 }
