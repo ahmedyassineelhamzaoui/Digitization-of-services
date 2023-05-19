@@ -70,6 +70,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+            {!! $users->links() !!}
+        </div>
     </div>
     <div class="modal fade" id="add-user">
         <div class="modal-dialog modal-dialog-centered">

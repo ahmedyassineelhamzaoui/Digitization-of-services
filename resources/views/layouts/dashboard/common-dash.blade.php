@@ -198,7 +198,7 @@
                                 </div>
                                 <div class="menu-text">Scrum Board</div>
                             </a>
-                            <a href="{{url('Utilisateurs')}}" class="menu-link">
+                            <a href="{{url('utilisateurs')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>

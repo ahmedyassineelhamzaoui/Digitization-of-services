@@ -25,7 +25,7 @@ class UserController extends Controller
          }
     
         $roles = Role::all();
-        $users=User::all();
+        $users=User::paginate(5);
         $roles=Role::all();
         return view('layouts.dashboard.user-dash',compact('users','roles'));
     }
