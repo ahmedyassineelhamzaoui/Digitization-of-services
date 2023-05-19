@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.common-dash')
 
-@section('title', 'utilisateur')
+@section('title', 'rôles')
 @section('button-name','Ajouter Rôle')
 @section('button-link','#add-role')
 
@@ -43,11 +43,11 @@
                     </td>
                     <th>
                         <div class="d-flex align-items-center">
-                            <button class="btn btn-danger  me-1">
+                            <button class="btn btn-danger  me-1"  >
                                 <i class="fa-regular fa-trash-can "></i>
                             </button>
-                            <button class="btn btn-warning ">
-                                <i class="fa-solid fa-pen-to-square "></i>
+                            <button class="btn btn-warning edit-rolebutton"  data-role-id="{{$item->id}}" data-bs-toggle="modal" data-bs-target="#edit-role">
+                                <i class="fa-solid fa-pen-to-square" ></i>
                             </button>
                         </div>
                     </th>
@@ -94,6 +94,39 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="edit-role">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form a}tion="{{route('update.role')}}" method="POST" id="update-role">
+                    @method('PUT')
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modifier Le Rôle</h5>
+                        <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="role-updateId" name="role_editId">
 
+                        <div id="role-edit-alert" class="alert alert-primary alert-dismissible fade hide align-middle" role="alert" style="height: 50px;">
+                            <p class="d-flex align-items-center"><strong class="me-2">Succés</strong><span class="edit-role-success"></span></p>
+                            <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nom du Rôle</label>
+                            <input type="text" name="name" class="form-control" id="name-edit"/>
+                        </div>
+                        <div class="mb-3" id="picalty">
+                            <label for="permissions" class="form-label">Permissions</label>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-white" data-bs-dismiss="modal">Anuller</a>
+                        <button type="submit" name="update" class="btn btn-warning task-action-btn" >Modifier</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
    
 @endsection

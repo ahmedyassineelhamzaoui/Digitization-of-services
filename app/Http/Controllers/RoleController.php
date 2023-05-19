@@ -60,4 +60,22 @@ class RoleController extends Controller
             'message' => 'le rôle a été bien créer'
         ]);
     }
+    public function showRole($id)
+    {
+        $user=auth()->user();
+        if(!$user){
+            return view('errors.404');
+         }
+        if(!$user->hasPermissionTo('modifier-rôle')){
+            return view('errors.403');
+        }
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        $rolePermissions = $role->permissions()->pluck('name')->toArray();
+        return response()->json([
+            'role' => $role,
+            'permissions' => $permissions,
+            'rolePermissions' => $rolePermissions
+        ]);
+    }
 }

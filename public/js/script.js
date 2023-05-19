@@ -231,4 +231,52 @@ $(document).ready(function() {
         }
      });
     });
+    let editRolebutton = document.querySelectorAll(".edit-rolebutton")
+    editRolebutton.forEach(function(element) {
+        element.addEventListener('click', function() {
+            var roleId = $(this).data('role-id');
+            $.ajax({
+                url: '/modifier-role/' + roleId,
+                type: 'GET',
+                success: function(response) {
+                    $('#name-edit').val(response.role.name);
+                    var permissionsDiv = $('<div>', {
+                        id: 'permissions',
+                        class: 'bg-light border border-secondary text-secondary text-sm rounded-lg focus-ring border-0 form-control overflow-auto',
+                        style: 'max-height: 300px;',
+                        rows: '10',
+                        required: ''
+                    });
+                    $("#picalty").empty()
+                    response.permissions.forEach(function(permission) {
+                        var checkboxDiv = $('<div>', {
+                            class: 'form-check mb-1'
+                        });
+                        var checkboxInput = $('<input>', {
+                            type: 'checkbox',
+                            id: permission.name,
+                            value: permission.name,
+                            class: 'form-check-input cursor-pointer',
+                            name: 'permission[]'
+                        });
+                        if (response.rolePermissions.includes(permission.name)) {
+                            checkboxInput.prop('checked', true);
+                        }
+                        var checkboxLabel = $('<label>', {
+                            class: 'form-check-label cursor-pointer text-primary',
+                            for: permission.name,
+                            text: permission.name
+                        });
+                        checkboxDiv.append(checkboxInput);
+                        checkboxDiv.append(checkboxLabel);
+                        permissionsDiv.append(checkboxDiv);
+                    });
+                    $("#picalty").append(permissionsDiv)
+                },
+                error: function(xhr, status, error) {
+    
+                }
+            });
+        });
+    });
 });
