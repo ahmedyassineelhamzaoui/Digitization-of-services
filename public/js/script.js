@@ -34,8 +34,10 @@ function clickNextbutton()
 {
     if (compt < 4) {
         compt++;
-        cercle[compt].style.background = "black";
-        cercle[compt - 1].style.background = color;
+        if(cercle && cercle[compt]){
+          cercle[compt].style.background = "black";
+          cercle[compt - 1].style.background = color;
+        }
         if (compt == 3) {
             cercle[compt].style.background = color
             cercle[compt - 1].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'

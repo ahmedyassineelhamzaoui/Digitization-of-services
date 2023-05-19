@@ -32,7 +32,6 @@
                 <h3 class="mt-5">Les informations personnelles </h3>
                 <div class="row g-3">
                     @csrf
-                    <input type="hidden" name="curent_number" value="1">
                     <div class="col-md-2">
                         <label for="registration-number" class="form-label">Matricule</label>
                         <input type="text" class="form-control" name="registration_number" id="registration_number" >
@@ -606,7 +605,6 @@
             <form id="step-2-form" action="{{route('send.Information')}}" method="post" class="mb-3" enctype="multipart/form-data">
                 <h3>Joindre des fichiers</h3>
                 @csrf
-                <input type="hidden" name="curent_number" value="2">
                 <input type="hidden" name="personel_id" id="personel-id">
                 <div class="row g-3">
                     <div class="mb-3 col-md-6">
@@ -692,7 +690,6 @@
                     @csrf
                     <div class="col-md-8">
                         <h3 class="mt-4">paiement</h3>
-                        <input type="hidden" name="curent_number" value="3">
                         <input type="hidden" name="personel_id" id="personel-idpaiment">
                         <div class="mt-4 mb-4">
                             <div class="">
@@ -728,7 +725,6 @@
                     <div class="mb-3">
                         <form id="" action="{{route('send.Information')}}" method="post" class="mb-3">
                             @csrf
-                            <input type="hidden" name="curent_number" value="4">
                             <input type="hidden" name="personel_id" id="personel-idinscription">
                             <button type="submit" name="print_info" class="btn download-pdf"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger votre fichier d'inscription</button>
                         </form>
@@ -736,7 +732,6 @@
                     <div class="mb-3">
                         <form id="" action="{{route('send.Information')}}" method="post" class="mb-3">
                             @csrf
-                            <input type="hidden" name="curent_number" value="5">
                             <input type="hidden" name="personel_id" id="personel-idreçupaiment">
                             <button type="submit" name="print_payment"  class="btn download-pdf"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span>Télécharger votre reçu de paiement</button>
                         </form>
