@@ -19,7 +19,7 @@ use App\Http\Controllers\RoleController;
 Route::controller(AuthController::class)->group(function(){
     Route::post('register','register');
     Route::post('login','login')->name('connection');
-    Route::post('logout', 'logout');
+    Route::post('logout', 'logout')->name('user.logout');
     Route::get('login', 'index')->name('login');
     Route::get('home', 'home')->name('home');
 
@@ -32,6 +32,7 @@ Route::controller(UserController::class)->group(function(){
     Route::delete('utilisateurs','deleteUser')->name('delete.user');
     Route::put('utilisateurs','updateUser')->name('update.user');
     Route::post('utilisateurs','createUser')->name('create.user');
+    Route::get('dashboard','display');
 });
 Route::controller(FormController::class)->group(function(){
    Route::post('/formulaire','storeInformation')->name('send.Information');
@@ -58,8 +59,4 @@ Route::get('anl-detail',function () {
     return view('anl-detail');
 });
 
-
-Route::get('dashboard',function(){
-   return view('layouts.dashboard.common-dash');
-});
 

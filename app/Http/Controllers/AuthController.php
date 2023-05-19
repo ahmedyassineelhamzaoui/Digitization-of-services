@@ -64,9 +64,6 @@ namespace App\Http\Controllers;
         {
             Auth::user()->update(['status' => 'offline']);  
             Auth::logout();
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Successfully logged out',
-            ]);
+            return redirect()->route('home');
         }
     }

@@ -17,6 +17,10 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+    public function display()
+    {
+        return view('layouts.dashboard.common-dash');
+    }
     public function index()
     {
         $user=auth()->user();

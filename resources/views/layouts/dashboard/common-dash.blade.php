@@ -75,28 +75,6 @@
                             </a>
                             <a href="javascript:;" class="dropdown-item media">
                                 <div class="media-left">
-                                    <img src="assets/img/user/user-1.jpg" class="media-object" alt="" />
-                                    <i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="media-heading">John Smith</h6>
-                                    <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                                    <div class="text-muted fs-10px">25 minutes ago</div>
-                                </div>
-                            </a>
-                            <a href="javascript:;" class="dropdown-item media">
-                                <div class="media-left">
-                                    <img src="assets/img/user/user-2.jpg" class="media-object" alt="" />
-                                    <i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="media-heading">Olivia</h6>
-                                    <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                                    <div class="text-muted fs-10px">35 minutes ago</div>
-                                </div>
-                            </a>
-                            <a href="javascript:;" class="dropdown-item media">
-                                <div class="media-left">
                                     <i class="fa fa-plus media-object bg-gray-500"></i>
                                 </div>
                                 <div class="media-body">
@@ -124,7 +102,7 @@
                         <a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
                             <img src="assets/img/user/user-15.jpg" alt="" />
                             <span>
-                                <span class="d-none d-md-inline">Toufik Shima</span>
+                                <span class="d-none d-md-inline"></span>
                                 <b class="caret"></b>
                             </span>
                         </a>
@@ -137,7 +115,10 @@
                             <a href="javascript:;" class="dropdown-item">Calendar</a>
                             <a href="javascript:;" class="dropdown-item">Setting</a>
                             <div class="dropdown-divider"></div>
-                            <a href="javascript:;" class="dropdown-item">Log Out</a>
+                            <form action="{{route('user.logout')}}" method="POST">
+                              @csrf
+                              <button type="submit" class="dropdown-item" name="logout">Déconexion</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -160,11 +141,11 @@
                                 <div class="menu-profile-info">
                                     <div class="d-flex align-items-center">
                                         <div class="flex-grow-1">
-                                            Toufik Shima
+                                            {{ Str::limit(auth()->user()->full_name,20)}}
                                         </div>
                                         <div class="menu-caret ms-auto"></div>
                                     </div>
-                                    <small>Front end developer</small>
+                                    <small>{{auth()->user()->roles[0]->name}}r</small>
                                 </div>
                             </a>
                         </div>
@@ -227,7 +208,7 @@
             <!-- END #sidebar -->
 
             <!-- BEGIN #content -->
-            <div id="content" class="app-content" style="min-height: 100vh; background: url(assets/img/cover/cover-scrum-board.png) no-repeat fixed; background-size: 360px; background-position: right bottom;">
+            <div id="content" class="app-content" style="min-height: 100vh; background-size: 360px; background-position: right bottom;">
                 <div class="d-flex align-items-center mb-3">
                     <div>
                         <ol class="breadcrumb">
