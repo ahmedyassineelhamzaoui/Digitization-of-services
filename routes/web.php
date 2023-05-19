@@ -43,7 +43,7 @@ Route::controller(RoleController::class)->group(function(){
    Route::post('roles','createRole')->name('create.role');
    Route::put('roles','updateRole')->name('update.role');
    Route::get('modifier-role/{id}','showRole');
-
+   Route::delete('roles','deleteRole')->name('delete.role');
 });
 Route::get('/register', function () {
     return view('register');

@@ -78,4 +78,20 @@ class RoleController extends Controller
             'rolePermissions' => $rolePermissions
         ]);
     }
+    public function deleteRole(Request $request)
+    {
+        $user=auth()->user();
+        if(!$user){
+            return view('errors.404');
+         }
+        if(!$user->hasPermissionTo('supprimer-rôle')){
+            return view('errors.403');
+        }
+        $role = Role::find($request->role_deletedId);
+        if(!$role){
+            return redirect()->back()->with('error','le role n\'éxiste pas');
+        }
+        $role->delete();
+        return redirect()->back()->with('success','le role a été bien supprimer');
+    }
 }
