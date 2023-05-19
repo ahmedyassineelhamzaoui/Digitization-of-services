@@ -37,7 +37,6 @@ class RoleController extends Controller
         if($user->hasPermissionTo('lister-rôles')){
             $roles = Role::paginate(5);
             $permissions=Permission::all();
-
             return view('layouts.dashboard.role-dash', compact('roles','permissions'));
         }
         return view('errors.403');

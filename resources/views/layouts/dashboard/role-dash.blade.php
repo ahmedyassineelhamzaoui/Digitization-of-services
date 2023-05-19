@@ -55,6 +55,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+            {!! $roles->links() !!}
+        </div>
     </div>
     <div class="modal fade" id="add-role">
         <div class="modal-dialog modal-dialog-centered">
