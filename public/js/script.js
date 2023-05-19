@@ -291,13 +291,13 @@ $(document).ready(function() {
         type : 'POST',
         data : formData,
         success : function(response) {
-          console.log(response.error)
           if(response.error){
-            console.log(response.error)
             $("#role-edit-error").addClass('show')
             $("#role-edit-error").removeClass('hide')
             $(".edit-role-error").text(response.error)
-          }else{
+          }
+          if(response.message)
+          {
             $("#role-edit-alert").addClass('show')
             $("#role-edit-alert").removeClass('hide')
             $(".edit-role-success").text(response.message);

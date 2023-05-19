@@ -122,6 +122,13 @@ class RoleController extends Controller
                 return response()->json([
                     'error' => 'ce rôle déja existe '
                 ]);
+            }else{
+                $role->name = $request->name;
+                $role->syncPermissions($request->permission);
+                $role->save();
+                return response()->json([
+                    'message' => 'le rôle a été bien modifier '
+                ]);
             }
         }
         return view('errors.403');
