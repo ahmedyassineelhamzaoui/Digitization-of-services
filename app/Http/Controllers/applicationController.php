@@ -65,4 +65,13 @@ class applicationController extends Controller
       ]);
       
     }
+    public function deleteApplication(Request $request)
+    {
+        $application = Application::find($request->app_deletedId);
+        if($application){
+            $application->delete();
+            return redirect()->back()->with('success','la demande a  été bien supprimer');
+        }
+        return redirect()->back()->with('error','la demande n\'éxiste pas');
+    }
 }

@@ -54,6 +54,7 @@ Route::controller(applicationController::class)->group(function(){
    Route::get('show-files/{id}','showFiles');
    Route::put('demandes','updateStatus')->name('update.status');
    Route::get('edit-application/{id}','showEditform');
+   Route::delete('demandes','deleteApplication')->name('delete.application');
 });
 Route::get('/register', function () {
     return view('register');
