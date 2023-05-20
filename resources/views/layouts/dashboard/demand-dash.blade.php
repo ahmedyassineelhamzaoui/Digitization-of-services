@@ -7,16 +7,18 @@
         <table class="table">
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">Nom du Demandeur</th>
+                    <th scope="col">Nom</th>
                     <th scope="col">fiche d'inscription </th>
                     <th scope="col">fiche de paiement</th>
                     <th scope="col">fichiers joindues</th>
                     <th scope="col">status</th>
-                    <th  scope="col">Action</th>
+                    @can('voir-demande-action')
+                    <th scope="col">Action</th>
+                    @endcan
                 </tr>
             </thead>
             <tbody>
-                @foreach ($paiments as $i => $item)                
+                @foreach ($applications as $i => $item)                
                 <tr>
                     <td style="font-weight: bold">{{ $userPersonelinfos[$i]->nom }}</td>
                     <td>
@@ -37,26 +39,38 @@
                         <button data-files-id={{$files[$i]->id}} data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>
                     </td>
                     <td>
-                        <button type="submit" name="print_info" class="btn" style="background-color:black;  color:white;">en attente</button>
+                        @if($item->status =='accept')
+                           <button   class="btn" style="background-color:rgb(7, 165, 7);  color:white;">accepter</button>
+                        @elseif($item->status =='decline')
+                           <button  class="btn" style="background-color:rgb(216, 38, 38);  color:white;"> refuser</button>
+                        @else
+                           <button  class="btn" style="background-color:black;  color:white;">en attente</button>
+                        @endif
                     </td>
-                    <th >
+                    @can('voir-demande-action')
+                    <th>
                         <div class="d-flex align-items-center">
                             <div class="d-flex align-items-center">
+                                @can('supprimer-demandes')
                                 <button class="btn btn-danger  me-1"  data-bs-toggle="modal" data-bs-target="#delete-user">
                                     <i class="fa-regular fa-trash-can "></i>
                                 </button>
+                                @endcan
+                                @can('modifier-demandes')
                                 <button class="btn btn-warning show-editstatusform" data-status-id={{$item->id}}   data-bs-target="#edit-status" data-bs-toggle="modal" >
                                     <i class="fa-solid fa-pen-to-square "></i>
                                 </button>
+                                @endcan
                             </div>
                         </div>
                     </th>
+                    @endcan
                 </tr>
                 @endforeach
             </tbody>
         </table>
         <div class="d-flex justify-content-end">
-            {!! $paiments->links() !!}
+            {!! $applications->links() !!}
         </div>
     </div>
 

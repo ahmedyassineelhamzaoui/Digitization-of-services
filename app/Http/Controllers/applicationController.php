@@ -26,10 +26,10 @@ class applicationController extends Controller
         $files = File::all(); 
         $conjoints = Conjoint::all(); 
         $previouss = Previous::all(); 
-        $paiments = Paiment::paginate(5); 
+        $applications = Application::paginate(5); 
 
 
-        return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','paiments'));
+        return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications'));
     }
     public function showFiles($id)
     {
