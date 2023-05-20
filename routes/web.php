@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SocialiteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +58,13 @@ Route::get('anl-detail',function () {
 Route::get('dashboard',function(){
    return view('layouts.dashboard.common-dash');
 });
+
+Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
+
+
+// Route::get('auth/facebook', [SocialiteController::class, 'redirectToFacebook']);
+// Route::get('auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback']);
+
+
 
