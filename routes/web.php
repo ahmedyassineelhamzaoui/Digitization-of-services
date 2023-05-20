@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\applicationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,11 @@ Route::controller(RoleController::class)->group(function(){
    Route::get('modifier-role/{id}','showRole');
    Route::delete('roles','deleteRole')->name('delete.role');
 });
+
+Route::controller(applicationController::class)->group(function(){
+   Route::get('demandes','index');
+   Route::get('show-files/{id}','showFiles');
+});
 Route::get('/register', function () {
     return view('register');
 });
@@ -58,5 +65,6 @@ Route::get('/', function () {
 Route::get('anl-detail',function () {
     return view('anl-detail');
 });
+
 
 

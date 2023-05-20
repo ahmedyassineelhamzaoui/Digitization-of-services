@@ -314,4 +314,76 @@ $(document).ready(function() {
         }
      });
     });
+    let showAllfiles =document.querySelectorAll('.show-allfiles');
+    showAllfiles.forEach(function(element){
+      element.addEventListener('click', function() {
+        var fileId = $(this).data('files-id');
+        $.ajax({
+            url: 'show-files/' + fileId,
+            type: 'GET',
+            success: function(response) {
+                console.log(response.file);
+                var filesDiv = document.querySelector('#file_liste');
+                filesDiv.innerHTML = '';
+                let index = 0;
+                for (var key in response.file) {
+                  
+                  if (response.file.hasOwnProperty(key) && response.file[key]) {
+                    var fileName = key.replace('_path', '');
+                    var filePath = response.file[key];
+                    var fileLink = document.createElement('a');
+                    fileLink.classList.add('text-light');
+                    fileLink.href = filePath;
+                    fileLink.download = fileName;
+                    if(index == 0){
+                      fileLink.textContent = 'Décision de nomination';
+                    }
+                    if(index == 1){
+                      fileLink.textContent = 'Décision d\'affectation ou page fonctionnaire';
+                    }
+                    if(index == 2){
+                      fileLink.textContent = 'Certificat de 1ère prise de service';
+                    }
+                    if(index == 3){
+                      fileLink.textContent = 'Bulletin de solde avant nomination';
+                    }
+                    if(index == 4){
+                      fileLink.textContent = 'Bulletin de solde après nommination';
+                    }
+                    if(index == 5){
+                      fileLink.textContent = 'Certificat de non hébergement';
+                    }
+                    if(index == 6){
+                      fileLink.textContent = 'Attestation sur l\'honneur légalisée';
+                    }
+                    if(index == 7){
+                      fileLink.textContent = 'certificat de résidence';
+                    }
+                    if(index == 8){
+                      fileLink.textContent = 'Pièce d\'identité';
+                    }
+                    if(index == 9){
+                      fileLink.textContent = 'Acte de mariage';
+                    }
+                    var fileButton = document.createElement('button');
+                    fileButton.classList.add('btn','btn-primary','m-1','fixed-width','d-flex','text-align-center')
+                    
+                    var icon = document.createElement('i');
+                    icon.classList.add('fa-solid', 'fa-file-invoice');
+                    var span = document.createElement('span')
+                    span.classList.add('me-1')
+                    span.appendChild(icon)
+                    fileButton.appendChild(span);  
+                    fileButton.appendChild(fileLink);
+                    filesDiv.appendChild(fileButton);
+                    index++
+                  }
+                }
+            },
+            error: function(xhr, status, error) {
+
+            }
+        });
+    });
+    });
 });

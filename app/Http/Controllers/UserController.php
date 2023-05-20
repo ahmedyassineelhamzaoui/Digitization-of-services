@@ -27,7 +27,7 @@ class UserController extends Controller
         if(!$user){
             return view('errors.404');
          }
-    
+
         $roles = Role::all();
         $users=User::paginate(5);
         $roles=Role::all();

@@ -191,6 +191,12 @@
                                 </div>
                                 <div class="menu-text">Rôles</div>
                             </a>
+                            <a href="{{url('demandes')}}" class="menu-link">
+                                <div class="menu-icon">
+                                    <i class="fa fa-list-check"></i>
+                                </div>
+                                <div class="menu-text">demandes</div>
+                            </a>
                         </div>
 
                         <!-- BEGIN minify-button -->
