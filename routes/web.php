@@ -52,6 +52,8 @@ Route::controller(RoleController::class)->group(function(){
 Route::controller(applicationController::class)->group(function(){
    Route::get('demandes','index');
    Route::get('show-files/{id}','showFiles');
+   Route::put('demandes','updateStatus')->name('update.status');
+   Route::get('edit-application/{id}','showEditform');
 });
 Route::get('/register', function () {
     return view('register');

@@ -8,6 +8,7 @@ use App\Models\File;
 use App\Models\Personelinfo;
 use App\Models\Previous;
 use App\Models\Paiment;
+use App\Models\Application;
 use Dompdf\Dompdf;
 
 
@@ -201,6 +202,9 @@ class FormController extends Controller
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
             }
             if($request->has('phone_paiment')){
+                $application = new Application();
+                $application->status ='pending';
+                $application->save();
                  $request->validate([
                      'phone_paiment' => 'required|max:20',
                      'refrence_paiment' => 'required|min:10',
@@ -250,6 +254,7 @@ class FormController extends Controller
                 return redirect()->back()->with('succès','votre commande a été bien télecharger');
             }
             if($request->has('print_payment')){
+
                 $paiment =Paiment::where('personelinfos_id',$request->personel_id)->first();
                 // dd($data);
                 $dompdf = new Dompdf();

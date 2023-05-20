@@ -10,7 +10,9 @@ use App\Models\File;
 use App\Models\Personelinfo;
 use App\Models\Previous;
 use App\Models\Paiment;
+use App\Models\Application;
 use Dompdf\Dompdf;
+
 
 class applicationController extends Controller
 {
@@ -36,5 +38,31 @@ class applicationController extends Controller
             'file' => $file
         ]);
 
+    }
+    public function showEditform($id)
+    {
+         $application = Application::find($id);
+         if($application){
+            return response()->json([
+                'id' => $application->id
+            ]);
+         }
+    }
+    public function updateStatus(Request $request)
+    {
+      $application = Application::find($request->status_id);
+      if($application){
+        
+        $application->status = $request->input('status_name');
+        $application->message = $request->comment;
+        $application->save();
+        return response()->json([
+            'message' => 'la demandes a été bien modifier'
+          ]);
+      }
+      return response()->json([
+          'error' => 'la demande n\'éxiste pas'
+      ]);
+      
     }
 }

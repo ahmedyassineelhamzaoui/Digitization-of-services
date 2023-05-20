@@ -45,7 +45,7 @@
                                 <button class="btn btn-danger  me-1"  data-bs-toggle="modal" data-bs-target="#delete-user">
                                     <i class="fa-regular fa-trash-can "></i>
                                 </button>
-                                <button class="btn btn-warning edit-userbutton"   data-bs-target="#edit-user" data-bs-toggle="modal" >
+                                <button class="btn btn-warning show-editstatusform" data-status-id={{$item->id}}   data-bs-target="#edit-status" data-bs-toggle="modal" >
                                     <i class="fa-solid fa-pen-to-square "></i>
                                 </button>
                             </div>
@@ -79,6 +79,45 @@
                                    
                                 </div>
                             </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit-status">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form action="{{route('update.status')}}" method="POST" id="update-status">
+                    @method('PUT')
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modifier Le Status</h5>
+                        <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="status_id" name="status_id">
+                        <div id="status-edit-error" class="alert alert-danger alert-dismissible fade hide align-middle" role="alert" style="height: 50px;">
+                            <p class="d-flex align-items-center"><strong class="me-2">Erreur  </strong><span class="status-role-error"></span></p>
+                            <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <div id="status-edit-alert" class="alert alert-primary alert-dismissible fade hide align-middle" role="alert" style="height: 50px;">
+                            <p class="d-flex align-items-center"><strong class="me-2">Succés</strong><span class="status-role-success"></span></p>
+                            <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" name="status_name" id="status_name">
+                                <option value="pending">en attente</option>
+                                <option value="accept">accepter</option>
+                                <option value="decline">refuser</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 " id="comment"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-white" data-bs-dismiss="modal">Anuller</a>
+                        <button type="submit" name="update" class="btn btn-warning task-action-btn" >Modifier</a>
                     </div>
                 </form>
             </div>

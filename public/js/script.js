@@ -322,7 +322,6 @@ $(document).ready(function() {
             url: 'show-files/' + fileId,
             type: 'GET',
             success: function(response) {
-                console.log(response.file);
                 var filesDiv = document.querySelector('#file_liste');
                 filesDiv.innerHTML = '';
                 let index = 0;
@@ -386,4 +385,101 @@ $(document).ready(function() {
         });
     });
     });
+
+    let select = document.getElementById("status_name");
+    let commentDiv = document.getElementById("comment");
+    let textarea = document.createElement("textarea");
+    if(select){
+      select.addEventListener("change", function() {
+        if (this.value === "decline") {
+          // Add textarea
+          textarea.setAttribute("rows", 10);
+          textarea.classList.add('form-control')
+         
+          textarea.name = "comment";
+          textarea.placeholder = "la raison ";
+          
+          commentDiv.appendChild(textarea);  
+        } else {
+          // Remove textarea  
+          commentDiv.innerHTML = "";
+        }
+      });
+    }
+  
+    let showEditStatus =document.querySelectorAll('.show-editstatusform');
+    showEditStatus.forEach(function(element){
+      element.addEventListener('click', function() {
+        var statusId = $(this).data('status-id');
+        console.log(statusId);
+        $.ajax({
+            type: 'GET',
+            url: '/edit-application/'+statusId,
+            success: function(response) {
+                $('#status_id').val(response.id)
+            },
+            error: function(xhr, status, error) {
+
+            }
+        });
+    });
+    });
+    $('#update-status').submit(function(e){
+      e.preventDefault();
+      if(select.value == "decline"){
+        if(textarea.value == ''){
+          $('#comment').after('<span id="error-reason" class="text-danger fs-7"><strong> il faut ajouté une raison </strong></span>');
+        }else{
+          var formData = $(this).serialize();
+          var url = $(this).attr('action')
+          $.ajax({
+            type : 'POST',
+            data : formData ,
+            url : url, 
+            success : function(response){
+              if(response.error){
+                $("#status-edit-error").addClass('show')
+                $("#status-edit-error").removeClass('hide')
+                $(".status-role-error").text(response.error)
+              }
+              if(response.message)
+              {
+                $("#status-edit-alert").addClass('show')
+                $("#status-edit-alert").removeClass('hide')
+                $(".status-role-success").text(response.message);
+              }
+            },
+            error : function(xhr,status,error){
+  
+            }
+          });
+         
+        }
+      }else{
+        var formData = $(this).serialize();
+        var url = $(this).attr('action')
+        $.ajax({
+          type : 'POST',
+          data : formData ,
+          url : url, 
+          success : function(response){
+              if(response.error){
+                $("#status-edit-error").addClass('show')
+                $("#status-edit-error").removeClass('hide')
+                $(".status-role-error").text(response.error)
+              }
+              if(response.message)
+              {
+                $("#status-edit-alert").addClass('show')
+                $("#status-edit-alert").removeClass('hide')
+                $(".status-role-success").text(response.message);
+              }
+              },
+          error : function(xhr,status,error){
+
+          }
+        });
+       
+      }
+    })
 });
