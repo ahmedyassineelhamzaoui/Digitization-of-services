@@ -18,9 +18,13 @@ class WelcomeEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $user;
+    public $id;
+
+    public function __construct($user,$id)
     {
-        //
+        $this->user = $user;
+        $this->id   = $id;
     }
 
     /**
@@ -47,6 +51,13 @@ class WelcomeEmail extends Mailable
         );
     }
 
+    public function build()
+    {
+        return $this->markdown('emails.welcome')->with([
+            'user' => $this->user,
+            'id' => $this->id,
+        ]);
+    }
     /**
      * Get the attachments for the message.
      *

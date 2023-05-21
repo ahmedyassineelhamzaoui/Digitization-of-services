@@ -217,9 +217,7 @@ class FormController extends Controller
                  ]);
 
                  $user = auth()->user();
-                 Mail::to($user->email)->send(new WelcomeEmail($user));
-
-
+                 Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id));
 
                  return response()->json([
                    'message' => 'paiment a été créer avec succés'
