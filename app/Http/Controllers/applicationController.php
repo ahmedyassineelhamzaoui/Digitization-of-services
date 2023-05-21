@@ -22,14 +22,24 @@ class applicationController extends Controller
     }
     public function index()
     {
-        $userPersonelinfos = Personelinfo::all(); 
-        $files = File::all(); 
-        $conjoints = Conjoint::all(); 
-        $previouss = Previous::all(); 
-        $applications = Application::paginate(5); 
-
-
-        return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications'));
+        $user = auth()->user();
+        if($user->hasPermissionTo('modifier-utilisateur')){
+            $userPersonelinfos = Personelinfo::all(); 
+            $files = File::all(); 
+            $conjoints = Conjoint::all(); 
+            $previouss = Previous::all(); 
+            $applications = Application::paginate(5); 
+    
+            return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications'));    
+        }else{
+            $userPersonelinfos = Personelinfo::all(); 
+            $files = File::all(); 
+            $conjoints = Conjoint::all(); 
+            $previouss = Previous::all(); 
+            $applications = $user->applications()->paginate(5); 
+        
+            return view('layouts.dashboard.demand-dash', compact('files','userPersonelinfos','conjoints','applications')); 
+        }
     }
     public function showFiles($id)
     {

@@ -25,16 +25,15 @@ namespace App\Http\Controllers;
         {
             $request->validate([
                 'full_name' => 'required|string|max:255|min:3',
-                // 'last_name' => 'required|string|max:255|min:2',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8',
             ]);
             $user = User::create([
                 'full_name' => $request->full_name,
-                // 'last_name' => $request->last_name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
+            $user->assignRole('utilisateur');
             return redirect()->route('login')->with('success','user created succesfuly');
         }
 
