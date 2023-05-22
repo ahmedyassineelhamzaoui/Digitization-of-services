@@ -27,7 +27,32 @@
                 <form style="width: 23rem;" action="{{ route('connection') }}" method="POST">
                     @csrf
 
-                    <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+                    <div class="row mt-2">
+                        <div class="col-8">
+                            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign In</h3>
+                        </div>
+                        <div class="col-2">
+                            <a
+                                class="btn btn-primary btn-lg btn-floating border-0 rounded-circle mb-1"
+                                style="background-color: #3b5998;"
+                                href="/auth/facebook"
+                                role="button"
+                                >
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                        </div>
+                        <div class="col-2">
+                            <a
+                                class="btn btn-primary btn-lg btn-floating border-0 rounded-circle mb-1"
+                                style="background-color: #dd4b39;"
+                                href="/auth/google"
+                                role="button"
+                                ><i class="fab fa-google"></i
+                                >
+                            </a>
+                        </div>
+                    </div>
+
 
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example18">Email address</label>

@@ -15,12 +15,37 @@
                     </a>
                 </div>
 
-                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-3 pt-5 pt-xl-0 mt-xl-n5">
 
                     <form style="width: 23rem;" action="/register" method="POST">
                         @csrf
 
-                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Up</h3>
+                        <div class="row mt-2">
+                            <div class="col-8">
+                                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Up</h3>
+                            </div>
+                            <div class="col-2">
+                                <a
+                                    class="btn btn-primary btn-lg btn-floating border-0 rounded-circle mb-1"
+                                    style="background-color: #3b5998;"
+                                    href="/auth/facebook"
+                                    role="button"
+                                    >
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                            </div>
+                            <div class="col-2">
+                                <a
+                                    class="btn btn-primary btn-lg btn-floating border-0 rounded-circle mb-1"
+                                    style="background-color: #dd4b39;"
+                                    href="/auth/google"
+                                    role="button"
+                                    ><i class="fab fa-google"></i
+                                    >
+                                </a>
+                            </div>
+                        </div>
+
 
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form2Example17">Full Name</label>
@@ -48,9 +73,24 @@
 
                         <div class="pt-1 mb-4">
                             <button class="btn btn-warning btn-lg btn-block text-white w-100" type="submit" style="padding: .5rem 2.5rem;">Sign Up</button>
+                            {{-- <div class="container-fluid mt-2">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a href="/auth/google" class="btn btn-danger btn-lg btn-block text-white w-100" role="button">
+                                            <i class="fa-brands fa-google  text-white"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="/auth/facebook" class="btn btn-primary btn-lg btn-block text-white w-100" role="button">
+                                            <i class="fab fa-facebook-f text-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div> --}}
                         </div>
 
                         <p>Do you have an account? <a href="{{url('login')}}" class="link-warning">Login here</a></p>
+
 
                     </form>
 

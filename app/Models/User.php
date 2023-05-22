@@ -12,7 +12,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable,softDeletes,HasRoles;
 
@@ -26,6 +26,8 @@ class User extends Authenticatable
         'email',
         'status',
         'password',
+        'social_id',
+        'social_type'
     ];
 
     /**

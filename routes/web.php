@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\applicationController;
 
 
@@ -67,6 +68,15 @@ Route::get('/', function () {
 Route::get('anl-detail',function () {
     return view('anl-detail');
 });
+
+
+
+Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
+
+
+// Route::get('auth/facebook', [SocialiteController::class, 'redirectToFacebook']);
+// Route::get('auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback']);
 
 
 
