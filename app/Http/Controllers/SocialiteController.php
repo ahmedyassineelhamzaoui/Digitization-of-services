@@ -50,7 +50,8 @@ class SocialiteController extends Controller
                     'social_id' => $user->id,
                     'social_type' => 'google'
                 ]);
-
+                $new_user->assignRole('utilisateur');
+        
                 Auth::login($new_user);
                 // return redirect('/home');
                 return redirect()->route('home')->with('success', 'Welcome '. $new_user->full_name);

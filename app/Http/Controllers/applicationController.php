@@ -23,7 +23,7 @@ class applicationController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if($user->hasPermissionTo('modifier-utilisateur')){
+        if($user->hasPermissionTo('modifier-demandes')){
             $userPersonelinfos = Personelinfo::all(); 
             $files = File::all(); 
             $conjoints = Conjoint::all(); 
