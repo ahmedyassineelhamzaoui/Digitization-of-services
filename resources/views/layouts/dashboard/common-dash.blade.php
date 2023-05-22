@@ -13,7 +13,7 @@
 	<!-- ================== BEGIN core-css ================== -->
     {{-- <link rel="stylesheet" href="assets/css/vendor.min.css"> --}}
     <link rel="stylesheet" href={{url('assets/css/vendor.min.css')}}>
-
+    <link rel="stylesheet" href="css/app.css">
         {{-- <link rel="stylesheet" href="assets/css/default/app.min.css"> --}}
     <link rel="stylesheet" href={{url('assets/css/default/app.min.css')}}>
 
@@ -75,28 +75,6 @@
                             </a>
                             <a href="javascript:;" class="dropdown-item media">
                                 <div class="media-left">
-                                    <img src="assets/img/user/user-1.jpg" class="media-object" alt="" />
-                                    <i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="media-heading">John Smith</h6>
-                                    <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                                    <div class="text-muted fs-10px">25 minutes ago</div>
-                                </div>
-                            </a>
-                            <a href="javascript:;" class="dropdown-item media">
-                                <div class="media-left">
-                                    <img src="assets/img/user/user-2.jpg" class="media-object" alt="" />
-                                    <i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="media-heading">Olivia</h6>
-                                    <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
-                                    <div class="text-muted fs-10px">35 minutes ago</div>
-                                </div>
-                            </a>
-                            <a href="javascript:;" class="dropdown-item media">
-                                <div class="media-left">
                                     <i class="fa fa-plus media-object bg-gray-500"></i>
                                 </div>
                                 <div class="media-body">
@@ -124,7 +102,7 @@
                         <a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
                             <img src="assets/img/user/user-15.jpg" alt="" />
                             <span>
-                                <span class="d-none d-md-inline">Toufik Shima</span>
+                                <span class="d-none d-md-inline"></span>
                                 <b class="caret"></b>
                             </span>
                         </a>
@@ -137,7 +115,10 @@
                             <a href="javascript:;" class="dropdown-item">Calendar</a>
                             <a href="javascript:;" class="dropdown-item">Setting</a>
                             <div class="dropdown-divider"></div>
-                            <a href="javascript:;" class="dropdown-item">Log Out</a>
+                            <form action="{{route('user.logout')}}" method="POST">
+                              @csrf
+                              <button type="submit" class="dropdown-item" name="logout">Déconexion</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -160,11 +141,11 @@
                                 <div class="menu-profile-info">
                                     <div class="d-flex align-items-center">
                                         <div class="flex-grow-1">
-                                            Toufik Shima
+                                            {{ Str::limit(auth()->user()->full_name,20)}}
                                         </div>
                                         <div class="menu-caret ms-auto"></div>
                                     </div>
-                                    <small>Front end developer</small>
+                                    <small>{{auth()->user()->roles[0]->name}}r</small>
                                 </div>
                             </a>
                         </div>
@@ -198,17 +179,23 @@
                                 </div>
                                 <div class="menu-text">Scrum Board</div>
                             </a>
-                            <a href="index.html" class="menu-link">
+                            <a href="{{url('utilisateurs')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
                                 <div class="menu-text">Utilisateurs</div>
                             </a>
-                            <a href="index.html" class="menu-link">
+                            <a href="{{url('roles')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
                                 <div class="menu-text">Rôles</div>
+                            </a>
+                            <a href="{{url('demandes')}}" class="menu-link">
+                                <div class="menu-icon">
+                                    <i class="fa fa-list-check"></i>
+                                </div>
+                                <div class="menu-text">demandes</div>
                             </a>
                         </div>
 
@@ -227,7 +214,7 @@
             <!-- END #sidebar -->
 
             <!-- BEGIN #content -->
-            <div id="content" class="app-content" style="min-height: 100vh; background: url(assets/img/cover/cover-scrum-board.png) no-repeat fixed; background-size: 360px; background-position: right bottom;">
+            <div id="content" class="app-content" style="min-height: 100vh; background-size: 360px; background-position: right bottom;">
                 <div class="d-flex align-items-center mb-3">
                     <div>
                         <ol class="breadcrumb">
@@ -242,7 +229,7 @@
                     </div>
 
                     <div class="ms-auto">
-                    <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> @yield('button-name')</a>
+                    <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i>@yield('button-name')</a>
                     </div>
                 </div>
 
@@ -261,7 +248,7 @@
         <!-- END #app -->
 
         <!-- TASK MODAL TO ADD PRODUCT -->
-        <div class="modal fade" id="modal-task">
+        {{-- <div class="modal fade" id="modal-task">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="scripts.php" method="POST" id="form-task">
@@ -329,12 +316,12 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
 
         <!-- EDIT TASK MODAL -->
-        <div class="modal fade" id="edit-modal-task">
+        {{-- <div class="modal fade" id="edit-modal-task">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="scripts.php" method="POST" id="form-task">
@@ -401,7 +388,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Editor -->
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
@@ -410,7 +397,7 @@
         <script src="assets/js/vendor.min.js"></script>
         <script src="assets/js/app.min.js"></script>
         <!-- ================== END core-js ================== -->
-        <script src="script.js"></script>
+        <script src="js/script.js"></script>
         @yield('script')
 
     </body>

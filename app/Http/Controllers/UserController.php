@@ -17,16 +17,40 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+    public function display()
+    {
+        return view('layouts.dashboard.common-dash');
+    }
     public function index()
     {
         $user=auth()->user();
         if(!$user){
             return view('errors.404');
          }
-    
+
         $roles = Role::all();
-        $users=User::all();
-        return view('layouts.dashboard.user-dash',compact('users'));
+        $users=User::paginate(5);
+        $roles=Role::all();
+        return view('layouts.dashboard.user-dash',compact('users','roles'));
+    }
+    public function editUser($id)
+    {
+        $roles =Role::all();
+        $user = User::find($id);
+        if($user){
+            if(!auth()->user()->hasPermissionTo('modifier-utilisateur')){
+                return view('errors.403');
+            }
+            return response()->json([
+                'user' => $user,
+                'roles' => $roles,
+                'role_name' => $user->roles[0]->name
+            ]);
+        }
+        return response()->json([
+            'message' => 'utilisateur n\'éxiste pas'
+        ],404);
+        
     }
     public function updateProfile(Request $request)
     {
@@ -87,33 +111,27 @@ class UserController extends Controller
     }
     public function deleteUser(Request $request)
     {
-        $user = User::find($request->id);
+        $user = User::find($request->user_deletedId);
         if($user){
             $user->delete();
-            return response()->json([
-                'status' => 'success',
-                'message' => 'user deleted successfuly'
-            ]);
+            return redirect()->back()->with('success','l\'utilisateur a été bien supprimer');
         }
-        return response()->json([
-            'status' => 'error',
-            'message' => 'user not found'
-        ]);
+        return redirect()->back()->with('error','l\'utilisateur n\'éxiste pas');
     }
     public function updateUser(Request $request)
     {
         $request->validate([
-            'first_name' => 'required|string|max:255|min:3',
-            'last_name' => 'required|string|max:255|min:2',
+            'full_name' => 'required|string|max:255|min:3',
             'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:8',
         ]);
-        $user = User::find($request->id)->first();
+        $user = User::find($request->user_editId);
         if($user){
-               if($request->has('first_name')){
-                   $user->first_name = $request->first_name;
+               if($request->has('full_name')){
+                   $user->full_name = $request->full_name;
                }
-               if($request->has('last_name')){
-                   $user->last_name = $request->last_name;
+               if($request->has('role_name')){
+                   $user->syncRoles([$request->input('role_name')]);        
                }
                if($request->has('email')){
                    $useremail=User::where('email',$request->email)->first();
@@ -123,22 +141,47 @@ class UserController extends Controller
                         }else{
                             return response()->json([
                                 'status'  => 'error',
-                                'message' => 'email has already been token',
+                                'message' => 'email has already been taken',
                             ]);
                         }
                     }else{
                         $user->email = $request->email;
                     }
                }
-                $user->save();
+               if($request->has('password')){
+                    $user->password= $request->password;
+               }
+               $user->save();
                return response()->json([
-                     'status' => 'success',
-                     'message' => 'user updated successfuly'
+                     'message' => 'l\'utilisateur a été bien modifier'
                ]);
         }
         return response()->json([
-            'status' => 'error',
-            'message' => 'user not found'
+            'message' => 'l\'utilisateur n\'éxiste pas'
+        ]);
+    }
+    public function createUser(Request $request)
+    {
+        $user=auth()->user();
+        if(!$user){
+            return view('errors.404');
+        }
+        if(!$user->hasPermissionTo('créer-utilisateur')){
+            return view('errors.403');
+        }
+        $request->validate([
+            'full_name' => 'required|string|max:255|min:3',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+        $user=User::create([
+            'full_name' => $request->full_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $user->assignRole($request->role_name);
+        return response()->json([
+            'message' => 'l\'utilisateur a été bien créer'
         ]);
     }
 }

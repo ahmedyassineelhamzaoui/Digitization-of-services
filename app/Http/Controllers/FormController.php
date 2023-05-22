@@ -8,6 +8,7 @@ use App\Models\File;
 use App\Models\Personelinfo;
 use App\Models\Previous;
 use App\Models\Paiment;
+use App\Models\Application;
 use Dompdf\Dompdf;
 
 
@@ -35,7 +36,7 @@ class FormController extends Controller
 
         public function storeInformation(Request $request)
         {
-            if($request->curent_number==1){
+            if($request->has('registration_number')){
                 $validator = $request->validate([
                     'registration_number' => 'required|string',
                     'first_name' => 'required|string|min:2',
@@ -128,7 +129,7 @@ class FormController extends Controller
              ]);
 
             }
-            else if($request->curent_number==2){
+            if($request->has('appointment_decision')){
 
                 $request->validate([
                     'appointment_decision' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
@@ -200,7 +201,10 @@ class FormController extends Controller
 
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
             }
-            else if($request->curent_number==3){
+            if($request->has('phone_paiment')){
+                $application = new Application();
+                $application->status ='pending';
+                $application->save();
                  $request->validate([
                      'phone_paiment' => 'required|max:20',
                      'refrence_paiment' => 'required|min:10',
@@ -222,7 +226,8 @@ class FormController extends Controller
                  ]);
 
 
-            }else if($request->curent_number == 4){
+            }
+            if($request->has('print_info')){
 
                 $personelinfo = personelinfo::where('id',$request->personel_id)->first();
                 $previous =Previous::where('personelinfos_id',$request->personel_id)->first();
@@ -247,7 +252,9 @@ class FormController extends Controller
                         ->header('Content-Type', 'application/pdf')
                         ->header('Content-Disposition', 'attachment; filename="inscription.pdf"');
                 return redirect()->back()->with('succès','votre commande a été bien télecharger');
-            }else if($request->curent_number == 5){
+            }
+            if($request->has('print_payment')){
+
                 $paiment =Paiment::where('personelinfos_id',$request->personel_id)->first();
                 // dd($data);
                 $dompdf = new Dompdf();

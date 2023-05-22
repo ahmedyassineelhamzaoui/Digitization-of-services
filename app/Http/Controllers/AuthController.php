@@ -52,7 +52,7 @@ namespace App\Http\Controllers;
 
             }
 
-
+            Auth::user()->update(['status' => 'online']);
             $user = Auth::user();
             return redirect()->route('home')->with('success', 'Welcome '. $user->full_name);
 
@@ -60,10 +60,8 @@ namespace App\Http\Controllers;
 
         public function logout()
         {
+            Auth::user()->update(['status' => 'offline']);  
             Auth::logout();
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Successfully logged out',
-            ]);
+            return redirect()->route('home');
         }
     }

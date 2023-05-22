@@ -61,7 +61,6 @@
                                 <div class="invalid-feedback text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example28">Password</label>
                         <input type="password" name="password" value="{{ old('password') }}" id="form2Example28" class="form-control form-control-lg @error('password') is-invalid @enderror"/>
