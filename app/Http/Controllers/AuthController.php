@@ -33,6 +33,7 @@ namespace App\Http\Controllers;
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
+            $user->assignRole('utilisateur');
             return redirect()->route('login')->with('success','user created succesfuly');
         }
 

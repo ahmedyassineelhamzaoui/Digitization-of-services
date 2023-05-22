@@ -23,21 +23,21 @@ class UserSeeder extends Seeder
             ]);
             $admin->assignRole('Administrateur');
         
-            $commercial = User::create([
+            $user = User::create([
                 'full_name' => 'ahmed', 
                 'email' => 'ahmed@gmail.com',
                 'password' => bcrypt('Password123!'),
             ]);
         
-            $commercial->assignRole('utilisateur');
+            $user->assignRole('utilisateur');
         
-            $user = User::create([
+            $controller = User::create([
                 'full_name' => 'said', 
                 'email' => 'said@gmail.com',
                 'password' => bcrypt('12345678'),
             ]);
         
-            $user->assignRole('contrôleur');
+            $controller->assignRole('contrôleur');
     
     }
 }

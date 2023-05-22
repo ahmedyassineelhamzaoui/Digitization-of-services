@@ -35,7 +35,6 @@ Route::controller(UserController::class)->group(function(){
     Route::delete('utilisateurs','deleteUser')->name('delete.user');
     Route::put('utilisateurs','updateUser')->name('update.user');
     Route::post('utilisateurs','createUser')->name('create.user');
-    Route::get('dashboard','display');
 });
 Route::controller(FormController::class)->group(function(){
    Route::post('/formulaire','storeInformation')->name('send.Information');
@@ -51,10 +50,11 @@ Route::controller(RoleController::class)->group(function(){
 });
 
 Route::controller(applicationController::class)->group(function(){
-   Route::get('demandes','index');
+   Route::get('demandes','index')->name('demande');
    Route::get('show-files/{id}','showFiles');
    Route::put('demandes','updateStatus')->name('update.status');
    Route::get('edit-application/{id}','showEditform');
+   Route::delete('demandes','deleteApplication')->name('delete.application');
 });
 Route::get('/register', function () {
     return view('register');

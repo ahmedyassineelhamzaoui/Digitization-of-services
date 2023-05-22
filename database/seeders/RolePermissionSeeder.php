@@ -31,7 +31,8 @@ class RolePermissionSeeder extends Seeder
             'supprimer-catégorie',
             'lister-demandes',
             'modifier-demandes',
-            'supprimer-demandes',   
+            'supprimer-demandes',
+            'voir-demande-action'  
         ];
        
         foreach ($permissions as $permission) {
@@ -45,7 +46,7 @@ class RolePermissionSeeder extends Seeder
         Role::create(['name' => $admin])->givePermissionTo(Permission::all());
 
         Role::create(['name' => $controleur])->givePermissionTo([
-            array_slice($permissions, 12, 14)
+            $permissions[13],  $permissions[15],
         ]);
 
         Role::create(['name' => $user])->givePermissionTo([

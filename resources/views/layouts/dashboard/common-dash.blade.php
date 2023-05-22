@@ -179,18 +179,22 @@
                                 </div>
                                 <div class="menu-text">Scrum Board</div>
                             </a>
+                            @can('lister-utilisateurs')
                             <a href="{{url('utilisateurs')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
                                 <div class="menu-text">Utilisateurs</div>
                             </a>
+                            @endcan
+                            @can('lister-rôles')
                             <a href="{{url('roles')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
                                 <div class="menu-text">Rôles</div>
                             </a>
+                            @endcan
                             <a href="{{url('demandes')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>

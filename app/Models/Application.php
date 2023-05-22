@@ -12,4 +12,9 @@ class Application extends Model
         'status',
         'message'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }

@@ -60,6 +60,9 @@ function deleteUser(id){
 function deleteRole(id){
   document.querySelector('#role_deletedId').value=id
 }
+function deleteApplication(id){
+  document.querySelector('#app_deletedId').value=id
+}
 $(document).ready(function() {
     $(`#step-1-form`).submit(function(event) {
         event.preventDefault();

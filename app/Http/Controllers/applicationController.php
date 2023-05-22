@@ -22,14 +22,24 @@ class applicationController extends Controller
     }
     public function index()
     {
-        $userPersonelinfos = Personelinfo::all(); 
-        $files = File::all(); 
-        $conjoints = Conjoint::all(); 
-        $previouss = Previous::all(); 
-        $paiments = Paiment::paginate(5); 
-
-
-        return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','paiments'));
+        $user = auth()->user();
+        if($user->hasPermissionTo('modifier-utilisateur')){
+            $userPersonelinfos = Personelinfo::all(); 
+            $files = File::all(); 
+            $conjoints = Conjoint::all(); 
+            $previouss = Previous::all(); 
+            $applications = Application::paginate(5); 
+    
+            return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications'));    
+        }else{
+            $userPersonelinfos = Personelinfo::all(); 
+            $files = File::all(); 
+            $conjoints = Conjoint::all(); 
+            $previouss = Previous::all(); 
+            $applications = $user->applications()->paginate(5); 
+        
+            return view('layouts.dashboard.demand-dash', compact('files','userPersonelinfos','conjoints','applications')); 
+        }
     }
     public function showFiles($id)
     {
@@ -64,5 +74,14 @@ class applicationController extends Controller
           'error' => 'la demande n\'éxiste pas'
       ]);
       
+    }
+    public function deleteApplication(Request $request)
+    {
+        $application = Application::find($request->app_deletedId);
+        if($application){
+            $application->delete();
+            return redirect()->back()->with('success','la demande a  été bien supprimer');
+        }
+        return redirect()->back()->with('error','la demande n\'éxiste pas');
     }
 }

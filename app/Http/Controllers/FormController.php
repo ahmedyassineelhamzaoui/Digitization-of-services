@@ -204,6 +204,7 @@ class FormController extends Controller
             if($request->has('phone_paiment')){
                 $application = new Application();
                 $application->status ='pending';
+                $application->user_id =auth()->user()->id;
                 $application->save();
                  $request->validate([
                      'phone_paiment' => 'required|max:20',
@@ -217,9 +218,7 @@ class FormController extends Controller
                  ]);
 
                  $user = auth()->user();
-                 Mail::to($user->email)->send(new WelcomeEmail($user));
-
-
+                 Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id));
 
                  return response()->json([
                    'message' => 'paiment a été créer avec succés'
