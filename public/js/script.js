@@ -486,3 +486,7 @@ $(document).ready(function() {
       }
     })
 });
+function  deleteNotification(id)
+{
+    document.querySelector("#notification_deletedId").value=id
+}

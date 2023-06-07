@@ -7,6 +7,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\applicationController;
+use App\Http\Controllers\NotificationController;
 
 
 /*
@@ -55,6 +56,11 @@ Route::controller(applicationController::class)->group(function(){
    Route::put('demandes','updateStatus')->name('update.status');
    Route::get('edit-application/{id}','showEditform');
    Route::delete('demandes','deleteApplication')->name('delete.application');
+});
+Route::controller(NotificationController::class)->group(function(){
+    Route::get('notifications','index')->name('Notification');
+    Route::get('MarqueAsread','marqueAllasread');
+    Route::delete('deleteNotification','deleteNotification')->name('delete.notification');
 });
 Route::get('/register', function () {
     return view('register');

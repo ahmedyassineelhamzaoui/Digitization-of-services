@@ -10,7 +10,8 @@ use App\Models\Previous;
 use App\Models\Paiment;
 use App\Models\Application;
 use Dompdf\Dompdf;
-
+use App\Notifications\documentAdded;
+use Illuminate\Support\Facades\Notification;
 
 // use Illuminate\Support\Facades\Mail;
 // use App\Mail\OrderCreated;
@@ -218,6 +219,8 @@ class FormController extends Controller
                  ]);
 
                  $user = auth()->user();
+                 $admin = User::role('Administrateur')->first();
+                 Notification::send($admin, new documentAdded($user->id));
                  Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id));
 
                  return response()->json([
@@ -270,6 +273,7 @@ class FormController extends Controller
                 // Render the PDF
                 $dompdf->render();
                 $output = $dompdf->output();
+
                 return response($output, 200)
                         ->header('Content-Type', 'application/pdf')
                         ->header('Content-Disposition', 'attachment; filename="paiment.pdf"');

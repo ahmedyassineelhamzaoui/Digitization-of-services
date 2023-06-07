@@ -60,38 +60,25 @@
                     <div class="navbar-item dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="navbar-link dropdown-toggle icon">
                             <i class="fa fa-bell"></i>
-                            <span class="badge">5</span>
+                            <span class="badge"> {{ auth()->user()->unreadNotifications->count()}}</span>
                         </a>
                         <div class="dropdown-menu media-list dropdown-menu-end">
-                            <div class="dropdown-header">NOTIFICATIONS (5)</div>
+                            <div class="dropdown-header">NOTIFICATIONS 
+                            </div>
+                            @forelse(auth()->user()->unreadNotifications as $notif)
                             <a href="javascript:;" class="dropdown-item media">
-                                <div class="media-left">
-                                    <i class="fa fa-bug media-object bg-gray-500"></i>
+                                {{-- <div class="media-left">
+                                    <img style="width:40px;height:40px;" src="assets/images/{{$notif->data['picture']}}" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
-                                    <div class="text-muted fs-10px">3 minutes ago</div>
-                                </div>
+                                    <h6 class="media-heading"{{$notif->data['user']}} {{ $notif->data['title']}} <i class="fa fa-exclamation-circle text-danger"></i></h6>
+                                </div> --}}
                             </a>
-                            <a href="javascript:;" class="dropdown-item media">
-                                <div class="media-left">
-                                    <i class="fa fa-plus media-object bg-gray-500"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="media-heading"> New User Registered</h6>
-                                    <div class="text-muted fs-10px">1 hour ago</div>
-                                </div>
-                            </a>
-                            <a href="javascript:;" class="dropdown-item media">
-                                <div class="media-left">
-                                    <i class="fa fa-envelope media-object bg-gray-500"></i>
-                                    <i class="fab fa-google text-warning media-object-icon fs-14px"></i>
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="media-heading"> New Email From John</h6>
-                                    <div class="text-muted fs-10px">2 hour ago</div>
-                                </div>
-                            </a>
+                            @empty
+                            <div class="media-body">
+                                <h6 class="media-heading">il y a pas de notification <i class="fa fa-exclamation-circle text-danger"></i></h6>
+                            </div>
+                            @endforelse
                             <div class="dropdown-footer text-center">
                                 <a href="javascript:;" class="text-decoration-none">View more</a>
                             </div>
@@ -200,6 +187,12 @@
                                     <i class="fa fa-list-check"></i>
                                 </div>
                                 <div class="menu-text">demandes</div>
+                            </a>
+                            <a href="{{url('notifications')}}" class="menu-link">
+                                <div class="menu-icon">
+                                    <i class="fa fa-list-check"></i>
+                                </div>
+                                <div class="menu-text">notification</div>
                             </a>
                         </div>
 
