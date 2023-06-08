@@ -434,54 +434,61 @@ $(document).ready(function() {
           $('#comment').after('<span id="error-reason" class="text-danger fs-7"><strong> il faut ajouté une raison </strong></span>');
         }else{
           var formData = $(this).serialize();
-          var url = $(this).attr('action')
-          $.ajax({
-            type : 'POST',
-            data : formData ,
-            url : url, 
-            success : function(response){
-              if(response.error){
-                $("#status-edit-error").addClass('show')
-                $("#status-edit-error").removeClass('hide')
-                $(".status-role-error").text(response.error)
+          $('#confirmedit-application').modal('show');
+          $('#remove-application').submit(function(e){
+            $.ajax({
+              type : 'POST',
+              data : formData ,
+              url : url, 
+              success : function(response){
+                if(response.error){
+                  $("#status-edit-error").addClass('show')
+                  $("#status-edit-error").removeClass('hide')
+                  $(".status-role-error").text(response.error)
+                }
+                if(response.message)
+                {
+                  $("#status-edit-alert").addClass('show')
+                  $("#status-edit-alert").removeClass('hide')
+                  $(".status-role-success").text(response.message);
+                }
+              },
+              error : function(xhr,status,error){
+    
               }
-              if(response.message)
-              {
-                $("#status-edit-alert").addClass('show')
-                $("#status-edit-alert").removeClass('hide')
-                $(".status-role-success").text(response.message);
-              }
-            },
-            error : function(xhr,status,error){
-  
-            }
-          });
+            });
+          })
+          
          
         }
       }else{
         var formData = $(this).serialize();
         var url = $(this).attr('action')
-        $.ajax({
-          type : 'POST',
-          data : formData ,
-          url : url, 
-          success : function(response){
-              if(response.error){
-                $("#status-edit-error").addClass('show')
-                $("#status-edit-error").removeClass('hide')
-                $(".status-role-error").text(response.error)
-              }
-              if(response.message)
-              {
-                $("#status-edit-alert").addClass('show')
-                $("#status-edit-alert").removeClass('hide')
-                $(".status-role-success").text(response.message);
-              }
-              },
-          error : function(xhr,status,error){
-
-          }
-        });
+        $('#confirmedit-application').modal('show');
+        $('#remove-application').submit(function(e){
+          $.ajax({
+            type : 'POST',
+            data : formData ,
+            url : url, 
+            success : function(response){
+                if(response.error){
+                  $("#status-edit-error").addClass('show')
+                  $("#status-edit-error").removeClass('hide')
+                  $(".status-role-error").text(response.error)
+                }
+                if(response.message)
+                {
+                  $("#status-edit-alert").addClass('show')
+                  $("#status-edit-alert").removeClass('hide')
+                  $(".status-role-success").text(response.message);
+                }
+                },
+            error : function(xhr,status,error){
+  
+            }
+          });
+        })
+        
        
       }
     })

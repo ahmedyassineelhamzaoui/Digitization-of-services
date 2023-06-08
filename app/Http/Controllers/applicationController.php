@@ -29,7 +29,7 @@ class applicationController extends Controller
             $conjoints = Conjoint::all(); 
             $previouss = Previous::all(); 
             $applications = Application::paginate(5); 
-    
+
             return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications'));    
         }else{
             $userPersonelinfos = Personelinfo::all(); 
@@ -60,15 +60,68 @@ class applicationController extends Controller
     }
     public function updateStatus(Request $request)
     {
+      $authUser = auth()->user();
       $application = Application::find($request->status_id);
       if($application){
         
-        $application->status = $request->input('status_name');
-        $application->message = $request->comment;
-        $application->save();
-        return response()->json([
-            'message' => 'la demandes a été bien modifier'
-          ]);
+        $controleur1 = User::role('controleur 1')->first();
+        $controleur2 = User::role('controleur 2')->first();
+        $controleur3 = User::role('controleur 3')->first();
+        
+        if($authUser->roles[0]->name == 'controleur 1'){
+            if($request->input('status_name') == 'accept'){
+                $application->status = 'in progress';
+                $application->message = $request->comment;
+                $application->editable2='yes';
+                $application->save();
+                $controleur2->givePermissionTo([
+                    'voir-demande-action'
+                ]);
+                return response()->json([
+                    'message' => 'la demandes a été bien modifier'
+                ]);
+            }else{
+                $application->status = $request->input('status_name');
+                $application->message = $request->comment;
+                $application->editable2='no';
+                $application->save();
+                return response()->json([
+                    'message' => 'la demandes a été bien modifier'
+                ]);
+            }
+            
+        }else
+        if($authUser->roles[0]->name == 'controleur 2'){
+            if($request->input('status_name') == 'accept'){
+                $application->status = 'in progress';
+                $application->message = $request->comment;
+                $application->editable3='yes';
+                $application->save();
+                $controleur3->givePermissionTo([
+                    'voir-demande-action'
+                ]);
+                return response()->json([
+                    'message' => 'la demandes a été bien modifier'
+                ]);
+            }else{
+                $application->status = $request->input('status_name');
+                $application->message = $request->comment;
+                $application->editable3='no';
+                $application->save();
+                return response()->json([
+                    'message' => 'la demandes a été bien modifier'
+                ]);
+            }
+        }else
+        if($authUser->roles[0]->name == 'controleur 3'){
+            $application->status = $request->input('status_name');
+            $application->message = $request->comment;
+            $application->save();
+            return response()->json([
+                'message' => 'la demandes a été bien modifier'
+            ]);
+        }
+
       }
       return response()->json([
           'error' => 'la demande n\'éxiste pas'
