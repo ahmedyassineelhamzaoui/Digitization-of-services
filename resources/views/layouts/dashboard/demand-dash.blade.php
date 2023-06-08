@@ -155,7 +155,6 @@
                         <div class="mb-3">
                             <label class="form-label">Status</label>
                             <select class="form-select" name="status_name" id="status_name">
-                                <option value="pending">en attente</option>
                                 <option value="accept">accepter</option>
                                 <option value="decline">refuser</option>
                             </select>
