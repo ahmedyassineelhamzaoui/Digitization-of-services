@@ -135,7 +135,7 @@
     <div class="modal fade" id="edit-status" >
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="{{route('update.status')}}" method="POST" id="update-status">
+                <form action="{{route('update.status')}}" method="POST" >
                     @method('PUT')
                     @csrf
                     <div class="modal-header">

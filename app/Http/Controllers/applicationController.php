@@ -12,6 +12,8 @@ use App\Models\Previous;
 use App\Models\Paiment;
 use App\Models\Application;
 use Dompdf\Dompdf;
+use App\Notifications\documentAction;
+use Illuminate\Support\Facades\Notification;
 
 
 class applicationController extends Controller
@@ -63,11 +65,12 @@ class applicationController extends Controller
       $authUser = auth()->user();
       $application = Application::find($request->status_id);
       if($application){
-        
+        $useraction =  User::find($application->user_id); 
         $controleur1 = User::role('controleur 1')->first();
         $controleur2 = User::role('controleur 2')->first();
         $controleur3 = User::role('controleur 3')->first();
-        
+        $admin       = User::role('Administrateur')->first();
+
         if($authUser->roles[0]->name == 'controleur 1'){
             if($request->input('status_name') == 'accept'){
                 $application->status = 'in progress';
@@ -75,9 +78,14 @@ class applicationController extends Controller
                 $application->editable2='yes';
                 $application->editable1='no';
                 $application->save();
+                dd($useraction->name);
                 $controleur2->givePermissionTo([
                     'voir-demande-action'
                 ]);
+                $operation = $request->input('status_name');
+                Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
                 return response()->json([
                     'message' => 'la demandes a été bien modifier'
                 ]);
@@ -87,6 +95,10 @@ class applicationController extends Controller
                 $application->editable1='no';
                 $application->editable2='no';
                 $application->save();
+                $operation = $request->input('status_name');
+                Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
                 return response()->json([
                     'message' => 'la demandes a été bien modifier'
                 ]);
@@ -103,6 +115,10 @@ class applicationController extends Controller
                 $controleur3->givePermissionTo([
                     'voir-demande-action'
                 ]);
+                $operation = $request->input('status_name');
+                Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
                 return response()->json([
                     'message' => 'la demandes a été bien modifier'
                 ]);
@@ -112,6 +128,10 @@ class applicationController extends Controller
                 $application->editable2='no';
                 $application->editable3='no';
                 $application->save();
+                $operation = $request->input('status_name');
+                Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
                 return response()->json([
                     'message' => 'la demandes a été bien modifier'
                 ]);
@@ -121,6 +141,10 @@ class applicationController extends Controller
             $application->status = $request->input('status_name');
             $application->message = $request->comment;
             $application->save();
+            $operation = $request->input('status_name');
+            Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
+            Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
+            Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
             return response()->json([
                 'message' => 'la demandes a été bien modifier'
             ]);

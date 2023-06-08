@@ -24,7 +24,7 @@
             <div class="w-full mt-2 d-flex align-items-center justify-content-between rounded-lg bg-gray-200 border-gray-300 py-3 px-4">
                 <div>
                     <div class="d-flex align-items-center">
-                        <img style="width:40px;height:40px"  src="assets/images/document.png" alt="picture">
+                        <img style="width:40px;height:40px"  src="assets/images/{{$notification->data['picture']}}" alt="picture">
 
                         <div class="d-flex align-items-center ">
                             <div> <p>{{ $notification->data['user'] }} {{ $notification->data['title'] }}                                 <a class="text-blue-600 ml-2" href="{{ $notification->data['link'] }}">voir les {{ $notification->data['pages'] }}</a>
