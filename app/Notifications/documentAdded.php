@@ -10,6 +10,7 @@ use App\Models\User;
 class documentAdded extends Notification
 {
     use Queueable;
+    private $user_id;
     private $feeding;
     /**
      * Create a new notification instance.
@@ -45,11 +46,11 @@ class documentAdded extends Notification
        $user = User::find($this->user_id);
        return [
         'accept' => 'yes',
-        'user'   => $user->name,
+        'user'   => $user->full_name,
         'user_id' => $user->id,
         'link'  => 'demandes',
         'pages' => 'demandes',
-        'title' => 'un utilisateur à créer une demande',
+        'title' => 'à créer une demande',
         'picture' => 'document.png',
        ];
     }

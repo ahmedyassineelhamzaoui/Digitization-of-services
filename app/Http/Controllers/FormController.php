@@ -219,8 +219,16 @@ class FormController extends Controller
                  ]);
 
                  $user = auth()->user();
-                 $admin = User::role('Administrateur')->first();
-                 Notification::send($admin, new documentAdded($user->id));
+                 $admin       = User::role('Administrateur')->first();
+                 $controleur1 = User::role('controleur 1')->first();
+                 $controleur2 = User::role('controleur 2')->first();
+                 $controleur3 = User::role('controleur 3')->first();
+
+                 Notification::send($admin      , new documentAdded($user->id));
+                 Notification::send($controleur1, new documentAdded($user->id));
+                 Notification::send($controleur2, new documentAdded($user->id));
+                 Notification::send($controleur3, new documentAdded($user->id));
+
                  Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id));
 
                  return response()->json([

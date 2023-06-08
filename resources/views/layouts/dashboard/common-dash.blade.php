@@ -67,20 +67,20 @@
                             </div>
                             @forelse(auth()->user()->unreadNotifications as $notif)
                             <a href="javascript:;" class="dropdown-item media">
-                                {{-- <div class="media-left">
-                                    <img style="width:40px;height:40px;" src="assets/images/{{$notif->data['picture']}}" alt="">
+                                <div class="media-left">
+                                    <img style="width:20px;height:20px;" src="assets/images/{{$notif->data['picture']}}" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <h6 class="media-heading"{{$notif->data['user']}} {{ $notif->data['title']}} <i class="fa fa-exclamation-circle text-danger"></i></h6>
-                                </div> --}}
+                                    <h6 class="media-heading">{{$notif->data['user']}} {{ $notif->data['title']}}</h6>
+                                </div>
                             </a>
                             @empty
                             <div class="media-body">
-                                <h6 class="media-heading">il y a pas de notification <i class="fa fa-exclamation-circle text-danger"></i></h6>
+                                <h6 class="media-heading ms-2"> <span>il y a pas de notification</span> <span class="d-flex justify-content-center fs-4  mt-2"><i class="fa fa-exclamation-circle text-danger"></i></span> </h6>
                             </div>
                             @endforelse
                             <div class="dropdown-footer text-center">
-                                <a href="javascript:;" class="text-decoration-none">View more</a>
+                                <a href="{{url('notifications')}}" class="text-decoration-none">View more</a>
                             </div>
                         </div>
                     </div>
