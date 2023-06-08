@@ -73,6 +73,7 @@ class applicationController extends Controller
                 $application->status = 'in progress';
                 $application->message = $request->comment;
                 $application->editable2='yes';
+                $application->editable1='no';
                 $application->save();
                 $controleur2->givePermissionTo([
                     'voir-demande-action'
@@ -83,6 +84,7 @@ class applicationController extends Controller
             }else{
                 $application->status = $request->input('status_name');
                 $application->message = $request->comment;
+                $application->editable1='no';
                 $application->editable2='no';
                 $application->save();
                 return response()->json([
@@ -96,6 +98,7 @@ class applicationController extends Controller
                 $application->status = 'in progress';
                 $application->message = $request->comment;
                 $application->editable3='yes';
+                $application->editable2='no';
                 $application->save();
                 $controleur3->givePermissionTo([
                     'voir-demande-action'
@@ -106,6 +109,7 @@ class applicationController extends Controller
             }else{
                 $application->status = $request->input('status_name');
                 $application->message = $request->comment;
+                $application->editable2='no';
                 $application->editable3='no';
                 $application->save();
                 return response()->json([
