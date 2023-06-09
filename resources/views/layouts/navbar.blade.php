@@ -24,7 +24,7 @@
         @if (auth()->check())
 
             <div class="d-flex register" role="search">
-                <a href="/dashboard" class="btn btn-outline-success me-3 sign-up">Mon espace</a>
+                <a href="/demandes" class="btn btn-outline-success me-3 sign-up">Mon espace</a>
             </div>
 
         @else
