@@ -22,9 +22,18 @@ class AnalyticController extends Controller
         $users    = User::all();
         $demandess = Application::all();
         $statuses = DB::table('applications')->distinct()->pluck('status');
-        // dd($demandes);
+        $colors = [];
         foreach ($statuses as $status) {
             $label_demande[] = $status;
+            if($status == 'pending'){
+               $colors [] = '#f5a623';
+            }
+            if($status == 'accept'){
+                $colors [] = 'rgba(8, 160, 48, 0.969)';
+            }
+            if($status == 'decline'){
+                $colors [] = 'rgba(177, 13, 13, 0.969)';
+            }
         }
         $statusCounts = DB::table('applications')
         ->selectRaw('status, count(*) as count')
@@ -33,7 +42,7 @@ class AnalyticController extends Controller
         foreach ($statusCounts as $statuscount) {
             $numbers[] = $statuscount->count;
         }
-        $colors = ['rgba(38, 185, 153, 0.969)','rgb(220, 213, 3)','rgba(117, 0, 117, 0.969)'];
+        // dd($numbers);
         $chartjs2 = app()->chartjs
         ->name('pieChartTest')
         ->type('pie')
@@ -43,7 +52,7 @@ class AnalyticController extends Controller
             [
                 'backgroundColor' => $colors,
                 'hoverBackgroundColor' => $colors,
-                'data' => 'ok'
+                'data' => $numbers
             ]
         ])
         ->options([]);

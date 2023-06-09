@@ -39,6 +39,27 @@ class UserSeeder extends Seeder
         
             $controller->assignRole('contrôleur');
            
+            $controller1 = User::create([
+                'full_name' => 'Hassan', 
+                'email' => 'controleur1@gmail.com',
+                'password' => bcrypt('controleur1@gmail.com'),
+            ]);
         
+            $controller1->assignRole('controleur 1');
+
+            $controller2 = User::create([
+                'full_name' => 'Ismail', 
+                'email' => 'controleur2@gmail.com',
+                'password' => bcrypt('controleur2@gmail.com'),
+            ]);
+        
+            $controller2->assignRole('controleur 2');
+            $controller3 = User::create([
+                'full_name' => 'jawad', 
+                'email' => 'controleur3@gmail.com',
+                'password' => bcrypt('controleur3@gmail.com'),
+            ]);
+        
+            $controller3->assignRole('controleur 3');
     }
 }
