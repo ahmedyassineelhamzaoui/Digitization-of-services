@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\applicationController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\AnalyticController;
 
 
 /*
@@ -61,6 +62,9 @@ Route::controller(NotificationController::class)->group(function(){
     Route::get('notifications','index')->name('Notification');
     Route::get('MarqueAsread','marqueAllasread');
     Route::delete('deleteNotification','deleteNotification')->name('delete.notification');
+});
+Route::controller(AnalyticController::class)->group(function(){
+    Route::get('statistiques','index');
 });
 Route::get('/register', function () {
     return view('register');

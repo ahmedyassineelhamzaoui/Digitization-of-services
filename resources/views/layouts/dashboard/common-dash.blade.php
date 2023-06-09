@@ -160,11 +160,11 @@
                         <div class="menu-header">Navigation</div>
 
                         <div class="menu-item">
-                            <a href="index.html" class="menu-link">
+                            <a href="{{url('statistiques')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
-                                <div class="menu-text">Scrum Board</div>
+                                <div class="menu-text">statistiques</div>
                             </a>
                             @can('lister-utilisateurs')
                             <a href="{{url('utilisateurs')}}" class="menu-link">
