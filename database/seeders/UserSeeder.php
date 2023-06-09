@@ -38,6 +38,7 @@ class UserSeeder extends Seeder
             ]);
         
             $controller->assignRole('contrôleur');
-    
+           
+        
     }
 }

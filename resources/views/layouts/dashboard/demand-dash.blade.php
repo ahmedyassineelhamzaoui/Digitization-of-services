@@ -36,7 +36,7 @@
             <tbody>
                 @foreach ($applications as $i => $item)                
                 <tr>
-                    <td style="font-weight: bold">{{ $userPersonelinfos[$i]->nom }}</td>
+                    <td style="font-weight: bold">{{ $names[$i] }}</td>
                     <td>
                        <form id="" action="{{route('send.Information')}}" method="post" class="mb-3">
                         @csrf
@@ -131,11 +131,10 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="edit-status" >
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="{{route('update.status')}}" method="POST" >
+                <form action="{{route('update.status')}}" method="POST" id="update-status">
                     @method('PUT')
                     @csrf
                     <div class="modal-header">

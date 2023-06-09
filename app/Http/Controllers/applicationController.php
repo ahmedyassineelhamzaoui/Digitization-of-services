@@ -25,22 +25,33 @@ class applicationController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if($user->hasPermissionTo('modifier-demandes')){
-            $userPersonelinfos = Personelinfo::all(); 
-            $files = File::all(); 
-            $conjoints = Conjoint::all(); 
-            $previouss = Previous::all(); 
-            $applications = Application::paginate(5); 
-
-            return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications'));    
-        }else{
-            $userPersonelinfos = Personelinfo::all(); 
-            $files = File::all(); 
-            $conjoints = Conjoint::all(); 
-            $previouss = Previous::all(); 
-            $applications = $user->applications()->paginate(5); 
         
-            return view('layouts.dashboard.demand-dash', compact('files','userPersonelinfos','conjoints','applications')); 
+        if($user->hasPermissionTo('modifier-demandes')){
+            $applicationNames  = Application::All();
+            $names = [];
+            foreach($applicationNames as $applicationName){
+                $user = User::find($applicationName->user_id);
+                $names[] = $user->full_name;
+            }
+            $userPersonelinfos = Personelinfo::all(); 
+            $files             = File::all(); 
+            $conjoints         = Conjoint::all(); 
+            $previouss         = Previous::all(); 
+            $applications      = Application::paginate(5); 
+            return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications','names'));    
+        }else{
+            $applicationNames  =  $user->applications()->get();
+            $names = [];
+            foreach($applicationNames as $applicationName){
+                $user = User::find($applicationName->user_id);
+                $names[] = $user->full_name;
+            }
+            $userPersonelinfos = Personelinfo::all(); 
+            $files             = File::all(); 
+            $conjoints         = Conjoint::all(); 
+            $previouss         = Previous::all(); 
+            $applications      = $user->applications()->paginate(5);
+            return view('layouts.dashboard.demand-dash', compact('files','userPersonelinfos','conjoints','applications','names')); 
         }
     }
     public function showFiles($id)
@@ -49,7 +60,6 @@ class applicationController extends Controller
         return response()->json([
             'file' => $file
         ]);
-
     }
     public function showEditform($id)
     {
@@ -65,7 +75,7 @@ class applicationController extends Controller
       $authUser = auth()->user();
       $application = Application::find($request->status_id);
       if($application){
-        $useraction =  User::find($application->user_id); 
+        $useraction  = User::find($application->user_id); 
         $controleur1 = User::role('controleur 1')->first();
         $controleur2 = User::role('controleur 2')->first();
         $controleur3 = User::role('controleur 3')->first();
@@ -78,7 +88,6 @@ class applicationController extends Controller
                 $application->editable2='yes';
                 $application->editable1='no';
                 $application->save();
-                dd($useraction->name);
                 $controleur2->givePermissionTo([
                     'voir-demande-action'
                 ]);

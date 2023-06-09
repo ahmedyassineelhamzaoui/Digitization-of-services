@@ -54,7 +54,7 @@
                     <div class="media d-flex justify-content-between align-items-center">
                         <div class="media-body text-white text-right">
                             <p class="mb-1">Totale des demandes</p>
-                            <h3 class="text-white">{{$demandes->count()}}</h3>
+                            <h3 class="text-white">{{$demandess->count()}}</h3>
                         </div>
                         <div>
                             <img src="assets/images/demandes.png" style="width:45px;hieght:45px" alt="users">
@@ -79,4 +79,26 @@
             </div>
         </div>
     </div>
+
+    <div class="row mt-4 mb-4 ml-2">
+        <div class="col-md-5 col-lg-5">
+          <div class="card border-2">
+            <div class="card-body">
+              <h3 class="card-title font-bold">Le status des demandes</h3>
+              <div class="d-flex justify-content-center">
+                <div class="w-75">
+                  {{ $chartjs2->render() }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 col-lg-7">
+          <div class="card border-2">
+            <div class="card-body">
+              {{-- {!! $chartjs->render() !!} --}}
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection

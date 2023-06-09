@@ -206,6 +206,7 @@ class FormController extends Controller
                 $application = new Application();
                 $application->status ='pending';
                 $application->user_id =auth()->user()->id;
+                $application->editable1 = 'yes';
                 $application->save();
                  $request->validate([
                      'phone_paiment' => 'required|max:20',
