@@ -738,7 +738,9 @@
                     </div>
                 </div>
             </div>
-                
+            <div class="mt-2 d-flex justify-content-center">
+                <a href="{{route('home')}}" class="btn btn-warning text-light"><span class="me-2"><i class="fa-solid fa-house"></i></span>Retour à l'acceuil</a>
+            </div>
         </div>
     
 </div>

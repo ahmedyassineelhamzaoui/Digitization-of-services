@@ -39,7 +39,7 @@
             <div id="header" class="app-header">
                 <!-- BEGIN navbar-header -->
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-1">ANL</b></a>
+                    <a href="{{route('home')}}" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-1">ANL</b></a>
                     <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -160,12 +160,14 @@
                         <div class="menu-header">Navigation</div>
 
                         <div class="menu-item">
+                            @can('modifier-demandes')
                             <a href="{{url('statistiques')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
                                 <div class="menu-text">statistiques</div>
                             </a>
+                            @endcan
                             @can('lister-utilisateurs')
                             <a href="{{url('utilisateurs')}}" class="menu-link">
                                 <div class="menu-icon">
