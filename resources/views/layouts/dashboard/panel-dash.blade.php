@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.common-dash')
 
-@section('title', 'Notifications')
+@section('title', 'Statistiques')
 
 @section('content')
     @if(session('success'))
@@ -93,12 +93,66 @@
             </div>
           </div>
         </div>
-        <div class="col-md-7 col-lg-7">
-          <div class="card border-2">
+        <div id="chart-of-week" class="col-md-5 col-lg-7 d-block">
+            <div class="card border-2">
             <div class="card-body">
-              {{-- {!! $chartjs->render() !!} --}}
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="card-title font-bold">Le Nombre des demandes dans cette semaine</h4>
+                    <select onchange="timeChanged1()" id="select-time1" class="form-select" style="width:120px" aria-label="Default select example">
+                        <option value="1" selected>Semaine</option>
+                        <option value="2">Mois</option>
+                        <option value="3">Années</option>
+                    </select>
+                </div>
+                {!! $chartByDayOfWeek->render() !!}
             </div>
-          </div>
+            </div>
         </div>
       </div>
+    <div id="chart-of-month" class="row mt-4 mb-4 ml-2 d-none">
+        <div class="col-md-12 col-lg-12">
+            <div class="card border-2">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="card-title font-bold">Le Nombre des demandes dans le mois</h4>
+                    <select onchange="timeChanged2()" id="select-time2" class="form-select" style="width:120px" aria-label="Default select example">
+                        <option value="1">Semaine</option>
+                        <option value="2" selected>Mois</option>
+                        <option value="3">Années</option>
+                    </select>
+                </div>
+                {!! $chartByDayOfMonth->render() !!}
+            </div>
+            </div>
+        </div>
+    </div>
+    <div id="chart-of-year" class="row mt-4 mb-4 ml-2 d-none">
+        <div class="col-md-12 col-lg-12">
+            <div class="card border-2">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="card-title font-bold">Le Nombre des demandes dans l'années</h4>
+                    <select onchange="timeChanged3()" id="select-time3" class="form-select" style="width:120px" aria-label="Default select example">
+                        <option value="1">Semaine</option>
+                        <option value="2">Mois</option>
+                        <option value="3" selected>Années</option>
+                    </select>
+                </div>
+                {!! $chartByDayOfYear->render() !!}
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4 mb-4 ml-2 d-none">
+        <div class="col-md-12 col-lg-12">
+            <div class="card border-2">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="card-title font-bold">Le Nombre des demandes dans l'années</h4>
+                </div>
+                {!! $chartByDayOfWeek->render() !!}
+            </div>
+            </div>
+        </div>
+    </div>
 @endsection
