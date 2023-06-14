@@ -13,6 +13,7 @@ use App\Models\Paiment;
 use App\Models\Application;
 use Dompdf\Dompdf;
 use App\Notifications\documentAction;
+use App\Notifications\documentResponse;
 use Illuminate\Support\Facades\Notification;
 
 
@@ -151,6 +152,7 @@ class applicationController extends Controller
             $application->message = $request->comment;
             $application->save();
             $operation = $request->input('status_name');
+            Notification::send($useraction      , new documentResponse($authUser->id,$operation,$useraction->full_name,$application->message));
             Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
             Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
             Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));

@@ -34,6 +34,7 @@
                 </tr>
             </thead>
             <tbody>
+                
                 @foreach ($applications as $i => $item)                
                 <tr>
                     <td style="font-weight: bold">{{ $names[$i] }}</td>
