@@ -39,7 +39,7 @@
             <div id="header" class="app-header">
                 <!-- BEGIN navbar-header -->
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-1">ANL</b></a>
+                    <a href="{{route('home')}}" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-1">ANL</b></a>
                     <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -60,13 +60,13 @@
                         <div class="dropdown-menu media-list dropdown-menu-end">
                             <div class="dropdown-header">NOTIFICATIONS
                             </div>
-                            @forelse(auth()->user()->unreadNotifications as $notif)
+                            @forelse(auth()->user()->unreadNotifications->take(4) as $notif)
                             <a href="javascript:;" class="dropdown-item media">
                                 <div class="media-left">
                                     <img style="width:20px;height:20px;" src="assets/images/{{$notif->data['picture']}}" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <h6 class="media-heading">{{$notif->data['user']}} {{ $notif->data['title']}}</h6>
+                                    <h6 class="media-heading">{{$notif->data['user']}} {{ strlen($notif->data['title']) > 50 ? substr($notif->data['title'], 0, 40).'...' : $notif->data['title'] }}</h6>
                                 </div>
                             </a>
                             @empty
@@ -74,9 +74,11 @@
                                 <h6 class="media-heading ms-2"> <span>il y a pas de notification</span> <span class="d-flex justify-content-center fs-4  mt-2"><i class="fa fa-exclamation-circle text-danger"></i></span> </h6>
                             </div>
                             @endforelse
+                            @if(auth()->user()->unreadNotifications->count() > 4)
                             <div class="dropdown-footer text-center">
                                 <a href="{{url('notifications')}}" class="text-decoration-none">View more</a>
                             </div>
+                            @endif
                         </div>
                     </div>
 
@@ -158,12 +160,14 @@
                         <div class="menu-header">Navigation</div>
 
                         <div class="menu-item">
+                            @can('modifier-demandes')
                             <a href="{{url('statistiques')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa fa-list-check"></i>
                                 </div>
                                 <div class="menu-text">statistiques</div>
                             </a>
+                            @endcan
                             @can('lister-utilisateurs')
                             <a href="{{url('utilisateurs')}}" class="menu-link">
                                 <div class="menu-icon">
@@ -245,6 +249,7 @@
 
 
         <!-- Editor -->
+           
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

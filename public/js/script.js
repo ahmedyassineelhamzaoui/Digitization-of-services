@@ -1,3 +1,4 @@
+
 let step = document.querySelectorAll(".step");
 let compt =0;
 let clickNext =document.querySelector("#click-next")
@@ -496,4 +497,95 @@ $(document).ready(function() {
 function  deleteNotification(id)
 {
     document.querySelector("#notification_deletedId").value=id
+}
+let chartOfMonth=document.querySelector('#chart-of-month');
+let chartOfWeek =document.querySelector('#chart-of-week');
+let chartOfYear =document.querySelector('#chart-of-year');
+
+let selectTimeOption1 =document.querySelector('#select-time1');
+let selectTimeOption2 =document.querySelector('#select-time2');
+let selectTimeOption3 =document.querySelector('#select-time3');
+
+
+function timeChanged1(){
+
+  if(selectTimeOption1.value == 2){
+    chartOfMonth.classList.add('d-block')
+    chartOfMonth.classList.remove('d-none')
+    chartOfWeek.classList.add('d-none')
+    chartOfWeek.classList.remove('d-block')
+    chartOfYear.classList.add('d-none')
+    chartOfYear.classList.remove('d-block')
+    selectTimeOption2.value = 2
+  }else if(selectTimeOption1.value == 3){
+    chartOfYear.classList.add('d-block')
+    chartOfYear.classList.remove('d-none')
+    chartOfWeek.classList.add('d-none')
+    chartOfWeek.classList.remove('d-block')
+    chartOfMonth.classList.add('d-none')
+    chartOfMonth.classList.remove('d-block')
+    selectTimeOption3.value = 3
+  }else{
+    chartOfYear.classList.add('d-none')
+    chartOfYear.classList.remove('d-block')
+    chartOfWeek.classList.add('d-block')
+    chartOfWeek.classList.remove('d-none')
+    chartOfMonth.classList.add('d-none')
+    chartOfMonth.classList.remove('d-block')
+    selectTimeOption1.value = 1
+  }
+}
+function timeChanged2(){
+  if(selectTimeOption2.value == 1){
+    chartOfMonth.classList.add('d-none')
+    chartOfMonth.classList.remove('d-block')
+    chartOfWeek.classList.add('d-block')
+    chartOfWeek.classList.remove('d-none')
+    chartOfYear.classList.add('d-none')
+    chartOfYear.classList.remove('d-block')
+    selectTimeOption1.value = 1
+  }else if(selectTimeOption2.value == 3){
+    chartOfYear.classList.add('d-block')
+    chartOfYear.classList.remove('d-none')
+    chartOfWeek.classList.add('d-none')
+    chartOfWeek.classList.remove('d-block')
+    chartOfMonth.classList.add('d-none')
+    chartOfMonth.classList.remove('d-block')
+    selectTimeOption3.value = 3
+  }else{
+    chartOfYear.classList.add('d-none')
+    chartOfYear.classList.remove('d-block')
+    chartOfWeek.classList.add('d-none')
+    chartOfWeek.classList.remove('d-block')
+    chartOfMonth.classList.add('d-block')
+    chartOfMonth.classList.remove('d-none')
+    selectTimeOption2.value = 2
+  }
+}
+function timeChanged3(){
+  if(selectTimeOption3.value == 2){
+    chartOfMonth.classList.add('d-block')
+    chartOfMonth.classList.remove('d-none')
+    chartOfWeek.classList.add('d-none')
+    chartOfWeek.classList.remove('d-block')
+    chartOfYear.classList.add('d-none')
+    chartOfYear.classList.remove('d-block')
+    selectTimeOption2.value = 2
+  }else if(selectTimeOption3.value == 1){
+    chartOfYear.classList.add('d-none')
+    chartOfYear.classList.remove('d-block')
+    chartOfWeek.classList.add('d-block')
+    chartOfWeek.classList.remove('d-none')
+    chartOfMonth.classList.add('d-none')
+    chartOfMonth.classList.remove('d-block')
+    selectTimeOption1.value = 1
+  }else{
+    chartOfYear.classList.add('d-block')
+    chartOfYear.classList.remove('d-none')
+    chartOfWeek.classList.add('d-none')
+    chartOfWeek.classList.remove('d-block')
+    chartOfMonth.classList.add('d-none')
+    chartOfMonth.classList.remove('d-block')
+    selectTimeOption3.value = 3
+  }
 }
