@@ -32,9 +32,9 @@ class RolePermissionSeeder extends Seeder
             'lister-demandes',
             'modifier-demandes',
             'supprimer-demandes',
-            'voir-demande-action'  
+            'voir-demande-action'
         ];
-       
+
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
@@ -42,6 +42,10 @@ class RolePermissionSeeder extends Seeder
         $admin = 'Administrateur';
         $controleur = 'contrôleur';
         $user = 'utilisateur';
+        $controleur1 = 'controleur 1';
+        $controleur2 = 'controleur 2';
+        $controleur3 = 'controleur 3';
+
 
         Role::create(['name' => $admin])->givePermissionTo(Permission::all());
 
@@ -49,10 +53,22 @@ class RolePermissionSeeder extends Seeder
             $permissions[13],  $permissions[15],
         ]);
 
+        Role::create(['name' => $controleur1])->givePermissionTo([
+            $permissions[13],  $permissions[15],
+        ]);
+
+        Role::create(['name' => $controleur2])->givePermissionTo([
+            $permissions[13],  $permissions[15],
+        ]);
+
+        Role::create(['name' => $controleur3])->givePermissionTo([
+            $permissions[13],  $permissions[15],
+        ]);
+
         Role::create(['name' => $user])->givePermissionTo([
             $permissions[12]
         ]);
-        
-    
+
+
     }
 }

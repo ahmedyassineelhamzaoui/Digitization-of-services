@@ -7,6 +7,12 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\applicationController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\AnalyticController;
+
+use App\Http\Livewire\SearchApplications;
+
+use App\Http\Livewire\UserSearch;
 
 
 /*
@@ -25,6 +31,12 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('logout', 'logout')->name('user.logout');
     Route::get('login', 'index')->name('login');
     Route::get('home', 'home')->name('home');
+    Route::get('/profile/edit', 'editProfile')->name('profile.edit');
+    Route::post('/profile/update', 'updateProfile')->name('profile.update');
+    Route::post('/profile/update-image',  'updateImage')->name('profile.updateImage');
+
+
+
 
 });
 Route::controller(UserController::class)->group(function(){
@@ -56,6 +68,14 @@ Route::controller(applicationController::class)->group(function(){
    Route::get('edit-application/{id}','showEditform');
    Route::delete('demandes','deleteApplication')->name('delete.application');
 });
+Route::controller(NotificationController::class)->group(function(){
+    Route::get('notifications','index')->name('Notification');
+    Route::get('MarqueAsread','marqueAllasread');
+    Route::delete('deleteNotification','deleteNotification')->name('delete.notification');
+});
+Route::controller(AnalyticController::class)->group(function(){
+    Route::get('statistiques','index');
+});
 Route::get('/register', function () {
     return view('register');
 });
@@ -80,3 +100,8 @@ Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCal
 
 
 
+
+Route::get('/search-applications', SearchApplications::class);
+
+
+Route::get('/users', UserSearch::class);

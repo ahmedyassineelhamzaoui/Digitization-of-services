@@ -10,7 +10,8 @@ use App\Models\Previous;
 use App\Models\Paiment;
 use App\Models\Application;
 use Dompdf\Dompdf;
-
+use App\Notifications\documentAdded;
+use Illuminate\Support\Facades\Notification;
 
 // use Illuminate\Support\Facades\Mail;
 // use App\Mail\OrderCreated;
@@ -205,6 +206,7 @@ class FormController extends Controller
                 $application = new Application();
                 $application->status ='pending';
                 $application->user_id =auth()->user()->id;
+                $application->editable1 = 'yes';
                 $application->save();
                  $request->validate([
                      'phone_paiment' => 'required|max:20',
@@ -218,6 +220,16 @@ class FormController extends Controller
                  ]);
 
                  $user = auth()->user();
+                 $admin       = User::role('Administrateur')->first();
+                 $controleur1 = User::role('controleur 1')->first();
+                 $controleur2 = User::role('controleur 2')->first();
+                 $controleur3 = User::role('controleur 3')->first();
+
+                 Notification::send($admin      , new documentAdded($user->id));
+                 Notification::send($controleur1, new documentAdded($user->id));
+                 Notification::send($controleur2, new documentAdded($user->id));
+                 Notification::send($controleur3, new documentAdded($user->id));
+
                  Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id));
 
                  return response()->json([
@@ -270,6 +282,7 @@ class FormController extends Controller
                 // Render the PDF
                 $dompdf->render();
                 $output = $dompdf->output();
+
                 return response($output, 200)
                         ->header('Content-Type', 'application/pdf')
                         ->header('Content-Disposition', 'attachment; filename="paiment.pdf"');
