@@ -10,6 +10,10 @@ use App\Http\Controllers\applicationController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AnalyticController;
 
+use App\Http\Livewire\SearchApplications;
+
+use App\Http\Livewire\UserSearch;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +31,12 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('logout', 'logout')->name('user.logout');
     Route::get('login', 'index')->name('login');
     Route::get('home', 'home')->name('home');
+    Route::get('/profile/edit', 'editProfile')->name('profile.edit');
+    Route::post('/profile/update', 'updateProfile')->name('profile.update');
+    Route::post('/profile/update-image',  'updateImage')->name('profile.updateImage');
+
+
+
 
 });
 Route::controller(UserController::class)->group(function(){
@@ -90,3 +100,8 @@ Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCal
 
 
 
+
+Route::get('/search-applications', SearchApplications::class);
+
+
+Route::get('/users', UserSearch::class);

@@ -6,7 +6,7 @@
 @section('content')
     @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show">
-        <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+        <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
         <strong>Succés!</strong> {{session('success')}}
         <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
     </button>
@@ -20,7 +20,8 @@
         </button>
     </div>
     @endif
-    <div class="table-responsive">
+
+    {{-- <div class="table-responsive">
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -33,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $item)                
+                @foreach ($users as $item)
                 <tr>
                     <th scope="row">{{$item->id}}</th>
                     <td>{{$item->full_name}}</td>
@@ -49,9 +50,9 @@
                           </div>
                         @else
                         <div class="d-flex align-items-center">
-                            <div class="rounded-circle border-danger" style="width: 1.2em; height: 1.2em;background-color:red;border:3px solid"></div>                                       
+                            <div class="rounded-circle border-danger" style="width: 1.2em; height: 1.2em;background-color:red;border:3px solid"></div>
                             <span class="ms-2">hors ligne</span>
-                        </div>  
+                        </div>
                         @endif
                     </td>
                     <th>
@@ -73,7 +74,10 @@
         <div class="d-flex justify-content-end">
             {!! $users->links() !!}
         </div>
-    </div>
+    </div> --}}
+    
+    @livewire('user-search')
+
     <div class="modal fade" id="add-user">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

@@ -7,7 +7,7 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-    
+
     <link rel="icon" href="assets/images/logo_sogepie.jpg">
 
 	<!-- ================== BEGIN core-css ================== -->
@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- <link rel="stylesheet" href={{url('css/style.css')}}> --}}
-    {{-- @livewireStyles --}}
+    @livewireStyles
 
 
 	<!-- ================== END core-css ================== -->
@@ -49,21 +49,16 @@
                 <!-- END navbar-header -->
                 <!-- BEGIN header-nav -->
                 <div class="navbar-nav">
-                    <div class="navbar-item navbar-form">
-                        <form action="" method="POST" name="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter keyword" />
-                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
+
+                    @yield('search')
+
                     <div class="navbar-item dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="navbar-link dropdown-toggle icon">
                             <i class="fa fa-bell"></i>
                             <span class="badge"> {{ auth()->user()->unreadNotifications->count()}}</span>
                         </a>
                         <div class="dropdown-menu media-list dropdown-menu-end">
-                            <div class="dropdown-header">NOTIFICATIONS 
+                            <div class="dropdown-header">NOTIFICATIONS
                             </div>
                             @forelse(auth()->user()->unreadNotifications->take(4) as $notif)
                             <a href="javascript:;" class="dropdown-item media">
@@ -89,14 +84,15 @@
 
                     <div class="navbar-item navbar-user dropdown">
                         <a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-                            <img src="assets/img/user/user-15.jpg" alt="" />
+                            <img src="{{ asset('assets/images/' . (Auth::user()->profile_image ?: 'default.png')) }}" alt="" />
                             <span>
                                 <span class="d-none d-md-inline"></span>
                                 <b class="caret"></b>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end me-1">
-                            <a href="javascript:;" class="dropdown-item">Edit Profile</a>
+                            <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit Profile</a>
+
                             <a href="javascript:;" class="dropdown-item d-flex align-items-center">
                                 Inbox
                                 <span class="badge bg-danger rounded-pill ms-auto pb-4px">2</span>
@@ -109,6 +105,8 @@
                               <button type="submit" class="dropdown-item" name="logout">Déconexion</button>
                             </form>
                         </div>
+
+
                     </div>
                 </div>
                 <!-- END header-nav -->
@@ -125,7 +123,7 @@
                             <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
                                 <div class="menu-profile-cover with-shadow"></div>
                                 <div class="menu-profile-image">
-                                    <img src="assets/img/user/user-15.jpg" alt="" />
+                                    <img src="{{ asset('assets/images/' . (Auth::user()->profile_image ?: 'default.png')) }}" alt="" />
                                 </div>
                                 <div class="menu-profile-info">
                                     <div class="d-flex align-items-center">
@@ -248,148 +246,7 @@
         </div>
         <!-- END #app -->
 
-        <!-- TASK MODAL TO ADD PRODUCT -->
-        {{-- <div class="modal fade" id="modal-task">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="scripts.php" method="POST" id="form-task">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Add Task</h5>
-                            <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
-                        </div>
-                        <div class="modal-body">
-                                <!-- This Input Allows Storing Task Index  -->
-                                <input type="hidden" id="task-id" name="task-id">
-                                <div class="mb-3">
-                                    <label class="form-label">Title</label>
-                                    <input type="text" name="task-title" class="form-control" id="task-title"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Type</label>
-                                    <div class="ms-3">
-                                        <div class="form-check mb-1">
-                                            <input class="form-check-input" name="task-type" type="radio" value="1" id="task-type-1"/>
-                                            <label class="form-check-label" for="task-type-feature">Feature</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" name="task-type" type="radio" value="2" id="task-type-2"/>
-                                            <label class="form-check-label" for="task-type-bug">Bug</label>
-                                        </div>
-                                    </div>
 
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Priority</label>
-                                    <select class="form-select" name="priorities-option" id="task-priority">
-                                        <option value="" selected disabled>Please select</option>
-                                        <option value="1">Low</option>
-                                        <option value="2">Medium</option>
-                                        <option value="3">High</option>
-                                        <option value="4">Critical</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Status</label>
-                                    <select class="form-select" name="status-options" id="task-status">
-                                        <option value="">Please select</option>
-                                        <option value="1">To Do</option>
-                                        <option value="2">In Progress</option>
-                                        <option value="3">Done</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Date</label>
-                                    <input type="date" class="form-control" name="date" id="task-date"/>
-                                </div>
-                                <div class="mb-0">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="description" rows="10" id="task-description"></textarea>
-                                </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                            <button type="submit" name="delete" class="d-none" id="buttonDelete"></a>
-                            <button type="submit"  name="delete" class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
-                            <button type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
-                            <button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> --}}
-
-
-
-        <!-- EDIT TASK MODAL -->
-        {{-- <div class="modal fade" id="edit-modal-task">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="scripts.php" method="POST" id="form-task">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Edit Task</h5>
-                            <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
-                        </div>
-                        <div class="modal-body">
-                                <!-- This Input Allows Storing Task Index  -->
-                                <input type="text" id="task-id" value="">
-                                <div class="mb-3">
-                                    <label class="form-label">Title</label>
-                                    <input type="text" name="task-title" class="form-control" id="task-title"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Type</label>
-                                    <div class="ms-3">
-                                        <div class="form-check mb-1">
-                                            <input class="form-check-input" name="task-type" type="radio" value="1" id="task-type-1"/>
-                                            <label class="form-check-label" for="task-type-feature">Feature</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" name="task-type" type="radio" value="2" id="task-type-2"/>
-                                            <label class="form-check-label" for="task-type-bug">Bug</label>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Priority</label>
-                                    <select class="form-select" name="priorities-option" id="task-priority">
-                                        <option value="" selected disabled>Please select</option>
-                                        <option value="1">Low</option>
-                                        <option value="2">Medium</option>
-                                        <option value="3">High</option>
-                                        <option value="4">Critical</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Status</label>
-                                    <select class="form-select" name="status-options" id="task-status">
-                                        <option value="">Please select</option>
-                                        <option value="1">To Do</option>
-                                        <option value="2">In Progress</option>
-                                        <option value="3">Done</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Date</label>
-                                    <input type="date" class="form-control" name="date" id="task-date"/>
-                                </div>
-                                <div class="mb-0">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="description" rows="10" id="task-description"></textarea>
-                                </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                            <button type="submit" name="delete" class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
-                            <button type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
-                            <button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> --}}
 
         <!-- Editor -->
            
@@ -402,6 +259,9 @@
         <!-- ================== END core-js ================== -->
         <script src="js/script.js"></script>
         @yield('script')
+
+        @livewireScripts
+
 
     </body>
 

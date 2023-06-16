@@ -64,7 +64,7 @@ class AnalyticController extends Controller
 
 
 
-    
+
 
 
 
@@ -109,14 +109,14 @@ class AnalyticController extends Controller
 
         $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
         $ordersByDayOfMonth = array_fill(1, $daysInMonth, 0);
-        
+
         $myapplications = DB::table('applications')
             ->select(DB::raw('DAY(created_at) as day'), DB::raw('CAST(COUNT(*) AS UNSIGNED) as count'))
             ->whereMonth('created_at', $currentMonth)
             ->whereYear('created_at', $currentYear)
             ->groupBy('day')
             ->get();
-        
+
         foreach($myapplications as $myapplication) {
             $ordersByDayOfMonth[intval($myapplication->day)] = intval($myapplication->count);
         }
@@ -134,21 +134,21 @@ class AnalyticController extends Controller
                 ],
             ])
             ->options([]);
-        
+
         // Get the number of applications by day of the year for the current year
         $daysInYear = 365 + intval(date('L'));
         $ordersByDayOfYear = array_fill(1, $daysInYear, 0);
-        
+
         $myapplications = DB::table('applications')
             ->select(DB::raw('DAYOFYEAR(created_at) as day'), DB::raw('CAST(COUNT(*) AS UNSIGNED) as count'))
             ->whereYear('created_at', $currentYear)
             ->groupBy('day')
             ->get();
-        
+
         foreach($myapplications as $myapplication) {
             $ordersByDayOfYear[intval($myapplication->day)] = intval($myapplication->count);
         }
-        
+
         // Create the chart for the number of applications by day of the year
         $chartByDayOfYear = app()->chartjs
             ->name('OrdersByDayOfYear')
@@ -164,8 +164,8 @@ class AnalyticController extends Controller
             ])
             ->options([ ]);
 
-     
-        
+
+
         return view('layouts.dashboard.panel-dash',compact('roles','users','demandess','chartjs2','chartByDayOfMonth','chartByDayOfYear','chartByDayOfWeek'));
     }
 }

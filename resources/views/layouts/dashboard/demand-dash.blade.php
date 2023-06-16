@@ -2,10 +2,21 @@
 
 @section('title', 'page des demandes')
 
+@section('search')
+    <div class="navbar-item navbar-form">
+        <form action="" method="POST" >
+            <div class="form-group">
+                <input type="text" name="search" class="form-control" placeholder="Enter keyword" />
+                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+@endsection
+
 @section('content')
     @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show">
-        <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
+        <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
         <strong>Succés!</strong> {{session('success')}}
         <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
     </button>
@@ -19,7 +30,7 @@
         </button>
     </div>
     @endif
-    <div class="table-responsive">
+    {{-- <div class="table-responsive">
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -34,8 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-                
-                @foreach ($applications as $i => $item)                
+                @foreach ($applications as $i => $item)
                 <tr>
                     <td style="font-weight: bold">{{ $names[$i] }}</td>
                     <td>
@@ -62,7 +72,7 @@
                            <button  class="btn" style="background-color:rgb(216, 38, 38);  color:white;"> refuser</button>
                         @elseif($item->status =='in progress')
                         <button  class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0);  color:white;">
-                          <div class="me-1"> en cours </div>  
+                          <div class="me-1"> en cours </div>
                           <div class="spinner-border" style="width:15px;height:15px" role="status">
                             <span class="visually-hidden">Loading...</span>
                           </div>
@@ -106,7 +116,9 @@
         <div class="d-flex justify-content-end">
             {!! $applications->links() !!}
         </div>
-    </div>
+    </div> --}}
+    @livewire('search-applications')
+
 
     <div class="modal fade" id="show-joinedFile">
         <div class="modal-dialog modal-dialog-centered">
@@ -123,8 +135,8 @@
                                 <button type="button" class="btn-close border-1 border-dark" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             <div class="mb-3">
-                                <div id="file_liste"  class="bg-light border border-secondary text-secondary text-sm rounded-lg focus-ring border-0 form-control overflow-auto" style="max-height: 400px;" rows="10" required> 
-                                   
+                                <div id="file_liste"  class="bg-light border border-secondary text-secondary text-sm rounded-lg focus-ring border-0 form-control overflow-auto" style="max-height: 400px;" rows="10" required>
+
                                 </div>
                             </div>
                     </div>
