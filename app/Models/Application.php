@@ -16,5 +16,29 @@ class Application extends Model
     {
         return $this->belongsTo(User::class);
     }
+    // public function file()
+    // {
+    //     return $this->hasOne(File::class);
+    // }
+    // public function personelinfo()
+    // {
+    //     return $this->hasOne(Personelinfo::class);
+    // }
+    // public function paiment()
+    // {
+    //     return $this->hasOne(Paiment::class);
+    // }
+    // public function previous()
+    // {
+    //     return $this->hasOne(Previous::class);
+    // }
+    // public function conjoint()
+    // {
+    //     return $this->hasOne(Conjoint::class);
+    // }
+    // public function current()
+    // {
+    //     return $this->hasOne(Current::class);
+    // }
     
 }

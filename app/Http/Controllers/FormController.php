@@ -12,7 +12,8 @@ use App\Models\Application;
 use Dompdf\Dompdf;
 use App\Notifications\documentAdded;
 use Illuminate\Support\Facades\Notification;
-
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 // use Illuminate\Support\Facades\Mail;
 // use App\Mail\OrderCreated;
 
@@ -26,6 +27,7 @@ use Illuminate\Validation\ValidationException;
 
 class FormController extends Controller
 {
+        public $count = 0;
         public function __construct()
         {
             $this->middleware('auth');
@@ -37,6 +39,7 @@ class FormController extends Controller
 
         public function storeInformation(Request $request)
         {
+            
             if($request->has('registration_number')){
                 $validator = $request->validate([
                     'registration_number' => 'required|string',
@@ -169,7 +172,6 @@ class FormController extends Controller
                   $filename9 = $identityDocumentPath->hashName();
                   $filename10 = $marriageCertificatePath->hashName();
 
-
                   $appointmentDecisionPath->move('uploads',$filename1);
                   $assignmentDecisionPath->move('uploads',$filename2);
                   $serviceCertificatePath->move('uploads',$filename3);
@@ -180,10 +182,6 @@ class FormController extends Controller
                   $residenceCertificatePath->move('uploads',$filename8);
                   $identityDocumentPath->move('uploads',$filename9);
                   $marriageCertificatePath->move('uploads',$filename10);
-
-
-
-
 
 
                   File::create([
@@ -202,41 +200,68 @@ class FormController extends Controller
 
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
             }
-            if($request->has('phone_paiment')){
-                $application = new Application();
-                $application->status ='pending';
-                $application->user_id =auth()->user()->id;
-                $application->editable1 = 'yes';
-                $application->save();
+            if($request->has('telephone_paiment')){
+                
                  $request->validate([
-                     'phone_paiment' => 'required|max:20',
-                     'refrence_paiment' => 'required|min:10',
+                     'nom_paiment' => 'required',
+                     'prenom_paiment' => 'required',
+                     'credential_paiment' => 'required',
+                     'nature_paiment' => 'required',
+                     'number_paiment' => 'required',
                  ]);
+                 $response = Http::post('https://wbservice.tresor.gouv.ci/wbpartenaires/tstrest/GenererAvisrecette', [
+                    'action'         => 'GenererAvisrecette',
+                    'client_nom'     => $request->nom_paiment,
+                    'client_prenom'  => $request->prenom_paiment,
+                    'credential_id'  => $request->credential_paiment,
+                    'telephone'      => $request->telephone_paiment,
+                    'identifiant'    => $request->number_paiment,
+                    'nature_recette' => $request->nature_paiment,
+                    'montant_total'  => $request->payment_total,
+                ]);
+                if ($response->successful()) {
+                    $application = new Application();
+                    $application->id = $request->personel_id;
+                    $application->status ='en attente';
+                    $application->user_id =auth()->user()->id;
+                    $application->editable1 = 'yes';
+                    $application->save();
+                    Paiment::create([
+                        'personelinfos_id'  => $request->personel_id,
+                        'client_nom'        => $request->nom_paiment,
+                        'client_prenom'     => $request->prenom_paiment,
+                        'credential_id'     => $request->credential_paiment,
+                        'telephone'         => $request->telephone_paiment,
+                        'identifiant'       => $request->number_paiment,
+                        'nature_recette'    => $request->nature_paiment,
+                        'montant_total'     => $request->payment_total,
+                     ]);
 
-                 Paiment::create([
-                    'personelinfos_id' => $request->personel_id,
-                    'telephone' => $request->phone_paiment,
-                    'paiment_reference' => $request->refrence_paiment
-                 ]);
+                    $user = auth()->user();
+                    $admin       = User::role('Administrateur')->first();
+                    $controleur1 = User::role('controleur 1')->first();
+                    $controleur2 = User::role('controleur 2')->first();
+                    $controleur3 = User::role('controleur 3')->first();
 
-                 $user = auth()->user();
-                 $admin       = User::role('Administrateur')->first();
-                 $controleur1 = User::role('controleur 1')->first();
-                 $controleur2 = User::role('controleur 2')->first();
-                 $controleur3 = User::role('controleur 3')->first();
+                    Notification::send($admin      , new documentAdded($user->id));
+                    Notification::send($controleur1, new documentAdded($user->id));
+                    Notification::send($controleur2, new documentAdded($user->id));
+                    Notification::send($controleur3, new documentAdded($user->id));
 
-                 Notification::send($admin      , new documentAdded($user->id));
-                 Notification::send($controleur1, new documentAdded($user->id));
-                 Notification::send($controleur2, new documentAdded($user->id));
-                 Notification::send($controleur3, new documentAdded($user->id));
+                    if(Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id))){
+                        return response()->json([
+                        'message' => 'paiment a été créer avec succés'
+                        ]);
+                    }
+                    return response()->json([
+                    'message' => 'paiment a été créer avec succés'
+                    ]);
 
-                 Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id));
-
-                 return response()->json([
-                   'message' => 'paiment a été créer avec succés'
-                 ]);
-
-
+                } else {
+                    return response()->json([
+                        'message' => 'information incoreccte'
+                    ]);
+                }
             }
             if($request->has('print_info')){
 
@@ -288,7 +313,6 @@ class FormController extends Controller
                         ->header('Content-Disposition', 'attachment; filename="paiment.pdf"');
                 return redirect()->back()->with('succès','votre commande a été bien télecharger');
             }
-
 
         }
 

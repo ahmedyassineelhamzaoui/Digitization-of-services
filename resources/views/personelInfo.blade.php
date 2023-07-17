@@ -1,6 +1,17 @@
 @extends('layouts.app')
 @section('title', 'Formulaire')
 @section('content')
+<div id="spinner" tabindex="-1" class="d-none">
+    
+        <div class="spinner-border text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div id="loding-process" class="ms-2">
+            chargement...
+        </div>
+    
+    
+</div>
 <div class="steper-content container">
     <div class="steper-componnet">
         <div class="progress-empty">
@@ -25,7 +36,8 @@
             </span>
         </div>
     </div>
-
+    
+    
         <div class="step person-infos">
             <form id="step-1-form" action="{{route('send.Information')}}" method="post" class="mb-3">
                 
@@ -688,31 +700,80 @@
             <form id="step-3-form" action="{{route('send.Information')}}" method="post" class="mb-3">
                 <div class="finmargin d-flex justify-content-center">
                     @csrf
-                    <div class="col-md-8">
+                    <input type="hidden" name="personel_id" id="personel-Id">
+                    <div class="row g-3">
                         <h3 class="mt-4">paiement</h3>
-                        <input type="hidden" name="personel_id" id="personel-idpaiment">
-                        <div class="mt-4 mb-4">
+                        <input type="hidden" name="personel_id" id="personel-idpaiment"> 
+                        <div class="mt-3 mb-3 col-md-6">
                             <div class="">
-                                <label for="input-phonepaiment" class="form-label">N° de téléphone</label>
-                                <input type="text" class="form-control" name="phone_paiment" id="phone_paiment" >
-                                @error('phone_paiment')
+                                <label for="nom_paiment" class="form-label">Votre Nom</label>
+                                <input type="text" class="form-control" name="nom_paiment" id="nom_paiment" >
+                                @error('nom_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="mt-4 mb-4">
+                        <div class="mt-3 mb-3 col-md-6">
                             <div class="">
-                                <label for="input-refrencepaiment" class="form-label">Reférence du paiement</label>
-                                <input type="text" class="form-control" name="refrence_paiment" id="refrence_paiment" >
-                                @error('refrence_paiment')
+                                <label for="prenom_paiment" class="form-label">Votre Prénom</label>
+                                <input type="text" class="form-control" name="prenom_paiment" id="prenom_paiment" >
+                                @error('prenom_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-3 col-md-6">
+                            <div class="">
+                                <label for="telephone_paiment" class="form-label">N° de téléphone</label>
+                                <input type="text" class="form-control" name="telephone_paiment" id="telephone_paiment" >
+                                @error('telephone_paiment')
+                                <span class="text-danger fs-7">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="mt-2 mb-3 col-md-6">
+                            <div class="">
+                                <label for="credential_paiment" class="form-label">ID d'identification</label>
+                                <input type="number" class="form-control" name="credential_paiment" id="credential_paiment" >
+                                @error('credential_paiment')
+                                <span class="text-danger fs-7">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-3 col-md-6">
+                            <div class="">
+                                <label for="nature_paiment" class="form-label">Nature de recette</label>
+                                <input type="text" class="form-control" name="nature_paiment" id="nature_paiment" >
+                                @error('nature_paiment')
+                                <span class="text-danger fs-7">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-3 col-md-6">
+                            <div class="">
+                                <label for="number_paiment" class="form-label">Le numéro de l’avis de recette</label>
+                                <input type="number" class="form-control" name="number_paiment" id="number_paiment" >
+                                @error('number_paiment')
+                                <span class="text-danger fs-7">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mt-2 mb-3 col-md-6">
+                            <div class="">
+                                <label for="payment_total" class="form-label">Le montant total</label>
+                                <input type="number" class="form-control" name="payment_total" id="payment_total" >
+                                @error('payment_total')
+                                <span class="text-danger fs-7">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mt-2  col-md-6">
+                            <div class="d-flex justify-content-end pt-4">
+                                <button id="suv-payment" type="submit" class="btn btn-warning ">Suivant</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-warning">Suivant</button>
                 </div>
             </form>
         

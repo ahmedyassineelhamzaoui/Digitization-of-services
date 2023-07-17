@@ -17,47 +17,40 @@ class UserSeeder extends Seeder
     public function run()
     {
             $admin = User::create([
-                'full_name' => 'khaled', 
+                'full_name' => 'LOBOGNON', 
                 'email' => 'admin@adminable.com',
                 'password' => bcrypt('eRROR404@'),
             ]);
             $admin->assignRole('Administrateur');
         
             $user = User::create([
-                'full_name' => 'ahmed', 
-                'email' => 'ahmed@gmail.com',
+                'full_name' => 'Kouadio Adama', 
+                'email' => 'Adama@gmail.com',
                 'password' => bcrypt('Password123!'),
             ]);
         
             $user->assignRole('utilisateur');
         
-            $controller = User::create([
-                'full_name' => 'said', 
-                'email' => 'said@gmail.com',
-                'password' => bcrypt('12345678'),
-            ]);
-        
-            $controller->assignRole('contrôleur');
            
             $controller1 = User::create([
-                'full_name' => 'Hassan', 
-                'email' => 'controleur1@gmail.com',
-                'password' => bcrypt('controleur1@gmail.com'),
+                'full_name' => 'Coulibaly Fanta', 
+                'email' => 'Coulibaly@gmail.com',
+                'password' => bcrypt('Coulibaly@gmail.com'),
             ]);
         
             $controller1->assignRole('controleur 1');
 
             $controller2 = User::create([
-                'full_name' => 'Ismail', 
-                'email' => 'controleur2@gmail.com',
-                'password' => bcrypt('controleur2@gmail.com'),
+                'full_name' => 'Koffi Abiba', 
+                'email' => 'Abiba@gmail.com',
+                'password' => bcrypt('Abiba@gmail.com'),
             ]);
         
             $controller2->assignRole('controleur 2');
             $controller3 = User::create([
-                'full_name' => 'jawad', 
-                'email' => 'controleur3@gmail.com',
-                'password' => bcrypt('controleur3@gmail.com'),
+                'full_name' => 'Diarrassouba Bakary', 
+                'email' => 'Bakary@gmail.com',
+                'password' => bcrypt('Bakary@gmail.com'),
             ]);
         
             $controller3->assignRole('controleur 3');

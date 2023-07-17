@@ -56,7 +56,7 @@ namespace App\Http\Controllers;
 
             Auth::user()->update(['status' => 'online']);
             $user = Auth::user();
-            return redirect()->route('home')->with('success', 'Welcome '. $user->full_name);
+            return redirect()->route('home')->with('success', 'Bienvenue '. $user->full_name);
 
         }
 
@@ -98,7 +98,7 @@ namespace App\Http\Controllers;
 
             $user->save();
 
-            return redirect()->route('home')->with('success', 'Profile updated successfully');
+            return redirect()->route('home')->with('success', 'Mise à jour du profil réussie');
         }
 
         public function updateImage(Request $request)
@@ -123,7 +123,7 @@ namespace App\Http\Controllers;
 
             }
 
-            return redirect()->route('home')->with('success', 'Profile image updated successfully');
+            return redirect()->route('home')->with('success', 'Image de profil mise à jour avec succès');
         }
 
     }

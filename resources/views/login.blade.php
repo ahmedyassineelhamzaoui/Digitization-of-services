@@ -29,7 +29,7 @@
 
                     <div class="row mt-2">
                         <div class="col-8">
-                            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign In</h3>
+                            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Connexion</h3>
                         </div>
                         <div class="col-2">
                             <a
@@ -55,14 +55,14 @@
 
 
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="form2Example18">Email address</label>
+                        <label class="form-label" for="form2Example18">Adresse e-mail</label>
                         <input type="email" name="email" value="{{ old('email') }}" id="form2Example18" class="form-control form-control-lg @error('email') is-invalid @enderror"/>
                         @error('email')
                                 <div class="invalid-feedback text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="form2Example28">Password</label>
+                        <label class="form-label" for="form2Example28">Mot de Passe</label>
                         <input type="password" name="password" value="{{ old('password') }}" id="form2Example28" class="form-control form-control-lg @error('password') is-invalid @enderror"/>
                         @error('password')
                                 <div class="invalid-feedback text-danger">{{ $message }}</div>
@@ -70,11 +70,11 @@
                     </div>
 
                     <div class="pt-1 mb-4">
-                        <button class="btn btn-warning btn-lg btn-block w-100 text-white" type="submit" style="padding: .5rem 2.5rem;">Login</button>
+                        <button class="btn btn-warning btn-lg btn-block w-100 text-white" type="submit" style="padding: .5rem 2.5rem;     background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);">Connexion</button>
                     </div>
 
-                    <p class="small mb-3 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
-                    <p>Don't have an account? <a href="{{url('register')}}" class="link-warning">Register here</a></p>
+                    <p class="small mb-3 pb-lg-2"><a class="text-muted" href="#!">Mot de Passe oublié?</a></p>
+                    <p>Vous n'avez pas de compte ? <a href="{{url('register')}}" class="link-warning">S'inscrire</a></p>
 
                 </form>
 

@@ -10,7 +10,16 @@ class Paiment extends Model
     use HasFactory;
     protected $fillable = [
         'personelinfos_id',
+        'client_nom',
+        'client_prenom',
         'telephone',
-        'paiment_reference'
+        'credential_id',
+        'identifiant',
+        'nature_recette',
+        'montant_total',
     ];
+    public function application()
+    {
+        return $this->belongsTo(Application::class);
+    }
 }

@@ -16,4 +16,8 @@ class Current extends Model
         'date_occupation',
         'nom_parent'
     ];
+    public function application()
+    {
+        return $this->belongsTo(Application::class);
+    }
 }

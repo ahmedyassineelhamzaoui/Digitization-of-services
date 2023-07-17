@@ -21,7 +21,7 @@
     <main class="mb-5">
         <section class="procedure text-center">
             <div class="procedure-btn">
-                <a href="#" class="btn">Procedure et conditions</a>
+                <a href="#" class="btn">Procédures et conditions</a>
             </div>
             <div class="procedure-text">
                 <p>

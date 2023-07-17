@@ -15,11 +15,12 @@ class NotificationController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $bottonName= '';
         $notifications = $user->notifications()->orderBy('created_at', 'desc')  
         ->orderBy('created_at', 'desc')
         ->get();
         $notifications->markAsRead();
-        return view('layouts.dashboard.notification-dash',compact('notifications'));
+        return view('layouts.dashboard.notification-dash',compact('notifications','bottonName'));
     }
     public function marqueAllasread(Request $request)
     {

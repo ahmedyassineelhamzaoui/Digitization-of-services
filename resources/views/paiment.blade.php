@@ -10,12 +10,16 @@
     <h3 style="text-align: end">Date: {{$paiment->created_at}}</h3>
     <div style="text-align: center">
         <div>
-            <h5><span style="font-weight: bold">Numéro de Téléphone : </span> {{$paiment->telephone}}</h5>
-            <h5><span style="font-weight: bold">Reférence du paiement :</span>   {{$paiment->paiment_reference}}</h5>
+            <h5  class="d-flex justify-content-between"><span style="font-weight: bold">Numéro de Téléphone            : </span><span> {{$paiment->telephone}}</span></h5>
+            <h5  class="d-flex justify-content-between"><span style="font-weight: bold">ID identifiant                 :</span><span>   {{$paiment->credential_id}}</span></h5>
+            <h5  class="d-flex justify-content-between"><span style="font-weight: bold">Nom du client                  :</span><span>   {{$paiment->client_nom}}</span></h5>
+            <h5  class="d-flex justify-content-between"><span style="font-weight: bold">Prenom du Client               : </span><span> {{$paiment->client_prenom}}</span></h5> 
+            <h5  class="d-flex justify-content-between"><span style="font-weight: bold">Le numéro de l’avis de recette :</span><span>   {{$paiment->identifiant}}</span></h5>
+            <h5  class="d-flex justify-content-between"><span style="font-weight: bold">Nature de la recette           : </span><span> {{$paiment->nature_recette}}</span></h5>                     
+            <h5  class="d-flex justify-content-between"><span style="font-weight: bold">Montant Total du paiement      :</span> <span>  {{$paiment->montant_total}}</span></h5>
+       
         </div>
     </div>
-    <div style="margin-top: 650px">
-        <h6 style="text-align: center">Copyright © 2022, SOGEPIE</h6>
-    </div>
+
 </div>
 @endsection

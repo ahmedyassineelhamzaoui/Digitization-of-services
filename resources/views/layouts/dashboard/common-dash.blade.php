@@ -7,9 +7,8 @@
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-
     <link rel="icon" href="assets/images/logo_sogepie.jpg">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- ================== BEGIN core-css ================== -->
     {{-- <link rel="stylesheet" href="assets/css/vendor.min.css"> --}}
     <link rel="stylesheet" href={{url('assets/css/vendor.min.css')}}>
@@ -20,7 +19,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- <link rel="stylesheet" href={{url('css/style.css')}}> --}}
-    @livewireStyles
+    {{-- @livewireStyles --}}
 
 
 	<!-- ================== END core-css ================== -->
@@ -49,8 +48,6 @@
                 <!-- END navbar-header -->
                 <!-- BEGIN header-nav -->
                 <div class="navbar-nav">
-
-                    @yield('search')
 
                     <div class="navbar-item dropdown">
                         <a href="#" data-bs-toggle="dropdown" class="navbar-link dropdown-toggle icon">
@@ -91,14 +88,14 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end me-1">
-                            <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit Profile</a>
+                            <a href="{{ route('profile.edit') }}" class="dropdown-item">Editer le profil</a>
 
-                            <a href="javascript:;" class="dropdown-item d-flex align-items-center">
+                            {{-- <a href="javascript:;" class="dropdown-item d-flex align-items-center">
                                 Inbox
                                 <span class="badge bg-danger rounded-pill ms-auto pb-4px">2</span>
-                            </a>
-                            <a href="javascript:;" class="dropdown-item">Calendar</a>
-                            <a href="javascript:;" class="dropdown-item">Setting</a>
+                            </a> --}}
+                            {{-- <a href="javascript:;" class="dropdown-item">Calendar</a>
+                            <a href="javascript:;" class="dropdown-item">Setting</a> --}}
                             <div class="dropdown-divider"></div>
                             <form action="{{route('user.logout')}}" method="POST">
                               @csrf
@@ -127,12 +124,26 @@
                                 </div>
                                 <div class="menu-profile-info">
                                     <div class="d-flex align-items-center">
-                                        <div class="flex-grow-1">
+                                        <div class="flex-grow-1" style="color:green">
                                             {{ Str::limit(auth()->user()->full_name,20)}}
                                         </div>
                                         <div class="menu-caret ms-auto"></div>
                                     </div>
-                                    <small>{{auth()->user()->roles[0]->name}}r</small>
+                                    <small style="color:orangered">
+                                        @if(auth()->user()->roles[0]->name == 'controleur 1')
+                                            MODERATEUR
+                                        @endif
+                                            
+                                        @if(auth()->user()->roles[0]->name == 'controleur 2')
+                                            SOUS DIRECTEUR
+                                        @endif
+                                        @if(auth()->user()->roles[0]->name == 'controleur 3')
+                                            DIRECTEUR
+                                        @endif
+                                        @if(auth()->user()->roles[0]->name == 'utilisateur' || auth()->user()->roles[0]->name == 'Administrateur')
+                                            {{auth()->user()->roles[0]->name}}
+                                        @endif
+                                    </small>
                                 </div>
                             </a>
                         </div>
@@ -163,15 +174,15 @@
                             @can('modifier-demandes')
                             <a href="{{url('statistiques')}}" class="menu-link">
                                 <div class="menu-icon">
-                                    <i class="fa fa-list-check"></i>
+                                    <i class="fa-solid fa-chart-pie"></i>
                                 </div>
-                                <div class="menu-text">statistiques</div>
+                                <div class="menu-text">Statistiques</div>
                             </a>
                             @endcan
                             @can('lister-utilisateurs')
                             <a href="{{url('utilisateurs')}}" class="menu-link">
                                 <div class="menu-icon">
-                                    <i class="fa fa-list-check"></i>
+                                    <i class="fa-solid fa-users"></i>
                                 </div>
                                 <div class="menu-text">Utilisateurs</div>
                             </a>
@@ -179,22 +190,22 @@
                             @can('lister-rôles')
                             <a href="{{url('roles')}}" class="menu-link">
                                 <div class="menu-icon">
-                                    <i class="fa fa-list-check"></i>
+                                    <i class="fa-solid fa-user-shield"></i>
                                 </div>
                                 <div class="menu-text">Rôles</div>
                             </a>
                             @endcan
                             <a href="{{url('demandes')}}" class="menu-link">
                                 <div class="menu-icon">
-                                    <i class="fa fa-list-check"></i>
+                                    <i class="fa-solid fa-receipt"></i>
                                 </div>
-                                <div class="menu-text">demandes</div>
+                                <div class="menu-text">Demandes</div>
                             </a>
                             <a href="{{url('notifications')}}" class="menu-link">
                                 <div class="menu-icon">
-                                    <i class="fa fa-list-check"></i>
-                                </div>
-                                <div class="menu-text">notification</div>
+                                    <i class="fa-solid fa-bell"></i>
+                                 </div>
+                                <div class="menu-text">Notifications</div>
                             </a>
                         </div>
 
@@ -222,14 +233,15 @@
                         </ol>
                         <!-- BEGIN page-header -->
                         <h1 class="page-header mb-0">
-                            Bienvenu {{auth()->user()->full_name}}
+                            Bienvenue {{auth()->user()->full_name}}
                         </h1>
                         <!-- END page-header -->
                     </div>
-
+                    @if($bottonName == 'Ajouter Rôle' || $bottonName == 'utilisateur')
                     <div class="ms-auto">
                     <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i>@yield('button-name')</a>
                     </div>
+                    @endif
                 </div>
 
 
@@ -249,7 +261,8 @@
 
 
         <!-- Editor -->
-           
+        
+        
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -260,7 +273,7 @@
         <script src="js/script.js"></script>
         @yield('script')
 
-        @livewireScripts
+        {{-- @livewireScripts --}}
 
 
     </body>

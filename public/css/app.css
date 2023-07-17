@@ -7,7 +7,7 @@
     --download-buttonhover : #0694b4;
     --white-color: #fff;
     --dark-color: #000;
-    --btn-color: #FF9B22;
+    --btn-color: #FF9B22 ;
 
 }
 
@@ -88,9 +88,9 @@ body{
   .fin{
     display: none;
   }
-  .paiement .finmargin{
+  /* .paiement .finmargin{
     margin-bottom:150px ;
-  }
+  } */
   .fin .download-pdf{
     background-color: var(--download-buttoncolor);
     padding: 8px 10px;
@@ -100,6 +100,10 @@ body{
     background-color: var(--download-buttonhover);
     color: var(--white-color);
   }
+  #suv-payment{
+     margin-top: 10px;
+  }
+
   /*  end steper component style */
 /* pdf  */
 .hr-line{
@@ -155,12 +159,42 @@ span.blink {
           opacity: 0;
         }
 }
+#spinner{
+  margin-top: -1.9em !important;
+  padding: 0 !important;
+  position: absolute;
+  z-index: 100;
+  height: 300%;
+  width: 100%;
+  color: white;
+  font-weight: bolder;
+  background: black !important;
+  /* opacity: 30% !important; */
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+#spinner .spinner-border,#loding-process{
+  position:relative;
+  top:15%
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  color: white;
+  background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+}
+
 /* end decoration status*/
 
 /* Styling the home page and the register pages */
 /* styling the navbar */
 nav{
     box-shadow: 0px 3px 6px 3px rgb(0 0 0 / 6%);
+    /* background: #BF1906 !important; */
 }
 
 nav.navbar .navbar-brand img{
@@ -207,7 +241,8 @@ nav.navbar .navbar-brand img{
 .navbar .register .sign-up:focus{
     border: 1px solid var(--btn-color);
     color: var(--white-color);
-    background-color: var(--btn-color);
+    /* background-color: var(--btn-color);*/
+    background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
     transition: all 0.3s ease-in;
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
@@ -218,14 +253,17 @@ nav.navbar .navbar-brand img{
 .navbar .register .sign-in{
     border: 1px solid var(--btn-color);
     color: var(--white-color);
-    background-color: var(--btn-color);
+    /* background-color: var(--btn-color); */
+    background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
 }
 
 .navbar .register .sign-in:hover,
 .navbar .register .sign-in:focus{
     border: 1px solid var(--btn-color);
-    color: var(--btn-color);
-    background-color: var(--white-color);
+    /* color: var(--btn-color); */
+    color: white;
+    /* background-color: var(--white-color); */
+    background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
     transition: all 0.3s ease-in;
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
@@ -258,7 +296,10 @@ header .header-title p{
 
 /* styling the main sections */
 main .procedure .procedure-btn a{
-    background-color: var(--btn-color);
+    /* background-color: var(--btn-color);*/
+    
+    background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
+
     color: var(--white-color);
     margin-bottom: 5rem;
     padding: 1rem 3rem;

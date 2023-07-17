@@ -22,7 +22,7 @@
     </div>
     @endif
 
-    {{-- <div class="table-responsive">
+    <div class="table-responsive">
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -36,7 +36,20 @@
                 @foreach ($roles as $item)
                 <tr>
                     <th class="align-middle" scope="row">{{$item->id}}</th>
-                    <td class="align-middle">{{$item->name}}</td>
+                    <td class="align-middle">
+                        @if($item->name == 'controleur 1')
+                            MODERATEUR
+                        @endif 
+                        @if($item->name  == 'controleur 2')
+                            SOUS DIRECTEUR
+                        @endif
+                        @if($item->name  == 'controleur 3')
+                            DIRECTEUR
+                        @endif
+                        @if($item->name  == 'utilisateur' || $item->name == 'Administrateur')
+                            {{$item->name }}
+                        @endif
+                    </td>
                     <td>
                         @foreach ($item->permissions as $permission)
                         <button class="btn btn-success mt-2">{{ $permission->name }}</button>
@@ -59,9 +72,9 @@
         <div class="d-flex justify-content-end">
             {!! $roles->links() !!}
         </div>
-    </div> --}}
+    </div>
 
-    @livewire('role-search')
+    {{-- @livewire('role-search') --}}
 
 
     <div class="modal fade" id="add-role">

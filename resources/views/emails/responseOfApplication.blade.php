@@ -84,9 +84,9 @@
   <div class="form-container">
     <div class="form-header">
       <h2>Bonjour, {{$name}}</h2>
-      <p>votre demande a été {{ $operation == 'accept' ? 'accepté' : 'refusé'}}</p>
+      <p>votre demande a été {{ $operation == 'accepter' ? 'accepté' : 'refusé'}}</p>
       <p>
-        @if($operation != 'accept')
+        @if($operation != 'accepter')
         La Raison est : {{$message}}
         @endif
       </p>

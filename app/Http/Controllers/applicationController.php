@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Notification;
 use App\Mail\DocumentResponseMail;
 use Illuminate\Support\Facades\Mail;
 
-
 class applicationController extends Controller
 {
     public function __construct()
@@ -28,33 +27,42 @@ class applicationController extends Controller
     public function index()
     {
         $user = auth()->user();
-        
+        $bottonName='';
         if($user->hasPermissionTo('modifier-demandes')){
-            $applicationNames  = Application::All();
+            $applications = Application::join('users', 'applications.user_id', '=', 'users.id')
+            ->select('applications.*', 'users.full_name')
+            ->paginate(5);
             $names = [];
-            foreach($applicationNames as $applicationName){
-                $user = User::find($applicationName->user_id);
-                $names[] = $user->full_name;
+            $userPersonelinfos = []; 
+            $files             = []; 
+            $conjoints         = []; 
+            $previouss         = []; 
+            foreach($applications as $applicationName){
+                $names[] = $applicationName->full_name;
+                $userPersonelinfos []= Personelinfo::find($applicationName->id); 
+                $files             []= File::where('personelinfos_id',$applicationName->id)->get(); 
+                $conjoints         []= Conjoint::where('personelinfos_id',$applicationName->id)->get(); 
+                $previouss         []= Previous::where('personelinfos_id',$applicationName->id)->get(); 
             }
-            $userPersonelinfos = Personelinfo::all(); 
-            $files             = File::all(); 
-            $conjoints         = Conjoint::all(); 
-            $previouss         = Previous::all(); 
-            $applications      = Application::paginate(5); 
-            return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications','names'));    
+            return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications','names','bottonName'));    
         }else{
             $applicationNames  =  $user->applications()->get();
             $names = [];
+            $userPersonelinfos = []; 
+            $files             = []; 
+            $conjoints         = []; 
+            $previouss         = []; 
             foreach($applicationNames as $applicationName){
                 $user = User::find($applicationName->user_id);
                 $names[] = $user->full_name;
-            }
-            $userPersonelinfos = Personelinfo::all(); 
-            $files             = File::all(); 
-            $conjoints         = Conjoint::all(); 
-            $previouss         = Previous::all(); 
+                $userPersonelinfos []= Personelinfo::find($applicationName->id); 
+                $files             []= File::where('personelinfos_id',$applicationName->id)->get(); 
+                $conjoints         []= Conjoint::where('personelinfos_id',$applicationName->id)->get(); 
+                $previouss         []= Previous::where('personelinfos_id',$applicationName->id)->get(); 
+            
+            }            
             $applications      = $user->applications()->paginate(5);
-            return view('layouts.dashboard.demand-dash', compact('files','userPersonelinfos','conjoints','applications','names')); 
+            return view('layouts.dashboard.demand-dash', compact('files','userPersonelinfos','conjoints','applications','names','bottonName')); 
         }
     }
     public function showFiles($id)
@@ -85,8 +93,8 @@ class applicationController extends Controller
         $admin       = User::role('Administrateur')->first();
 
         if($authUser->roles[0]->name == 'controleur 1'){
-            if($request->input('status_name') == 'accept'){
-                $application->status = 'in progress';
+            if($request->input('status_name') == 'accepter'){
+                $application->status = 'en cours';
                 $application->message = $request->comment;
                 $application->editable2='yes';
                 $application->editable1='no';
@@ -111,6 +119,12 @@ class applicationController extends Controller
                 Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
+                // $basic  = new \Vonage\Client\Credentials\Basic("5755ed5b", "K6ep9r17WL0cb3UX");
+                // $client = new \Vonage\Client($basic);
+                //   $my_message   =   "Madame/Monsieur  ".$useraction->full_name." votre demande a été refusé. \n la raison : ".$application->message;
+                // $response = $client->sms()->send(
+                //     new \Vonage\SMS\Message\SMS("212673816566", "ANL", $my_message)
+                // );
                 return response()->json([
                     'message' => 'la demandes a été bien modifier'
                 ]);
@@ -118,8 +132,8 @@ class applicationController extends Controller
             
         }else
         if($authUser->roles[0]->name == 'controleur 2'){
-            if($request->input('status_name') == 'accept'){
-                $application->status = 'in progress';
+            if($request->input('status_name') == 'accepter'){
+                $application->status = 'en cours';
                 $application->message = $request->comment;
                 $application->editable3='yes';
                 $application->editable2='no';
@@ -144,6 +158,12 @@ class applicationController extends Controller
                 Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
+                // $basic  = new \Vonage\Client\Credentials\Basic("5755ed5b", "K6ep9r17WL0cb3UX");
+                // $client = new \Vonage\Client($basic);
+                //    $my_message   =   "Madame/Monsieur  ".$useraction->full_name." votre demande a été refusé. \n la raison : ".$application->message;
+                // $response = $client->sms()->send(
+                //     new \Vonage\SMS\Message\SMS("212673816566", "ANL", $my_message)
+                // );
                 return response()->json([
                     'message' => 'la demandes a été bien modifier'
                 ]);
@@ -159,6 +179,17 @@ class applicationController extends Controller
             Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
             Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
             Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
+            
+            // $basic  = new \Vonage\Client\Credentials\Basic("5755ed5b", "K6ep9r17WL0cb3UX");
+            // $client = new \Vonage\Client($basic);
+            // if($operation == "accepter"){
+            //   $my_message   =   "Madame/Monsieur  ".$useraction->full_name." votre demande a été accepté.";
+            // }else{
+            //   $my_message   =   "Madame/Monsieur  ".$useraction->full_name." votre demande a été refusé. \n la raison : ".$application->message;
+            // }
+            // $response = $client->sms()->send(
+            //     new \Vonage\SMS\Message\SMS("212631800923", "ANL", $my_message)
+            // );
             return response()->json([
                 'message' => 'la demandes a été bien modifier'
             ]);
@@ -178,5 +209,85 @@ class applicationController extends Controller
             return redirect()->back()->with('success','la demande a  été bien supprimer');
         }
         return redirect()->back()->with('error','la demande n\'éxiste pas');
+    }
+    public function searchApplication(Request $request){
+        
+        $search = $request->search_demande;
+        $user = auth()->user();
+
+        if($user->hasPermissionTo('modifier-demandes')){
+
+            $names = [];
+            
+            $userPersonelinfos = []; 
+            $files = []; 
+            $conjoints = []; 
+            $previouss = []; 
+
+            $roleName = auth()->user()->roles[0]->name;
+            $applications = Application::join('users', 'applications.user_id', '=', 'users.id')
+            ->select('applications.*', 'users.full_name')
+            ->where('applications.status', 'like', '%' . $search . '%')
+            ->orWhere('users.full_name', 'like', '%' . $search . '%')
+            ->get();
+            foreach($applications as $applicationName){
+                $names            [] = $applicationName->full_name;
+                $userPersonelinfos[] = Personelinfo::find($applicationName->id);
+                $files            [] = File::find($applicationName->id); 
+                $conjoints        [] = Conjoint::find($applicationName->id);
+                $previouss        [] = Previous::find($applicationName->id); 
+            }
+            if($applications)
+            {
+                return response()->json([
+                    'files' => $files,
+                    'userPersonelinfos' => $userPersonelinfos,
+                    'conjoints' => $conjoints,
+                    'applications' => $applications,
+                    'names' => $names,
+                    'roleName' => $roleName,
+                    'action' => "{{route('send.Information')}}",
+                ]);
+            }
+        }else{
+            $userPersonelinfos = Personelinfo::all(); 
+            $files             = File::all(); 
+            $conjoints         = Conjoint::all(); 
+            $previouss         = Previous::all(); 
+            $applications      = Application::where('applications.status', 'like', '%' . $search . '%')
+            ->where('user_id', $user->id)
+            ->get();
+            $names = [];
+            
+            $userPersonelinfos = []; 
+            $files = []; 
+            $conjoints = []; 
+            $previouss = []; 
+
+            $roleName = auth()->user()->roles[0]->name;
+            
+            $applications = Application::join('users', 'applications.user_id', '=', 'users.id')
+            ->select('applications.*', 'users.full_name')->where('applications.status', 'like', '%' . $search . '%')
+            ->where('user_id', $user->id)
+            ->get();
+
+            foreach($applications as $applicationName){
+                $names[] = $applicationName->full_name;
+                $userPersonelinfos[] = Personelinfo::find($applicationName->id);
+                $files            [] = File::find($applicationName->id); 
+                $conjoints        [] = Conjoint::find($applicationName->id);
+                $previouss        [] = Previous::find($applicationName->id); 
+            }
+            return response()->json([
+                'files' => $files,
+                'userPersonelinfos' => $userPersonelinfos,
+                'conjoints' => $conjoints,
+                'applications' => $applications,
+                'names' => $names,
+                'roleName' => $roleName,
+                'action' => "{{route('send.Information')}}",
+            ]);
+        }
+        
     }
 }

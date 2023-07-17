@@ -18,6 +18,7 @@ class AnalyticController extends Controller
     }
     public function index()
     {
+        $bottonName ='';
         $roles    = Role::all();
         $users    = User::all();
         $demandess = Application::all();
@@ -27,15 +28,23 @@ class AnalyticController extends Controller
         }
         $colors = [];
         foreach ($statuses as $status) {
-            $label_demande[] = $status;
-            if($status == 'pending'){
-               $colors [] = '#f5a623';
+            if($status == 'accepter'){
+                $label_demande[] = 'accepté' ;
+            }else if($status == 'refuser'){
+                $label_demande[] = 'refusé';
+            }else{
+                $label_demande[] =  $status;
             }
-            if($status == 'accept'){
+            if($status == 'en attente'){
+               $colors [] = '#7a6767';
+            }
+            if($status == 'accepter'){
                 $colors [] = 'rgba(8, 160, 48, 0.969)';
             }
-            if($status == 'decline'){
+            if($status == 'refuser'){
                 $colors [] = 'rgba(177, 13, 13, 0.969)';
+            }if($status == 'en cours'){
+                $colors [] = '#f5a623';
             }
         }
         $statusCounts = DB::table('applications')
@@ -79,8 +88,10 @@ class AnalyticController extends Controller
         $endDate = date('Y-m-d', strtotime('sunday this week'));
         // Get the number of applications by day of the week for the current week
         $ordersByDayOfWeek = [0,0,0,0,0,0,0];
+        
         $myapplications =  DB::table('applications')
         ->select(DB::raw('DATE(created_at) as day'), DB::raw('CAST(COUNT(*) AS UNSIGNED) as count'))
+        ->whereBetween('created_at', [$startDate.' 00:00:00', $endDate.' 23:59:59'])
         ->groupBy('day')
         ->get();
          $tab = 0;
@@ -96,10 +107,10 @@ class AnalyticController extends Controller
             ->name('OrdersByDayOfWeek')
             ->type('bar')
             ->size(['width' => 400, 'height' => 200])
-            ->labels(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
+            ->labels(['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'])
             ->datasets([
                 [
-                    'label' => 'Nombre des Applications',
+                    'label' => 'Nombre des demandes',
                     'backgroundColor' => 'rgb(3, 0, 151)',
                     'data' => $ordersByDayOfWeek,
                 ],
@@ -128,7 +139,7 @@ class AnalyticController extends Controller
             ->labels(range(1, $daysInMonth))
             ->datasets([
                 [
-                    'label' => 'Nombre des Applications',
+                    'label' => 'Nombre des demandes',
                     'backgroundColor' => 'rgb(3, 0, 151)',
                     'data' => array_values($ordersByDayOfMonth),
                 ],
@@ -157,7 +168,7 @@ class AnalyticController extends Controller
             ->labels(range(1, $daysInYear))
             ->datasets([
                 [
-                    'label' => 'Nombre des Applications',
+                    'label' => 'Nombre des demandes',
                     'backgroundColor' => 'rgb(3, 0, 151)',
                     'data' => array_values($ordersByDayOfYear),
                 ],
@@ -166,6 +177,6 @@ class AnalyticController extends Controller
 
 
 
-        return view('layouts.dashboard.panel-dash',compact('roles','users','demandess','chartjs2','chartByDayOfMonth','chartByDayOfYear','chartByDayOfWeek'));
+        return view('layouts.dashboard.panel-dash',compact('roles','users','demandess','chartjs2','chartByDayOfMonth','chartByDayOfYear','chartByDayOfWeek','bottonName'));
     }
 }

@@ -19,4 +19,8 @@ class Conjoint extends Model
         'regime',
         'taux_indemnite',
     ];
+    public function application()
+    {
+        return $this->belongsTo(Application::class);
+    }
 }

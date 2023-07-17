@@ -21,4 +21,8 @@ class File extends Model
         'pieceidentite_path' ,
         'actemariage_path'
     ];
+    public function application()
+    {
+        return $this->belongsTo(Application::class);
+    }
 }

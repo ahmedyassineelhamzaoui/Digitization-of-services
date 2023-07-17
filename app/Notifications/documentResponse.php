@@ -50,7 +50,7 @@ class documentResponse extends Notification
     {
           $user = User::find($this->user_id);
         
-          if($this->operation == 'accept' ){
+          if($this->operation == 'accepter' ){
             $title =  'Bonjour Monsieur '.$this->name.' votre demande a été accepté. consultez votre email pour voir plus de details.';
             $picture = 'agreement.png';
           }else{

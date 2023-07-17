@@ -6,13 +6,15 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SocialiteController;
-use App\Http\Controllers\applicationController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AnalyticController;
+use App\Http\Controllers\ApiController;
 
-use App\Http\Livewire\SearchApplications;
 
-use App\Http\Livewire\UserSearch;
+// use App\Http\Livewire\SearchApplications;
+
+// use App\Http\Livewire\UserSearch;
 
 
 /*
@@ -67,6 +69,7 @@ Route::controller(applicationController::class)->group(function(){
    Route::put('demandes','updateStatus')->name('update.status');
    Route::get('edit-application/{id}','showEditform');
    Route::delete('demandes','deleteApplication')->name('delete.application');
+   Route::get('search-application','searchApplication')->name('application.search');
 });
 Route::controller(NotificationController::class)->group(function(){
     Route::get('notifications','index')->name('Notification');
@@ -101,7 +104,9 @@ Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCal
 
 
 
-Route::get('/search-applications', SearchApplications::class);
+// Route::get('/search-applications', SearchApplications::class);
 
 
-Route::get('/users', UserSearch::class);
+// Route::get('/users', UserSearch::class);
+// Route::post('/generer-avis-recette', [ApiController::class, 'genererAvisRecette'])->name('payment.verifiy');
+// Route::get('/api/data', [ApiController::class, 'getApiData']);

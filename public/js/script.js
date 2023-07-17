@@ -112,6 +112,7 @@ $(document).ready(function() {
           processData: false, // Prevent jQuery from processing the data
           contentType: false, // Tell jQuery not to set the content type
           success: function(response) {
+            
             clickNextbutton();
           },
           error: function(xhr) {
@@ -124,6 +125,7 @@ $(document).ready(function() {
     });
     $(`#step-3-form`).submit(function(event) {
         event.preventDefault();
+        $('#spinner').removeClass('d-none');
           var formData = $(this).serialize();
           var url = $(this).attr('action');
           $.ajax({
@@ -131,9 +133,11 @@ $(document).ready(function() {
             type: 'POST',
             data: formData,
             success: function(response) {
+              $('#spinner').addClass('d-none');
                 clickNextbutton();
             },
             error: function(xhr) {
+              $('#spinner').addClass('d-none');
               var errors = xhr.responseJSON.errors;
               $.each(errors, function(key, value) {
                 $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
@@ -395,7 +399,7 @@ $(document).ready(function() {
     let textarea = document.createElement("textarea");
     if(select){
       select.addEventListener("change", function() {
-        if (this.value === "decline") {
+        if (this.value === "refuser") {
           // Add textarea
           textarea.setAttribute("rows", 10);
           textarea.classList.add('form-control')
@@ -415,7 +419,6 @@ $(document).ready(function() {
     showEditStatus.forEach(function(element){
       element.addEventListener('click', function() {
         var statusId = $(this).data('status-id');
-        console.log(statusId);
         $.ajax({
             type: 'GET',
             url: '/edit-application/'+statusId,
@@ -430,11 +433,43 @@ $(document).ready(function() {
     });
     $('#update-status').submit(function(e){
       e.preventDefault();
-      if(select.value == "decline"){
-        if(textarea.value == ''){
-          $('#comment').after('<span id="error-reason" class="text-danger fs-7"><strong> il faut ajouté une raison </strong></span>');
+      let contrNumber = document.querySelector("#contrenu");
+      if(contrNumber.value != 'controleur 3'){
+        if(select.value == "refuser"){
+          if(textarea.value == ''){
+            $('#comment').after('<span id="error-reason" class="text-danger fs-7"><strong> il faut ajouté une raison </strong></span>');
+          }else{
+            var formData = $(this).serialize();
+            $('#confirmedit-application').modal('show');
+            $('#remove-application').submit(function(e){
+              $.ajax({
+                type : 'POST',
+                data : formData ,
+                url : url, 
+                success : function(response){
+                  if(response.error){
+                    $("#status-edit-error").addClass('show')
+                    $("#status-edit-error").removeClass('hide')
+                    $(".status-role-error").text(response.error)
+                  }
+                  if(response.message)
+                  {
+                    $("#status-edit-alert").addClass('show')
+                    $("#status-edit-alert").removeClass('hide')
+                    $(".status-role-success").text(response.message);
+                  }
+                },
+                error : function(xhr,status,error){
+      
+                }
+              });
+            })
+            
+           
+          }
         }else{
           var formData = $(this).serialize();
+          var url = $(this).attr('action')
           $('#confirmedit-application').modal('show');
           $('#remove-application').submit(function(e){
             $.ajax({
@@ -442,18 +477,18 @@ $(document).ready(function() {
               data : formData ,
               url : url, 
               success : function(response){
-                if(response.error){
-                  $("#status-edit-error").addClass('show')
-                  $("#status-edit-error").removeClass('hide')
-                  $(".status-role-error").text(response.error)
-                }
-                if(response.message)
-                {
-                  $("#status-edit-alert").addClass('show')
-                  $("#status-edit-alert").removeClass('hide')
-                  $(".status-role-success").text(response.message);
-                }
-              },
+                  if(response.error){
+                    $("#status-edit-error").addClass('show')
+                    $("#status-edit-error").removeClass('hide')
+                    $(".status-role-error").text(response.error)
+                  }
+                  if(response.message)
+                  {
+                    $("#status-edit-alert").addClass('show')
+                    $("#status-edit-alert").removeClass('hide')
+                    $(".status-role-success").text(response.message);
+                  }
+                  },
               error : function(xhr,status,error){
     
               }
@@ -463,36 +498,225 @@ $(document).ready(function() {
          
         }
       }else{
-        var formData = $(this).serialize();
-        var url = $(this).attr('action')
-        $('#confirmedit-application').modal('show');
-        $('#remove-application').submit(function(e){
-          $.ajax({
-            type : 'POST',
-            data : formData ,
-            url : url, 
-            success : function(response){
-                if(response.error){
-                  $("#status-edit-error").addClass('show')
-                  $("#status-edit-error").removeClass('hide')
-                  $(".status-role-error").text(response.error)
-                }
-                if(response.message)
-                {
-                  $("#status-edit-alert").addClass('show')
-                  $("#status-edit-alert").removeClass('hide')
-                  $(".status-role-success").text(response.message);
-                }
+        if(select.value == "refuser"){
+          if(textarea.value == ''){
+            $('#comment').after('<span id="error-reason" class="text-danger fs-7"><strong> il faut ajouté une raison </strong></span>');
+          }else{
+            var formData = $(this).serialize();
+              $.ajax({
+                type : 'POST',
+                data : formData ,
+                url : url, 
+                success : function(response){
+                  if(response.error){
+                    $("#status-edit-error").addClass('show')
+                    $("#status-edit-error").removeClass('hide')
+                    $(".status-role-error").text(response.error)
+                  }
+                  if(response.message)
+                  {
+                    $("#status-edit-alert").addClass('show')
+                    $("#status-edit-alert").removeClass('hide')
+                    $(".status-role-success").text(response.message);
+                  }
                 },
-            error : function(xhr,status,error){
-  
-            }
-          });
-        })
-        
-       
+                error : function(xhr,status,error){
+      
+                }
+              });
+          
+            
+           
+          }
+        }else{
+          var formData = $(this).serialize();
+          var url = $(this).attr('action')
+            $.ajax({
+              type : 'POST',
+              data : formData ,
+              url : url, 
+              success : function(response){
+                  if(response.error){
+                    $("#status-edit-error").addClass('show')
+                    $("#status-edit-error").removeClass('hide')
+                    $(".status-role-error").text(response.error)
+                  }
+                  if(response.message)
+                  {
+                    $("#status-edit-alert").addClass('show')
+                    $("#status-edit-alert").removeClass('hide')
+                    $(".status-role-success").text(response.message);
+                  }
+                  },
+              error : function(xhr,status,error){
+    
+              }
+            });
+          
+         
+        }
       }
+
+      
     })
+    $('#search-demande').on('keyup',function(){
+      $value=$(this).val();
+      $.ajax({
+      type : 'get',
+      url : '/search-application',
+      data:{'search_demande':$value},
+      success: function (response)  {
+          let tablelines = '';     
+          var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+          if(response.applications.length>5){
+          for (var i = 0; i < 5; i++) {
+                        tablelines += '<tr class="border-b text-tablecolor">' +
+                        '<td style="font-weight: bold">'+response.names[i]+'</td>'+
+                        '<td>';
+                          tablelines += '<form id="form-sendinfo" action="http://127.0.0.1:8000/formulaire" method="post" class="mb-3">' +
+                            '<input type="hidden" name="personel_id" value="' + response.userPersonelinfos[i].id + '" id="personel-idinscription">' +
+                            '<input type="hidden" name="_token" value="'+csrfToken+'">'+
+                            '<button type="submit" name="print_info" class="btn btn-primary"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>' +
+                            '</form>'+
+                        '</td>'+
+                        '<td>'+
+                            '<form  action="http://127.0.0.1:8000/formulaire"" method="post" class="mb-3">'+
+                            '<input type="hidden" name="personel_id" value="'+response.userPersonelinfos[i].id+'" id="personel-idinscription">'+
+                            '<input type="hidden" name="_token" value="'+csrfToken+'">'+
+                            '<button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>'+
+                            '</form>'+
+                        '</td>'+
+                        '<td class="ps-3">'+
+                                  '<button data-files-id='+response.files[i].id+' data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>'+
+                        '</td>'+
+                        '</td>' +
+                  '<td>';
+
+                  
+                if (response.applications[i].status == 'accepter') {
+                    tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">accepter</button>';
+                } else if (response.applications[i].status == 'refuser') {
+                    tablelines += '<button class="btn" style="background-color:rgb(216, 38, 38); color:white;"> refuser</button>';
+                } else if (response.applications[i].status == 'en cours') {
+                    tablelines += '<button class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0); color:white;">' +
+                        '<div class="me-1"> en cours </div>' +
+                        '<div class="spinner-border" style="width:15px;height:15px" role="status">' +
+                            '<span class="visually-hidden">Loading...</span>' +
+                        '</div>' +
+                    '</button>';
+                } else {
+                    tablelines += '<button class="btn" style="background-color:black; color:white;">en attente</button>';
+                }
+
+                tablelines += '</td>';
+                if (response.roleName == 'Administrateur') {
+                    tablelines += '<td>';
+                    tablelines += '<button class="btn btn-danger me-1" onclick="deleteApplication(' + response.applications[i].id + ')" data-bs-toggle="modal" data-bs-target="#delete-application">' +
+                        '<i class="fa-regular fa-trash-can"></i>' +
+                        '</button>';
+                    tablelines += '</td>';
+                }
+
+                if (response.roleName != 'Administrateur' && response.roleName != 'utilisateur' ) {
+                    tablelines += '<td>';
+                    if ( response.roleName == 'controleur 1' && response.applications[i].editable1 == 'yes') {
+                        tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                            '<i class="fa-solid fa-pen-to-square"></i>' +
+                            '</button>';
+                    } else if ( response.roleName == 'controleur 2' && response.applications[i].editable2 == 'yes') {
+                        tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                            '<i class="fa-solid fa-pen-to-square"></i>' +
+                            '</button>';
+                    } else if ( response.roleName == 'controleur 3' && response.applications[i].editable3 == 'yes') {
+                        tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                            '<i class="fa-solid fa-pen-to-square"></i>' +
+                            '</button>';
+                    }
+                    tablelines += '</td>';
+                }else{
+                  tablelines += '';
+                }
+
+                tablelines +=
+                    '</tr>';
+          }
+          }else{
+            for(let i=0;i<response.applications.length;i++){
+              tablelines += '<tr class="border-b text-tablecolor">' +
+              '<td style="font-weight: bold">'+response.names[i]+'</td>'+
+              '<td>';
+                tablelines += '<form id="form-sendinfo" action="http://127.0.0.1:8000/formulaire" method="post" class="mb-3">' +
+                  '<input type="hidden" name="personel_id" value="' + response.userPersonelinfos[i].id + '" id="personel-idinscription">' +
+                  '<input type="hidden" name="_token" value="'+csrfToken+'">'+
+                  '<button type="submit" name="print_info" class="btn btn-primary"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>' +
+                  '</form>'+
+              '</td>'+
+              '<td>'+
+                  '<form  action="http://127.0.0.1:8000/formulaire" method="post" class="mb-3">'+
+                  '<input type="hidden" name="personel_id" value="'+response.userPersonelinfos[i].id+'" id="personel-idinscription">'+
+                  '<input type="hidden" name="_token" value="'+csrfToken+'">'+
+                  '<button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>'+
+                  '</form>'+
+              '</td>'+
+              '<td class="ps-3">'+
+                        '<button data-files-id='+response.files[i].id+' data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>'+
+              '</td>';
+  
+        tablelines += '<td>'
+      if (response.applications[i].status == 'accepter') {
+          tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">accepter</button>';
+      } else if (response.applications[i].status == 'refuser') {
+          tablelines += '<button class="btn" style="background-color:rgb(216, 38, 38); color:white;"> refuser</button>';
+      } else if (response.applications[i].status == 'en cours') {
+          tablelines += '<button class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0); color:white;">' +
+              '<div class="me-1"> en cours </div>' +
+              '<div class="spinner-border" style="width:15px;height:15px" role="status">' +
+                  '<span class="visually-hidden">Loading...</span>' +
+              '</div>' +
+          '</button>';
+      } else {
+          tablelines += '<button class="btn" style="background-color:black; color:white;">en attente</button>';
+      }
+      tablelines +='</td>';
+      if (response.roleName == 'Administrateur') {
+          tablelines += '<th>';
+          tablelines += '<button class="btn btn-danger me-1" onclick="deleteApplication(' + response.applications[i].id + ')" data-bs-toggle="modal" data-bs-target="#delete-application">' +
+              '<i class="fa-regular fa-trash-can"></i>' +
+              '</button></th>';
+      }
+      else if (response.roleName != 'Administrateur' && response.roleName != 'utilisateur' ) {
+        tablelines += '<th>';
+          if ( response.roleName == 'controleur 1' && response.applications[i].editable1 == 'yes') {
+              tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                  '<i class="fa-solid fa-pen-to-square"></i>' +
+                  '</button>';
+          } else if ( response.roleName == 'controleur 2' && response.applications[i].editable2 == 'yes') {
+              tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                  '<i class="fa-solid fa-pen-to-square"></i>' +
+                  '</button>';
+          } else if ( response.roleName == 'controleur 3' && response.applications[i].editable3 == 'yes') {
+              tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                  '<i class="fa-solid fa-pen-to-square"></i>' +
+                  '</button>';
+          }
+          tablelines += '</th>';
+      }else if( response.roleName == 'utilisateur'){
+      tablelines += '';
+      }
+      tablelines += '</tr>';
+            }
+
+          }
+         
+        $('#tbody').html(
+            tablelines
+        );
+        },
+      error : function(xhr,status,error){
+          console.log(error)
+      }
+      });
+  }) 
 });
 function  deleteNotification(id)
 {

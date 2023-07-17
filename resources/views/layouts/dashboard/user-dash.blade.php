@@ -21,7 +21,7 @@
     </div>
     @endif
 
-    {{-- <div class="table-responsive">
+    <div class="table-responsive">
         <table class="table">
             <thead class="table-dark">
                 <tr>
@@ -29,7 +29,7 @@
                     <th scope="col">Nom complet</th>
                     <th scope="col">Email</th>
                     <th scope="col">Rôle</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Statut</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -39,7 +39,20 @@
                     <th scope="row">{{$item->id}}</th>
                     <td>{{$item->full_name}}</td>
                     <td>{{$item->email}}</td>
-                    <td>{{$item->roles[0]->name}}</td>
+                    <td>
+                        @if($item->roles[0]->name == 'controleur 1')
+                        MODERATEUR
+                        @endif 
+                        @if($item->roles[0]->name  == 'controleur 2')
+                            SOUS DIRECTEUR
+                        @endif
+                        @if($item->roles[0]->name  == 'controleur 3')
+                            DIRECTEUR
+                        @endif
+                        @if($item->roles[0]->name  == 'utilisateur' || $item->roles[0]->name == 'Administrateur')
+                            {{$item->roles[0]->name }}
+                        @endif
+                    </td>
                     <td class="">
                         @if ($item->status == 'online')
                           <div class="d-flex align-items-center">
@@ -74,9 +87,9 @@
         <div class="d-flex justify-content-end">
             {!! $users->links() !!}
         </div>
-    </div> --}}
+    </div>
     
-    @livewire('user-search')
+    {{-- @livewire('user-search') --}}
 
     <div class="modal fade" id="add-user">
         <div class="modal-dialog modal-dialog-centered">

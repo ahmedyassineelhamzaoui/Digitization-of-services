@@ -22,7 +22,7 @@
 
                         <div class="row mt-2">
                             <div class="col-8">
-                                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Up</h3>
+                                <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Créer Compte</h4>
                             </div>
                             <div class="col-2">
                                 <a
@@ -48,7 +48,7 @@
 
 
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form2Example17">Full Name</label>
+                            <label class="form-label" for="form2Example17">Nom Complet</label>
                             <input type="text" name="full_name" value="{{ old('full_name') }}" id="form2Example17" class="form-control form-control-lg @error('full_name') is-invalid @enderror" />
                             @error('full_name')
                                 <div class="invalid-feedback text-danger">{{ $message }}</div>
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form2Example18">Email address</label>
+                            <label class="form-label" for="form2Example18">Adresse e-mail</label>
                             <input type="email" name="email" value="{{ old('email') }}" id="form2Example18" class="form-control form-control-lg @error('email') is-invalid @enderror" />
                             @error('email')
                                 <div class="invalid-feedback text-danger">{{ $message }}</div>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form2Example28">Password</label>
+                            <label class="form-label" for="form2Example28">Mot de Passe</label>
                             <input type="password" name="password" value="{{ old('password') }}" id="form2Example28" class="form-control form-control-lg @error('password') is-invalid @enderror" />
                             @error('password')
                                 <div class="invalid-feedback text-danger">{{ $message }}</div>
@@ -72,24 +72,10 @@
                         </div>
 
                         <div class="pt-1 mb-4">
-                            <button class="btn btn-warning btn-lg btn-block text-white w-100" type="submit" style="padding: .5rem 2.5rem;">Sign Up</button>
-                            {{-- <div class="container-fluid mt-2">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <a href="/auth/google" class="btn btn-danger btn-lg btn-block text-white w-100" role="button">
-                                            <i class="fa-brands fa-google  text-white"></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="/auth/facebook" class="btn btn-primary btn-lg btn-block text-white w-100" role="button">
-                                            <i class="fab fa-facebook-f text-white"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> --}}
+                            <button style=" background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);" class="btn btn-lg btn-block text-white w-100" type="submit" style="padding: .5rem 2.5rem;">S'inscrire</button>
                         </div>
 
-                        <p>Do you have an account? <a href="{{url('login')}}" class="link-warning">Login here</a></p>
+                        <p>Avez-vous un compte? <a href="{{url('login')}}" class="link-warning">Connexion</a></p>
 
 
                     </form>

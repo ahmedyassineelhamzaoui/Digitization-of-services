@@ -40,29 +40,14 @@ class RolePermissionSeeder extends Seeder
         }
 
         $admin = 'Administrateur';
-        $controleur = 'contrôleur';
         $controleur1 = 'controleur 1';
         $controleur2 = 'controleur 2';
         $controleur3 = 'controleur 3';
-
         $user = 'utilisateur';
-        $controleur1 = 'controleur 1';
-        $controleur2 = 'controleur 2';
-        $controleur3 = 'controleur 3';
 
 
         Role::create(['name' => $admin])->givePermissionTo(Permission::all());
-
-        Role::create(['name' => $controleur])->givePermissionTo([
-            $permissions[13],  $permissions[15],
-        ]);
-        Role::create(['name' => $controleur1])->givePermissionTo([
-            $permissions[13],  $permissions[15],
-        ]); Role::create(['name' => $controleur2])->givePermissionTo([
-            $permissions[13],  $permissions[15],
-        ]); Role::create(['name' => $controleur3])->givePermissionTo([
-            $permissions[13],  $permissions[15],
-        ]);
+       
 
         Role::create(['name' => $controleur1])->givePermissionTo([
             $permissions[13],  $permissions[15],

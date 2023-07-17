@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class personelinfo extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'matricule',
         'nom',
@@ -35,4 +36,9 @@ class personelinfo extends Model
         'date_fin',
         'situation_matrimoniale'
  ];
+
+    public function application()
+    {
+        return $this->belongsTo(Application::class);
+    }
 }

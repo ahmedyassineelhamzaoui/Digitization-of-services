@@ -31,7 +31,9 @@ class UserController extends Controller
         $roles = Role::all();
         $users=User::paginate(5);
         $roles=Role::all();
-        return view('layouts.dashboard.user-dash',compact('users','roles'));
+        $bottonName = 'utilisateur';
+
+        return view('layouts.dashboard.user-dash',compact('users','roles','bottonName'));
     }
     public function editUser($id)
     {

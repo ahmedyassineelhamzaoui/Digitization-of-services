@@ -53,7 +53,7 @@
                 <div class="card-body p-4">
                     <div class="media d-flex justify-content-between align-items-center">
                         <div class="media-body text-white text-right">
-                            <p class="mb-1">Totale des demandes</p>
+                            <p class="mb-1">Total des demandes</p>
                             <h3 class="text-white">{{$demandess->count()}}</h3>
                         </div>
                         <div>
@@ -84,7 +84,7 @@
         <div class="col-md-5 col-lg-5">
           <div class="card border-2">
             <div class="card-body">
-              <h3 class="card-title font-bold">Le status des demandes</h3>
+              <h3 class="card-title font-bold">Le statut des demandes</h3>
               <div class="d-flex justify-content-center">
                 <div class="w-75">
                   {{ $chartjs2->render() }}
@@ -101,7 +101,7 @@
                     <select onchange="timeChanged1()" id="select-time1" class="form-select" style="width:120px" aria-label="Default select example">
                         <option value="1" selected>Semaine</option>
                         <option value="2">Mois</option>
-                        <option value="3">Années</option>
+                        <option value="3">Année</option>
                     </select>
                 </div>
                 {!! $chartByDayOfWeek->render() !!}
@@ -118,7 +118,7 @@
                     <select onchange="timeChanged2()" id="select-time2" class="form-select" style="width:120px" aria-label="Default select example">
                         <option value="1">Semaine</option>
                         <option value="2" selected>Mois</option>
-                        <option value="3">Années</option>
+                        <option value="3">Année</option>
                     </select>
                 </div>
                 {!! $chartByDayOfMonth->render() !!}
@@ -131,11 +131,11 @@
             <div class="card border-2">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h4 class="card-title font-bold">Le Nombre des demandes dans l'années</h4>
+                    <h4 class="card-title font-bold">Le Nombre des demandes dans l'année</h4>
                     <select onchange="timeChanged3()" id="select-time3" class="form-select" style="width:120px" aria-label="Default select example">
                         <option value="1">Semaine</option>
                         <option value="2">Mois</option>
-                        <option value="3" selected>Années</option>
+                        <option value="3" selected>Année</option>
                     </select>
                 </div>
                 {!! $chartByDayOfYear->render() !!}
@@ -148,7 +148,7 @@
             <div class="card border-2">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h4 class="card-title font-bold">Le Nombre des demandes dans l'années</h4>
+                    <h4 class="card-title font-bold">Le Nombre des demandes dans l'année</h4>
                 </div>
                 {!! $chartByDayOfWeek->render() !!}
             </div>
