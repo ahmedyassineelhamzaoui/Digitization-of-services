@@ -39,7 +39,7 @@ class FormController extends Controller
 
         public function storeInformation(Request $request)
         {
-            
+
             if($request->has('registration_number')){
                 $validator = $request->validate([
                     'registration_number' => 'required|string',
@@ -201,7 +201,7 @@ class FormController extends Controller
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
             }
             if($request->has('telephone_paiment')){
-                
+
                  $request->validate([
                      'nom_paiment' => 'required',
                      'prenom_paiment' => 'required',
@@ -219,7 +219,30 @@ class FormController extends Controller
                     'nature_recette' => $request->nature_paiment,
                     'montant_total'  => $request->payment_total,
                 ]);
-                if ($response->successful()) {
+                $url="https://wbservice.tresor.gouv.ci/wbpartenaires/tstrest/GenererAvisrecette";
+
+                $data = [
+                    'action' => 'GenererAvisrecette',
+                    'credential_id' => 'pJft51_4M6Cbbnsfw',
+                    'client_nom' => 'ouattara',
+                    'client_prenom' => 'hervé',
+                    'identifiant' => 'UYDU34H',
+                    'nature_recette' => 'EXAMEN 190',
+                    'montant_total' => '100',
+                    'telephone' => '0707186705',
+                ];
+
+                $client = new Client();
+                $response = $client->post($url, [
+                    'form_params' => $data,
+                ]);
+
+                $responseData = $response->getBody()->getContents();
+                $responseMesssage = json_decode($responseData, true)['response_message'];
+                $responseCode = json_decode($responseData, true)['response_code'];
+
+                dd($responseCode == 1);
+                if ($responseCode == 1) {
                     $application = new Application();
                     $application->id = $request->personel_id;
                     $application->status ='en attente';
@@ -248,18 +271,17 @@ class FormController extends Controller
                     Notification::send($controleur2, new documentAdded($user->id));
                     Notification::send($controleur3, new documentAdded($user->id));
 
-                    if(Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id))){
-                        return response()->json([
-                        'message' => 'paiment a été créer avec succés'
-                        ]);
-                    }
+                    Mail::to($user->email)->send(new WelcomeEmail($user,$request->personel_id));
+
                     return response()->json([
-                    'message' => 'paiment a été créer avec succés'
+                    'message' => 'paiment a été créer avec succés',
+                    'number'  => 1
                     ]);
 
                 } else {
                     return response()->json([
-                        'message' => 'information incoreccte'
+                        'message' => $responseMesssage,
+                        'number' => $responseCode
                     ]);
                 }
             }

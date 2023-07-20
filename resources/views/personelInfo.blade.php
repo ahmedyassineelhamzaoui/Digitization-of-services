@@ -2,15 +2,15 @@
 @section('title', 'Formulaire')
 @section('content')
 <div id="spinner" tabindex="-1" class="d-none">
-    
+
         <div class="spinner-border text-warning" role="status">
             <span class="sr-only">Loading...</span>
         </div>
         <div id="loding-process" class="ms-2">
             chargement...
         </div>
-    
-    
+
+
 </div>
 <div class="steper-content container">
     <div class="steper-componnet">
@@ -36,11 +36,11 @@
             </span>
         </div>
     </div>
-    
-    
+
+
         <div class="step person-infos">
             <form id="step-1-form" action="{{route('send.Information')}}" method="post" class="mb-3">
-                
+
                 <h3 class="mt-5">Les informations personnelles </h3>
                 <div class="row g-3">
                     @csrf
@@ -612,7 +612,7 @@
                 </div>
             </form>
         </div>
-       
+
         <div class="step join-file">
             <form id="step-2-form" action="{{route('send.Information')}}" method="post" class="mb-3" enctype="multipart/form-data">
                 <h3>Joindre des fichiers</h3>
@@ -688,14 +688,14 @@
                         @error('marriage_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
-                    </div> 
+                    </div>
                 </div>
                 <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-warning">Suivant</button>
                 </div>
             </form>
         </div>
-     
+
         <div class="step paiement ">
             <form id="step-3-form" action="{{route('send.Information')}}" method="post" class="mb-3">
                 <div class="finmargin d-flex justify-content-center">
@@ -703,7 +703,7 @@
                     <input type="hidden" name="personel_id" id="personel-Id">
                     <div class="row g-3">
                         <h3 class="mt-4">paiement</h3>
-                        <input type="hidden" name="personel_id" id="personel-idpaiment"> 
+                        <input type="hidden" name="personel_id" id="personel-idpaiment">
                         <div class="mt-3 mb-3 col-md-6">
                             <div class="">
                                 <label for="nom_paiment" class="form-label">Votre Nom</label>
@@ -731,11 +731,11 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="credential_paiment" class="form-label">ID d'identification</label>
-                                <input type="number" class="form-control" name="credential_paiment" id="credential_paiment" >
+                                <input type="text" class="form-control" name="credential_paiment" id="credential_paiment" >
                                 @error('credential_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -753,7 +753,7 @@
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="number_paiment" class="form-label">Le numéro de l’avis de recette</label>
-                                <input type="number" class="form-control" name="number_paiment" id="number_paiment" >
+                                <input type="text" class="form-control" name="number_paiment" id="number_paiment" >
                                 @error('number_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -776,7 +776,7 @@
                     </div>
                 </div>
             </form>
-        
+
         </div>
         <div class="step fin">
             <h3 class="mt-4">Votre demande d'ANL a été validée avec succès </h3>
@@ -803,6 +803,6 @@
                 <a href="{{route('home')}}" class="btn btn-warning text-light"><span class="me-2"><i class="fa-solid fa-house"></i></span>Retour à l'acceuil</a>
             </div>
         </div>
-    
+
 </div>
 @endsection

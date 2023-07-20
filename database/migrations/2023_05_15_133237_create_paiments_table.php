@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('paiments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('personelinfos_id');            
+            $table->unsignedBigInteger('personelinfos_id');
             $table->foreign('personelinfos_id')->references('id')->on('personelinfos');
             $table->string('client_nom');
             $table->string('client_prenom');
             $table->string('telephone')->nullable();
-            $table->bigInteger('credential_id');
-            $table->bigInteger('identifiant');
+            $table->string('credential_id');
+            $table->string('identifiant');
             $table->string('nature_recette');
             $table->decimal('montant_total', 10, 2);
             $table->timestamp('date')->nullable();

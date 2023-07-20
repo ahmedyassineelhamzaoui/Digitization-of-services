@@ -73,7 +73,7 @@ $(document).ready(function() {
           }else{
             var formData = $(this).serialize();
             var url = $(this).attr('action');
-            
+
             $.ajax({
               url: url,
               type: 'POST',
@@ -83,7 +83,7 @@ $(document).ready(function() {
                   $("#personel-idpaiment").val(response.personel_id);
                   $("#personel-idinscription").val(response.personel_id)
                   $("#personel-idreçupaiment").val(response.personel_id)
-  
+
                   clickNextbutton();
               },
               error: function(xhr) {
@@ -94,17 +94,17 @@ $(document).ready(function() {
               }
             });
         }
-        
-          
-   
+
+
+
     });
     $('#step-2-form').submit(function(event) {
         event.preventDefault();
-      
+
         var formData = new FormData(this); // Create a new FormData instance
-      
+
         var url = $(this).attr('action');
-      
+
         $.ajax({
           url: url,
           type: 'POST',
@@ -112,7 +112,7 @@ $(document).ready(function() {
           processData: false, // Prevent jQuery from processing the data
           contentType: false, // Tell jQuery not to set the content type
           success: function(response) {
-            
+
             clickNextbutton();
           },
           error: function(xhr) {
@@ -123,29 +123,29 @@ $(document).ready(function() {
           }
         });
     });
-    $(`#step-3-form`).submit(function(event) {
-        event.preventDefault();
-        $('#spinner').removeClass('d-none');
-          var formData = $(this).serialize();
-          var url = $(this).attr('action');
-          $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-              $('#spinner').addClass('d-none');
-                clickNextbutton();
-            },
-            error: function(xhr) {
-              $('#spinner').addClass('d-none');
-              var errors = xhr.responseJSON.errors;
-              $.each(errors, function(key, value) {
-                $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
-            });
-            }
-        });
-   
-    });
+    // $(`#step-3-form`).submit(function(event) {
+    //     event.preventDefault();
+    //     $('#spinner').removeClass('d-none');
+    //       var formData = $(this).serialize();
+    //       var url = $(this).attr('action');
+    //       $.ajax({
+    //         url: url,
+    //         type: 'POST',
+    //         data: formData,
+    //         success: function(response) {
+    //           $('#spinner').addClass('d-none');
+    //             clickNextbutton();
+    //         },
+    //         error: function(xhr) {
+    //           $('#spinner').addClass('d-none');
+    //           var errors = xhr.responseJSON.errors;
+    //           $.each(errors, function(key, value) {
+    //             $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
+    //         });
+    //         }
+    //     });
+
+    // });
     $('#create-user').submit(function(e){
       e.preventDefault();
       var formData = $(this).serialize();
@@ -180,7 +180,7 @@ $(document).ready(function() {
             $('#full_nameedit').val(response.user.full_name);
             $('#emailedit').val(response.user.email);
             $('#passwordedit').val(response.user.password);
-            
+
             // check if the role_name option exists in the dropdown
             var role_name= response.role_name;
             var roles = response.roles;
@@ -196,7 +196,7 @@ $(document).ready(function() {
             $('#password').val(response.password);
             },
             error: function(xhr, status, error) {
-            
+
             }
         });
       });
@@ -221,7 +221,7 @@ $(document).ready(function() {
           });
           }
         });
-    }); 
+    });
     $('#create-role').submit(function(e){
       e.preventDefault();
      var formData = $(this).serialize();
@@ -287,7 +287,7 @@ $(document).ready(function() {
                     $("#picalty").append(permissionsDiv)
                 },
                 error: function(xhr, status, error) {
-    
+
                 }
             });
         });
@@ -312,7 +312,7 @@ $(document).ready(function() {
             $("#role-edit-alert").removeClass('hide')
             $(".edit-role-success").text(response.message);
           }
-           
+
         },
         error: function(xhr,status,error) {
           var errors = xhr.responseJSON.errors;
@@ -334,7 +334,7 @@ $(document).ready(function() {
                 filesDiv.innerHTML = '';
                 let index = 0;
                 for (var key in response.file) {
-                  
+
                   if (response.file.hasOwnProperty(key) && response.file[key]) {
                     var fileName = key.replace('_path', '');
                     var filePath = response.file[key];
@@ -374,13 +374,13 @@ $(document).ready(function() {
                     }
                     var fileButton = document.createElement('button');
                     fileButton.classList.add('btn','btn-primary','m-1','fixed-width','d-flex','text-align-center')
-                    
+
                     var icon = document.createElement('i');
                     icon.classList.add('fa-solid', 'fa-file-invoice');
                     var span = document.createElement('span')
                     span.classList.add('me-1')
                     span.appendChild(icon)
-                    fileButton.appendChild(span);  
+                    fileButton.appendChild(span);
                     fileButton.appendChild(fileLink);
                     filesDiv.appendChild(fileButton);
                     index++
@@ -403,18 +403,18 @@ $(document).ready(function() {
           // Add textarea
           textarea.setAttribute("rows", 10);
           textarea.classList.add('form-control')
-         
+
           textarea.name = "comment";
           textarea.placeholder = "la raison ";
-          
-          commentDiv.appendChild(textarea);  
+
+          commentDiv.appendChild(textarea);
         } else {
-          // Remove textarea  
+          // Remove textarea
           commentDiv.innerHTML = "";
         }
       });
     }
-  
+
     let showEditStatus =document.querySelectorAll('.show-editstatusform');
     showEditStatus.forEach(function(element){
       element.addEventListener('click', function() {
@@ -445,7 +445,7 @@ $(document).ready(function() {
               $.ajax({
                 type : 'POST',
                 data : formData ,
-                url : url, 
+                url : url,
                 success : function(response){
                   if(response.error){
                     $("#status-edit-error").addClass('show')
@@ -460,12 +460,12 @@ $(document).ready(function() {
                   }
                 },
                 error : function(xhr,status,error){
-      
+
                 }
               });
             })
-            
-           
+
+
           }
         }else{
           var formData = $(this).serialize();
@@ -475,7 +475,7 @@ $(document).ready(function() {
             $.ajax({
               type : 'POST',
               data : formData ,
-              url : url, 
+              url : url,
               success : function(response){
                   if(response.error){
                     $("#status-edit-error").addClass('show')
@@ -490,12 +490,12 @@ $(document).ready(function() {
                   }
                   },
               error : function(xhr,status,error){
-    
+
               }
             });
           })
-          
-         
+
+
         }
       }else{
         if(select.value == "refuser"){
@@ -506,7 +506,7 @@ $(document).ready(function() {
               $.ajax({
                 type : 'POST',
                 data : formData ,
-                url : url, 
+                url : url,
                 success : function(response){
                   if(response.error){
                     $("#status-edit-error").addClass('show')
@@ -521,12 +521,12 @@ $(document).ready(function() {
                   }
                 },
                 error : function(xhr,status,error){
-      
+
                 }
               });
-          
-            
-           
+
+
+
           }
         }else{
           var formData = $(this).serialize();
@@ -534,7 +534,7 @@ $(document).ready(function() {
             $.ajax({
               type : 'POST',
               data : formData ,
-              url : url, 
+              url : url,
               success : function(response){
                   if(response.error){
                     $("#status-edit-error").addClass('show')
@@ -549,15 +549,15 @@ $(document).ready(function() {
                   }
                   },
               error : function(xhr,status,error){
-    
+
               }
             });
-          
-         
+
+
         }
       }
 
-      
+
     })
     $('#search-demande').on('keyup',function(){
       $value=$(this).val();
@@ -566,7 +566,7 @@ $(document).ready(function() {
       url : '/search-application',
       data:{'search_demande':$value},
       success: function (response)  {
-          let tablelines = '';     
+          let tablelines = '';
           var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
           if(response.applications.length>5){
           for (var i = 0; i < 5; i++) {
@@ -592,7 +592,7 @@ $(document).ready(function() {
                         '</td>' +
                   '<td>';
 
-                  
+
                 if (response.applications[i].status == 'accepter') {
                     tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">accepter</button>';
                 } else if (response.applications[i].status == 'refuser') {
@@ -661,7 +661,7 @@ $(document).ready(function() {
               '<td class="ps-3">'+
                         '<button data-files-id='+response.files[i].id+' data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>'+
               '</td>';
-  
+
         tablelines += '<td>'
       if (response.applications[i].status == 'accepter') {
           tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">accepter</button>';
@@ -707,7 +707,7 @@ $(document).ready(function() {
             }
 
           }
-         
+
         $('#tbody').html(
             tablelines
         );
@@ -716,7 +716,7 @@ $(document).ready(function() {
           console.log(error)
       }
       });
-  }) 
+  })
 });
 function  deleteNotification(id)
 {
