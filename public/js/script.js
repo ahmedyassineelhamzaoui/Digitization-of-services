@@ -180,17 +180,26 @@ $(document).ready(function() {
             $('#full_nameedit').val(response.user.full_name);
             $('#emailedit').val(response.user.email);
             $('#passwordedit').val(response.user.password);
-
+            let newroleName="";
             // check if the role_name option exists in the dropdown
             var role_name= response.role_name;
             var roles = response.roles;
             var select = $('#role_nameedit');
                 select.empty();
                 $.each(roles, function(index, role) {
-                    if(role_name == role.name ){
-                    select.append('<option selected value="' + role.name + '">' + role.name + '</option>');
+                    if(role.name == 'controleur 1'){
+                      newroleName = "MODERATEUR";
+                    }else if(role.name == 'controleur 2'){
+                      newroleName = "SOUS DIRECTEUR";
+                    }else if(role.name == 'controleur 3'){
+                      newroleName = "DIRECTEUR";
                     }else{
-                    select.append('<option value="' + role.name + '">' + role.name + '</option>');
+                      newroleName = role.name;
+                    }
+                    if(role_name == role.name ){
+                    select.append('<option selected value="' + role.name + '">' + newroleName + '</option>');
+                    }else{
+                    select.append('<option value="' + role.name + '">' + newroleName + '</option>');
                     }
                 });
             $('#password').val(response.password);

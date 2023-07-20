@@ -113,7 +113,21 @@
                                 <label class="form-label">Rôle</label>
                                 <select class="form-select" name="role_name" id="role_name">
                                     @foreach($roles as $role)
-                                    <option value="{{$role->name}}">{{$role->name}}</option>
+                                    <option value="{{$role->name}}">
+                                        @if($role->name == 'controleur 1')
+                                            MODERATEUR
+                                        @endif
+                                            
+                                        @if($role->name == 'controleur 2')
+                                            SOUS DIRECTEUR
+                                        @endif
+                                        @if($role->name == 'controleur 3')
+                                            DIRECTEUR
+                                        @endif
+                                        @if($role->name == 'utilisateur' || $role->name == 'Administrateur')
+                                            {{$role->name}}
+                                        @endif 
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -160,7 +174,22 @@
                                 <label class="form-label">Rôle</label>
                                 <select class="form-select" name="role_name" id="role_nameedit">
                                     @foreach($roles as $role)
-                                    <option value="{{$role->name}}">{{$role->name}}</option>
+                                    <option value="{{$role->name}}">
+                                        @if($role->name == 'controleur 1')
+                                            MODERATEUR
+                                        @endif
+                                            
+                                        @if($role->name == 'controleur 2')
+                                            SOUS DIRECTEUR
+                                        @endif
+                                        @if($role->name == 'controleur 3')
+                                            DIRECTEUR
+                                        @endif
+                                        @if($role->name == 'utilisateur' || $role->name == 'Administrateur')
+                                            {{$role->name}}
+                                        @endif
+                                        
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>

@@ -210,8 +210,6 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Livewire' => Livewire\Livewire::class,
-
-
     ])->toArray(),
 
 ];
