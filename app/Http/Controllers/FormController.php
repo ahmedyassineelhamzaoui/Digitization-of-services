@@ -240,6 +240,7 @@ class FormController extends Controller
                         'personelinfos_id' => $request->personel_id,
                         'statut' => 'en cours',
                         'credential_id' => $request->credential_paiment,
+                        'identifiant' => $request->number_paiment,
                         'payment_id' => '',
                     ]);
 

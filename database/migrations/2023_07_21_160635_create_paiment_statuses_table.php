@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('personelinfos_id');
             $table->foreign('personelinfos_id')->references('id')->on('personelinfos');
             $table->string('credential_id');
+            $table->string('identifiant');
             $table->string('telephone')->nullable();
             $table->string('payment_id');
             $table->string('statut');

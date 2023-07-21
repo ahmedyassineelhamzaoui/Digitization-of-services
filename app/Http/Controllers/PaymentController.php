@@ -16,7 +16,7 @@ class PaymentController extends Controller
                 'payment_id' => 'required',
                 'credential_id' => 'required',
                 'statut' => 'required',
-                'date'  => 'required',
+                'identifiant'  => 'required',
             ]);
   
             
@@ -39,17 +39,22 @@ class PaymentController extends Controller
                     "response_message" => "Ce credential id : " . $paymentData['credential_id'] . " n'a généré aucune avis de recette."
                 ]);
             }else{
-                 $paymentsatatut_toupdate = PaimentStatus::where('created_at',$paymentData['date'])->first();
-                //  dd($paymentData['date']);
-                 dd($paymentsatatut_toupdate);
-
-                // $paymentsatatut_toupdate->payment_id = $paymentData['payment_id'];
-                // $paymentsatatut_toupdate->statut = $paymentData['statut'];
-                // $paymentsatatut_toupdate->save();
-                // return response()->json([
-                //     "response_code" => 1,
-                //     "response_message" => "Traitement effectué avec succès."
-                // ]); 
+                $row = PaimentStatus::where('identifiant',$paymentData['identifiant'])->first();
+                if(!$row){
+                    return response()->json([
+                        "response_code" => -3,
+                        "response_message" => "L'identifiant que vous avez fourni n'éxiste pas"
+                    ]); 
+                }
+                $row->payment_id = $paymentData['payment_id'];
+                $row->statut = $paymentData['statut'];
+                $row->identifiant = $paymentData['identifiant'];
+                
+                $row->save();
+                return response()->json([
+                    "response_code" => 1,
+                    "response_message" => "Traitement effectué avec succès."
+                ]); 
             }
     }
 }

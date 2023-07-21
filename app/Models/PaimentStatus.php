@@ -13,6 +13,7 @@ class PaimentStatus extends Model
         'personelinfos_id',
         'statut',
         'credential_id',
+        'identifiant',
         'payment_id',
     ];
 
