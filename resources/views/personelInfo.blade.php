@@ -695,7 +695,9 @@
                 </div>
             </form>
         </div>
+        <div class="mt-2" id="error-paiment">
 
+        </div>
         <div class="step paiement ">
             <form id="step-3-form" action="{{route('send.Information')}}" method="post" class="mb-3">
                 <div class="finmargin d-flex justify-content-center">

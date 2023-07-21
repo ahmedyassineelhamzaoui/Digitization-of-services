@@ -136,40 +136,40 @@ class FormController extends Controller
             if($request->has('appointment_decision')){
 
                 $request->validate([
-                    'appointment_decision' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'assignment_decision' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'service_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'before_appointment' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'after_appointment' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'appointment_decision'         => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'assignment_decision'          => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'service_certificate'          => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'before_appointment'           => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'after_appointment'            => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
                     'nonaccommodation_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'sworn_statement' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'residence_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'identity_document' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'marriage_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'sworn_statement'              => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'residence_certificate'        => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'identity_document'            => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'marriage_certificate'         => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
                 ]);
 
 
-                  $appointmentDecisionPath = $request->file('appointment_decision');
-                  $assignmentDecisionPath = $request->file('assignment_decision');
-                  $serviceCertificatePath = $request->file('service_certificate');
-                  $beforeAppointmentPath = $request->file('before_appointment');
-                  $afterAppointmentPath = $request->file('after_appointment');
+                  $appointmentDecisionPath         = $request->file('appointment_decision');
+                  $assignmentDecisionPath          = $request->file('assignment_decision');
+                  $serviceCertificatePath          = $request->file('service_certificate');
+                  $beforeAppointmentPath           = $request->file('before_appointment');
+                  $afterAppointmentPath            = $request->file('after_appointment');
                   $nonaccommodationCertificatePath = $request->file('nonaccommodation_certificate');
-                  $swornStatementPath = $request->file('sworn_statement');
-                  $residenceCertificatePath = $request->file('residence_certificate');
-                  $identityDocumentPath = $request->file('identity_document');
-                  $marriageCertificatePath = $request->file('marriage_certificate');
+                  $swornStatementPath              = $request->file('sworn_statement');
+                  $residenceCertificatePath        = $request->file('residence_certificate');
+                  $identityDocumentPath            = $request->file('identity_document');
+                  $marriageCertificatePath         = $request->file('marriage_certificate');
 
 
-                  $filename1 = $appointmentDecisionPath->hashName();
-                  $filename2 = $assignmentDecisionPath->hashName();
-                  $filename3 = $serviceCertificatePath->hashName();
-                  $filename4 = $beforeAppointmentPath->hashName();
-                  $filename5 = $afterAppointmentPath->hashName();
-                  $filename6 = $nonaccommodationCertificatePath->hashName();
-                  $filename7 = $swornStatementPath->hashName();
-                  $filename8 = $residenceCertificatePath->hashName();
-                  $filename9 = $identityDocumentPath->hashName();
+                  $filename1  = $appointmentDecisionPath->hashName();
+                  $filename2  = $assignmentDecisionPath->hashName();
+                  $filename3  = $serviceCertificatePath->hashName();
+                  $filename4  = $beforeAppointmentPath->hashName();
+                  $filename5  = $afterAppointmentPath->hashName();
+                  $filename6  = $nonaccommodationCertificatePath->hashName();
+                  $filename7  = $swornStatementPath->hashName();
+                  $filename8  = $residenceCertificatePath->hashName();
+                  $filename9  = $identityDocumentPath->hashName();
                   $filename10 = $marriageCertificatePath->hashName();
 
                   $appointmentDecisionPath->move('uploads',$filename1);
@@ -209,27 +209,18 @@ class FormController extends Controller
                      'nature_paiment' => 'required',
                      'number_paiment' => 'required',
                  ]);
-                 $response = Http::post('https://wbservice.tresor.gouv.ci/wbpartenaires/tstrest/GenererAvisrecette', [
-                    'action'         => 'GenererAvisrecette',
-                    'client_nom'     => $request->nom_paiment,
-                    'client_prenom'  => $request->prenom_paiment,
-                    'credential_id'  => $request->credential_paiment,
-                    'telephone'      => $request->telephone_paiment,
-                    'identifiant'    => $request->number_paiment,
-                    'nature_recette' => $request->nature_paiment,
-                    'montant_total'  => $request->payment_total,
-                ]);
+                
                 $url="https://wbservice.tresor.gouv.ci/wbpartenaires/tstrest/GenererAvisrecette";
 
                 $data = [
                     'action' => 'GenererAvisrecette',
-                    'credential_id' => 'pJft51_4M6Cbbnsfw',
-                    'client_nom' => 'ouattara',
-                    'client_prenom' => 'hervé',
-                    'identifiant' => 'UYDU34H',
-                    'nature_recette' => 'EXAMEN 190',
-                    'montant_total' => '100',
-                    'telephone' => '0707186705',
+                    'credential_id' => $request->credential_paiment,
+                    'client_nom' => $request->nom_paiment,
+                    'client_prenom' => $request->prenom_paiment,
+                    'identifiant' => $request->credential_paiment,
+                    'nature_recette' => $request->nature_paiment,
+                    'montant_total' => $request->payment_total,
+                    'telephone' => $request->telephone_paiment,
                 ];
 
                 $client = new Client();
@@ -241,7 +232,6 @@ class FormController extends Controller
                 $responseMesssage = json_decode($responseData, true)['response_message'];
                 $responseCode = json_decode($responseData, true)['response_code'];
 
-                dd($responseCode == 1);
                 if ($responseCode == 1) {
                     $application = new Application();
                     $application->id = $request->personel_id;

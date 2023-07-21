@@ -112,7 +112,6 @@ $(document).ready(function() {
           processData: false, // Prevent jQuery from processing the data
           contentType: false, // Tell jQuery not to set the content type
           success: function(response) {
-
             clickNextbutton();
           },
           error: function(xhr) {
@@ -123,29 +122,49 @@ $(document).ready(function() {
           }
         });
     });
-    // $(`#step-3-form`).submit(function(event) {
-    //     event.preventDefault();
-    //     $('#spinner').removeClass('d-none');
-    //       var formData = $(this).serialize();
-    //       var url = $(this).attr('action');
-    //       $.ajax({
-    //         url: url,
-    //         type: 'POST',
-    //         data: formData,
-    //         success: function(response) {
-    //           $('#spinner').addClass('d-none');
-    //             clickNextbutton();
-    //         },
-    //         error: function(xhr) {
-    //           $('#spinner').addClass('d-none');
-    //           var errors = xhr.responseJSON.errors;
-    //           $.each(errors, function(key, value) {
-    //             $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
-    //         });
-    //         }
-    //     });
+    $(`#step-3-form`).submit(function(event) {
+        event.preventDefault();
+        $('#spinner').removeClass('d-none');
+          var formData = $(this).serialize();
+          var url = $(this).attr('action');
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+              $('#spinner').addClass('d-none');
+              var message = response.message;
+              var alert = '<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
+                          '<strong>' + message + '</strong>' +
+                          '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                          '</div>';
+              
+              if(response.number == -1){
+                document.querySelector("#error-paiment").innerHTML = alert;
+              }else if(response.number == -2){
+                document.querySelector("#error-paiment").innerHTML = alert;
+              }else if(response.number == -3){
+                document.querySelector("#error-paiment").innerHTML = alert;
+              }else if(response.number == -5){
+                document.querySelector("#error-paiment").innerHTML = alert;
+              }else if(response.number == -6){
+                document.querySelector("#error-paiment").innerHTML = alert;
+              }else if(response.number == -7){
+                document.querySelector("#error-paiment").innerHTML = alert;
+              }else{
+                clickNextbutton();
+              }
+            },
+            error: function(xhr) {
+              $('#spinner').addClass('d-none');
+              var errors = xhr.responseJSON.errors;
+              $.each(errors, function(key, value) {
+                $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
+            });
+            }
+        });
 
-    // });
+    });
     $('#create-user').submit(function(e){
       e.preventDefault();
       var formData = $(this).serialize();
