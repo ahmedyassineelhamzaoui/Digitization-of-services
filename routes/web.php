@@ -10,6 +10,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AnalyticController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\PaymentController;
 
 
 // use App\Http\Livewire\SearchApplications;
@@ -96,7 +97,6 @@ Route::get('anl-detail',function () {
 
 Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
-
 
 // Route::get('auth/facebook', [SocialiteController::class, 'redirectToFacebook']);
 // Route::get('auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback']);

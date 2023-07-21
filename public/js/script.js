@@ -99,28 +99,28 @@ $(document).ready(function() {
 
     });
     $('#step-2-form').submit(function(event) {
-        event.preventDefault();
-
-        var formData = new FormData(this); // Create a new FormData instance
-
-        var url = $(this).attr('action');
-
-        $.ajax({
-          url: url,
-          type: 'POST',
-          data: formData, // Pass the FormData instance as the data
-          processData: false, // Prevent jQuery from processing the data
-          contentType: false, // Tell jQuery not to set the content type
-          success: function(response) {
-            clickNextbutton();
-          },
-          error: function(xhr) {
-            var errors = xhr.responseJSON.errors;
-            $.each(errors, function(key, value) {
-              $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
-            });
-          }
-        });
+      event.preventDefault();
+    
+      var formData = new FormData(this); // Create a new FormData instance
+    
+      var url = $(this).attr('action');
+    
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: formData, // Pass the FormData instance as the data
+        processData: false, // Prevent jQuery from processing the data
+        contentType: false, // Tell jQuery not to set the content type
+        success: function(response) {
+          clickNextbutton();
+        },
+        error: function(xhr) {
+          var errors = xhr.responseJSON.errors;
+          $.each(errors, function(key, value) {
+            $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
+          });
+        }
+      });
     });
     $(`#step-3-form`).submit(function(event) {
         event.preventDefault();
@@ -145,7 +145,10 @@ $(document).ready(function() {
                 document.querySelector("#error-paiment").innerHTML = alert;
               }else if(response.number == -3){
                 document.querySelector("#error-paiment").innerHTML = alert;
-              }else if(response.number == -5){
+              }else if(response.number == -4){
+                document.querySelector("#error-paiment").innerHTML = alert;
+              }
+              else if(response.number == -5){
                 document.querySelector("#error-paiment").innerHTML = alert;
               }else if(response.number == -6){
                 document.querySelector("#error-paiment").innerHTML = alert;

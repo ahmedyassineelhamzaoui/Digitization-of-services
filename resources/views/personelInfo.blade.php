@@ -46,7 +46,7 @@
                     @csrf
                     <div class="col-md-2">
                         <label for="registration-number" class="form-label">Matricule</label>
-                        <input type="text" class="form-control" name="registration_number" id="registration_number" >
+                        <input type="text" class="form-control" name="registration_number" id="registration_number" required>
                         @error('registration_number')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
@@ -54,28 +54,28 @@
                     </div>
                     <div class="col-md-6">
                         <label for="first-name" class="form-label">Nom</label>
-                        <input type="text" class="form-control" name="first_name" id="first_name" >
+                        <input type="text" class="form-control" name="first_name" id="first_name" required>
                         @error('first_name')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="last-name" class="form-label">Prénom</label>
-                        <input type="text" class="form-control" name="last_name" id="last_name" >
+                        <input type="text" class="form-control" name="last_name" id="last_name" required>
                         @error('last_name')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-2">
                         <label for="person-sexe" class="form-label">Sexe</label>
-                        <select id="person-sexe" name="person_sexe" class="form-select">
+                        <select id="person-sexe" name="person_sexe" class="form-select" required>
                             <option value="femme">femme</option>
                             <option value="homme">homme</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="birth-date" class="form-label">Date naissance</label>
-                        <input type="date" class="form-control" name="birth_date" id="birth_date" >
+                        <input type="date" class="form-control" name="birth_date" id="birth_date" required>
                         @error('birth_date')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
@@ -138,21 +138,21 @@
                     </div>
                     <div class="col-md-6">
                         <label for="person-email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="person_email" id="person_email" placeholder="example@gmail.com" >
+                        <input type="email" class="form-control" name="person_email" id="person_email" placeholder="example@gmail.com" required>
                         @error('person_email')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-2">
                         <label for="person-telephone" class="form-label">Téléphone</label>
-                        <input type="text" class="form-control" name="person_telephone" id="person_telephone" placeholder="n° Téléphone" >
+                        <input type="text" class="form-control" name="person_telephone" id="person_telephone" placeholder="n° Téléphone" required>
                         @error('person_telephone')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="person-adresse" class="form-label">Adresse</label>
-                        <input type="text" class="form-control" name="person_adresse" id="person_adresse" >
+                        <input type="text" class="form-control" name="person_adresse" id="person_adresse" required>
                         @error('person_adresse')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
@@ -166,7 +166,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="document-number" class="form-label">Numéro de la pièce</label>
-                        <input type="text" class="form-control" name="document_number" id="document_number" placeholder="N° de la pièce d'identité" >
+                        <input type="text" class="form-control" name="document_number" id="document_number" placeholder="N° de la pièce d'identité" required >
                         @error('document_number')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
@@ -429,49 +429,49 @@
                     </div>
                     <div class="col-md-4">
                         <label for="previous-job" class="form-label">Fonction Antérieur</label>
-                        <input type="text" class="form-control" id="previous_job" name="previous_job" >
+                        <input type="text" class="form-control" id="previous_job" name="previous_job" required>
                         @error('previous_job')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="person-job" class="form-label">Fonction</label>
-                        <input type="text" class="form-control" id="person_job" name="person_job" >
+                        <input type="text" class="form-control" id="person_job" name="person_job" required>
                         @error('person_job')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="person-service" class="form-label">Service / Etablissement</label>
-                        <input type="text" class="form-control" id="person_service" name="person_service" >
+                        <input type="text" class="form-control" id="person_service" name="person_service" required>
                         @error('person_service')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="person-judgment" class="form-label">Décret/Arret</label>
-                        <input type="text" id="person_judgment" name="person_judgment" class="form-control" >
+                        <input type="text" id="person_judgment" name="person_judgment" class="form-control" required >
                         @error('person_judgment')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="person-nomination" class="form-label">Date nommination</label>
-                        <input type="date" class="form-control" name="person_nomination" id="person_nomination" >
+                        <input type="date" class="form-control" name="person_nomination" id="person_nomination" required>
                         @error('person_nomination')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="effective-date" class="form-label">Date d'effet</label>
-                        <input type="date" class="form-control" id="effective_date" name="effective_date" >
+                        <input type="date" class="form-control" id="effective_date" name="effective_date" required>
                         @error('effective_date')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="end-date" class="form-label">Date de fin</label>
-                        <input type="date" class="form-control" id="end_date" name="end_date" >
+                        <input type="date" class="form-control" id="end_date" name="end_date" required>
                         @error('end_date')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
@@ -486,56 +486,56 @@
                     <h3 class="mt-5">Informations conjoint.e</h3>
                     <div class="col-md-4">
                         <label for="full-name" class="form-label"> Nom & Prénom</label>
-                        <input type="text" class="form-control" name="full_name" id="full_name" >
+                        <input type="text" class="form-control" name="full_name" id="full_name" required>
                         @error('full_name')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="spouse-job" class="form-label">Fonction</label>
-                        <input type="text" class="form-control" name="spouse_job" id="spouse_job" >
+                        <input type="text" class="form-control" name="spouse_job" id="spouse_job" required>
                         @error('spouse_job')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="spouse-registrationNumber" class="form-label">Matricule</label>
-                        <input type="text" class="form-control" name="spouse_registrationNumber" id="spouse_registrationNumber" >
+                        <input type="text" class="form-control" name="spouse_registrationNumber" id="spouse_registrationNumber" required>
                         @error('spouse_registrationNumber')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="employer-department" class="form-label"> Service employeur</label>
-                        <input type="text" class="form-control" name="employer_department" id="employer-department">
+                        <input type="text" class="form-control" name="employer_department" id="employer-department" required>
                         @error('employer_department')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="hire-date" class="form-label">Date d'embauche</label>
-                        <input type="date" class="form-control" name="hire_date" id="hire_date" >
+                        <input type="date" class="form-control" name="hire_date" id="hire_date" required>
                         @error('hire_date')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="spouse-job" class="form-label">Adresse</label>
-                        <input type="text" class="form-control" name="spouse_job" id="spouse_job" >
+                        <input type="text" class="form-control" name="spouse_job" id="spouse_job" required>
                         @error('spouse_job')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="spouse-regime" class="form-label">Régime</label>
-                        <input type="text" id="spouse_regime" name="spouse_regime" class="form-control" >
+                        <input type="text" id="spouse_regime" name="spouse_regime" class="form-control" required>
                         @error('spouse_regime')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="compensation-rate" class="form-label">Taux d'indemnité</label>
-                        <input type="text" class="form-control" name="compensation_rate" id="compensation_rate" >
+                        <input type="text" class="form-control" name="compensation_rate" id="compensation_rate" required >
                         @error('compensation_rate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
@@ -543,45 +543,45 @@
                     <h3>Habitation précédante</h3>
                     <div class="col-md-3">
                         <label for="previous-city" class="form-label">Ville</label>
-                        <input type="text" id="previous_city" name="previous_city" class="form-control" >
+                        <input type="text" id="previous_city" name="previous_city" class="form-control" required>
                     </div>
                     <div class="col-md-3">
                         <label for="previous-neighborhood" class="form-label">Quartier</label>
-                        <input type="text" class="form-control" name="previous_neighborhood" id="previous_neighborhood" >
+                        <input type="text" class="form-control" name="previous_neighborhood" id="previous_neighborhood" required>
                     </div>
                     <div class="col-md-3">
                         <label for="previous-batch" class="form-label">Lot n°</label>
-                        <input type="text" id="previous_batch" name="previous_batch" class="form-control" >
+                        <input type="text" id="previous_batch" name="previous_batch" class="form-control" required>
                     </div>
                     <div class="col-md-3">
                         <label for="release-date" class="form-label">Date libération</label>
-                        <input type="date" class="form-control" name="release_date" id="release_date" >
+                        <input type="date" class="form-control" name="release_date" id="release_date" required>
                     </div>
                     <h3>Habitation actuelle</h3>
                     <div class="col-md-3">
                         <label for="current-city" class="form-label">Ville</label>
-                        <input type="text" id="current_city" name="current_city" class="form-control" >
+                        <input type="text" id="current_city" name="current_city" class="form-control" required>
                         @error('current_city')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="current-neighborhood" class="form-label">Quartier</label>
-                        <input type="text" class="form-control" name="current_neighborhood" id="current_neighborhood" >
+                        <input type="text" class="form-control" name="current_neighborhood" id="current_neighborhood" required >
                         @error('current_neighborhood')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="current-batch" class="form-label">Lot n°</label>
-                        <input type="text" id="curent_batch" name="curent_batch" class="form-control" >
+                        <input type="text" id="curent_batch" name="curent_batch" class="form-control" required>
                         @error('curent_batch')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="occupancy-date" class="form-label">Date d'occupation</label>
-                        <input type="date" class="form-control" name="occupancy_date" id="occupancy_date" >
+                        <input type="date" class="form-control" name="occupancy_date" id="occupancy_date" required>
                         @error('occupancy_date')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
@@ -589,13 +589,13 @@
                     <div class="col-md-4">
                         <label class="form-label">Etes-vous hébergé par un parent ou un ami ?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="response-oui" value="oui" >
+                            <input class="form-check-input" type="radio" name="gridRadios" id="response-oui" value="oui" required>
                             <label class="form-check-label" for="response-oui">
                             Oui
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="response-non" value="non" >
+                            <input class="form-check-input" type="radio" name="gridRadios" id="response-non" value="non" required>
                             <label class="form-check-label" for="response-non">
                             Non
                             </label>
@@ -603,7 +603,7 @@
                     </div>
                     <div class="col-md-8">
                         <label for="parent-name" class="form-label">Nom de ce parent ou ami</label>
-                        <input type="text" class="form-control" name="parent_name" disabled id="parent_name">
+                        <input type="text" class="form-control" name="parent_name" disabled id="parent_name" required>
                         <span class="text-danger fs-7" id="error-parentname"></span>
                     </div>
                 </div>
@@ -621,70 +621,70 @@
                 <div class="row g-3">
                     <div class="mb-3 col-md-6">
                         <label for="appointment-decision" class="form-label">Décision de nomination</label>
-                        <input class="form-control" type="file" name="appointment_decision" id="appointment_decision" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        <input class="form-control" type="file" name="appointment_decision" id="appointment_decision" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                         @error('appointment_decision')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="assignment-decision" class="form-label">Décision d'affectation ou page fonctionnaire</label>
-                        <input class="form-control" type="file" name="assignment_decision" id="assignment_decision" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" >
+                        <input class="form-control" type="file" name="assignment_decision" id="assignment_decision" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required >
                         @error('assignment_decision')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="service-certificate" class="form-label">Certificat de 1ère prise de service</label>
-                        <input class="form-control" type="file" name="service_certificate" id="service_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        <input class="form-control" type="file" name="service_certificate" id="service_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                         @error('service_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="before-appointment" class="form-label">Bulletin de solde avant nomination</label>
-                        <input class="form-control" type="file" name="before_appointment" id="before_appointment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" >
+                        <input class="form-control" type="file" name="before_appointment" id="before_appointment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required >
                         @error('before_appointment')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="after-appointment" class="form-label">Bulletin de solde après nommination</label>
-                        <input class="form-control" type="file" name="after_appointment" id="after_appointment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        <input class="form-control" type="file" name="after_appointment" id="after_appointment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                         @error('after_appointment')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="nonaccommodation-certificate" class="form-label">Certificat de non hébergement</label>
-                        <input class="form-control" type="file" name="nonaccommodation_certificate" id="nonaccommodation_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        <input class="form-control" type="file" name="nonaccommodation_certificate" id="nonaccommodation_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                         @error('nonaccommodation_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="sworn-statement" class="form-label">Attestation sur l'honneur légalisée</label>
-                        <input class="form-control" type="file" name="sworn_statement" id="sworn_statement" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        <input class="form-control" type="file" name="sworn_statement" id="sworn_statement" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                         @error('sworn_statement')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="residence-certificate" class="form-label">certificat de résidence</label>
-                        <input class="form-control" type="file" name="residence_certificate" id="residence_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        <input class="form-control" type="file" name="residence_certificate" id="residence_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                         @error('residence_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="identity-document" class="form-label">Pièce d'identité</label>
-                        <input class="form-control" type="file" name="identity_document" id="identity_document" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        <input class="form-control" type="file" name="identity_document" id="identity_document" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                         @error('identity_document')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="marriage-certificate" class="form-label">Acte de mariage</label>
-                        <input class="form-control" type="file" name="marriage_certificate" id="marriage_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        <input class="form-control" type="file" name="marriage_certificate" id="marriage_certificate" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" required>
                         @error('marriage_certificate')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
@@ -709,7 +709,7 @@
                         <div class="mt-3 mb-3 col-md-6">
                             <div class="">
                                 <label for="nom_paiment" class="form-label">Votre Nom</label>
-                                <input type="text" class="form-control" name="nom_paiment" id="nom_paiment" >
+                                <input type="text" class="form-control" name="nom_paiment" id="nom_paiment" required>
                                 @error('nom_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -718,7 +718,7 @@
                         <div class="mt-3 mb-3 col-md-6">
                             <div class="">
                                 <label for="prenom_paiment" class="form-label">Votre Prénom</label>
-                                <input type="text" class="form-control" name="prenom_paiment" id="prenom_paiment" >
+                                <input type="text" class="form-control" name="prenom_paiment" id="prenom_paiment" required>
                                 @error('prenom_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -727,7 +727,7 @@
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="telephone_paiment" class="form-label">N° de téléphone</label>
-                                <input type="text" class="form-control" name="telephone_paiment" id="telephone_paiment" >
+                                <input type="text" class="form-control" name="telephone_paiment" id="telephone_paiment" required>
                                 @error('telephone_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -737,7 +737,7 @@
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="credential_paiment" class="form-label">ID d'identification</label>
-                                <input type="text" class="form-control" name="credential_paiment" id="credential_paiment" >
+                                <input type="text" class="form-control" name="credential_paiment" id="credential_paiment" required>
                                 @error('credential_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -746,7 +746,7 @@
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="nature_paiment" class="form-label">Nature de recette</label>
-                                <input type="text" class="form-control" name="nature_paiment" id="nature_paiment" >
+                                <input type="text" class="form-control" name="nature_paiment" id="nature_paiment" required>
                                 @error('nature_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -755,7 +755,7 @@
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="number_paiment" class="form-label">Le numéro de l’avis de recette</label>
-                                <input type="text" class="form-control" name="number_paiment" id="number_paiment" >
+                                <input type="text" class="form-control" name="number_paiment" id="number_paiment" required>
                                 @error('number_paiment')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -764,7 +764,7 @@
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="payment_total" class="form-label">Le montant total</label>
-                                <input type="number" class="form-control" name="payment_total" id="payment_total" >
+                                <input type="number" class="form-control" name="payment_total" id="payment_total" required>
                                 @error('payment_total')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
@@ -788,14 +788,14 @@
                     <div class="mb-3">
                         <form  action="{{route('send.Information')}}" method="post" class="mb-3">
                             @csrf
-                            <input type="hidden" name="personel_id" id="personel-idinscription">
+                            <input type="hidden" name="personel_id" id="personel-idinscription" >
                             <button type="submit" name="print_info" class="btn download-pdf"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger votre fichier d'inscription</button>
                         </form>
                     </div>
                     <div class="mb-3">
                         <form  action="{{route('send.Information')}}" method="post" class="mb-3">
                             @csrf
-                            <input type="hidden" name="personel_id" id="personel-idreçupaiment">
+                            <input type="hidden" name="personel_id" id="personel-idreçupaiment" >
                             <button type="submit" name="print_payment"  class="btn download-pdf"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span>Télécharger votre reçu de paiement</button>
                         </form>
                     </div>

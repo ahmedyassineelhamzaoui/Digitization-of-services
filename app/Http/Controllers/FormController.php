@@ -8,6 +8,7 @@ use App\Models\File;
 use App\Models\Personelinfo;
 use App\Models\Previous;
 use App\Models\Paiment;
+use App\Models\PaimentStatus;
 use App\Models\Application;
 use Dompdf\Dompdf;
 use App\Notifications\documentAdded;
@@ -136,69 +137,56 @@ class FormController extends Controller
             if($request->has('appointment_decision')){
 
                 $request->validate([
-                    'appointment_decision'         => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'assignment_decision'          => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'service_certificate'          => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'before_appointment'           => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'after_appointment'            => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'appointment_decision' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'assignment_decision' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'service_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'before_appointment' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'after_appointment' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
                     'nonaccommodation_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'sworn_statement'              => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'residence_certificate'        => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'identity_document'            => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'marriage_certificate'         => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'sworn_statement' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'residence_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'identity_document' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'marriage_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
                 ]);
-
-
-                  $appointmentDecisionPath         = $request->file('appointment_decision');
-                  $assignmentDecisionPath          = $request->file('assignment_decision');
-                  $serviceCertificatePath          = $request->file('service_certificate');
-                  $beforeAppointmentPath           = $request->file('before_appointment');
-                  $afterAppointmentPath            = $request->file('after_appointment');
-                  $nonaccommodationCertificatePath = $request->file('nonaccommodation_certificate');
-                  $swornStatementPath              = $request->file('sworn_statement');
-                  $residenceCertificatePath        = $request->file('residence_certificate');
-                  $identityDocumentPath            = $request->file('identity_document');
-                  $marriageCertificatePath         = $request->file('marriage_certificate');
-
-
-                  $filename1  = $appointmentDecisionPath->hashName();
-                  $filename2  = $assignmentDecisionPath->hashName();
-                  $filename3  = $serviceCertificatePath->hashName();
-                  $filename4  = $beforeAppointmentPath->hashName();
-                  $filename5  = $afterAppointmentPath->hashName();
-                  $filename6  = $nonaccommodationCertificatePath->hashName();
-                  $filename7  = $swornStatementPath->hashName();
-                  $filename8  = $residenceCertificatePath->hashName();
-                  $filename9  = $identityDocumentPath->hashName();
-                  $filename10 = $marriageCertificatePath->hashName();
-
-                  $appointmentDecisionPath->move('uploads',$filename1);
-                  $assignmentDecisionPath->move('uploads',$filename2);
-                  $serviceCertificatePath->move('uploads',$filename3);
-                  $beforeAppointmentPath->move('uploads',$filename4);
-                  $afterAppointmentPath->move('uploads',$filename5);
-                  $nonaccommodationCertificatePath->move('uploads',$filename6);
-                  $swornStatementPath->move('uploads',$filename7);
-                  $residenceCertificatePath->move('uploads',$filename8);
-                  $identityDocumentPath->move('uploads',$filename9);
-                  $marriageCertificatePath->move('uploads',$filename10);
-
-
-                  File::create([
-                    'personelinfos_id' => $request->personel_id ,
-                    'decisionnomination_path' => 'uploads/'.$filename1,
-                    'decisionaffectation_path' => 'uploads/'.$filename2,
-                    'certificatpriseservice_path' => 'uploads/'.$filename3,
-                    'Bulletinsoldeavant_path' => 'uploads/'.$filename4,
-                    'Bulletinsoldeapres_path' =>'uploads/'.$filename5,
-                    'certifcatnomhebergement_path' => 'uploads/'.$filename6,
-                    'attestationhonneurlegalise_path' => 'uploads/'.$filename7,
-                    'certificatresidence_path' => 'uploads/'.$filename8,
-                    'pieceidentite_path' => 'uploads/'.$filename9,
-                    'actemariage_path' => 'uploads/'.$filename10,
-                  ]);
-
+                
+                $files = [
+                    'appointment_decision',
+                    'assignment_decision',
+                    'service_certificate',
+                    'before_appointment',
+                    'after_appointment',
+                    'nonaccommodation_certificate',
+                    'sworn_statement',
+                    'residence_certificate',
+                    'identity_document',
+                    'marriage_certificate',
+                ];
+                
+                $uploadedFiles = [];
+                
+                foreach ($files as $file) {
+                    $uploadedFile = $request->file($file);
+                    $uploadedFileName = $uploadedFile->hashName();
+                    $uploadedFile->move('uploads', $uploadedFileName);
+                    $uploadedFiles[$file] = 'uploads/' . $uploadedFileName;
+                }
+                
+                File::create([
+                    'personelinfos_id' => $request->personel_id,
+                    'decisionnomination_path' => $uploadedFiles['appointment_decision'],
+                    'decisionaffectation_path' => $uploadedFiles['assignment_decision'],
+                    'certificatpriseservice_path' => $uploadedFiles['service_certificate'],
+                    'Bulletinsoldeavant_path' => $uploadedFiles['before_appointment'],
+                    'Bulletinsoldeapres_path' => $uploadedFiles['after_appointment'],
+                    'certifcatnomhebergement_path' => $uploadedFiles['nonaccommodation_certificate'],
+                    'attestationhonneurlegalise_path' => $uploadedFiles['sworn_statement'],
+                    'certificatresidence_path' => $uploadedFiles['residence_certificate'],
+                    'pieceidentite_path' => $uploadedFiles['identity_document'],
+                    'actemariage_path' => $uploadedFiles['marriage_certificate'],
+                ]);
+                
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
+
             }
             if($request->has('telephone_paiment')){
 
@@ -217,7 +205,7 @@ class FormController extends Controller
                     'credential_id' => $request->credential_paiment,
                     'client_nom' => $request->nom_paiment,
                     'client_prenom' => $request->prenom_paiment,
-                    'identifiant' => $request->credential_paiment,
+                    'identifiant' => $request->number_paiment,
                     'nature_recette' => $request->nature_paiment,
                     'montant_total' => $request->payment_total,
                     'telephone' => $request->telephone_paiment,
@@ -231,7 +219,6 @@ class FormController extends Controller
                 $responseData = $response->getBody()->getContents();
                 $responseMesssage = json_decode($responseData, true)['response_message'];
                 $responseCode = json_decode($responseData, true)['response_code'];
-
                 if ($responseCode == 1) {
                     $application = new Application();
                     $application->id = $request->personel_id;
@@ -249,6 +236,12 @@ class FormController extends Controller
                         'nature_recette'    => $request->nature_paiment,
                         'montant_total'     => $request->payment_total,
                      ]);
+                    PaimentStatus::create([
+                        'personelinfos_id' => $request->personel_id,
+                        'statut' => 'en cours',
+                        'credential_id' => $request->credential_paiment,
+                        'payment_id' => '',
+                    ]);
 
                     $user = auth()->user();
                     $admin       = User::role('Administrateur')->first();
