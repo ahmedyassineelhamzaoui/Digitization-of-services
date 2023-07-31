@@ -11,7 +11,7 @@
 
             <div class="px-5 ms-xl-4">
                 <a href="home.html">
-                    <img src="assets/images/logo/logo1.png" alt="">
+                    <img style="width:200px;margin-top:5px" src="assets/images/logo/logo1.jpg" alt="">
                 </a>
 
                 @if(session('error'))

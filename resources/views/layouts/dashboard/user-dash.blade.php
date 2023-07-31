@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.common-dash')
 
 @section('title', 'utilisateur')
-@section('button-name','utilisateur')
+@section('button-name','ajouter utilisateur')
 @section('button-link','#add-user')
 @section('content')
     @if(session('success'))
