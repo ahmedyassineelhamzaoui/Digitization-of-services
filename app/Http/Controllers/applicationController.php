@@ -234,7 +234,7 @@ class applicationController extends Controller
             foreach($applications as $applicationName){
                 $names            [] = $applicationName->full_name;
                 $userPersonelinfos[] = Personelinfo::find($applicationName->id);
-                $files            [] = File::find($applicationName->id); 
+                $files            [] = File::where('personelinfos_id',$applicationName->id)->get(); 
                 $conjoints        [] = Conjoint::find($applicationName->id);
                 $previouss        [] = Previous::find($applicationName->id); 
             }
@@ -271,7 +271,7 @@ class applicationController extends Controller
             foreach($applications as $applicationName){
                 $names[] = $applicationName->full_name;
                 $userPersonelinfos[] = Personelinfo::find($applicationName->id);
-                $files            [] = File::find($applicationName->id); 
+                $files            [] = File::where('personelinfos_id',$applicationName->id)->get(); 
                 $conjoints        [] = Conjoint::find($applicationName->id);
                 $previouss        [] = Previous::find($applicationName->id); 
             }

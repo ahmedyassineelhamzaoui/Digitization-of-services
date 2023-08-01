@@ -616,7 +616,7 @@ $(document).ready(function() {
                             '</form>'+
                         '</td>'+
                         '<td class="ps-3">'+
-                                  '<button data-files-id='+response.files[i].id+' data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>'+
+                                  '<button data-files-id='+response.files[i][0].id+' data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>'+
                         '</td>'+
                         '</td>' +
                   '<td>';
@@ -688,9 +688,8 @@ $(document).ready(function() {
                   '</form>'+
               '</td>'+
               '<td class="ps-3">'+
-                        '<button data-files-id='+response.files[i].id+' data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>'+
+                        '<button data-files-id='+response.files[i][0].id+' data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>'+
               '</td>';
-
         tablelines += '<td>'
       if (response.applications[i].status == 'accepter') {
           tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">accepter</button>';

@@ -126,8 +126,6 @@
     <div class="modal fade" id="show-joinedFile">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="{{route('create.role')}}" method="POST" >
-                    @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Tous les fichiers</h5>
                         <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -143,7 +141,6 @@
                                 </div>
                             </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>

@@ -187,14 +187,14 @@ class FormController extends Controller
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
 
             }
-            if($request->has('telephone_paiment')){
+            if($request->has('credential_paiment')){
 
                  $request->validate([
                      'nom_paiment' => 'required',
                      'prenom_paiment' => 'required',
                      'credential_paiment' => 'required',
-                     'nature_paiment' => 'required',
-                     'number_paiment' => 'required',
+                     'nature_recette' => 'required',
+                     'numéro_avis_de_recette' => 'required',
                  ]);
                 
                 $url="https://wbservice.tresor.gouv.ci/wbpartenaires/tstrest/GenererAvisrecette";
@@ -204,9 +204,9 @@ class FormController extends Controller
                     'credential_id' => $request->credential_paiment,
                     'client_nom' => $request->nom_paiment,
                     'client_prenom' => $request->prenom_paiment,
-                    'identifiant' => $request->number_paiment,
-                    'nature_recette' => $request->nature_paiment,
-                    'montant_total' => $request->payment_total,
+                    'identifiant' => $request->numéro_avis_de_recette,
+                    'nature_recette' => $request->nature_recette,
+                    'montant_total' => $request->montant_total,
                     'telephone' => $request->telephone_paiment,
                 ];
 
@@ -231,15 +231,15 @@ class FormController extends Controller
                         'client_prenom'     => $request->prenom_paiment,
                         'credential_id'     => $request->credential_paiment,
                         'telephone'         => $request->telephone_paiment,
-                        'identifiant'       => $request->number_paiment,
-                        'nature_recette'    => $request->nature_paiment,
-                        'montant_total'     => $request->payment_total,
+                        'identifiant'       => $request->numéro_avis_de_recette,
+                        'nature_recette'    => $request->nature_recette,
+                        'montant_total'     => $request->montant_total,
                      ]);
                     PaimentStatus::create([
                         'personelinfos_id' => $request->personel_id,
                         'statut' => 'en cours',
                         'credential_id' => $request->credential_paiment,
-                        'identifiant' => $request->number_paiment,
+                        'identifiant' => $request->nature_recette,
                         'payment_id' => '',
                     ]);
 

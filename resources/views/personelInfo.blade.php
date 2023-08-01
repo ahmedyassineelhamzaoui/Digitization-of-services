@@ -707,7 +707,6 @@
             </form>
         </div>
         <div class="mt-2" id="error-paiment">
-
         </div>
         <div class="step paiement" >
             <form id="step-3-form" action="{{route('send.Information')}}" method="post" class="mb-3">
@@ -757,17 +756,17 @@
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="nature_paiment" class="form-label">Nature de recette</label>
-                                <input type="text" class="form-control" name="nature_paiment" id="nature_paiment" required>
-                                @error('nature_paiment')
+                                <input type="text" class="form-control" name="nature_recette" id="nature_recette" required>
+                                @error('nature_recette')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
-                                <label for="number_paiment" class="form-label">Le numéro de l’avis de recette</label>
-                                <input type="text" class="form-control" name="number_paiment" id="number_paiment" required>
-                                @error('number_paiment')
+                                <label for="numéro_avis_de_recette" class="form-label">Le numéro de l’avis de recette</label>
+                                <input type="text" class="form-control" name="numéro_avis_de_recette" id="numéro_avis_de_recette" required>
+                                @error('numéro_avis_de_recette')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -775,8 +774,8 @@
                         <div class="mt-2 mb-3 col-md-6">
                             <div class="">
                                 <label for="payment_total" class="form-label">Le montant total</label>
-                                <input type="number" class="form-control" name="payment_total" id="payment_total" required>
-                                @error('payment_total')
+                                <input type="number" class="form-control" name="montant_total" id="montant_total" required>
+                                @error('montant_total')
                                 <span class="text-danger fs-7">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -789,7 +788,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
         <div class="step fin" >
             <h3 class="mt-4">Votre demande d'ANL a été validée avec succès </h3>
