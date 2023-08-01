@@ -122,7 +122,6 @@
     </div> 
     {{-- @livewire('search-applications') --}}
 
-
     <div class="modal fade" id="show-joinedFile">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -147,6 +146,7 @@
             </div>
         </div>
     </div>
+    @can('voir-demande-action')
     <div class="modal fade" id="edit-status" >
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -185,6 +185,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="confirmedit-application" style="background:rgba(19, 18, 18, 0.5)" >
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" >
@@ -206,6 +207,8 @@
             </div>
         </div>
     </div>
+    @endcan
+    @can('supprimer-demandes')
     <div class="modal fade" id="delete-application">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -230,5 +233,6 @@
             </div>
         </div>
     </div>
+    @endcan
 @endsection
 

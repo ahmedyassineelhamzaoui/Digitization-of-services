@@ -26,7 +26,10 @@ class UserController extends Controller
         $user=auth()->user();
         if(!$user){
             return view('errors.404');
-         }
+        }
+        if(!$user->hasPermissionTo('lister-utilisateurs')){
+            return view('errors.403');
+        }
 
         $roles = Role::all();
         $users=User::paginate(5);
