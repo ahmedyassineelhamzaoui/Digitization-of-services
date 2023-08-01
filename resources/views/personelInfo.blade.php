@@ -43,37 +43,37 @@
                     @csrf
                     <div class="col-md-2">
                         <label for="registration-number" class="form-label">Matricule</label>
-                        <input type="text" class="form-control" style="text-transform: uppercase" name="registration_number" id="registration_number" required>
-                        @error('registration_number')
+                        <input type="text" class="form-control" style="text-transform: uppercase" name="Matricule" id="Matricule" >
+                        @error('Matricule')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                         <div id="registration-number-error" class="text-danger fs-7"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="first-name" class="form-label">Nom</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="first_name" id="first_name" required>
-                        @error('first_name')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Nom" id="Nom" >
+                        @error('Nom')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="last-name" class="form-label">Prénom</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="last_name" id="last_name" required>
-                        @error('last_name')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Prenom" id="Prenom" >
+                        @error('Prenom')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-2">
                         <label for="person-sexe" class="form-label">Sexe</label>
-                        <select id="person-sexe" name="person_sexe" class="form-select" required>
+                        <select id="person-sexe" name="person_sexe" class="form-select" >
                             <option value="femme">femme</option>
                             <option value="homme">homme</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="birth-date" class="form-label">Date naissance</label>
-                        <input type="date" class="form-control" name="birth_date" id="birth_date" required>
-                        @error('birth_date')
+                        <input type="date" class="form-control" name="date_de_naissance" id="date_de_naissance" >
+                        @error('date_de_naissance')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
@@ -135,22 +135,22 @@
                     </div>
                     <div class="col-md-6">
                         <label for="person-email" class="form-label">Email</label>
-                        <input type="email" style="text-transform: uppercase" class="form-control" name="person_email" id="person_email" placeholder="example@gmail.com" required>
-                        @error('person_email')
+                        <input type="email" style="text-transform: uppercase" class="form-control" name="email" id="email" placeholder="example@gmail.com" >
+                        @error('email')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-2">
                         <label for="person-telephone" class="form-label">Téléphone</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="person_telephone" id="person_telephone" placeholder="n° Téléphone" required>
-                        @error('person_telephone')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="télephone" id="télephone" placeholder="n° Téléphone" >
+                        @error('télephone')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="person-adresse" class="form-label">Adresse</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="person_adresse" id="person_adresse" required>
-                        @error('person_adresse')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="adresse" id="adresse" >
+                        @error('adresse')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
@@ -163,8 +163,8 @@
                     </div>
                     <div class="col-md-6">
                         <label for="document-number" class="form-label">Numéro de la pièce</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="document_number" id="document_number" placeholder="N° de la pièce d'identité" required >
-                        @error('document_number')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Numéro_du_pièce" id="Numéro_du_pièce" placeholder="N° de la pièce d'identité"  >
+                        @error('Numéro_du_pièce')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
@@ -426,50 +426,50 @@
                     </div>
                     <div class="col-md-4">
                         <label for="previous-job" class="form-label">Fonction Antérieur</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" id="previous_job" name="previous_job" required>
-                        @error('previous_job')
+                        <input type="text" style="text-transform: uppercase" class="form-control" id="Fonction_Antérieur" name="Fonction_Antérieur" >
+                        @error('Fonction_Antérieur')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="person-job" class="form-label">Fonction</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" id="person_job" name="person_job" required>
-                        @error('person_job')
+                        <input type="text" style="text-transform: uppercase" class="form-control" id="Fonction" name="Fonction" >
+                        @error('Fonction')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="person-service" class="form-label">Service / Etablissement</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" id="person_service" name="person_service" required>
-                        @error('person_service')
+                        <input type="text" style="text-transform: uppercase" class="form-control" id="Service_Etablissement" name="Service_Etablissement" >
+                        @error('Service_Etablissement')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="person-judgment" class="form-label">Décret/Arret</label>
-                        <input type="text" id="person_judgment" style="text-transform: uppercase" name="person_judgment" class="form-control" required >
-                        @error('person_judgment')
+                        <input type="text" id="Arret" style="text-transform: uppercase" name="Arret" class="form-control"  >
+                        @error('Arret')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="person-nomination" class="form-label">Date nommination</label>
-                        <input type="date" style="text-transform: uppercase" class="form-control" name="person_nomination" id="person_nomination" required>
-                        @error('person_nomination')
+                        <input type="date" style="text-transform: uppercase" class="form-control" name="Date_nomination" id="Date_nomination" >
+                        @error('Date_nomination')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="effective-date" class="form-label">Date d'effet</label>
-                        <input type="date" class="form-control" id="effective_date" name="effective_date" required>
-                        @error('effective_date')
+                        <input type="date" class="form-control" id="Date_effet" name="Date_effet" >
+                        @error('Date_effet')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="end-date" class="form-label">Date de fin</label>
-                        <input type="date" class="form-control" id="end_date" name="end_date" required>
-                        @error('end_date')
+                        <input type="date" class="form-control" id="Date_fin" name="Date_fin" >
+                        @error('Date_fin')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
@@ -486,116 +486,116 @@
                     <h3 class="mt-5">Informations conjoint.e</h3>
                     <div class="col-md-4">
                         <label for="full-name" class="form-label"> Nom & Prénom</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="full_name" id="full_name" required>
-                        @error('full_name')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Nom_Prénom" id="Nom_Prénom" >
+                        @error('Nom_Prénom')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="spouse-job" class="form-label">Fonction</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="spouse_job" id="spouse_job" required>
-                        @error('spouse_job')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Conjoint_Fonction" id="Conjoint_Fonction" >
+                        @error('Conjoint_Fonction')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="spouse-registrationNumber" class="form-label">Matricule</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="spouse_registrationNumber" id="spouse_registrationNumber" required>
-                        @error('spouse_registrationNumber')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Conjoint_Matricule" id="Conjoint_Matricule" >
+                        @error('Conjoint_Matricule')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="employer-department" class="form-label"> Service employeur</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="employer_department" id="employer-department" required>
-                        @error('employer_department')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Service_employeur" id="Service_employeur" >
+                        @error('Service_employeur')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="hire-date" class="form-label">Date d'embauche</label>
-                        <input type="date" class="form-control" name="hire_date" id="hire_date" required>
-                        @error('hire_date')
+                        <input type="date" class="form-control" name="Date_embauche" id="Date_embauche" >
+                        @error('Date_embauche')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="spouse-job" class="form-label">Adresse</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="spouse_job" id="spouse_job" required>
-                        @error('spouse_job')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Conjoint_adresse" id="Conjoint_adresse" >
+                        @error('Conjoint_adresse')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="spouse-regime" class="form-label">Régime</label>
-                        <input type="text" style="text-transform: uppercase" id="spouse_regime" name="spouse_regime" class="form-control" required>
-                        @error('spouse_regime')
+                        <input type="text" style="text-transform: uppercase" id="Conjoint_régime" name="Conjoint_régime" class="form-control" >
+                        @error('Conjoint_régime')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="compensation-rate" class="form-label">Taux d'indemnité</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="compensation_rate" id="compensation_rate" required >
-                        @error('compensation_rate')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="Taux_indemnité" id="Taux_indemnité"  >
+                        @error('Taux_indemnité')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <h3>Habitation précédante</h3>
                     <div class="col-md-3">
                         <label for="previous-city" class="form-label">Ville</label>
-                        <input type="text" style="text-transform: uppercase" id="previous_city" name="previous_city" class="form-control" required>
+                        <input type="text" style="text-transform: uppercase" id="ville_précédant" name="ville_précédant" class="form-control" >
                     </div>
                     <div class="col-md-3">
                         <label for="previous-neighborhood" class="form-label">Quartier</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="previous_neighborhood" id="previous_neighborhood" required>
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="quartier_précédant" id="quartier_précédant" >
                     </div>
                     <div class="col-md-3">
                         <label for="previous-batch" class="form-label">Lot n°</label>
-                        <input type="text" style="text-transform: uppercase" id="previous_batch" name="previous_batch" class="form-control" required>
+                        <input type="text" style="text-transform: uppercase" id="lot_n°_précédant" name="lot_n°_précédant" class="form-control" >
                     </div>
                     <div class="col-md-3">
                         <label for="release-date" class="form-label">Date libération</label>
-                        <input type="date"  class="form-control" name="release_date" id="release_date" required>
+                        <input type="date"  class="form-control" name="Date_libération" id="Date_libération" >
                     </div>
                     <h3>Habitation actuelle</h3>
                     <div class="col-md-3">
                         <label for="current-city" class="form-label">Ville</label>
-                        <input type="text" style="text-transform: uppercase" id="current_city" name="current_city" class="form-control" required>
-                        @error('current_city')
+                        <input type="text" style="text-transform: uppercase" id="ville_actuelle" name="ville_actuelle" class="form-control" >
+                        @error('ville_actuelle')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="current-neighborhood" class="form-label">Quartier</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="current_neighborhood" id="current_neighborhood" required >
-                        @error('current_neighborhood')
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="quartier_actuelle" id="quartier_actuelle"  >
+                        @error('quartier_actuelle')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="current-batch" class="form-label">Lot n°</label>
-                        <input type="text" style="text-transform: uppercase" id="curent_batch" name="curent_batch" class="form-control" required>
-                        @error('curent_batch')
+                        <input type="text" style="text-transform: uppercase" id="lot_n°_actuelle" name="lot_n°_actuelle" class="form-control" >
+                        @error('lot_n°_actuelle')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="occupancy-date" class="form-label">Date d'occupation</label>
-                        <input type="date" class="form-control" name="occupancy_date" id="occupancy_date" required>
-                        @error('occupancy_date')
+                        <input type="date" class="form-control" name="Date_occupation" id="Date_occupation" >
+                        @error('Date_occupation')
                         <span class="text-danger fs-7">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Etes-vous hébergé par un parent ou un ami ?</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="response-oui" value="oui" required>
+                            <input class="form-check-input" type="radio" name="gridRadios" id="response-oui" value="oui" >
                             <label class="form-check-label" for="response-oui">
                             Oui
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="response-non" value="non" required>
+                            <input class="form-check-input" type="radio" name="gridRadios" id="response-non" value="non" >
                             <label class="form-check-label" for="response-non">
                             Non
                             </label>
@@ -603,7 +603,7 @@
                     </div>
                     <div class="col-md-8">
                         <label for="parent-name" class="form-label">Nom de ce parent ou ami</label>
-                        <input type="text" style="text-transform: uppercase" class="form-control" name="parent_name" disabled id="parent_name" required>
+                        <input type="text" style="text-transform: uppercase" class="form-control" name="parent_name" disabled id="parent_name" >
                         <span class="text-danger fs-7" id="error-parentname"></span>
                     </div>
                 </div>
