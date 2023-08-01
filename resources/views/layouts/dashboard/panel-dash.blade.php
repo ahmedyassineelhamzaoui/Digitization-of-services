@@ -114,7 +114,7 @@
             <div class="card border-2">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h4 class="card-title font-bold">Le Nombre des demandes dans le mois</h4>
+                    <h4 class="card-title font-bold">Le Nombre des demandes dans ce mois</h4>
                     <select onchange="timeChanged2()" id="select-time2" class="form-select" style="width:120px" aria-label="Default select example">
                         <option value="1">Semaine</option>
                         <option value="2" selected>Mois</option>
@@ -131,7 +131,7 @@
             <div class="card border-2">
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h4 class="card-title font-bold">Le Nombre des demandes dans l'année</h4>
+                    <h4 class="card-title font-bold">Le Nombre des demandes dans cette année</h4>
                     <select onchange="timeChanged3()" id="select-time3" class="form-select" style="width:120px" aria-label="Default select example">
                         <option value="1">Semaine</option>
                         <option value="2">Mois</option>
