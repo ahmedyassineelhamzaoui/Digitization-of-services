@@ -134,32 +134,31 @@ class FormController extends Controller
              ]);
 
             }
-            if($request->has('appointment_decision')){
-
+            if($request->has('Décision_de_nomination')){
                 $request->validate([
-                    'appointment_decision' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'assignment_decision' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'service_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'before_appointment' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'after_appointment' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'nonaccommodation_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'sworn_statement' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'residence_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'identity_document' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-                    'marriage_certificate' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Décision_de_nomination' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Décision_affectation' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Certificat_de_1ère_prise_de_service' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Bulletin_de_solde_avant_nomination' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Bulletin_de_solde_après_nommination' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Certificat_de_non_hébergement' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Attestation_sur_honneur_légalisée' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'certificat_de_résidence' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Pièce_identité' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+                    'Acte_de_mariage' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
                 ]);
                 
                 $files = [
-                    'appointment_decision',
-                    'assignment_decision',
-                    'service_certificate',
-                    'before_appointment',
-                    'after_appointment',
-                    'nonaccommodation_certificate',
-                    'sworn_statement',
-                    'residence_certificate',
-                    'identity_document',
-                    'marriage_certificate',
+                    'Décision_de_nomination',
+                    'Décision_affectation',
+                    'Certificat_de_1ère_prise_de_service',
+                    'Bulletin_de_solde_avant_nomination',
+                    'Bulletin_de_solde_après_nommination',
+                    'Certificat_de_non_hébergement',
+                    'Attestation_sur_honneur_légalisée',
+                    'certificat_de_résidence',
+                    'Pièce_identité',
+                    'Acte_de_mariage',
                 ];
                 
                 $uploadedFiles = [];
@@ -173,16 +172,16 @@ class FormController extends Controller
                 
                 File::create([
                     'personelinfos_id' => $request->personel_id,
-                    'decisionnomination_path' => $uploadedFiles['appointment_decision'],
-                    'decisionaffectation_path' => $uploadedFiles['assignment_decision'],
-                    'certificatpriseservice_path' => $uploadedFiles['service_certificate'],
-                    'Bulletinsoldeavant_path' => $uploadedFiles['before_appointment'],
-                    'Bulletinsoldeapres_path' => $uploadedFiles['after_appointment'],
-                    'certifcatnomhebergement_path' => $uploadedFiles['nonaccommodation_certificate'],
-                    'attestationhonneurlegalise_path' => $uploadedFiles['sworn_statement'],
-                    'certificatresidence_path' => $uploadedFiles['residence_certificate'],
-                    'pieceidentite_path' => $uploadedFiles['identity_document'],
-                    'actemariage_path' => $uploadedFiles['marriage_certificate'],
+                    'decisionnomination_path' => $uploadedFiles['Décision_de_nomination'],
+                    'decisionaffectation_path' => $uploadedFiles['Décision_affectation'],
+                    'certificatpriseservice_path' => $uploadedFiles['Certificat_de_1ère_prise_de_service'],
+                    'Bulletinsoldeavant_path' => $uploadedFiles['Bulletin_de_solde_avant_nomination'],
+                    'Bulletinsoldeapres_path' => $uploadedFiles['Bulletin_de_solde_après_nommination'],
+                    'certifcatnomhebergement_path' => $uploadedFiles['Certificat_de_non_hébergement'],
+                    'attestationhonneurlegalise_path' => $uploadedFiles['Attestation_sur_honneur_légalisée'],
+                    'certificatresidence_path' => $uploadedFiles['certificat_de_résidence'],
+                    'pieceidentite_path' => $uploadedFiles['Pièce_identité'],
+                    'actemariage_path' => $uploadedFiles['Acte_de_mariage'],
                 ]);
                 
                   return response()->json(['message' => 'Les fichiers ont été bien joints.']);
