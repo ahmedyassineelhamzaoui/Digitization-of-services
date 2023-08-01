@@ -60,6 +60,10 @@ function deleteUser(id){
 }
 function deleteRole(id){
   document.querySelector('#role_deletedId').value=id
+  if(id == 1 || id==2 || id==3 || id==4){
+    document.querySelector('#error_confirmMessageRole').innerHTML="Vous êtes en train de supprimer un rôle trés important dans l'application avant de supprimer merci de contacter le developeur";
+    document.querySelector('#delete_role_confirm_button').setAttribute('disabled', true);
+  }
 }
 function deleteApplication(id){
   document.querySelector('#app_deletedId').value=id
@@ -284,7 +288,17 @@ $(document).ready(function() {
                 type: 'GET',
                 success: function(response) {
                     $('#role_editId').val(response.role.id);
-                    $('#name-edit').val(response.role.name);
+                    if(response.role.name == 'controleur 1'){
+                      $('#name-edit').val('MODERATEUR');
+                    }else if(response.role.name == 'controleur 2'){
+                      $('#name-edit').val('SOUS DIRECTEUR');
+                    }else if(response.role.name == 'controleur 3'){
+                      $('#name-edit').val('DIRECTEUR');
+                    }else if(response.role.name == 'Administrateur'){
+                      $('#name-edit').val('Administrateur');
+                    }if(response.role.name == 'utilisateur'){
+                      $('#name-edit').val('utilisateur');
+                    }
                     var permissionsDiv = $('<div>', {
                         id: 'permissions-edit',
                         class: 'bg-light border border-secondary text-secondary text-sm rounded-lg focus-ring border-0 form-control overflow-auto',

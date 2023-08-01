@@ -35,8 +35,7 @@ class FormController extends Controller
         
        public function index()
        {
-           $count = 1;
-           return view('personelInfo',compact('count'));
+           return view('personelInfo');
        }
        
         public function storeInformation(Request $request)

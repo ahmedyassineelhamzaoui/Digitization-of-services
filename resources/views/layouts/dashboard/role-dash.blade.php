@@ -137,7 +137,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Nom du Rôle</label>
-                            <input type="text" name="name" class="form-control" id="name-edit"/>
+                            <input type="text" disabled name="name" class="form-control" id="name-edit"/>
                         </div>
                         <div class="mb-3" id="picalty">
                             <label for="permissions-edit" class="form-label">Permissions</label>
@@ -165,11 +165,12 @@
                             <input type="hidden" name="role_deletedId" id="role_deletedId">
                             <div class="my-3">
                                 <h5 class="form-label">voulez-vous variment supprimer ce Rôle ?</h5>
+                                <p class="text-danger" id="error_confirmMessageRole"></p>
                             </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-end my-2 mx-3">
                         <a href="#" class="btn btn-white me-2" data-bs-dismiss="modal">Anuller</a>
-                        <button type="submit" name="save" class="btn btn-danger  task-action-btn" >Supprimer</button>
+                        <button id="delete_role_confirm_button" type="submit" name="save" class="btn btn-danger  task-action-btn" >Supprimer</button>
                     </div>
                 </form>
             </div>

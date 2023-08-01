@@ -103,9 +103,10 @@
                                         <i class="fa-solid fa-pen-to-square "></i>
                                     </button>
                                   @elseif(auth()->user()->roles[0]->name =='controleur 3' && $item->editable3 == 'yes')
-                                    <button class="btn btn-warning show-editstatusform" data-status-id={{$item->id}}   data-bs-target="#edit-status" data-bs-toggle="modal" >
+                                   
+                                  <button class="btn btn-warning show-editstatusform" data-status-id={{$item->id}}   data-bs-target="#edit-status" data-bs-toggle="modal" > 
                                         <i class="fa-solid fa-pen-to-square "></i>
-                                    </button>
+                                  </button>
                                   @endif
                                 @endcan
                             </div>
