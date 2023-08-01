@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
 :root{
-    --primary-color : #f79400;
-    --dark-color2 : #005e73 ;
-    --download-buttoncolor :#015163 ;
-    --download-buttonhover : #0694b4;
+    --primary-color : rgb(231,123,32);
+    --dark-color2 : rgb(8, 149, 53) ;
+    --download-buttoncolor :rgb(67,157,96) ;
+    --download-buttonhover : rgb(39, 142, 71);
     --white-color: #fff;
     --dark-color: #000;
-    --btn-color: #FF9B22 ;
+    --btn-color: rgb(231,123,32)  ;
 
 }
 
@@ -15,7 +15,9 @@
 body{
     font-family: 'Poppins', sans-serif !important;
 }
-
+.step label,h3{
+  color : #005e73 !important;
+}
 /* steper component style */
 .steper-content .steper-componnet {
     margin-top: 30px;
@@ -181,7 +183,7 @@ span.blink {
 
 input[type="file"]::-webkit-file-upload-button {
   color: white;
-  background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
+  background:  var(--dark-color2);
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -241,8 +243,7 @@ nav.navbar .navbar-brand img{
 .navbar .register .sign-up:focus{
     border: 1px solid var(--btn-color);
     color: var(--white-color);
-    /* background-color: var(--btn-color);*/
-    background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
+    background-color: var(--btn-color);
     transition: all 0.3s ease-in;
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
@@ -253,17 +254,14 @@ nav.navbar .navbar-brand img{
 .navbar .register .sign-in{
     border: 1px solid var(--btn-color);
     color: var(--white-color);
-    /* background-color: var(--btn-color); */
-    background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
+     background-color: var(--btn-color); 
 }
 
 .navbar .register .sign-in:hover,
 .navbar .register .sign-in:focus{
     border: 1px solid var(--btn-color);
-    /* color: var(--btn-color); */
-    color: white;
-    /* background-color: var(--white-color); */
-    background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
+    color: var(--btn-color);
+    background-color: var(--white-color); 
     transition: all 0.3s ease-in;
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
@@ -278,12 +276,13 @@ header {
     background-image: linear-gradient(to bottom, rgba(190, 190, 191, 0.52), rgba(112, 13, 87, 0.73)), url("../assets/images/header.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
+    text-align: center;
     width: 100%;
-    height: 75vh;
+    height: 80vh;
     color: #fff;
     -webkit-clip-path: polygon(100% 0, 100% 79%, 0 88%, 0 0);
-            clip-path: polygon(100% 0, 100% 79%, 0 88%, 0 0);
+            clip-path: polygon(100% 0, 100% 79%, 0 88%, 100 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -296,10 +295,8 @@ header .header-title p{
 
 /* styling the main sections */
 main .procedure .procedure-btn a{
-    /* background-color: var(--btn-color);*/
+     background-color: var(--btn-color);
     
-    background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);
-
     color: var(--white-color);
     margin-bottom: 5rem;
     padding: 1rem 3rem;
@@ -343,6 +340,7 @@ main .procedure .procedure-cards .highlight:hover{
 
 main .procedure .procedure-cards .highlight .h-caption{
     margin-bottom: 1rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 main .procedure .procedure-cards .highlight .h-caption h4{

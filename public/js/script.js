@@ -9,7 +9,7 @@ if(cercle && cercle[compt]){
   cercle[compt].style.background="black";
 }
 
-color="#005e73";
+color="rgb(8, 149, 53)";
 
 let radioOui = document.getElementById('response-oui');
 let inputParentName = document.getElementById('parent_name');
