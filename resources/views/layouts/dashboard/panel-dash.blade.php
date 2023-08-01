@@ -143,16 +143,5 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4 mb-4 ml-2 d-none">
-        <div class="col-md-12 col-lg-12">
-            <div class="card border-2">
-            <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between">
-                    <h4 class="card-title font-bold">Le Nombre des demandes dans l'année</h4>
-                </div>
-                {!! $chartByDayOfWeek->render() !!}
-            </div>
-            </div>
-        </div>
-    </div>
+ 
 @endsection

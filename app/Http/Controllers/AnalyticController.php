@@ -75,8 +75,6 @@ class AnalyticController extends Controller
 
 
 
-
-
         $currentWeek = date('W');
         $currentMonth = date('m');
         $currentYear = date('Y');
