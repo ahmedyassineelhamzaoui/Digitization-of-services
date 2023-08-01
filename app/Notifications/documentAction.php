@@ -48,17 +48,13 @@ class documentAction extends Notification
     public function toDatabase($notifiable)
     {
        $user = User::find($this->user_id);
-       if($this->operation == 'pending'){
-          $title =  $user->full_name.' a modifier la demande de '.$this->name.' à le status en attent ';
-          $picture = 'pending.png';
-       }else{
+       
           $title =  $user->full_name.' '.$this->operation.' la demande de '.$this->name;
-          if($this->operation == 'in progress' || $this->operation == 'accept' ){
+          if($this->operation == 'en cours' || $this->operation == 'accepter' ){
             $picture = 'agreement.png';
           }else{
             $picture = 'declin.png';
           }
-       }
        return [
         'accept' => 'yes',
         'user'   =>  '',
