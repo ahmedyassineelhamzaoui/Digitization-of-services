@@ -445,23 +445,6 @@ $(document).ready(function() {
         }
       });
     }
-
-    let showEditStatus =document.querySelectorAll('.show-editstatusform');
-    showEditStatus.forEach(function(element){
-      element.addEventListener('click', function() {
-        var statusId = $(this).data('status-id');
-        $.ajax({
-            type: 'GET',
-            url: '/edit-application/'+statusId,
-            success: function(response) {
-                $('#status_id').val(response.id)
-            },
-            error: function(xhr, status, error) {
-
-            }
-        });
-    });
-    });
     $('#update-status').submit(function(e){
       e.preventDefault();
       let contrNumber = document.querySelector("#contrenu");
@@ -742,6 +725,10 @@ $(document).ready(function() {
         $('#tbody').html(
             tablelines
         );
+          let showEditStatus = document.querySelectorAll('.show-editstatusform');
+          showEditStatus.forEach(function(element) {
+              element.addEventListener('click', handleEditStatusClick);
+          });
         },
       error : function(xhr,status,error){
           console.log(error)
@@ -749,6 +736,27 @@ $(document).ready(function() {
       });
   })
 });
+document.addEventListener("DOMContentLoaded", function() {
+  let showEditStatus = document.querySelectorAll('.show-editstatusform');
+  showEditStatus.forEach(function(element) {
+      element.addEventListener('click', handleEditStatusClick);
+  });
+});
+
+
+function handleEditStatusClick() {
+  var statusId = $(this).data('status-id');
+  $.ajax({
+      type: 'GET',
+      url: '/edit-application/' + statusId,
+      success: function(response) {
+          $('#status_id').val(response.id);
+      },
+      error: function(xhr, status, error) {
+      }
+  });
+}
+
 function  deleteNotification(id)
 {
     document.querySelector("#notification_deletedId").value=id

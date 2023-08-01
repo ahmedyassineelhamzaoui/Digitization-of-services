@@ -15,7 +15,7 @@
 body{
     font-family: 'Poppins', sans-serif !important;
 }
-.step label,h3{
+.step label,h3,.card-title{
   color : #005e73 !important;
 }
 /* steper component style */
