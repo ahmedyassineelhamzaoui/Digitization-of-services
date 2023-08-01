@@ -116,6 +116,7 @@ class applicationController extends Controller
                 $application->editable2='no';
                 $application->save();
                 $operation = $request->input('status_name');
+                Mail::to($useraction->email)->send(new DocumentResponseMail($useraction->full_name,$operation,$application->message));
                 Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
@@ -155,6 +156,7 @@ class applicationController extends Controller
                 $application->editable3='no';
                 $application->save();
                 $operation = $request->input('status_name');
+                Mail::to($useraction->email)->send(new DocumentResponseMail($useraction->full_name,$operation,$application->message));
                 Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
@@ -168,8 +170,7 @@ class applicationController extends Controller
                     'message' => 'la demandes a été bien modifier'
                 ]);
             }
-        }else
-        if($authUser->roles[0]->name == 'controleur 3'){
+        }else if($authUser->roles[0]->name == 'controleur 3'){
             $application->status = $request->input('status_name');
             $application->message = $request->comment;
             $application->save();
