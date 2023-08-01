@@ -28,19 +28,19 @@ use Illuminate\Validation\ValidationException;
 
 class FormController extends Controller
 {
-        public $count = 0;
         public function __construct()
         {
             $this->middleware('auth');
         }
+        
        public function index()
        {
-           return view('personelInfo');
+           $count = 1;
+           return view('personelInfo',compact('count'));
        }
-
+       
         public function storeInformation(Request $request)
         {
-
             if($request->has('registration_number')){
                 $validator = $request->validate([
                     'registration_number' => 'required|string',
@@ -128,6 +128,7 @@ class FormController extends Controller
                     'date_occupation' => $request->occupancy_date,
                     'nom_parent' => $request->parent_name
                 ]);
+
                 return response()->json([
                     'message' => 'les information a été bien créer',
                     'personel_id' => $personelinfo->id,

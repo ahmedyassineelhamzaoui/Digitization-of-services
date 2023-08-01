@@ -64,6 +64,7 @@ function deleteRole(id){
 function deleteApplication(id){
   document.querySelector('#app_deletedId').value=id
 }
+
 $(document).ready(function() {
     $(`#step-1-form`).submit(function(event) {
         event.preventDefault();

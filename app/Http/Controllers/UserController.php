@@ -128,43 +128,45 @@ class UserController extends Controller
         $request->validate([
             'full_name' => 'required|string|max:255|min:3',
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8',
+            'password' => 'nullable|string|min:8', // Change to 'nullable'
         ]);
+
         $user = User::find($request->user_editId);
-        if($user){
-               if($request->has('full_name')){
-                   $user->full_name = $request->full_name;
-               }
-               if($request->has('role_name')){
-                   $user->syncRoles([$request->input('role_name')]);        
-               }
-               if($request->has('email')){
-                   $useremail=User::where('email',$request->email)->first();
-                   if($useremail){
-                        if($useremail->email == $user->email){
-                            $user->email = $request->email;
-                        }else{
-                            return response()->json([
-                                'status'  => 'error',
-                                'message' => 'email has already been taken',
-                            ]);
-                        }
-                    }else{
-                        $user->email = $request->email;
-                    }
-               }
-               if($request->has('password')){
-                    $user->password= Hash::make($request->password);
-               }
-               $user->save();
-               return response()->json([
-                     'message' => 'l\'utilisateur a été bien modifier'
-               ]);
+        if (!$user) {
+            return response()->json([
+                'message' => 'l\'utilisateur n\'existe pas'
+            ]);
         }
+
+        if ($request->has('full_name')) {
+            $user->full_name = $request->full_name;
+        }
+
+        if ($request->has('role_name')) {
+            $user->syncRoles([$request->input('role_name')]);
+        }
+
+        if ($request->has('email')) {
+            $useremail = User::where('email', $request->email)->first();
+            if ($useremail && $useremail->email !== $user->email) {
+                return response()->json([
+                    'status'  => 'error',
+                    'message' => 'cet e-mail a déjà été pris',
+                ]);
+            }
+            $user->email = $request->email;
+        }
+
+        if ($request->password != $user->password ) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
         return response()->json([
-            'message' => 'l\'utilisateur n\'éxiste pas'
+            'message' => 'l\'utilisateur a été bien modifié'
         ]);
     }
+
     public function createUser(Request $request)
     {
         $user=auth()->user();

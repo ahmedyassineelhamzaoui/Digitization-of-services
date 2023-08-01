@@ -36,11 +36,8 @@
             </span>
         </div>
     </div>
-
-
-        <div class="step person-infos">
+        <div class="step person-infos" >
             <form id="step-1-form" action="{{route('send.Information')}}" method="post" class="mb-3">
-
                 <h3 class="mt-5">Les informations personnelles </h3>
                 <div class="row g-3">
                     @csrf
@@ -615,8 +612,7 @@
                 </div>
             </form>
         </div>
-
-        <div class="step join-file">
+        <div class="step join-file" >
             <form id="step-2-form" action="{{route('send.Information')}}" method="post" class="mb-3" enctype="multipart/form-data">
                 <h3>Joindre des fichiers</h3>
                 @csrf
@@ -701,7 +697,7 @@
         <div class="mt-2" id="error-paiment">
 
         </div>
-        <div class="step paiement ">
+        <div class="step paiement" >
             <form id="step-3-form" action="{{route('send.Information')}}" method="post" class="mb-3">
                 <div class="finmargin d-flex justify-content-center">
                     @csrf
@@ -783,7 +779,7 @@
             </form>
 
         </div>
-        <div class="step fin">
+        <div class="step fin" >
             <h3 class="mt-4">Votre demande d'ANL a été validée avec succès </h3>
             <p>Un e-mail de confirmation vous a été envoyé avec vos identifiants de connexion pour le suivi de votre dossier !</p>
             <div class="d-flex justify-content-center text-center mt-5">
@@ -808,6 +804,5 @@
                 <a href="{{route('home')}}" style="background-color:rgb(231,123,32)" class="btn  text-light"><span class="me-2"><i class="fa-solid fa-house"></i></span>Retour à l'acceuil</a>
             </div>
         </div>
-
 </div>
 @endsection
