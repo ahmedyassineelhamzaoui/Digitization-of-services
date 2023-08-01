@@ -479,8 +479,11 @@
                     <div class="col-md-4">
                         <label for="marital-status" class="form-label">Situation matrimoniale</label>
                         <select id="marital-status" name="marital_status" class="form-select">
-                            <option value="marie">Marié.e</option>
-                            <option value="celibataire">Célibataire</option>
+                            <option value="Marié.e">Marié.e</option>
+                            <option value="Célibataire">Célibataire</option>
+                            <option value="veuve">veuve</option>
+                            <option value="veuf">veuf</option>
+                            <option value="divorcé.e">divorcé.e</option>
                         </select>
                     </div>
                     <h3 class="mt-5">Informations conjoint.e</h3>
@@ -802,7 +805,7 @@
                 </div>
             </div>
             <div class="mt-2 d-flex justify-content-center">
-                <a href="{{route('home')}}" class="btn btn-warning text-light"><span class="me-2"><i class="fa-solid fa-house"></i></span>Retour à l'acceuil</a>
+                <a href="{{route('home')}}" style="background-color:rgb(231,123,32)" class="btn  text-light"><span class="me-2"><i class="fa-solid fa-house"></i></span>Retour à l'acceuil</a>
             </div>
         </div>
 

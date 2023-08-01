@@ -250,15 +250,7 @@ class applicationController extends Controller
                 ]);
             }
         }else{
-            $userPersonelinfos = Personelinfo::all(); 
-            $files             = File::all(); 
-            $conjoints         = Conjoint::all(); 
-            $previouss         = Previous::all(); 
-            $applications      = Application::where('applications.status', 'like', '%' . $search . '%')
-            ->where('user_id', $user->id)
-            ->get();
             $names = [];
-            
             $userPersonelinfos = []; 
             $files = []; 
             $conjoints = []; 
@@ -267,8 +259,12 @@ class applicationController extends Controller
             $roleName = auth()->user()->roles[0]->name;
             
             $applications = Application::join('users', 'applications.user_id', '=', 'users.id')
-            ->select('applications.*', 'users.full_name')->where('applications.status', 'like', '%' . $search . '%')
-            ->where('user_id', $user->id)
+            ->select('applications.*', 'users.full_name')
+            ->where(function ($query) use ($search, $user) {
+                $query->where('applications.status', 'like', '%' . $search . '%')
+                    ->orWhere('users.full_name', 'like', '%' . $search . '%');
+            })
+            ->where('applications.user_id', $user->id)
             ->get();
 
             foreach($applications as $applicationName){

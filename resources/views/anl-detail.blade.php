@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="breadcrumbs mb-4">
-                                <div class="breadcrumb">Accueil / <span class="text-warning">ANL de type A</span>  </div>
+                                <div class="breadcrumb">Accueil / <span style="color:rgb(8, 149, 53)">ANL de type A</span>  </div>
                         </div>
 
                         <div class="attestation-title mb-5">
@@ -61,11 +61,11 @@
 
                             @if (auth()->check())
                             <div class="pt-1 mb-4 text-center">
-                                <a href="{{url('formulaire')}}" class="btn btn-warning btn-lg btn-block w-50 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;">rempli le formulaire</a>
+                                <a href="{{url('formulaire')}}" class="btn  btn-lg btn-block w-50 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;background-color:rgb(231,123,32)">rempli le formulaire</a>
                             </div>
                             @else
                             <div class="pt-1 mb-4">
-                                <a href="{{url('register')}}" class="btn btn-warning btn-lg btn-block w-100 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;">connectez-vous pour remplir le formulaire</a>
+                                <a href="{{url('register')}}"  class="btn  btn-lg btn-block w-100 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;background-color:rgb(231,123,32)">connectez-vous pour remplir le formulaire</a>
                             </div>
                             @endif
                         </div>
