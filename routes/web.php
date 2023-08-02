@@ -34,7 +34,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('logout', 'logout')->name('user.logout');
     Route::get('login', 'index')->name('login');
     Route::get('home', 'home')->name('home');
-    Route::get('/profile/edit', 'editProfile')->name('profile.edit');
+    Route::get('/profile', 'editProfile')->name('profile.edit');
     Route::post('/profile/update', 'updateProfile')->name('profile.update');
     Route::post('/profile/update-image',  'updateImage')->name('profile.updateImage');
 

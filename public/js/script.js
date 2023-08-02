@@ -749,6 +749,7 @@ $(document).ready(function() {
       }
       });
   })
+  
 });
 document.addEventListener("DOMContentLoaded", function() {
   let showEditStatus = document.querySelectorAll('.show-editstatusform');

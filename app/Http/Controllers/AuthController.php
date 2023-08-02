@@ -70,7 +70,8 @@ namespace App\Http\Controllers;
         public function editProfile()
         {
             $user = Auth::user();
-            return view('layouts.dashboard.edit', compact('user'));
+            $bottonName = '';
+            return view('layouts.dashboard.edit', compact('user','bottonName'));
         }
 
 
@@ -98,7 +99,7 @@ namespace App\Http\Controllers;
 
             $user->save();
 
-            return redirect()->route('home')->with('success', 'Mise à jour du profil réussie');
+            return redirect()->route('profile.edit')->with('success', 'Mise à jour du profil réussie');
         }
 
         public function updateImage(Request $request)
@@ -123,7 +124,7 @@ namespace App\Http\Controllers;
 
             }
 
-            return redirect()->route('home')->with('success', 'Image de profil mise à jour avec succès');
+            return redirect()->route('profile.edit')->with('success', 'Image de profil mise à jour avec succès');
         }
 
     }

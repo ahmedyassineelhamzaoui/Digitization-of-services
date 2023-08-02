@@ -235,7 +235,10 @@
                         <h1 class="page-header mb-0">
                             Bienvenue {{auth()->user()->full_name}}
                         </h1>
+                        
                         <!-- END page-header -->
+                    </div>
+                    <div id="alert-updatedhiddingmessage" class="ms-auto" >
                     </div>
                     @if($bottonName == 'Ajouter Rôle')
                     @can('créer-rôle')
@@ -280,6 +283,47 @@
         <script src="assets/js/app.min.js"></script>
         <!-- ================== END core-js ================== -->
         <script src="js/script.js"></script>
+        <script>
+            $(document).ready(function() {
+            // Check if the session message exists
+            if ("{{ session('success') }}") {
+                // Create the alert element
+                var alertElement = $('<div class="alert header-alert alert-success alert-dismissible fade show w-30" role="alert">' +
+                    '{{ session('success') }}' +
+                    // '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+
+                // Add custom styles to the alert element
+                alertElement.css({
+                    'opacity': '0',
+                    'border-radius': '0',
+                    'background-color': '#f79400',
+                    'color': 'white',
+                    'border': 'none',
+                    'font-weight' : 'bold',
+                });
+
+                // Append the alert to the header
+                $('#alert-updatedhiddingmessage').append(alertElement);
+
+                // Apply fade-in animation
+                setTimeout(function() {
+                    alertElement.css('opacity', '1');
+                }, 100);
+
+                // Automatically close the alert after 5 seconds
+                setTimeout(function() {
+                    // Apply fade-out animation
+                    alertElement.css('opacity', '0');
+
+                    // Remove the alert from the DOM after the animation ends
+                    setTimeout(function() {
+                        alertElement.alert('close');
+                    }, 300);
+                }, 10000);
+            }
+            });
+        </script>
         @yield('script')
 
         {{-- @livewireScripts --}}
