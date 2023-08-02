@@ -21,7 +21,8 @@
         </button>
     </div>
     @endif
-
+    
+    @can('lister-rôles')
     <div class="table-responsive">
         <table class="table">
             <thead class="table-dark">
@@ -57,12 +58,17 @@
                     </td>
                     <th>
                         <div class="d-flex align-items-center">
+                            @can('supprimer-rôle')
                             <button class="btn btn-danger  me-1" onclick="deleteRole({{$item->id}})" data-bs-toggle="modal" data-bs-target="#delete-role" >
                                 <i class="fa-regular fa-trash-can "></i>
                             </button>
+                            @endcan
+
+                            @can('modifier-rôle')
                             <button class="btn btn-warning edit-rolebutton"  data-role-id="{{$item->id}}" data-bs-toggle="modal" data-bs-target="#edit-role">
                                 <i class="fa-solid fa-pen-to-square" ></i>
                             </button>
+                            @endcan
                         </div>
                     </th>
                 </tr>
@@ -73,10 +79,11 @@
             {!! $roles->links() !!}
         </div>
     </div>
+    @endcan
 
     {{-- @livewire('role-search') --}}
 
-
+    @can('créer-rôle')
     <div class="modal fade" id="add-role">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -115,6 +122,8 @@
             </div>
         </div>
     </div>
+    @endcan
+    @can('modifier-rôle')
     <div class="modal fade" id="edit-role">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -137,7 +146,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Nom du Rôle</label>
-                            <input type="text" disabled name="name" class="form-control" id="name-edit"/>
+                            <input type="text"  name="name" class="form-control" id="name-edit"/>
                         </div>
                         <div class="mb-3" id="picalty">
                             <label for="permissions-edit" class="form-label">Permissions</label>
@@ -151,6 +160,8 @@
             </div>
         </div>
     </div>
+    @endcan
+    @can('supprimer-rôle')
     <div class="modal fade" id="delete-role">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -176,4 +187,6 @@
             </div>
         </div>
     </div>
+    @endcan
+
 @endsection

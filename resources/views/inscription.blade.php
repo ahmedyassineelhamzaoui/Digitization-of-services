@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <hr>
-    <h2 style="text-align: center">Reçu d'inscription</h2>
-    <hr>
+<div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" >
+    <h2 style="text-align: center;background-color: rgb(243, 163, 58);height:40px;line-height: 40px;align-items:center;    align-items: center;
+    ">Reçu d'inscription</h2>
     <h3 style="text-decoration: underline">Les informations personnelles :</h3>
             <div class="">
-                <pre><span style="font-weight: bold">Matricule : </span> {{$personelinfo->matricule}}<span style="font-weight: bold">            Nom :</span>  {{$personelinfo->nom }}<span style="font-weight: bold">            Prénom : </span> {{$personelinfo->prenom}}</pre> 
+                <pre><span style="font-weight: bold;">Matricule : </span> {{$personelinfo->matricule}}<span style="font-weight: bold">            Nom :</span>  {{$personelinfo->nom }}<span style="font-weight: bold">            Prénom : </span> {{$personelinfo->prenom}}</pre> 
             </div>
             <div class="">
                 <pre><span style="font-weight: bold">Date naissance :</span> {{$personelinfo->date_naissance}} <span style="font-weight: bold">         Lieu de naissance : </span> {{$personelinfo->lieu_naissance}} </pre>
@@ -49,6 +49,9 @@
         </div>
         <div class="">
             <pre><span style="font-weight: bold" >Date de fin : </span>{{$personelinfo->date_fin}} <span style="font-weight: bold" >           Situation matrimoniale : </span>{{$personelinfo->situation_matrimoniale}}</pre>            
+        </div>
+        <div style="height: 120px">
+
         </div>
         <h3 style="text-decoration: underline">Informations conjoint.e</h3>
         <div class="">
@@ -116,4 +119,5 @@
             <pre><span style="font-weight: bold" >Nom de ce parent ou ami : </span> {{$current->nom_parent}}</pre>
             @endif
         </div>
+</div>
  @endsection

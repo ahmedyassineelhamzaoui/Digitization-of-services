@@ -20,7 +20,7 @@
         </button>
     </div>
     @endif
-
+    @can('lister-utilisateurs')
     <div class="table-responsive">
         <table class="table">
             <thead class="table-dark">
@@ -71,12 +71,16 @@
                     <th>
                         <div class="d-flex align-items-center">
                             <div class="d-flex align-items-center">
+                                @can('supprimer-utilisateur')
                                 <button class="btn btn-danger  me-1" onclick="deleteUser({{$item->id}})" data-bs-toggle="modal" data-bs-target="#delete-user">
                                     <i class="fa-regular fa-trash-can "></i>
                                 </button>
+                                @endcan
+                                @can('modifier-utilisateur')
                                 <button class="btn btn-warning edit-userbutton" data-user-id="{{$item->id}}"  data-bs-target="#edit-user" data-bs-toggle="modal" >
                                     <i class="fa-solid fa-pen-to-square "></i>
                                 </button>
+                                @endcan
                             </div>
                         </div>
                     </th>
@@ -88,9 +92,9 @@
             {!! $users->links() !!}
         </div>
     </div>
-    
+    @endcan
     {{-- @livewire('user-search') --}}
-
+    @can('créer-utilisateur')
     <div class="modal fade" id="add-user">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -149,6 +153,8 @@
             </div>
         </div>
     </div>
+    @endcan
+    @can('modifier-utilisateur')
     <div class="modal fade" id="edit-user">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -211,6 +217,8 @@
             </div>
         </div>
     </div>
+    @endcan
+    @can('supprimer-utilisateur')
     <div class="modal fade" id="delete-user">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -235,4 +243,5 @@
             </div>
         </div>
     </div>
+    @endcan
 @endsection

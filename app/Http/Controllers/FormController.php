@@ -292,7 +292,7 @@ class FormController extends Controller
                 return response($output, 200)
                         ->header('Content-Type', 'application/pdf')
                         ->header('Content-Disposition', 'attachment; filename="inscription.pdf"');
-                return redirect()->back()->with('succès','votre commande a été bien télecharger');
+                return redirect()->back()->with('succès','votre demnade a été bien télecharger');
             }
             if($request->has('print_payment')){
 

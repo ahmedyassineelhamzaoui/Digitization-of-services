@@ -101,12 +101,12 @@ class RoleController extends Controller
             return view('errors.404');
         }
         if($user->hasPermissionTo('modifier-rôle')){
-            $request->validate( [
-                'name' => [
-                    'required',
-                    'min:3'
-                ],
-            ]);
+            // $request->validate( [
+            //     'name' => [
+            //         'required',
+            //         'min:3'
+            //     ],
+            // ]);
             $role = Role::find($request->role_editId);
             $role_exist = Role::where('name',$request->name)->first();
             if($role_exist){
@@ -123,7 +123,7 @@ class RoleController extends Controller
                     'error' => 'ce rôle déja existe '
                 ]);
             }else{
-                $role->name = $request->name;
+                // $role->name = $request->name;
                 $role->syncPermissions($request->permission);
                 $role->save();
                 return response()->json([

@@ -237,10 +237,19 @@
                         </h1>
                         <!-- END page-header -->
                     </div>
-                    @if($bottonName == 'Ajouter Rôle' || $bottonName == 'utilisateur')
+                    @if($bottonName == 'Ajouter Rôle')
+                    @can('créer-rôle')
                     <div class="ms-auto">
                     <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i>@yield('button-name')</a>
                     </div>
+                    @endcan
+                    @endif
+                    @if($bottonName == 'utilisateur')
+                    @can('créer-utilisateur')
+                    <div class="ms-auto">
+                    <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i>@yield('button-name')</a>
+                    </div>
+                    @endcan
                     @endif
                 </div>
 
