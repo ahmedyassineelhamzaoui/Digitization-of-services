@@ -15,6 +15,7 @@ use App\Notifications\documentAdded;
 use Illuminate\Support\Facades\Notification;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
+use PDF;
 // use Illuminate\Support\Facades\Mail;
 // use App\Mail\OrderCreated;
 
@@ -288,11 +289,14 @@ class FormController extends Controller
 
                 // Render the PDF
                 $dompdf->render();
+
+                $pdrf = PDF::loadView('inscription',compact('personelinfo','previous','current','conjoint'));
+                return $pdrf->download('ins.pdf');
                 $output = $dompdf->output();
                 return response($output, 200)
                         ->header('Content-Type', 'application/pdf')
                         ->header('Content-Disposition', 'attachment; filename="inscription.pdf"');
-                return redirect()->back()->with('succès','votre demnade a été bien télecharger');
+                // return redirect()->back()->with('succès','votre demnade a été bien télecharger');
             }
             if($request->has('print_payment')){
 
