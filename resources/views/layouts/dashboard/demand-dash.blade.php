@@ -41,6 +41,7 @@
                     <th scope="col">fiche d'inscription </th>
                     <th scope="col">fiche de paiement</th>
                     <th scope="col">fichiers joints</th>
+                    {{-- <th scope="col">Télecharger</th> --}}
                     <th scope="col">statut</th>
                     @can('voir-demande-action')
                     <th scope="col">Action</th>
@@ -68,6 +69,13 @@
                     <td class="ps-3">
                         <button data-files-id="{{ implode(',', $files[$i]->pluck('id')->toArray()) }}" data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>
                     </td>
+                    {{-- <td>
+                        <form action="{{ route('send.Information') }}" method="post" class="mb-3">
+                            @csrf
+                              <input type="hidden" name="personel_id" value="{{$userPersonelinfos[$i]->id}}" >
+                              <button type="submit" name="print_reçu" class="btn download-pdf"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span>Télécharger votre Attestation</button>
+                        </form>
+                    </td> --}}
                     <td>
                         @if($item->status =='accepter')
                            <button   class="btn" style="background-color:rgb(7, 165, 7);  color:white;">accepter</button>

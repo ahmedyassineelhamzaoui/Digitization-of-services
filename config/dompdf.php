@@ -161,7 +161,7 @@
              * Therefore allow specification of content here.
              */
             "default_media_type" => "screen",
-
+            
             /**
              * The default paper size.
              *

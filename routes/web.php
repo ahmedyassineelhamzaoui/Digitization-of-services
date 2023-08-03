@@ -64,7 +64,7 @@ Route::controller(RoleController::class)->group(function(){
    Route::delete('roles','deleteRole')->name('delete.role');
 });
 
-Route::controller(applicationController::class)->group(function(){
+Route::controller(ApplicationController::class)->group(function(){
    Route::get('demandes','index')->name('demande');
    Route::get('show-files/{id}','showFiles');
    Route::put('demandes','updateStatus')->name('update.status');

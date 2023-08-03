@@ -17,7 +17,7 @@ use App\Notifications\documentResponse;
 use Illuminate\Support\Facades\Notification;
 use App\Mail\DocumentResponseMail;
 use Illuminate\Support\Facades\Mail;
-
+use PDF;
 class applicationController extends Controller
 {
     public function __construct()
@@ -175,8 +175,29 @@ class applicationController extends Controller
             $application->message = $request->comment;
             $application->save();
             $operation = $request->input('status_name');
+
+            $personelinfo = personelinfo::where('id', $application->id)->first();
+            $previous = Previous::where('personelinfos_id', $personelinfo->id)->first();
+            $current = Current::where('personelinfos_id', $personelinfo->id)->first();
+            $conjoint = Conjoint::where('personelinfos_id', $personelinfo->id)->first();
+            $application = Application::find($application->id);
+            $pdf = PDF::loadView('anl', compact('personelinfo', 'previous', 'current', 'conjoint', 'application'));
+            
+            $data["email"] = "marksemony@gmail.com";
+            $data["title"] = "From ItSolutionStuff.com";
+            $data["body"] = "This is Demo";
+            $data["name"] =  $useraction->full_name;
+            $data["operation"] = $operation;
+            $data["message"] = $application->message;
+    
+            Mail::send('emails.responseOfApplication', $data, function($message)use($data, $pdf) {
+                $message->from('ahmed.yassin.elhamzaoui2019@gmail.com')   // Add the "From" address
+                        ->to($useraction->email, $useraction->email)
+                        ->subject($data["title"])
+                        ->attachData($pdf->output(), "reçu.pdf");   
+            });
+
             Notification::send($useraction      , new documentResponse($authUser->id,$operation,$useraction->full_name,$application->message));
-            Mail::to($useraction->email)->send(new DocumentResponseMail($useraction->full_name,$operation,$application->message));
             Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
             Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
             Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
@@ -191,6 +212,7 @@ class applicationController extends Controller
             // $response = $client->sms()->send(
             //     new \Vonage\SMS\Message\SMS("212631800923", "ANL", $my_message)
             // );
+
             return response()->json([
                 'message' => 'la demandes a été bien modifier'
             ]);
@@ -287,4 +309,5 @@ class applicationController extends Controller
         }
         
     }
+            
 }

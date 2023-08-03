@@ -276,26 +276,26 @@ class FormController extends Controller
                 $current =Current::where('personelinfos_id',$request->personel_id)->first();
                 $conjoint =Conjoint::where('personelinfos_id',$request->personel_id)->first();
                 // dd($data);
-                $dompdf = new Dompdf();
+                // $dompdf = new Dompdf();
 
-                // Render the view as HTML
-                $html = view('inscription', compact('personelinfo','previous','current','conjoint'))->render();
+                // // Render the view as HTML
+                // $html = view('inscription', compact('personelinfo','previous','current','conjoint'))->render();
 
-                // Load the HTML into dompdf
-                $dompdf->loadHtml($html);
+                // // Load the HTML into dompdf
+                // $dompdf->loadHtml($html);
 
-                // Set the paper size and orientation
-                $dompdf->setPaper('A4', 'portrait');
+                // // Set the paper size and orientation
+                // $dompdf->setPaper('A4', 'portrait');
 
-                // Render the PDF
-                $dompdf->render();
+                // // Render the PDF
+                // $dompdf->render();
 
                 $pdrf = PDF::loadView('inscription',compact('personelinfo','previous','current','conjoint'));
-                return $pdrf->download('ins.pdf');
-                $output = $dompdf->output();
-                return response($output, 200)
-                        ->header('Content-Type', 'application/pdf')
-                        ->header('Content-Disposition', 'attachment; filename="inscription.pdf"');
+                return $pdrf->download('inscription.pdf');
+                // $output = $dompdf->output();
+                // return response($output, 200)
+                //         ->header('Content-Type', 'application/pdf')
+                //         ->header('Content-Disposition', 'attachment; filename="inscription.pdf"');
                 // return redirect()->back()->with('succès','votre demnade a été bien télecharger');
             }
             if($request->has('print_payment')){
@@ -322,7 +322,15 @@ class FormController extends Controller
                         ->header('Content-Disposition', 'attachment; filename="paiment.pdf"');
                 return redirect()->back()->with('succès','votre commande a été bien télecharger');
             }
-
+            if($request->has('print_reçu')){
+                $personelinfo = personelinfo::where('id',$request->personel_id)->first();
+                $previous =Previous::where('personelinfos_id',$request->personel_id)->first();
+                $current =Current::where('personelinfos_id',$request->personel_id)->first();
+                $conjoint =Conjoint::where('personelinfos_id',$request->personel_id)->first();
+                $application = Application::find($request->personel_id);
+                $pdrf = PDF::loadView('anl',compact('personelinfo','previous','current','conjoint','application'));
+                return $pdrf->download('ANL.pdf');
+            }
         }
 
 }
