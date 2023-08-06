@@ -8,7 +8,8 @@ namespace App\Http\Controllers;
     use Illuminate\Support\Str;
     use Illuminate\Validation\Rule;
     use App\Models\User;
-
+    use App\Mail\SendMailLink;
+    use Illuminate\Support\Facades\Mail;
 
     class AuthController extends Controller
     {
@@ -125,6 +126,27 @@ namespace App\Http\Controllers;
             }
 
             return redirect()->route('profile.edit')->with('success', 'Image de profil mise à jour avec succès');
+        }
+        public function forgetPassword()
+        {
+            return view('forgetPassword');
+        }
+        public function sendEmail(Request $request)
+        {
+            $request->validate([
+                'email'    => 'required|email|min:10',
+            ]);
+            $user = User::where('email', $request->email)->first();
+    
+            if (!$user) {
+                return redirect()->back()->with('error','L\'email que vous avez saisie n\'éxiste pas');
+            }
+            $token = Str::random(10);
+            $user->remember_token = $token;
+            $user->save();
+            Mail::to($request->email)->send(new SendMailLink($token, $request->email, $user->name));
+            return redirect()->back()->with('success','nous avons envoyé une vérification par e-mail à votre adresse e-mail');
+       
         }
 
     }

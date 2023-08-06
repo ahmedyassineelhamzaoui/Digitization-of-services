@@ -73,7 +73,7 @@
                         <button class="btn btn-warning btn-lg btn-block w-100 text-white" type="submit" style="padding: .5rem 2.5rem;     background-image: linear-gradient(to right, #ce6200, #b77800, #978b00, #6d9b00, #1ca801);">Connexion</button>
                     </div>
 
-                    <p class="small mb-3 pb-lg-2"><a class="text-muted" href="#!">Mot de Passe oublié?</a></p>
+                    <p class="small mb-3 pb-lg-2"><a class="text-muted" href="{{route('forget.passwordpage')}}">Mot de Passe oublié?</a></p>
                     <p>Vous n'avez pas de compte ? <a href="{{url('register')}}" class="link-warning">S'inscrire</a></p>
 
                 </form>

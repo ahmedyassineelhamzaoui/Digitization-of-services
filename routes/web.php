@@ -37,10 +37,8 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('/profile', 'editProfile')->name('profile.edit');
     Route::post('/profile/update', 'updateProfile')->name('profile.update');
     Route::post('/profile/update-image',  'updateImage')->name('profile.updateImage');
-
-
-
-
+    Route::get('Réinitialiser-mot-de-pass','forgetPassword')->name('forget.passwordpage');
+    Route::post('Réinitialiser-mot-de-pass','sendEmail')->name('forget.password');
 });
 Route::controller(UserController::class)->group(function(){
     Route::get('utilisateurs','index');

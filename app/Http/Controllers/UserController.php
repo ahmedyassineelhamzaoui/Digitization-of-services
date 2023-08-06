@@ -191,4 +191,5 @@ class UserController extends Controller
             'message' => 'l\'utilisateur a été bien créer'
         ]);
     }
+   
 }
