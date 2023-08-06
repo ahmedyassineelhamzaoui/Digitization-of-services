@@ -53,7 +53,9 @@ class WelcomeEmail extends Mailable
 
     public function build()
     {
-        return $this->markdown('emails.welcome')->with([
+        return  $this->from('sonapie@gmail.com', 'Sonapie')
+        ->markdown('emails.welcome')
+        ->with([
             'user' => $this->user,
             'id' => $this->id,
         ]);

@@ -18887,7 +18887,7 @@ a:focus {
     top: 0;
     bottom: 0;
     padding-top: 50px;
-    background: var(--app-sidebar-bg);
+    background: black;
     z-index: 1010
 }
 

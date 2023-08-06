@@ -124,12 +124,12 @@
                                 </div>
                                 <div class="menu-profile-info">
                                     <div class="d-flex align-items-center">
-                                        <div class="flex-grow-1" style="color:green">
+                                        <div class="flex-grow-1" style="color:rgb(0, 193, 0)">
                                             {{ Str::limit(auth()->user()->full_name,20)}}
                                         </div>
                                         <div class="menu-caret ms-auto"></div>
                                     </div>
-                                    <small style="color:orangered">
+                                    <span style="color:orangered">
                                         @if(auth()->user()->roles[0]->name == 'controleur 1')
                                             MODERATEUR
                                         @endif
@@ -143,7 +143,7 @@
                                         @if(auth()->user()->roles[0]->name == 'utilisateur' || auth()->user()->roles[0]->name == 'Administrateur')
                                             {{auth()->user()->roles[0]->name}}
                                         @endif
-                                    </small>
+                                    </span>
                                 </div>
                             </a>
                         </div>
@@ -170,9 +170,9 @@
                         </div>
                         <div class="menu-header">Navigation</div>
 
-                        <div class="menu-item">
+                        <div class="menu-item" >
                             @can('modifier-demandes')
-                            <a href="{{url('statistiques')}}" class="menu-link">
+                            <a  href="{{url('statistiques')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa-solid fa-chart-pie"></i>
                                 </div>
@@ -180,7 +180,7 @@
                             </a>
                             @endcan
                             @can('lister-utilisateurs')
-                            <a href="{{url('utilisateurs')}}" class="menu-link">
+                            <a  href="{{url('utilisateurs')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa-solid fa-users"></i>
                                 </div>
@@ -188,7 +188,7 @@
                             </a>
                             @endcan
                             @can('lister-rôles')
-                            <a href="{{url('roles')}}" class="menu-link">
+                            <a  href="{{url('roles')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa-solid fa-user-shield"></i>
                                 </div>
@@ -201,7 +201,7 @@
                                 </div>
                                 <div class="menu-text">Demandes</div>
                             </a>
-                            <a href="{{url('notifications')}}" class="menu-link">
+                            <a  href="{{url('notifications')}}" class="menu-link">
                                 <div class="menu-icon">
                                     <i class="fa-solid fa-bell"></i>
                                  </div>

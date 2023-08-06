@@ -322,15 +322,7 @@ class FormController extends Controller
                         ->header('Content-Disposition', 'attachment; filename="paiment.pdf"');
                 return redirect()->back()->with('succès','votre commande a été bien télecharger');
             }
-            if($request->has('print_reçu')){
-                $personelinfo = personelinfo::where('id',$request->personel_id)->first();
-                $previous =Previous::where('personelinfos_id',$request->personel_id)->first();
-                $current =Current::where('personelinfos_id',$request->personel_id)->first();
-                $conjoint =Conjoint::where('personelinfos_id',$request->personel_id)->first();
-                $application = Application::find($request->personel_id);
-                $pdrf = PDF::loadView('anl',compact('personelinfo','previous','current','conjoint','application'));
-                return $pdrf->download('ANL.pdf');
-            }
+
         }
 
 }
