@@ -63,7 +63,7 @@
                                     <img style="width:20px;height:20px;" src="assets/images/{{$notif->data['picture']}}" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <h6 class="media-heading">{{$notif->data['user']}} {{ strlen($notif->data['title']) > 50 ? substr($notif->data['title'], 0, 40).'...' : $notif->data['title'] }}</h6>
+                                    <h6 class="media-heading">{{$notif->data['user']}} {{ strlen($notif->data['title']) > 45 ? substr($notif->data['title'], 0, 40).'...' : $notif->data['title'] }}</h6>
                                 </div>
                             </a>
                             @empty
