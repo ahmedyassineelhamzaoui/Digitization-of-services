@@ -22,12 +22,13 @@ class DocumentResponseMail extends Mailable
     public $name;
     public $operation;
     public $message;
-
-    public function __construct($name,$operation,$message)
+    public $pathfile;
+    public function __construct($name,$operation,$message,$pathfile)
     {
         $this->name = $name;
         $this->operation   = $operation;
         $this->message   = $message;
+        $this->pathfile = $pathfile;
     }
 
     /**
@@ -56,11 +57,14 @@ class DocumentResponseMail extends Mailable
 
     public function build()
     {
-        return $this->markdown('emails.responseOfApplication')->with([
-            'name' => $this->name,
-            'operation' => $this->operation,
-            'message' => $this->message
-        ]);
+        return $this->from('your@email.com', 'Your Name')
+                ->markdown('emails.responseOfApplication')
+                ->with([
+                    'name' => $this->name,
+                    'operation' => $this->operation,
+                    'message' => $this->message,
+                    'path'   => $this->pathfile
+                ]);
     }
     /**
      * Get the attachments for the message.

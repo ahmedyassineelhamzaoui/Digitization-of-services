@@ -25,78 +25,46 @@
       text-align: start;
     }
   
-    /* Styles for the form */
-    form {
-      background-color: #ffffff;
-      padding: 2rem;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 0.5rem;
-      width: 100%;
-      max-width: 30rem;
-      display: flex;
-      justify-content: center;
-    }
-  
-    form a {
-      background-color: #ffae00;
-      color: #ffffff;
+    .btn {
+      background-color: rgb(231,123,32);
+      color: rgb(65,157,95);
       border: none;
-      padding: 1rem 2rem;
-      border-radius: 0.25rem;
-      font-size: 1rem;
+      padding: 1em 2em;
+      border-radius: 0.25em;
+      font-size: 1em;
       font-weight: bold;
-      margin-bottom: 1rem;
-      width: 100%;
-    }
-  
-    form a:hover {
-      background-color: #eba205;
       cursor: pointer;
     }
-  
-    /* Styles for the message container */
-    .message-container {
-      margin-top: 2rem;
-    }
-  
-    .message-container p {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
-    }
-  
-    .message-container p:last-child {
-      margin-bottom: 0;
-    }
-    .download-pdf{
-        background-color: #015163 ;
-        padding: 8px 10px;
-        color: #fff;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .download-pdf:hover{
-        background-color: #0694b4;
-        color: #fff;
-        border-radius: 5px;
-    }
+
+   
   </style>
   <div class="form-container">
+    <img width="100px" src="{{asset('assets/images/logo/removebg.png')}}" >
     <div class="form-header">
-      <h2>Bonjour, {{$name}}</h2>
-      <p>votre demande a été {{ $operation == 'accepter' ? 'accepté' : 'refusé'}}</p>
+      <h5>Bonjour, {{$name}}</h5> 
+      @if($operation != 'accepter')
+      <p> Nous regrettons de vous informer que votre demande d'attestation de non logement a été refusée. Nous comprenons que cela puisse être décevant, et nous vous remercions pour votre intérêt.
+          La raison du refus est la suivante : {{$message}}
+          Nous sommes là pour vous aider et vous guider vers une demande future réussie. Si vous avez des questions ou si vous avez besoin de clarifications, n'hésitez pas à nous contacter.</p>
+          <div>
+            <a class="btn" href="{{route('demande')}}">Contacter-Nous</a>
+          </div>                
+      @else
+         <p>Nous sommes ravis de vous informer que votre demande d'attestation de non logement a été approuvée avec succès ! Félicitations !
+          vous pouvez Télécharger votre demande ici: <a href="{{ asset($path) }}">Télécharger</a></p>
+          <p>Si vous avez des questions supplémentaires, n'hésitez pas à nous contacter.  </p>
+          <div style="width: 100%">
+            <a class="btn" href="{{route('demande')}}">Contacter Nous</a>
+          </div>
+      @endif
+    </div>
+    <div style="margin-top: 1em">
       <p>
-        @if($operation != 'accepter')
-        La Raison est : {{$message}}
-        @endif
-      </p>
+        Cordialement,
+        L'équipe  <b style="color: green"><span style="color:orangered">Son</span>apie</b> 
+     </p>
     </div>
-    <div>
-      <form>
-        <div>
-          <a href="{{route('demande')}}" >Retour au site web </a>
-        </div>
-      </form>
-    </div>
+    
+    
 
     

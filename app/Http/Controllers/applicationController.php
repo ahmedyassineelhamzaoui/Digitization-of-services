@@ -116,7 +116,8 @@ class applicationController extends Controller
                 $application->editable2='no';
                 $application->save();
                 $operation = $request->input('status_name');
-                Mail::to($useraction->email)->send(new DocumentResponseMail($useraction->full_name,$operation,$application->message));
+                $pathfile ='';
+                Mail::to($useraction->email)->send(new DocumentResponseMail($useraction->full_name,$operation,$application->message,$pathfile));
                 Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
@@ -156,7 +157,8 @@ class applicationController extends Controller
                 $application->editable3='no';
                 $application->save();
                 $operation = $request->input('status_name');
-                Mail::to($useraction->email)->send(new DocumentResponseMail($useraction->full_name,$operation,$application->message));
+                $pathfile ='';
+                Mail::to($useraction->email)->send(new DocumentResponseMail($useraction->full_name,$operation,$application->message,$pathfile));
                 Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
                 Notification::send($controleur3, new documentAction($authUser->id,$operation,$useraction->full_name));
@@ -181,27 +183,20 @@ class applicationController extends Controller
             $current = Current::where('personelinfos_id', $personelinfo->id)->first();
             $conjoint = Conjoint::where('personelinfos_id', $personelinfo->id)->first();
             $application = Application::find($application->id);
-            $pdf = PDF::loadView('anl', compact('personelinfo', 'previous', 'current', 'conjoint', 'application'));
-            
-            $data["email"] = "marksemony@gmail.com";
-            $data["title"] = "From ItSolutionStuff.com";
-            $data["body"] = "This is Demo";
-            $data["name"] =  $useraction->full_name;
-            $data["operation"] = $operation;
-            $data["message"] = $application->message;
-    
-            Mail::send('emails.responseOfApplication', $data, function($message)use($data, $pdf) {
-                $message->from('ahmed.yassin.elhamzaoui2019@gmail.com')   // Add the "From" address
-                        ->to($useraction->email, $useraction->email)
-                        ->subject($data["title"])
-                        ->attachData($pdf->output(), "reçu.pdf");   
-            });
 
-            Notification::send($useraction      , new documentResponse($authUser->id,$operation,$useraction->full_name,$application->message));
-            Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
-            Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
-            Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
-            
+            $pdf = PDF::loadView('anl', compact('personelinfo', 'previous', 'current', 'conjoint', 'application'));
+            $destinationFolder = public_path('assets/reçus'); 
+            $filename = 'ANL_A' . time() . '.pdf';            
+            $pdf->save($destinationFolder . '/' . $filename);
+            $pathfile = 'assets/reçus/' . $filename;
+
+                Mail::to($useraction->email)->send(new DocumentResponseMail($useraction->full_name,$operation,$application->message,$pathfile));
+
+                Notification::send($useraction      , new documentResponse($authUser->id,$operation,$useraction->full_name,$application->message));
+                Notification::send($admin      , new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur2, new documentAction($authUser->id,$operation,$useraction->full_name));
+                Notification::send($controleur1, new documentAction($authUser->id,$operation,$useraction->full_name));
+                
             // $basic  = new \Vonage\Client\Credentials\Basic("5755ed5b", "K6ep9r17WL0cb3UX");
             // $client = new \Vonage\Client($basic);
             // if($operation == "accepter"){
@@ -309,5 +304,5 @@ class applicationController extends Controller
         }
         
     }
-            
+         
 }
