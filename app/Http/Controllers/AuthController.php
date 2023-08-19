@@ -13,6 +13,10 @@ namespace App\Http\Controllers;
 
     class AuthController extends Controller
     {
+        public function __construct()
+        {
+            $this->middleware('auth',['except' => ['index', 'home','register','login','sendEmail','forgetPassword','showChangePassword','changePassword']]);
+        }
 
         public function index(){
             return view('login');
