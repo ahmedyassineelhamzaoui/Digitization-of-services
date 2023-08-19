@@ -80,7 +80,7 @@
     <div>
       <form>
         <div>
-          <a href="{{ route('login') }}" >Mettre à jour </a>
+          <a href="{{ route('change.passwordpage', $token) }}" >Mettre à jour </a>
         </div>
       </form>
       <div class="message-container">

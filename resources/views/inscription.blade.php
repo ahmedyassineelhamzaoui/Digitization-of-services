@@ -21,15 +21,9 @@
             top: 0;
             left: 0;
         }
-        #image-container1 {
-            position: absolute;
-            top: -2%;
-            left: 0;
-        }
         h3{
             color:rgb(8, 149, 53) ;
         }
-
         #text-container {
             position: absolute;
             top: -2%;
@@ -37,14 +31,6 @@
             text-align: center;
             width: 300px;
         }
-        /* .first-tag {
-            text-align: center;
-        }
-
-        .first-tag p {
-            display: inline-block;
-            margin: 10px;
-        } */
     </style>
 </head>
 <body>

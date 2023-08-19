@@ -148,5 +148,24 @@ namespace App\Http\Controllers;
             return redirect()->back()->with('success','nous avons envoyé une vérification par e-mail à votre adresse e-mail');
        
         }
+        public function showChangePassword($token)
+        {
+            return view('changePassword',  ['token' => $token]);
+        }
+        public function changePassword(Request $request)
+        {
+        
+            $request->validate([
+                'password' => 'required|string|min:8',
+                'confirm_password' => 'required|string|min:8|same:password'
+            ]);                          
+            $updatePassword=User::where('remember_token',$request->token)->first();
+            if(!$updatePassword){
+                return back()->with('error', 'Invalid opperation !');
+            }
+            $updatePassword->update(['password' => Hash::make($request->password)]);
+            
+            return redirect()->route('connection')->with('success','your password has been changed succesfuly');
+        }
 
     }

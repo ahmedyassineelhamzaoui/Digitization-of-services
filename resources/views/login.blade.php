@@ -13,15 +13,19 @@
                 <a href="home.html">
                     <img style="width:200px;margin-top:5px" src="assets/images/logo/logo1.jpg" alt="">
                 </a>
-
-                @if(session('error'))
-                    <div class="alert alert-danger alert-dismissible fade show z-20" role="alert">
-                        <strong>{{session('error')}}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
             </div>
-
+            @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show z-20" role="alert">
+                <strong>{{session('error')}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show z-20" role="alert">
+                    <strong>{{session('success')}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
                 <form style="width: 23rem;" action="{{ route('connection') }}" method="POST">

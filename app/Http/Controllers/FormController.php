@@ -299,28 +299,9 @@ class FormController extends Controller
                 // return redirect()->back()->with('succès','votre demnade a été bien télecharger');
             }
             if($request->has('print_payment')){
-
                 $paiment =Paiment::where('personelinfos_id',$request->personel_id)->first();
-                // dd($data);
-                $dompdf = new Dompdf();
-
-                // Render the view as HTML
-                $html = view('paiment', compact('paiment'))->render();
-
-                // Load the HTML into dompdf
-                $dompdf->loadHtml($html);
-
-                // Set the paper size and orientation
-                $dompdf->setPaper('A4', 'portrait');
-
-                // Render the PDF
-                $dompdf->render();
-                $output = $dompdf->output();
-
-                return response($output, 200)
-                        ->header('Content-Type', 'application/pdf')
-                        ->header('Content-Disposition', 'attachment; filename="paiment.pdf"');
-                return redirect()->back()->with('succès','votre commande a été bien télecharger');
+                $pdf = PDF::loadView('paiment',compact('paiment'));
+                return $pdf->download('paiment.pdf');
             }
 
         }
