@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
-@section('title', 'Réinitialiser')
+@section('title', 'Mot de passe oublié')
 
 @section('content')
     <section class="vh-100">

@@ -145,7 +145,7 @@ namespace App\Http\Controllers;
             if (!$user) {
                 return redirect()->back()->with('error','L\'email que vous avez saisie n\'éxiste pas');
             }
-            $token = Str::random(10);
+            $token = Str::random(40);
             $user->remember_token = $token;
             $user->save();
             Mail::to($request->email)->send(new SendMailLink($token, $request->email, $user->name));
@@ -162,14 +162,14 @@ namespace App\Http\Controllers;
             $request->validate([
                 'password' => 'required|string|min:8',
                 'confirm_password' => 'required|string|min:8|same:password'
-            ]);                          
+            ]);             
             $updatePassword=User::where('remember_token',$request->token)->first();
             if(!$updatePassword){
-                return back()->with('error', 'Invalid opperation !');
+                return back()->with('error', 'Opération invalide!');
             }
             $updatePassword->update(['password' => Hash::make($request->password)]);
             
-            return redirect()->route('connection')->with('success','your password has been changed succesfuly');
+            return redirect()->route('connection')->with('success','Votre mot de passe a été changé avec succès');
         }
 
     }

@@ -40,7 +40,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('Réinitialiser-mot-de-pass','forgetPassword')->name('forget.passwordpage');
     Route::post('Réinitialiser-mot-de-pass','sendEmail')->name('forget.password');
     Route::get('changer-mot-de-pass/{token}','showChangePassword')->name('change.passwordpage');
-    Route::post('changer-mot-de-pass','changePassword')->name('change.password');
+    Route::post('changer-mot-de-pass/{token}','changePassword')->name('change.password');
 
 });
 Route::controller(UserController::class)->group(function(){

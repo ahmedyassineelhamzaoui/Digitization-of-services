@@ -8,7 +8,7 @@
         <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6 text-black d-flex justify-content-center align-items-center ">
-                    <form style="width: 23rem;" action="{{ route('change.password') }}" method="POST">
+                    <form style="width: 23rem;" action="{{ route('change.password', $token) }}" method="POST">
                         @csrf
                         <div class="px-5 ms-xl-4">
                             <a href="home.html">
@@ -29,16 +29,16 @@
                         @endif
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form2Example18">Nouveau Mot de passe</label>
-                            <input type="password" name="password" placeholder="*********"  class="form-control form-control-lg"/>
+                            <input type="password" name="password" placeholder="*********"  class="form-control form-control-lg" required/>
                             @error('password')
-                                    <div class="invalid-feedback text-danger">{{ $message }}</div>
+                                <div style="font-weight:bold" class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form2Example18">Confirmer Le Nouveau Mot de Passe</label>
-                            <input type="password" name="confirm_password" placeholder="*********" class="form-control form-control-lg"/>
+                            <input type="password" name="confirm_password" placeholder="*********" class="form-control form-control-lg" required/>
                             @error('confirm_password')
-                                    <div class="invalid-feedback text-danger">{{ $message }}</div>
+                                <div style="font-weight:bold" class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="pt-1 mb-4 d-flex justify-content-end">
