@@ -175,6 +175,7 @@ class applicationController extends Controller
         }else if($authUser->roles[0]->name == 'controleur 3'){
             $application->status = $request->input('status_name');
             $application->message = $request->comment;
+            $application->editable3='no';
             $application->save();
             $operation = $request->input('status_name');
 

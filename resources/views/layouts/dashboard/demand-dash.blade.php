@@ -202,7 +202,7 @@
                     </div>
                     <div class="modal-body">
                             <div class="my-3">
-                                <h5 class="form-label">en cliquant sur confirmez vous n'avais pas le droit de modifier cette application apprés !!!</h5>
+                                <h5 class="form-label">en cliquant sur confirmez vous n'avais pas le droit de modifier cette demande apprés !!!</h5>
                             </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-end my-2 mx-3 py-3">
