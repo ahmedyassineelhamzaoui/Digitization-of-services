@@ -20,4 +20,7 @@ use App\Http\Controllers\PaymentController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/payment/notification', [PaymentController::class, 'notification']);
+Route::controller(PaymentController::class)->group(function(){
+    Route::post('/payment/notification','notification');
+    Route::get('/payment/notification','view');
+ });

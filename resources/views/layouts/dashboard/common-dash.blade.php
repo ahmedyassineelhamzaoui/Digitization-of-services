@@ -233,7 +233,7 @@
                         </ol>
                         <!-- BEGIN page-header -->
                         <h1 class="page-header mb-0">
-                            Bienvenue {{auth()->user()->full_name}}
+                            Bienvenue {{ auth()->user()->full_name }}
                         </h1>
                         
                         <!-- END page-header -->

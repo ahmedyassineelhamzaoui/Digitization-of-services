@@ -57,4 +57,7 @@ class PaymentController extends Controller
                 ]); 
             }
     }
+    public function view(){
+        return view('welcome');
+    }
 }
