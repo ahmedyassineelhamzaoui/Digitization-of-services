@@ -53,7 +53,7 @@ Route::controller(UserController::class)->group(function(){
     Route::post('utilisateurs','createUser')->name('create.user');
 });
 Route::controller(FormController::class)->group(function(){
-   Route::post('/formulaire','storeInformation')->name('send.Information');
+   Route::post('/formulaire/{personel_id}','storeInformation')->name('send.Information');
    Route::get('/formulaire','index');
 });
 

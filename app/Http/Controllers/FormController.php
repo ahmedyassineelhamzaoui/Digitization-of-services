@@ -34,12 +34,12 @@ class FormController extends Controller
             $this->middleware('auth');
         }
         
-       public function index()
-       {
-           return view('personelInfo');
-       }
+        public function index()
+        {
+            return view('personelInfo');
+        }
        
-        public function storeInformation(Request $request)
+        public function storeInformation(Request $request, $personel_id)
         {
             if($request->has('Matricule')){
                 $validator = $request->validate([
@@ -270,26 +270,11 @@ class FormController extends Controller
                 }
             }
             if($request->has('print_info')){
-
-                $personelinfo = personelinfo::where('id',$request->personel_id)->first();
-                $previous =Previous::where('personelinfos_id',$request->personel_id)->first();
-                $current =Current::where('personelinfos_id',$request->personel_id)->first();
-                $conjoint =Conjoint::where('personelinfos_id',$request->personel_id)->first();
-                // dd($data);
-                // $dompdf = new Dompdf();
-
-                // // Render the view as HTML
-                // $html = view('inscription', compact('personelinfo','previous','current','conjoint'))->render();
-
-                // // Load the HTML into dompdf
-                // $dompdf->loadHtml($html);
-
-                // // Set the paper size and orientation
-                // $dompdf->setPaper('A4', 'portrait');
-
-                // // Render the PDF
-                // $dompdf->render();
-
+                $special_id = decrypt($personel_id);
+                $personelinfo = personelinfo::where('id',$special_id)->first();
+                $previous =Previous::where('personelinfos_id',$special_id)->first();
+                $current =Current::where('personelinfos_id',$special_id)->first();
+                $conjoint =Conjoint::where('personelinfos_id',$special_id)->first();
                 $pdrf = PDF::loadView('inscription',compact('personelinfo','previous','current','conjoint'));
                 return $pdrf->download('inscription.pdf');
                 // $output = $dompdf->output();
@@ -299,7 +284,7 @@ class FormController extends Controller
                 // return redirect()->back()->with('succès','votre demnade a été bien télecharger');
             }
             if($request->has('print_payment')){
-                $paiment =Paiment::where('personelinfos_id',$request->personel_id)->first();
+                $paiment =Paiment::where('personelinfos_id',decrypt($personel_id))->first();
                 $pdf = PDF::loadView('paiment',compact('paiment'));
                 return $pdf->download('paiment.pdf');
             }
