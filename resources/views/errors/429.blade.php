@@ -1,6 +1,5 @@
-
-@section('title', 'page attestation info')
-
+@extends('layouts.app')
+@section('title', 'Trop de demandes!')
 @section('content')
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="container">

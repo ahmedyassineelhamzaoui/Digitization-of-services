@@ -59,6 +59,12 @@ class Handler extends ExceptionHandler
         return response()->view('errors.400', [], 400);
     } elseif ($exception instanceof \Illuminate\Database\QueryException) {
         return response()->view('errors.500', ['exception' => $exception], 500);
+    } elseif ($exception instanceof \Illuminate\Http\Exceptions\ThrottleRequestsException) {
+        return response()->view('errors.429', ['exception' => $exception], 429);
+    } elseif ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+        return response()->view('errors.419', ['exception' => $exception], 419);
+    } elseif ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+        return response()->view('errors.401', ['exception' => $exception], 401);
     } else {
         return parent::render($request, $exception);
     }

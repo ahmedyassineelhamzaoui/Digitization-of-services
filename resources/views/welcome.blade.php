@@ -1,2 +1,2 @@
 @extends('layouts.app')
-@section('title', 'page Acceuil')
+@section('title', 'paiment notification')

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'page attestation info')
+@section('title', 'Page expirée !')
 
 @section('content')
 <div class="d-flex justify-content-center align-items-center vh-100">
