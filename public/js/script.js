@@ -639,6 +639,20 @@ $(document).ready(function() {
                 }
 
                 tablelines += '</td>';
+                tablelines += '<td>'
+                if (response.paimentInfos[i].statut == 'payé') {
+                    tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">payé</button>';
+                } else if (response.paimentInfos[i].statut == 'non payé') {
+                    tablelines += '<button class="btn" style="background-color:rgb(216, 38, 38); color:white;"> non payé</button>';
+                } else{
+                    tablelines += '<button class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0); color:white;">' +
+                        '<div class="me-1"> en cours </div>' +
+                        '<div class="spinner-border" style="width:15px;height:15px" role="status">' +
+                            '<span class="visually-hidden">Loading...</span>' +
+                        '</div>' +
+                    '</button>';
+                }
+                tablelines += '</td>';
                 if (response.roleName == 'Administrateur') {
                     tablelines += '<td>';
                     tablelines += '<button class="btn btn-danger me-1" onclick="deleteApplication(' + response.applications[i].id + ')" data-bs-toggle="modal" data-bs-target="#delete-application">' +
@@ -691,51 +705,65 @@ $(document).ready(function() {
               '<td class="ps-3">'+
                         '<button data-files-id='+response.files[i][0].id+' data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>'+
               '</td>';
-        tablelines += '<td>'
-      if (response.applications[i].status == 'accepter') {
-          tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">accepter</button>';
-      } else if (response.applications[i].status == 'refuser') {
-          tablelines += '<button class="btn" style="background-color:rgb(216, 38, 38); color:white;"> refuser</button>';
-      } else if (response.applications[i].status == 'en cours') {
-          tablelines += '<button class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0); color:white;">' +
-              '<div class="me-1"> en cours </div>' +
-              '<div class="spinner-border" style="width:15px;height:15px" role="status">' +
-                  '<span class="visually-hidden">Loading...</span>' +
-              '</div>' +
-          '</button>';
-      } else {
-          tablelines += '<button class="btn" style="background-color:black; color:white;">en attente</button>';
-      }
-      tablelines +='</td>';
-      if (response.roleName == 'Administrateur') {
-          tablelines += '<th>';
-          tablelines += '<button class="btn btn-danger me-1" onclick="deleteApplication(' + response.applications[i].id + ')" data-bs-toggle="modal" data-bs-target="#delete-application">' +
-              '<i class="fa-regular fa-trash-can"></i>' +
-              '</button></th>';
-      }
-      else if (response.roleName != 'Administrateur' && response.roleName != 'utilisateur' ) {
-        tablelines += '<th>';
-          if ( response.roleName == 'controleur 1' && response.applications[i].editable1 == 'yes') {
-              tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
-                  '<i class="fa-solid fa-pen-to-square"></i>' +
+              tablelines += '<td>'
+              if (response.applications[i].status == 'accepter') {
+                  tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">accepter</button>';
+              } else if (response.applications[i].status == 'refuser') {
+                  tablelines += '<button class="btn" style="background-color:rgb(216, 38, 38); color:white;"> refuser</button>';
+              } else if (response.applications[i].status == 'en cours') {
+                  tablelines += '<button class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0); color:white;">' +
+                      '<div class="me-1"> en cours </div>' +
+                      '<div class="spinner-border" style="width:15px;height:15px" role="status">' +
+                          '<span class="visually-hidden">Loading...</span>' +
+                      '</div>' +
                   '</button>';
-          } else if ( response.roleName == 'controleur 2' && response.applications[i].editable2 == 'yes') {
-              tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
-                  '<i class="fa-solid fa-pen-to-square"></i>' +
+              } else {
+                  tablelines += '<button class="btn" style="background-color:black; color:white;">en attente</button>';
+              }
+            tablelines +='</td>';
+            tablelines += '<td>'
+              if (response.paimentInfos[i].statut == 'payé') {
+                  tablelines += '<button class="btn" style="background-color:rgb(7, 165, 7); color:white;">payé</button>';
+              } else if (response.paimentInfos[i].statut == 'non payé') {
+                  tablelines += '<button class="btn" style="background-color:rgb(216, 38, 38); color:white;"> non payé</button>';
+              } else{
+                  tablelines += '<button class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0); color:white;">' +
+                      '<div class="me-1"> en cours </div>' +
+                      '<div class="spinner-border" style="width:15px;height:15px" role="status">' +
+                          '<span class="visually-hidden">Loading...</span>' +
+                      '</div>' +
                   '</button>';
-          } else if ( response.roleName == 'controleur 3' && response.applications[i].editable3 == 'yes') {
-              tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
-                  '<i class="fa-solid fa-pen-to-square"></i>' +
-                  '</button>';
-          }
-          tablelines += '</th>';
-      }else if( response.roleName == 'utilisateur'){
-      tablelines += '';
-      }
-      tablelines += '</tr>';
+              }
+            tablelines +='</td>';
+            if (response.roleName == 'Administrateur') {
+                tablelines += '<th>';
+                tablelines += '<button class="btn btn-danger me-1" onclick="deleteApplication(' + response.applications[i].id + ')" data-bs-toggle="modal" data-bs-target="#delete-application">' +
+                    '<i class="fa-regular fa-trash-can"></i>' +
+                    '</button></th>';
             }
+            else if (response.roleName != 'Administrateur' && response.roleName != 'utilisateur' ) {
+              tablelines += '<th>';
+                if ( response.roleName == 'controleur 1' && response.applications[i].editable1 == 'yes') {
+                    tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                        '<i class="fa-solid fa-pen-to-square"></i>' +
+                        '</button>';
+                } else if ( response.roleName == 'controleur 2' && response.applications[i].editable2 == 'yes') {
+                    tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                        '<i class="fa-solid fa-pen-to-square"></i>' +
+                        '</button>';
+                } else if ( response.roleName == 'controleur 3' && response.applications[i].editable3 == 'yes') {
+                    tablelines += '<button class="btn btn-warning show-editstatusform" data-status-id="' + response.applications[i].id + '" data-bs-target="#edit-status" data-bs-toggle="modal">' +
+                        '<i class="fa-solid fa-pen-to-square"></i>' +
+                        '</button>';
+                }
+                tablelines += '</th>';
+            }else if( response.roleName == 'utilisateur'){
+            tablelines += '';
+            }
+            tablelines += '</tr>';
+                  }
 
-          }
+                }
 
         $('#tbody').html(
             tablelines

@@ -10,6 +10,7 @@ use App\Models\File;
 use App\Models\Personelinfo;
 use App\Models\Previous;
 use App\Models\Paiment;
+use App\Models\PaimentStatus;
 use App\Models\Application;
 use Dompdf\Dompdf;
 use App\Notifications\documentAction;
@@ -37,14 +38,16 @@ class applicationController extends Controller
             $files             = []; 
             $conjoints         = []; 
             $previouss         = []; 
+            $paimentInfos      = [];
             foreach($applications as $applicationName){
                 $names[] = $applicationName->full_name;
                 $userPersonelinfos []= Personelinfo::find($applicationName->id); 
                 $files             []= File::where('personelinfos_id',$applicationName->id)->get(); 
                 $conjoints         []= Conjoint::where('personelinfos_id',$applicationName->id)->get(); 
-                $previouss         []= Previous::where('personelinfos_id',$applicationName->id)->get(); 
+                $previouss         []= Previous::where('personelinfos_id',$applicationName->id)->get();
+                $paimentInfos      []= PaimentStatus::where('personelinfos_id',$applicationName->id)->first();
             }
-            return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications','names','bottonName'));    
+            return view('layouts.dashboard.demand-dash',compact('files','userPersonelinfos','conjoints','applications','names','bottonName','paimentInfos'));    
         }else{
             $applicationNames  =  $user->applications()->get();
             $names = [];
@@ -52,6 +55,7 @@ class applicationController extends Controller
             $files             = []; 
             $conjoints         = []; 
             $previouss         = []; 
+            $paimentInfos      = [];
             foreach($applicationNames as $applicationName){
                 $user = User::find($applicationName->user_id);
                 $names[] = $user->full_name;
@@ -59,10 +63,11 @@ class applicationController extends Controller
                 $files             []= File::where('personelinfos_id',$applicationName->id)->get(); 
                 $conjoints         []= Conjoint::where('personelinfos_id',$applicationName->id)->get(); 
                 $previouss         []= Previous::where('personelinfos_id',$applicationName->id)->get(); 
-            
+                $paimentInfos      []= PaimentStatus::where('personelinfos_id',$applicationName->id)->first();
+
             }            
             $applications      = $user->applications()->paginate(5);
-            return view('layouts.dashboard.demand-dash', compact('files','userPersonelinfos','conjoints','applications','names','bottonName')); 
+            return view('layouts.dashboard.demand-dash', compact('files','userPersonelinfos','conjoints','applications','names','bottonName','paimentInfos')); 
         }
     }
     public function showFiles($id)
@@ -239,10 +244,10 @@ class applicationController extends Controller
             $names = [];
             
             $userPersonelinfos = []; 
-            $files = []; 
-            $conjoints = []; 
-            $previouss = []; 
-
+            $files             = []; 
+            $conjoints         = []; 
+            $previouss         = []; 
+            $paimentInfos      = [];
             $roleName = auth()->user()->roles[0]->name;
             $applications = Application::join('users', 'applications.user_id', '=', 'users.id')
             ->select('applications.*', 'users.full_name')
@@ -255,6 +260,8 @@ class applicationController extends Controller
                 $files            [] = File::where('personelinfos_id',$applicationName->id)->get(); 
                 $conjoints        [] = Conjoint::find($applicationName->id);
                 $previouss        [] = Previous::find($applicationName->id); 
+                $paimentInfos     [] = PaimentStatus::where('personelinfos_id',$applicationName->id)->first();
+
             }
             if($applications)
             {
@@ -265,6 +272,7 @@ class applicationController extends Controller
                     'applications' => $applications,
                     'names' => $names,
                     'roleName' => $roleName,
+                    'paimentInfos' => $paimentInfos,
                     'action' => "{{route('send.Information')}}",
                 ]);
             }
@@ -274,7 +282,7 @@ class applicationController extends Controller
             $files = []; 
             $conjoints = []; 
             $previouss = []; 
-
+            $paimentInfos      = [];
             $roleName = auth()->user()->roles[0]->name;
             
             $applications = Application::join('users', 'applications.user_id', '=', 'users.id')
@@ -292,6 +300,7 @@ class applicationController extends Controller
                 $files            [] = File::where('personelinfos_id',$applicationName->id)->get(); 
                 $conjoints        [] = Conjoint::find($applicationName->id);
                 $previouss        [] = Previous::find($applicationName->id); 
+                $paimentInfos     [] = PaimentStatus::where('personelinfos_id',$applicationName->id)->first();
             }
             return response()->json([
                 'files' => $files,
@@ -300,6 +309,7 @@ class applicationController extends Controller
                 'applications' => $applications,
                 'names' => $names,
                 'roleName' => $roleName,
+                'paimentInfos' => $paimentInfos,
                 'action' => "{{route('send.Information')}}",
             ]);
         }

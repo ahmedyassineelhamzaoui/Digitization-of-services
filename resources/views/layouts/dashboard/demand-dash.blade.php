@@ -38,7 +38,8 @@
                     <th scope="col">fiche d'inscription </th>
                     <th scope="col">fiche de paiement</th>
                     <th scope="col">fichiers joints</th>
-                    <th scope="col">statut</th>
+                    <th scope="col">statut du demande</th>
+                    <th scope="col">statut du paiment</th>
                     @can('voir-demande-action')
                     <th scope="col">Action</th>
                     @endcan
@@ -77,6 +78,20 @@
                         </button>
                         @else
                         <button  class="btn" style="background-color:black;  color:white;">en attente</button>
+                        @endif
+                    </td>
+                    <td>
+                        @if($paimentInfos[$i]->statut =='payé')
+                        <button   class="btn" style="background-color:rgb(7, 165, 7);  color:white;">payé</button>
+                        @elseif($paimentInfos[$i]->statut =='non payé')
+                            <button  class="btn" style="background-color:rgb(216, 38, 38);  color:white;">non payé</button>
+                        @else
+                        <button  class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0);  color:white;">
+                        <div class="me-1"> en cours </div>
+                        <div class="spinner-border" style="width:15px;height:15px" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        </button>
                         @endif
                     </td>
                     @can('voir-demande-action')
