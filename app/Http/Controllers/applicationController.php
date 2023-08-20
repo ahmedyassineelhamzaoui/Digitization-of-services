@@ -250,8 +250,10 @@ class applicationController extends Controller
             $paimentInfos      = [];
             $roleName = auth()->user()->roles[0]->name;
             $applications = Application::join('users', 'applications.user_id', '=', 'users.id')
+            ->join('paiment_statuses', 'applications.id', '=', 'paiment_statuses.personelinfos_id')
             ->select('applications.*', 'users.full_name')
             ->where('applications.status', 'like', '%' . $search . '%')
+            ->orWhere('paiment_statuses.statut', 'like', '%' . $search . '%')
             ->orWhere('users.full_name', 'like', '%' . $search . '%')
             ->get();
             foreach($applications as $applicationName){
@@ -286,10 +288,12 @@ class applicationController extends Controller
             $roleName = auth()->user()->roles[0]->name;
             
             $applications = Application::join('users', 'applications.user_id', '=', 'users.id')
+            ->join('paiment_statuses', 'applications.id', '=', 'paiment_statuses.personelinfos_id')
             ->select('applications.*', 'users.full_name')
             ->where(function ($query) use ($search, $user) {
                 $query->where('applications.status', 'like', '%' . $search . '%')
-                    ->orWhere('users.full_name', 'like', '%' . $search . '%');
+                      ->orWhere('paiment_statuses.statut', 'like', '%' . $search . '%')
+                      ->orWhere('users.full_name', 'like', '%' . $search . '%');
             })
             ->where('applications.user_id', $user->id)
             ->get();
