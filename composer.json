@@ -7,11 +7,17 @@
     "require": {
         "php": "^8.0.2",
         "barryvdh/laravel-dompdf": "^2.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "fx3costa/laravelchartjs": "^3.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
+        "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.7",
-        "php-open-source-saver/jwt-auth": "^2.1"
+        "laravelcollective/html": "^6.4",
+        "livewire/livewire": "^2.12",
+        "php-open-source-saver/jwt-auth": "^2.1",
+        "spatie/laravel-permission": "^5.10",
+        "swiftmailer/swiftmailer": "^5.4",
+        "vonage/client": "^4.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
