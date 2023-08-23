@@ -68,12 +68,17 @@ function deleteRole(id){
 function deleteApplication(id){
   document.querySelector('#app_deletedId').value=id
 }
-
+if(document.querySelector('#Matricule')){
+  document.querySelector('#Matricule').addEventListener('click',()=>{
+    document.querySelector('#Matricule').classList.remove('redflag');
+  })
+}
 $(document).ready(function() {
     $(`#step-1-form`).submit(function(event) {
-        event.preventDefault();
+         event.preventDefault();
+
+          $('#spinner').removeClass('d-none');
           if(!inputParentName.disabled && inputParentName.value == ''){
-            event.preventDefault();
             document.querySelector("#error-parentname").innerText="Veuiller remplir ce champ";
           }else{
             var formData = $(this).serialize();
@@ -84,14 +89,15 @@ $(document).ready(function() {
               type: 'POST',
               data: formData,
               success: function(response) {
+                  $('#spinner').addClass('d-none');
                   $("#personel-id").val(response.personel_id);
                   $("#personel-idpaiment").val(response.personel_id);
                   $("#personel-idinscription").val(response.personel_id)
                   $("#personel-idreçupaiment").val(response.personel_id)
-
                   clickNextbutton();
               },
               error: function(xhr) {
+                $('#spinner').addClass('d-none');
                 var errors = xhr.responseJSON.errors;
                 $.each(errors, function(key, value) {
                   $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
@@ -105,7 +111,8 @@ $(document).ready(function() {
     });
     $('#step-2-form').submit(function(event) {
       event.preventDefault();
-    
+      $('#spinner').removeClass('d-none');
+
       var formData = new FormData(this); // Create a new FormData instance
     
       var url = $(this).attr('action');
@@ -117,9 +124,11 @@ $(document).ready(function() {
         processData: false, // Prevent jQuery from processing the data
         contentType: false, // Tell jQuery not to set the content type
         success: function(response) {
+          $('#spinner').addClass('d-none');
           clickNextbutton();
         },
         error: function(xhr) {
+          $('#spinner').addClass('d-none');
           var errors = xhr.responseJSON.errors;
           $.each(errors, function(key, value) {
             $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
@@ -380,14 +389,15 @@ $(document).ready(function() {
                 filesDiv.innerHTML = '';
                 let index = 0;
                 for (var key in response.file) {
-
+                  
                   if (response.file.hasOwnProperty(key) && response.file[key]) {
-                    var fileName = key.replace('_path', '');
-                    var filePath = response.file[key];
+                    // var fileName = key.replace('_path', '');
+                    var filePath = 'dowload_file/'+response.file[key];
+                    console.log(filePath)
                     var fileLink = document.createElement('a');
                     fileLink.classList.add('text-light');
                     fileLink.href = filePath;
-                    fileLink.download = fileName;
+                    // fileLink.download = fileName;
                     if(index == 0){
                       fileLink.textContent = 'Décision de nomination';
                     }

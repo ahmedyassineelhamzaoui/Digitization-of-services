@@ -18,6 +18,9 @@ body{
 .step label,h3,.card-title{
   color : #005e73 !important;
 }
+.redflag{
+  border:2px solid red;
+}
 /* steper component style */
 .steper-content .steper-componnet {
     margin-top: 30px;
@@ -78,7 +81,7 @@ body{
     color:var(--dark-color2);
     top:4.5em;
   }
-  .persone-infos{
+  /* .persone-infos{
     display: block;
   }
   .join-file{
@@ -86,7 +89,7 @@ body{
   }
   .paiement{
     display: none;
-  }
+  } */
   .fin{
     display: none;
   }

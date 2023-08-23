@@ -50,13 +50,13 @@
                 <tr>
                     <td style="font-weight: bold">{{ $names[$i] }}</td>
                     <td>
-                       <form  action="{{route('send.Information',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
+                       <form  action="{{route('store.Information',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
                         @csrf
                         <button type="submit" name="print_info" class="btn btn-primary"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
                        </form>
                     </td>
                     <td>
-                        <form  action="{{route('send.Information',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
+                        <form  action="{{route('store.Information',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
                             @csrf
                             <button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
                         </form> 

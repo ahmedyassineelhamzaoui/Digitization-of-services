@@ -53,8 +53,11 @@ Route::controller(UserController::class)->group(function(){
     Route::post('utilisateurs','createUser')->name('create.user');
 });
 Route::controller(FormController::class)->group(function(){
-   Route::post('/formulaire/{personel_id}','storeInformation')->name('send.Information');
+   Route::post('/formulaire','storeInformation')->name('send.Information');
+   Route::post('/formulaire/{personel_id}','storeInfo')->name('store.Information');
    Route::get('/formulaire','index');
+   Route::get('/dowload_file/{file}','download');
+
 });
 
 Route::controller(RoleController::class)->group(function(){
