@@ -1,35 +1,3 @@
-
-let step = document.querySelectorAll(".step");
-let compt =0;
-let clickNext =document.querySelector("#click-next")
-let cercle = document.querySelectorAll(".cercle");
-let progressEmpty = document.querySelector(".progress-empty");
-let progressFull = document.querySelector(".progress-full");
-
-color="rgb(8, 149, 53)";
-
-
-
-function clickNextbutton()
-{
-    if (compt < 3) {
-        compt++;
-        if(cercle && cercle[compt]){
-          cercle[compt].style.background = "black";
-          cercle[compt - 1].style.background = color;
-        }
-        if (compt == 3) {
-            cercle[compt].style.background = color
-            cercle[compt - 1].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
-            cercle[compt].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
-        }else{
-            cercle[compt - 1].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
-        }
-        progressFull.style.width = `${compt * 33}%`;
-    }
-
-}
-
 function deleteUser(id){
   document.querySelector('#user_deletedId').value=id
 }
@@ -43,11 +11,7 @@ function deleteRole(id){
 function deleteApplication(id){
   document.querySelector('#app_deletedId').value=id
 }
-if(document.querySelector('#Matricule')){
-  document.querySelector('#Matricule').addEventListener('click',()=>{
-    document.querySelector('#Matricule').classList.remove('redflag');
-  })
-}
+
 $(document).ready(function() {
    
     $('#create-user').submit(function(e){
@@ -340,8 +304,6 @@ $(document).ready(function() {
     }
     $('#update-status').submit(function(e){
       e.preventDefault();
-      let contrNumber = document.querySelector("#contrenu");
-      // if(contrNumber.value != 'controleur 3'){
         if(select.value == "refuser"){
           if(textarea.value == ''){
             $('#comment').after('<span id="error-reason" class="text-danger fs-7"><strong> il faut ajouté une raison </strong></span>');
@@ -404,68 +366,6 @@ $(document).ready(function() {
 
 
         }
-      // }
-      // else{
-      //   if(select.value == "refuser"){
-      //     if(textarea.value == ''){
-      //       $('#comment').after('<span id="error-reason" class="text-danger fs-7"><strong> il faut ajouté une raison </strong></span>');
-      //     }else{
-      //       var formData = $(this).serialize();
-      //         $.ajax({
-      //           type : 'POST',
-      //           data : formData ,
-      //           url : url,
-      //           success : function(response){
-      //             if(response.error){
-      //               $("#status-edit-error").addClass('show')
-      //               $("#status-edit-error").removeClass('hide')
-      //               $(".status-role-error").text(response.error)
-      //             }
-      //             if(response.message)
-      //             {
-      //               $("#status-edit-alert").addClass('show')
-      //               $("#status-edit-alert").removeClass('hide')
-      //               $(".status-role-success").text(response.message);
-      //             }
-      //           },
-      //           error : function(xhr,status,error){
-
-      //           }
-      //         });
-
-
-
-      //     }
-      //   }else{
-      //     var formData = $(this).serialize();
-      //     var url = $(this).attr('action')
-      //       $.ajax({
-      //         type : 'POST',
-      //         data : formData ,
-      //         url : url,
-      //         success : function(response){
-      //             if(response.error){
-      //               $("#status-edit-error").addClass('show')
-      //               $("#status-edit-error").removeClass('hide')
-      //               $(".status-role-error").text(response.error)
-      //             }
-      //             if(response.message)
-      //             {
-      //               $("#status-edit-alert").addClass('show')
-      //               $("#status-edit-alert").removeClass('hide')
-      //               $(".status-role-success").text(response.message);
-      //             }
-      //             },
-      //         error : function(xhr,status,error){
-
-      //         }
-      //       });
-
-
-      //   }
-      // }
-
-
     })
     $('#search-demande').on('keyup',function(){
       $value=$(this).val();
