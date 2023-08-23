@@ -61,52 +61,33 @@ body{
     justify-content: center;
     align-items: center;
   }
-  .steper-content .steper-componnet .cercles-steper .cercle .first-info{
+
+  .steper-content .steper-componnet .cercles-steper .cercle p{
     position : absolute;
     color:var(--dark-color2);
     top:4.5em;
   }
-  .steper-content .steper-componnet .cercles-steper .cercle .second-info{
-    position : absolute;
-    color:var(--dark-color2);
-    top:4.5em;
+
+  .currentSt{
+    background-color: #000 !important;
   }
-  .steper-content .steper-componnet .cercles-steper .cercle .third-info{
-    position : absolute;
-    color:var(--dark-color2);
-    top:4.5em;
+  .beforStp{
+    background-color: var(--primary-color) !important;
   }
-  .steper-content .steper-componnet .cercles-steper .cercle .fourth-info{
-    position : absolute;
-    color:var(--dark-color2);
-    top:4.5em;
+  .beforStp::before{
+      content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z'/><path d='M5 12l5 5l10 -10'/></svg>");
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 20%; 
+      margin-left: 5%;
+      font-weight: bold; 
   }
-  /* .persone-infos{
-    display: block;
+  
+  .secondtwidth{
+    width:50% !important;
   }
-  .join-file{
-    display: none;
-  }
-  .paiement{
-    display: none;
-  } */
-  .fin{
-    display: none;
-  }
-  /* .paiement .finmargin{
-    margin-bottom:150px ;
-  } */
-  .fin .download-pdf{
-    background-color: var(--download-buttoncolor);
-    padding: 8px 10px;
-    color: var(--white-color);
-  }
-  .fin .download-pdf:hover{
-    background-color: var(--download-buttonhover);
-    color: var(--white-color);
-  }
-  #suv-payment{
-     margin-top: 10px;
+  .thirdwidth{
+    width:100% !important;
   }
 
   /*  end steper component style */

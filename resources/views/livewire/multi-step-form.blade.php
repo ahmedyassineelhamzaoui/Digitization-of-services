@@ -1,6 +1,29 @@
 
 <div >
-    
+    <div class="steper-componnet">
+        <div class="progress-empty">
+            <div class="progress-full  @if($curentStep == 2) secondtwidth @endif @if($curentStep == 3) thirdwidth @endif"  ></div>
+        </div>
+        <div class="cercles-steper">
+            <span class="cercle @if($curentStep == 1) currentSt @endif @if($curentStep == 2 || $curentStep == 3) beforStp @endif">
+                @if($curentStep == 1)  
+                <i class="fa-solid fa-user"></i>
+                @endif
+                <p class="first-info">Informations</p>
+            </span>
+            <span class="cercle @if($curentStep == 2) currentSt @endif @if($curentStep == 3) beforStp @endif">
+                @if($curentStep != 3)  
+                <i class="fa-solid fa-upload"></i>
+                @endif
+                <p class="second-info">Upload</p>
+            </span>
+            <span class="cercle @if($curentStep == 3) currentSt @endif">
+                <i class="fa-solid fa-credit-card"></i>
+                <p class="third-info">Paiement</p>
+            </span>
+            
+        </div>
+    </div>
     @if($curentStep == 1)
     <div class="step person-infos" >
         <h3 class="mt-5">Les informations personnelles </h3>

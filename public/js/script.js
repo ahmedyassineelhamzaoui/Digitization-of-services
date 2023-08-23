@@ -5,35 +5,14 @@ let clickNext =document.querySelector("#click-next")
 let cercle = document.querySelectorAll(".cercle");
 let progressEmpty = document.querySelector(".progress-empty");
 let progressFull = document.querySelector(".progress-full");
-if(cercle && cercle[compt]){
-  cercle[compt].style.background="black";
-}
 
 color="rgb(8, 149, 53)";
-
-let radioOui = document.getElementById('response-oui');
-let inputParentName = document.getElementById('parent_name');
-let radioNon = document.querySelector("#response-non")
-if(radioOui){
-  radioOui.addEventListener('change', function() {
-    if (this.checked) {
-        inputParentName.disabled = false;
-    }
-});
-}
-if(radioNon){
-  radioNon.addEventListener('change', function() {
-    if (this.checked) {
-      inputParentName.disabled = true;
-    }
-  });
-}
 
 
 
 function clickNextbutton()
 {
-    if (compt < 4) {
+    if (compt < 3) {
         compt++;
         if(cercle && cercle[compt]){
           cercle[compt].style.background = "black";
@@ -46,10 +25,6 @@ function clickNextbutton()
         }else{
             cercle[compt - 1].innerHTML = '<svg  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 12l5 5l10 -10" /></svg>'
         }
-        // content of divs
-        step[compt].style.display ="block";
-        step[compt-1].style.display ="none";
-        // end
         progressFull.style.width = `${compt * 33}%`;
     }
 
@@ -74,114 +49,7 @@ if(document.querySelector('#Matricule')){
   })
 }
 $(document).ready(function() {
-    $(`#step-1-form`).submit(function(event) {
-         event.preventDefault();
-
-          $('#spinner').removeClass('d-none');
-          if(!inputParentName.disabled && inputParentName.value == ''){
-            document.querySelector("#error-parentname").innerText="Veuiller remplir ce champ";
-          }else{
-            var formData = $(this).serialize();
-            var url = $(this).attr('action');
-
-            $.ajax({
-              url: url,
-              type: 'POST',
-              data: formData,
-              success: function(response) {
-                  $('#spinner').addClass('d-none');
-                  $("#personel-id").val(response.personel_id);
-                  $("#personel-idpaiment").val(response.personel_id);
-                  $("#personel-idinscription").val(response.personel_id)
-                  $("#personel-idreçupaiment").val(response.personel_id)
-                  clickNextbutton();
-              },
-              error: function(xhr) {
-                $('#spinner').addClass('d-none');
-                var errors = xhr.responseJSON.errors;
-                $.each(errors, function(key, value) {
-                  $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
-              });
-              }
-            });
-        }
-
-
-
-    });
-    $('#step-2-form').submit(function(event) {
-      event.preventDefault();
-      $('#spinner').removeClass('d-none');
-
-      var formData = new FormData(this); // Create a new FormData instance
-    
-      var url = $(this).attr('action');
-    
-      $.ajax({
-        url: url,
-        type: 'POST',
-        data: formData, // Pass the FormData instance as the data
-        processData: false, // Prevent jQuery from processing the data
-        contentType: false, // Tell jQuery not to set the content type
-        success: function(response) {
-          $('#spinner').addClass('d-none');
-          clickNextbutton();
-        },
-        error: function(xhr) {
-          $('#spinner').addClass('d-none');
-          var errors = xhr.responseJSON.errors;
-          $.each(errors, function(key, value) {
-            $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
-          });
-        }
-      });
-    });
-    $(`#step-3-form`).submit(function(event) {
-        event.preventDefault();
-        $('#spinner').removeClass('d-none');
-          var formData = $(this).serialize();
-          var url = $(this).attr('action');
-          $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-              $('#spinner').addClass('d-none');
-              var message = response.message;
-              var alert = '<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
-                          '<strong>' + message + '</strong>' +
-                          '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
-                          '</div>';
-              
-              if(response.number == -1){
-                document.querySelector("#error-paiment").innerHTML = alert;
-              }else if(response.number == -2){
-                document.querySelector("#error-paiment").innerHTML = alert;
-              }else if(response.number == -3){
-                document.querySelector("#error-paiment").innerHTML = alert;
-              }else if(response.number == -4){
-                document.querySelector("#error-paiment").innerHTML = alert;
-              }
-              else if(response.number == -5){
-                document.querySelector("#error-paiment").innerHTML = alert;
-              }else if(response.number == -6){
-                document.querySelector("#error-paiment").innerHTML = alert;
-              }else if(response.number == -7){
-                document.querySelector("#error-paiment").innerHTML = alert;
-              }else{
-                clickNextbutton();
-              }
-            },
-            error: function(xhr) {
-              $('#spinner').addClass('d-none');
-              var errors = xhr.responseJSON.errors;
-              $.each(errors, function(key, value) {
-                $('#' + key).after('<span class="text-danger fs-7"><strong>' + value + '</strong></span>');
-            });
-            }
-        });
-
-    });
+   
     $('#create-user').submit(function(e){
       e.preventDefault();
       var formData = $(this).serialize();
