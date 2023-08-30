@@ -56,8 +56,6 @@ Route::controller(FormController::class)->group(function(){
    Route::post('/formulaire','storeInformation')->name('send.Information');
    Route::post('/formulaire/{personel_id}','storeInfo')->name('store.Information');
    Route::get('/formulaire','index');
-   Route::get('/dowload_file/{file}','download');
-
 });
 
 Route::controller(RoleController::class)->group(function(){
@@ -102,8 +100,8 @@ Route::get('anl-detail',function () {
 Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
 
-// Route::get('auth/facebook', [SocialiteController::class, 'redirectToFacebook']);
-// Route::get('auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback']);
+Route::get('auth/facebook', [SocialiteController::class, 'redirectToFacebook']);
+Route::get('auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback']);
 
 
 
