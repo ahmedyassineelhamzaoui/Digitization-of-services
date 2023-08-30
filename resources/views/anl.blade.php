@@ -83,7 +83,7 @@
                 <p ><span style="font-weight: bold">TAUX D’INDEMNITE         :</span> {{$conjoint->taux_indemnite}} </p>
             </div>
             <div>
-                <p ><span style="font-weight: bold">SERVICES DEPUIS LE       :</span> {{$conjoint->taux_indemnite}} </p>
+                <p ><span style="font-weight: bold">SERVICES DEPUIS LE       :</span>{{ \Carbon\Carbon::parse($personelinfo->date_effet)->format('d/m/Y') }} </p>
             </div>
             <div>
                 <p >En foi de quoi, la présente attestation lui est délivrée pour servir et valoir ce que de droit.</p>

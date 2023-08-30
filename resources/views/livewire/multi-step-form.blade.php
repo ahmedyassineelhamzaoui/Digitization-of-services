@@ -542,9 +542,12 @@
                 <label for="previous-neighborhood" class="form-label">Quartier</label>
                 <select style="text-transform: uppercase" class="form-control" wire:model="quartier_précédant" name="quartier_précédant" id="quartier_précédant">
                     @foreach($quartiers as $quartier)
-                    <option>{{ $quartier->nom }}</option>
+                    <option value="{{ $quartier->nom }}}">{{ $quartier->nom }}</option>
                     @endforeach
                 </select>
+                @error('quartier_précédant')
+                <span class="text-danger fs-7">{{ $message }}</span>
+                @enderror
             </div>
             <div class="col-md-3">
                 <label for="previous-batch" class="form-label">Lot n°</label>

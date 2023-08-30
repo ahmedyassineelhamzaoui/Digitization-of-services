@@ -219,8 +219,7 @@ class MultiStepForm extends Component
                 $responseData = $response->getBody()->getContents();
                 $responseMesssage = json_decode($responseData, true)['response_message'];
                 $responseCode = json_decode($responseData, true)['response_code'];
-                if ($responseCode == 1) {
-                    
+                if ($responseCode == 1) {       
                     
                     $personelinfo=personelinfo::create([
                         'matricule' => strtoupper($this->Matricule),
@@ -357,7 +356,8 @@ class MultiStepForm extends Component
                     Mail::to($user->email)->send(new WelcomeEmail($user,$personelinfo->id));
                     $this->isLoading = false;
                     return redirect()->route('demande')->with('success','votre demande a été créer avec succés');
-                } else {
+                }
+                else {
                      $this->displayerrors = true;
                      $this->errormessage = $responseMesssage;
                      $this->isLoading = false;
