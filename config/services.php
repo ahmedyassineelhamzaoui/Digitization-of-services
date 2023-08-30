@@ -13,6 +13,16 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'google' => [
+        'client_id' => '393516152554-l5ojrqgb6ujutn42gqjq4rhcguj0mfm2.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'https://anl-civ.com/auth/google/callback'
+    ],
+    'facebook' => [
+        'client_id' => '657858242717609',
+        'client_secret' => 'c06ca6d4f70e3347d6641677975bd718',
+        'redirect' => 'https://anl-civ.com/auth/facebook/callback'
+    ],
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -31,10 +41,6 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'google' => [
-        'client_id' => '963966395890-4o8ft0m02dbmucs6hlugl86v18p1ugtt.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'http://127.0.0.1:8000/auth/google/callback'
-    ]
+    
 
 ];
