@@ -20,15 +20,7 @@
         </button>
     </div>
     @endif
-    {{-- <div class="d-flex align-items-center px-4 py-3">
-        <div class="position-relative">
-          <div class="position-absolute top-0 start-0 d-flex align-items-center ps-3">
-            <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-            </svg>
-          </div>
-        </div>
-    </div> --}}
+   
     <div class="table-responsive border border-primary shadow-lg p-3 mb-5 bg-body rounded">
         <input type="search" id="search-demande" name="search_demande" class="form-control mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 ps-10 py-2.5" placeholder="Chercher par nom ou par statut" required>
         <table class="table">

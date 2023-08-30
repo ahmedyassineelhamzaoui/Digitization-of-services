@@ -282,18 +282,15 @@
         <script src="assets/js/vendor.min.js"></script>
         <script src="assets/js/app.min.js"></script>
         <!-- ================== END core-js ================== -->
-        <script src="js/script.js"></script>
+        <script src="{{ asset('js/script.js')}}"></script>
         <script>
             $(document).ready(function() {
-            // Check if the session message exists
             if ("{{ session('success') }}") {
                 // Create the alert element
                 var alertElement = $('<div class="alert header-alert alert-success alert-dismissible fade show w-30" role="alert">' +
                     '{{ session('success') }}' +
-                    // '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                     '</div>');
 
-                // Add custom styles to the alert element
                 alertElement.css({
                     'opacity': '0',
                     'border-radius': '0',
@@ -303,20 +300,15 @@
                     'font-weight' : 'bold',
                 });
 
-                // Append the alert to the header
                 $('#alert-updatedhiddingmessage').append(alertElement);
 
-                // Apply fade-in animation
                 setTimeout(function() {
                     alertElement.css('opacity', '1');
                 }, 100);
 
-                // Automatically close the alert after 5 seconds
                 setTimeout(function() {
-                    // Apply fade-out animation
                     alertElement.css('opacity', '0');
 
-                    // Remove the alert from the DOM after the animation ends
                     setTimeout(function() {
                         alertElement.alert('close');
                     }, 300);
@@ -325,9 +317,6 @@
             });
         </script>
         @yield('script')
-
-        {{-- @livewireScripts --}}
-
 
     </body>
 

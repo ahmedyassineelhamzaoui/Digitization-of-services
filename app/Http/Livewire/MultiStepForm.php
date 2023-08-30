@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
-
+use App\models\Quartier;
+use App\models\Ville;
 
 class MultiStepForm extends Component
 {
@@ -68,7 +69,7 @@ class MultiStepForm extends Component
     public $Conjoint_adresse;
     public $Conjoint_régime;
     public $Taux_indemnité;
-    public $ville_précédant;
+    public $villePrecedant = null;
     public $quartier_précédant;
     public $lot_n°_précédant;
     public $Date_libération;
@@ -103,13 +104,15 @@ class MultiStepForm extends Component
     public $errormessage = '';
      
     public $isLoading = false;
-    public function mount()
-    {
-        $this->curentStep =1;
-    }
+
+    public $quartiers = null;
+
+    
     public function render()
     {
-        return view('livewire.multi-step-form');
+        return view('livewire.multi-step-form',[
+            'cities' => Ville::all(),
+        ]);
     }
     public function decreseStep()
     {
@@ -155,7 +158,7 @@ class MultiStepForm extends Component
                 'Conjoint_adresse' => 'required',
                 'Conjoint_régime' => 'required',
                 'Taux_indemnité' => 'required',
-                'ville_précédant' => 'required',
+                'villePrecedant' => 'required',
                 'quartier_précédant' => 'required',
                 'lot_n°_précédant' => 'required',
                 'Date_libération' => 'required',
@@ -259,7 +262,7 @@ class MultiStepForm extends Component
                     ]);
                     Previous::create([
                         'personelinfos_id' => $personelinfo->id,
-                        'ville_precedant' => strtoupper($this->ville_précédant ),
+                        'ville_precedant' => strtoupper($this->villePrecedant ),
                         'quartier_precedant' => strtoupper($this->quartier_précédant ),
                         'lot_precedant' => strtoupper($this->lot_n°_précédant ),
                         'date_liberation' => strtoupper($this->Date_libération)
@@ -360,4 +363,15 @@ class MultiStepForm extends Component
                      $this->isLoading = false;
                 }
     }
+    public function mount()
+    {
+        $this->quartiers = [];   
+        $this->curentStep =1;
+    }
+    public function updatedVillePrecedant($ville_id)
+    {
+        $this->quartiers = Quartier::where('ville_id',$ville_id)->get();
+    }
+
+    
 }

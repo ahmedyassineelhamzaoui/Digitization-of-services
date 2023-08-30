@@ -531,17 +531,20 @@
             <h3>Habitation précédante</h3>
             <div class="col-md-3">
                 <label for="previous-city" class="form-label">Ville</label>
-                <input type="text" style="text-transform: uppercase" id="ville_précédant" wire:model="ville_précédant" name="ville_précédant" class="form-control" required>
-                @error('ville_précédant')
-                <span class="text-danger fs-7">{{ $message }}</span>
-                @enderror
+                <select style="text-transform: uppercase"  class="form-control" id="ville_précédant"  name="ville_précédant" wire:model="villePrecedant">
+                    <option value="">Select an option</option>
+                    @foreach($cities as $city)
+                    <option value="{{$city->id}}">{{ $city->nom }}</option>
+                    @endforeach
+                </select>       
             </div>
             <div class="col-md-3">
                 <label for="previous-neighborhood" class="form-label">Quartier</label>
-                <input type="text" style="text-transform: uppercase" class="form-control" wire:model="quartier_précédant" name="quartier_précédant" id="quartier_précédant" required>
-                @error('quartier_précédant')
-                <span class="text-danger fs-7">{{ $message }}</span>
-                @enderror
+                <select style="text-transform: uppercase" class="form-control" wire:model="quartier_précédant" name="quartier_précédant" id="quartier_précédant">
+                    @foreach($quartiers as $quartier)
+                    <option>{{ $quartier->nom }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="col-md-3">
                 <label for="previous-batch" class="form-label">Lot n°</label>
