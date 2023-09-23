@@ -28,7 +28,8 @@ use Illuminate\Support\Str;
 use App\models\Quartier;
 use App\models\Ville;
 
-class MultiStepForm extends Component
+
+class MultiStepFormR extends Component
 {
     use WithFileUploads;
 
@@ -92,9 +93,9 @@ class MultiStepForm extends Component
     public $Acte_de_mariage;
 
     //payment
-    public $nom_paiment; 
-    public $prenom_paiment; 
-    public $telephone_paiment; 
+    public $nom_paiment;
+    public $prenom_paiment;
+    public $telephone_paiment;
     public $credential_paiment;
     public $nature_recette;
     public $numéro_avis_de_recette;
@@ -102,12 +103,12 @@ class MultiStepForm extends Component
 
     public $displayerrors = false;
     public $errormessage = '';
-     
+
     public $isLoading = false;
 
     public $quartiers = null;
 
-    
+
     public function render()
     {
         return view('livewire.multi-step-form',[
@@ -195,8 +196,8 @@ class MultiStepForm extends Component
         $this->isLoading = true;
         $this->resetErrorBag();
         $this->validateData();
-        
-        
+
+
                 $url="https://wbservice.tresor.gouv.ci/wbpartenaires/tstrest/GenererAvisrecette";
 
                 $data = [
@@ -218,8 +219,8 @@ class MultiStepForm extends Component
                 $responseData = $response->getBody()->getContents();
                 $responseMesssage = json_decode($responseData, true)['response_message'];
                 $responseCode = json_decode($responseData, true)['response_code'];
-                if ($responseCode == 1) {       
-                    
+                if ($responseCode == 1) {
+
                     $personelinfo=personelinfo::create([
                         'matricule' => strtoupper($this->Matricule),
                         'nom' => strtoupper($this->Nom ),
@@ -272,37 +273,37 @@ class MultiStepForm extends Component
                         'lot_actuelle' => strtoupper($this->lot_n°_actuelle),
                         'date_occupation' => strtoupper($this->Date_occupation),
                         'nom_parent' => strtoupper($this->parent_name)
-                    ]);                       
+                    ]);
                         $nomination = Str::random(10).$this->Décision_de_nomination->getClientOriginalName();
                         $this->Décision_de_nomination->storeAs('files',$nomination);
-            
+
                         $affectation = Str::random(10).$this->Décision_affectation->getClientOriginalName();
                         $this->Décision_affectation->storeAs('files',$affectation);
-            
+
                         $prise_de_service = Str::random(10).$this->Certificat_de_1ère_prise_de_service->getClientOriginalName();
                         $this->Certificat_de_1ère_prise_de_service->storeAs('files',$prise_de_service);
-            
+
                         $solde_avant_nomination = Str::random(10).$this->Bulletin_de_solde_avant_nomination->getClientOriginalName();
                         $this->Bulletin_de_solde_avant_nomination->storeAs('files',$solde_avant_nomination);
-                        
+
                         $Bulletin_de_solde_après = Str::random(10).$this->Bulletin_de_solde_après_nommination->getClientOriginalName();
                         $this->Bulletin_de_solde_après_nommination->storeAs('files',$Bulletin_de_solde_après);
-                       
+
                         $non_hébergement = Str::random(10).$this->Certificat_de_non_hébergement->getClientOriginalName();
                         $this->Certificat_de_non_hébergement->storeAs('files',$non_hébergement);
-                       
+
                         $Attestation_honneur = Str::random(10).$this->Attestation_sur_honneur_légalisée->getClientOriginalName();
                         $this->Attestation_sur_honneur_légalisée->storeAs('files',$Attestation_honneur);
-                       
+
                         $certificat_résidence = Str::random(10).$this->certificat_de_résidence->getClientOriginalName();
                         $this->certificat_de_résidence->storeAs('files',$certificat_résidence);
-            
+
                         $piecei_dentite = Str::random(10).$this->Pièce_identité->getClientOriginalName();
                         $this->Pièce_identité->storeAs('files',$piecei_dentite);
-            
+
                         $acte_mariage = Str::random(10).$this->Acte_de_mariage->getClientOriginalName();
                         $this->Acte_de_mariage->storeAs('files',$acte_mariage);
-            
+
                         File::create([
                             'personelinfos_id' => $personelinfo->id,
                             'decisionnomination_path' => $nomination,
@@ -367,5 +368,4 @@ class MultiStepForm extends Component
         $this->curentStep =1;
     }
 
-    
 }

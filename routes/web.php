@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\FormControllerR;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\ApplicationController;
@@ -53,11 +54,12 @@ Route::controller(UserController::class)->group(function(){
     Route::post('utilisateurs','createUser')->name('create.user');
 });
 Route::controller(FormController::class)->group(function(){
-   Route::post('/formulaire','storeInformation')->name('send.Information');
    Route::post('/formulaire/{personel_id}','storeInfo')->name('store.Information');
    Route::get('/formulaire','index');
-   Route::get('/dowload_file/{file}','download');
+});
 
+Route::controller(FormControllerR::class)->group(function(){
+    Route::get('/formulaire-ANL-R', 'index');
 });
 
 Route::controller(RoleController::class)->group(function(){
@@ -92,18 +94,35 @@ Route::get('/', function () {
     return view('home');
 });
 
-/* anl detail route */
+/* anl detail route type A */
 Route::get('anl-detail',function () {
     return view('anl-detail');
 });
+
+// anl detail route type R
+Route::get('anl-detail-R',function () {
+    return view('anl-detail-R');
+});
+
+// anl detail route type L
+Route::get('anl-detail-L',function () {
+    return view('anl-detail-L');
+});
+
+
+// go to form type R
+Route::get('formulaire-type-R',function () {
+    return view('livewire.multi-step-form-R');
+});
+
 
 
 
 Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
 
-// Route::get('auth/facebook', [SocialiteController::class, 'redirectToFacebook']);
-// Route::get('auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback']);
+Route::get('auth/facebook', [SocialiteController::class, 'redirectToFacebook']);
+Route::get('auth/facebook/callback', [SocialiteController::class, 'handleFacebookCallback']);
 
 
 

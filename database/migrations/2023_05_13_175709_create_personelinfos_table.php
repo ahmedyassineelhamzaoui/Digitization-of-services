@@ -28,12 +28,12 @@ return new class extends Migration
             $table->string('numero_piece');
             $table->string('region');
             $table->string('localite');
-            $table->string('corps_anterieur');
+            $table->string('corps_anterieur')->nullable();
             $table->string('Corps');
-            $table->string('minstere_anterieur');
+            $table->string('minstere_anterieur')->nullable();
             $table->string('minstere');
             $table->string('fonction');
-            $table->string('fonction_anterieur');
+            $table->string('fonction_anterieur')->nullable();
             $table->string('service');
             $table->string('arret');
             $table->date('date_nomination');

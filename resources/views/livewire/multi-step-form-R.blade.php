@@ -302,7 +302,7 @@
                         <option value="Vendeur">Vendeur(euse)</option>
                     </select>
                 </div>
-                
+
                 <div class="col-md-4">
                     <label for="person-ministry" class="form-label">Ministère</label>
                     <select id="person-ministry" name="person_ministry" wire:model="person_ministry"

@@ -54,8 +54,9 @@
 <div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" >
     <img id="image-container " width="400px"  src="{{ public_path("assets/images/logo/logo1.jpg")}}" alt="">
     <div id="text-container"  style="text-align: center"><p>REPUBLIQUE DE COTE D'IVOIRE</p><p>Union-Discipline-Travail</p><p>------------</p></div>
-    <h5 >Le N° __________________/SONAPIE/</h5> 
-    <h3 style="text-align: center">ATTESTATION DE NON LOGEMENT DE TYPE << A >></h3>
+    <h4 >Le N° __________________/SONAPIE/</h4> 
+    <h5 >Dossier N° : 20211954 du 07/04/2021 C.A. N°: 1954  </h5> 
+    <h3 style="text-align: center">ATTESTATION DE NON LOGEMENT DE TYPE << A >> LIMITEE </h3>
     <h5 style="text-align: center">Le Directeur Général de la Société Nationale de Gestion du Patrimoine Immobilier de
         l’Etat, atteste que</h5>
             <div class="">

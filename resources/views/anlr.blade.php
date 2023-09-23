@@ -54,36 +54,42 @@
 <div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" >
     <img id="image-container " width="400px"  src="{{ public_path("assets/images/logo/logo1.jpg")}}" alt="">
     <div id="text-container"  style="text-align: center"><p>REPUBLIQUE DE COTE D'IVOIRE</p><p>Union-Discipline-Travail</p><p>------------</p></div>
-    <h5 >Le N° __________________/SONAPIE/</h5> 
-    <h3 style="text-align: center">ATTESTATION DE NON LOGEMENT DE TYPE << A >></h3>
-    <h5 style="text-align: center">Le Directeur Général de la Société Nationale de Gestion du Patrimoine Immobilier de
-        l’Etat, atteste que</h5>
+                                A
+                            Monsieur le Directeur de la Solde
+                            Ministère du Budget et du Portefeuille de l'Etat
+                            ABIDJAN
+
+    <h4 >N° __________________/SONAPIE/</h4> 
+    <h5 >Dossier N° : 20211954 du 07/04/2021 C.A. N°: 1954  </h5> 
+    <h3 style="text-align: center">OBJET : Régularisation d’Indemnité de Logement </h3>
             <div class="">
                 <p style="font-weight: bold">Monsieur    {{$personelinfo->nom }}   {{$personelinfo->prenom}}</p>  
+            </div>
+            <div>
+                <p ><span style="font-weight: bold">MATRICULE         :</span>{{$personelinfo->matricule}}</p> 
             </div>
             <div>
                 <p ><span style="font-weight: bold">FONCTION                 :</span> {{$personelinfo->fonction}} </p> 
             </div>
             <div>
-                <p ><span style="font-weight: bold">NUMERO MATRICULE         :</span>{{$personelinfo->matricule}}</p> 
+                <p ><span style="font-weight: bold">Percevait à ce titre, une Indemnité Contributive de Logement
+                    De 40 000 FRANCS CFA
+                    </span></p> 
             </div>
             <div>
-                <p ><span style="font-weight: bold">REGION                   :</span> {{$personelinfo->region}}</p> 
+                <p ><span style="font-weight: bold">Au Ministère                   :</span> </p> 
             </div>
             <div>
-                <p ><span style="font-weight: bold">LOCALITE                 :</span> {{$personelinfo->localite}}</p>
+                <p ><span style="font-weight: bold">Par arrêté ou décision N° 0072131460/MFP/DGFP/DGAPCE
+                    du 16/03/2021                 :</span> </p>
             </div>
             <div class="">
-                <p ><span style="font-weight: bold">ETABLISSEMENT / SERVICE  :</span> {{$personelinfo->service}}</p>           
-            </div>
-            <div class="">
-                <p ><span style="font-weight: bold">MINISTERE                :</span> {{$personelinfo->minstere}}</p>
+                <p ><span style="font-weight: bold">Nouveau Corps qui lui donne droit à une Indemnité Contributive de Logement
+                    De 50 000 FRANCS CFA</span> </p>           
             </div>
             <div>
-                <p ><span style="font-weight: bold">TAUX D’INDEMNITE         :</span> {{$conjoint->taux_indemnite}} </p>
-            </div>
-            <div>
-                <p ><span style="font-weight: bold">SERVICES DEPUIS LE       :</span>{{ \Carbon\Carbon::parse($personelinfo->date_effet)->format('d/m/Y') }} </p>
+                <p ><span style="font-weight: bold">J ' ai l’honneur de vous demander de régulariser sa situation à
+                    Compter du</span> 02/01/2018 </p>
             </div>
             <div>
                 <p >En foi de quoi, la présente attestation lui est délivrée pour servir et valoir ce que de droit.</p>
