@@ -53,7 +53,7 @@ class MultiStepForm extends Component
     public $person_body;
     public $previous_ministry;
     public $person_ministry;
-    public $Fonction_Antérieur;
+    public $Fonction_Antérieur = null;
     public $Fonction;
     public $Service_Etablissement;
     public $Arret;
@@ -143,7 +143,6 @@ class MultiStepForm extends Component
                 'télephone' => 'required|string',
                 'adresse' => 'required|string|min:10',
                 'Numéro_du_pièce' => 'required',
-                'Fonction_Antérieur' => 'required|string|min:4',
                 'Fonction' => 'required|string|min:4',
                 'Service_Etablissement' => 'required|string|min:4',
                 'Arret' => 'required|string|min:4',
@@ -331,7 +330,7 @@ class MultiStepForm extends Component
                             'personelinfos_id' => $personelinfo->id,
                             'statut' => 'en cours',
                             'credential_id' => $this->credential_paiment,
-                            'identifiant' => $this->nature_recette,
+                            'identifiant' => $this->numéro_avis_de_recette,
                             'payment_id' => '',
                         ]);
                         $application = new Application();

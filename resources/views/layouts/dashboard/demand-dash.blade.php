@@ -75,8 +75,6 @@
                     <td>
                         @if($paimentInfos[$i]->statut =='payé')
                         <button   class="btn" style="background-color:rgb(7, 165, 7);  color:white;">payé</button>
-                        @elseif($paimentInfos[$i]->statut =='non payé')
-                            <button  class="btn" style="background-color:rgb(216, 38, 38);  color:white;">non payé</button>
                         @else
                         <button  class="btn d-flex align-items-center" style="background-color:rgb(225, 131, 0);  color:white;">
                         <div class="me-1"> en cours </div>
