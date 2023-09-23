@@ -47,28 +47,28 @@
                     <div class="col-sm-12 col-md-6 col-lg-3 mb-5">
                     <div class="card highlight h-100">
                         <div class="h-caption text-center">
-                        <a href="anl-detail">
+                        <a href="anl-detail-R">
                             <img src="assets/images/ANL_D.png" alt="" class="img-fluid" width="200" height="200">
                         </a>
-                        <h4>Attestation de type D</h4>
+                        <h4>Attestation de type R</h4>
                         </div>
                         <div class="h-body text-center">
                         <p>Régularisez votre attestation de non logement.</p>
-                        <p><a href="anl-detail" class="btn">En savoir plus</a></p>
+                        <p><a href="anl-detail-R" class="btn">En savoir plus</a></p>
                         </div>
                     </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-3 mb-5">
                     <div class="card highlight h-100">
                         <div class="h-caption text-center">
-                        <a href="anl-detail">
+                        <a href="anl-detail-L">
                             <img src="assets/images/ANL_C.png" alt="" class="img-fluid" width="200" height="200">
                         </a>
-                        <h4>Attestation de type C</h4>
+                        <h4>Attestation de type L</h4>
                         </div>
                         <div class="h-body text-center">
                         <p>Régularition de l'attestation de non logement sur une période déterminée.</p>
-                        <p><a href="anl-detail" class="btn">En savoir plus</a></p>
+                        <p><a href="anl-detail-L" class="btn">En savoir plus</a></p>
                         </div>
                     </div>
                     </div>
