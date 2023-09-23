@@ -90,6 +90,7 @@ Route::get('/register', function () {
     return view('register');
 });
 
+// add comment test
 Route::get('/', function () {
     return view('home');
 });
