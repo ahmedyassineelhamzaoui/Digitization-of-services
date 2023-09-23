@@ -89,10 +89,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-/* anl detail route */
+/* anl detail route type A */
 Route::get('anl-detail',function () {
     return view('anl-detail');
 });
+
+// anl detail route type R
+Route::get('anl-detail-R',function () {
+    return view('anl-detail-R');
+});
+
+// anl detail route type L
+Route::get('anl-detail-L',function () {
+    return view('anl-detail-L');
+});
+
 
 
 
