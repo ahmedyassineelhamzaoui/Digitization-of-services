@@ -69,7 +69,7 @@
 
                             @if (auth()->check())
                             <div class="pt-1 mb-4 text-center">
-                                <a href="{{url('formulaire')}}" class="btn  btn-lg btn-block w-50 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;background-color:rgb(231,123,32)">rempli le formulaire</a>
+                                <a href="{{url('formulaire-ANL-R')}}" class="btn  btn-lg btn-block w-50 text-white" type="button" style="padding: .5rem 2.5rem; border-radius: 0;background-color:rgb(231,123,32)">rempli le formulaire</a>
                             </div>
                             @else
                             <div class="pt-1 mb-4">
