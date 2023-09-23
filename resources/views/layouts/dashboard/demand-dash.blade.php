@@ -27,8 +27,8 @@
             <thead class="table-dark">
                 <tr>
                     <th scope="col">Nom</th>
-                    <th scope="col">fiche d'inscription </th>
-                    <th scope="col">fiche de paiement</th>
+                    <th scope="col">formulaire d'inscription </th>
+                    <th scope="col">reçu de paiement</th>
                     <th scope="col">fichiers joints</th>
                     <th scope="col">statut du demande</th>
                     <th scope="col">statut du paiment</th>
@@ -151,7 +151,7 @@
                     @method('PUT')
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title">Modifier Le Status</h5>
+                        <h5 class="modal-title">Modifier Le Statut</h5>
                         <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
                     </div>
                     <div class="modal-body">

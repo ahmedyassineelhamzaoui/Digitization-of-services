@@ -364,12 +364,7 @@ class MultiStepForm extends Component
     }
     public function mount()
     {
-        $this->quartiers = [];   
         $this->curentStep =1;
-    }
-    public function updatedVillePrecedant($ville_id)
-    {
-        $this->quartiers = Quartier::where('ville_id',$ville_id)->get();
     }
 
     
