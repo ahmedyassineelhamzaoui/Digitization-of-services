@@ -47,7 +47,7 @@
                         @if($item->name  == 'controleur 3')
                             DIRECTEUR
                         @endif
-                        @if($item->name  == 'utilisateur' || $item->name == 'Administrateur')
+                        @if($item->name  != 'controleur 1' && $item->name != 'controleur 2' && $item->name != 'controleur 3')
                             {{$item->name }}
                         @endif
                     </td>
