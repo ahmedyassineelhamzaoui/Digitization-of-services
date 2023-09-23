@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\FormControllerL;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\ApplicationController;
@@ -56,7 +57,9 @@ Route::controller(FormController::class)->group(function(){
    Route::post('/formulaire/{personel_id}','storeInfo')->name('store.Information');
    Route::get('/formulaire','index');
 });
-
+Route::controller(FormControllerL::class)->group(function(){
+    Route::get('/formulaire-ANL-L','index');
+ });
 Route::controller(RoleController::class)->group(function(){
    Route::get('roles','getRoles');
    Route::post('roles','createRole')->name('create.role');
