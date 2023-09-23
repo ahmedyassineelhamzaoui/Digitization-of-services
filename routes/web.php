@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\FormControllerR;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\ApplicationController;
@@ -57,6 +58,10 @@ Route::controller(FormController::class)->group(function(){
    Route::get('/formulaire','index');
 });
 
+Route::controller(FormControllerR::class)->group(function(){
+    Route::get('/formulaire-ANL-R', 'index');
+});
+
 Route::controller(RoleController::class)->group(function(){
    Route::get('roles','getRoles');
    Route::post('roles','createRole')->name('create.role');
@@ -102,6 +107,12 @@ Route::get('anl-detail-R',function () {
 // anl detail route type L
 Route::get('anl-detail-L',function () {
     return view('anl-detail-L');
+});
+
+
+// go to form type R
+Route::get('formulaire-type-R',function () {
+    return view('livewire.multi-step-form-R');
 });
 
 
