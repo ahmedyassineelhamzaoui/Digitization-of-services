@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+:root{
+    --primary-color : rgb(231,123,32);
+    --dark-color2 : rgb(8, 149, 53) ;
+    --download-buttoncolor :rgb(67,157,96) ;
+    --download-buttonhover : rgb(39, 142, 71);
+    --white-color: #fff;
+    --dark-color: #000;
+    --btn-color: rgb(231,123,32)  ;
+
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif !important;
+}
+.step label,h3,.card-title{
+  color : #005e73 !important;
+}
+.redflag{
+  border:2px solid red;
+}
+/* steper component style */
+.steper-content .steper-componnet {
+    margin-top: 30px;
+  }
+  .steper-content .steper-componnet .progress-empty {
+    background-color: var(--dark-color2);
+    border-radius: 10px;
+    height: 4px;
+    width: 80%;
+    margin-left: 10%;
+    position: relative;
+    top: 21px;
+    z-index: -1;
+  }
+  .steper-content .steper-componnet .progress-empty .progress-full {
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: 0.5s;
+  }
+  .steper-content .steper-componnet .cercles-steper {
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    width: 80%;
+  }
+  .steper-content .steper-componnet .cercles-steper .cercle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    background-color: var(--dark-color2);
+    font-weight: bold;
+    display: flex;
+    color: var(--primary-color);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .steper-content .steper-componnet .cercles-steper .cercle p{
+    position : absolute;
+    color:var(--dark-color2);
+    top:4.5em;
+  }
+
+  .currentSt{
+    background-color: #000 !important;
+  }
+  .beforStp{
+    background-color: var(--primary-color) !important;
+  }
+  .beforStp::before{
+      content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z'/><path d='M5 12l5 5l10 -10'/></svg>");
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 20%; 
+      margin-left: 5%;
+      font-weight: bold; 
+  }
+  
+  .secondtwidth{
+    width:50% !important;
+  }
+  .thirdwidth{
+    width:100% !important;
+  }
+
+  /*  end steper component style */
+/* pdf  */
+.hr-line{
+    border: 2px solid black;
+    margin: 1em 1em;
+}
+.footer-paimentpdf{
+  position: relative;
+  bottom: 10px;
+}
+.paiment-title{
+  text-align: center;
+}
+.content-paiment{
+  display: flex;
+  justify-content: center;
+}
+.titles-inscriptions{
+  text-decoration:underline;
+}
+.align-fourelement{
+  display: flex;
+  justify-content: space-between;
+}
+/* end pdf */
+/* status decoration */
+div.online-indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  
+  background-color: #0fcc45;
+  border-radius: 50%;
+  
+  position: relative;
+}
+span.blink {
+  display: block;
+  width: 15px;
+  height: 15px;
+  
+  background-color: #0fcc45;
+  opacity: 0.7;
+  border-radius: 50%;
+  
+  animation: blink 1s linear infinite;
+}  
+/*Animations*/
+
+@keyframes blink {
+  100% { transform: scale(2, 2); 
+          opacity: 0;
+        }
+}
+#spinner{
+  margin-top: -1.9em !important;
+  padding: 0 !important;
+  position: absolute;
+  z-index: 100;
+  height: 300%;
+  width: 100%;
+  color: white;
+  font-weight: bolder;
+  background: black !important;
+  /* opacity: 30% !important; */
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+#spinner .spinner-border,#loding-process{
+  position:relative;
+  top:15%
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  color: white;
+  background:  var(--dark-color2);
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: none;
+}
+
+/* end decoration status*/
+
+/* Styling the home page and the register pages */
+/* styling the navbar */
+nav{
+    box-shadow: 0px 3px 6px 3px rgb(0 0 0 / 6%);
+    /* background: #BF1906 !important; */
+}
+
+nav.navbar .navbar-brand img{
+    width: 9rem;
+}
+
+.navbar .navbar-nav li a.nav-link{
+    color: var(--dark-color);
+    font-size: 15px;
+    padding-left: 2rem;
+}
+
+.navbar .navbar-nav li.active a.nav-link{
+    color: var(--btn-color);
+}
+
+.navbar .navbar-nav li a.nav-link:hover{
+    color: var(--btn-color);
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+}
+
+.navbar button.navbar-toggler{
+    border-color: var(--btn-color);
+}
+
+.navbar button.navbar-toggler:focus{
+    outline: none;
+}
+
+.navbar button.navbar-toggler span{
+    color: #00B4D9 !important;
+}
+
+.navbar .register .sign-up{
+    border: 1px solid var(--btn-color);
+    color: var(--btn-color);
+}
+
+.navbar .register .sign-up:hover,
+.navbar .register .sign-up:focus{
+    border: 1px solid var(--btn-color);
+    color: var(--white-color);
+    background-color: var(--btn-color);
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+}
+
+.navbar .register .sign-in{
+    border: 1px solid var(--btn-color);
+    color: var(--white-color);
+     background-color: var(--btn-color); 
+}
+
+.navbar .register .sign-in:hover,
+.navbar .register .sign-in:focus{
+    border: 1px solid var(--btn-color);
+    color: var(--btn-color);
+    background-color: var(--white-color); 
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+}
+
+/* styling the header */
+
+header {
+    position: relative;
+    background-image: linear-gradient(to bottom, rgba(190, 190, 191, 0.52), rgba(112, 13, 87, 0.73)), url("../assets/images/header.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    text-align: center;
+    width: 100%;
+    height: 80vh;
+    color: #fff;
+    -webkit-clip-path: polygon(100% 0, 100% 79%, 0 88%, 0 0);
+            clip-path: polygon(100% 0, 100% 79%, 0 88%, 100 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .header-title p{
+    font-size: 3.5rem;
+    margin-left: 2rem;
+}
+
+/* styling the main sections */
+main .procedure .procedure-btn a{
+     background-color: var(--btn-color);
+    
+    color: var(--white-color);
+    margin-bottom: 5rem;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+}
+
+main .procedure .procedure-text p{
+    font-size: 1.5rem;
+    color: #334353;
+    line-height: 1.3em;
+    font-weight: 100;
+    margin-bottom: 1rem;
+}
+
+main .procedure .procedure-cards .highlight{
+    border: 1px solid #eee;
+    box-shadow: 0px 3px 6px 3px rgb(0 0 0 / 6%);
+    /* margin-bottom: .5rem; */
+    padding: .5rem 1rem;
+    transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -ms-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+main .procedure .procedure-cards .highlight:hover{
+    box-shadow: rgba(160, 157, 157, 0.849) 0px 5px 15px;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    cursor: pointer;
+}
+
+main .procedure .procedure-cards .highlight .h-caption{
+    margin-bottom: 1rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+main .procedure .procedure-cards .highlight .h-caption h4{
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+main .procedure .procedure-cards .highlight .h-body p{
+    font-size: 13px;
+
+}
+
+main .procedure .procedure-cards .highlight .h-body p a{
+    font-size: 13px;
+    color: var(--white-color);
+    text-decoration: none;
+    background-color: var(--btn-color);
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+
+/* styling the footer */
+footer .copyright{
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    text-align: center;
+    font-size: 15px;
+}
+
+footer .copyright p{
+    margin-bottom: 0;
+    padding: 1rem 0;
+}
+
+
+
+/* Media Queries */
+
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    header .header-title p {
+        font-size: 3rem;
+    }
+
+    main .procedure .procedure-text p {
+        font-size: 1rem;
+    }
+ }
+
+/* `md` applies to small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { ... } */
+
+/* `lg` applies to medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { ... } */
+
+/* `xl` applies to large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { ... } */
+
+/* `xxl` applies to x-large devices (large desktops, less than 1400px)
+@media (max-width: 1399.98px) { ... }  */
+
+

@@ -47,4 +47,26 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    public function render($request, Throwable $exception)
+    {
+    if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+        return response()->view('errors.404', [], 404);
+    } elseif ($exception instanceof \Illuminate\Auth\Access\AuthorizationException) {
+        return response()->view('errors.403', [], 403);
+    } elseif ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+        return response()->view('errors.404', [], 404);
+    } elseif ($exception instanceof \Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException) {
+        return response()->view('errors.400', [], 400);
+    } elseif ($exception instanceof \Illuminate\Database\QueryException) {
+        return response()->view('errors.500', ['exception' => $exception], 500);
+    } elseif ($exception instanceof \Illuminate\Http\Exceptions\ThrottleRequestsException) {
+        return response()->view('errors.429', ['exception' => $exception], 429);
+    } elseif ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+        return response()->view('errors.419', ['exception' => $exception], 419);
+    } elseif ($exception instanceof \Illuminate\Auth\AuthenticationException) {
+        return response()->view('errors.401', ['exception' => $exception], 401);
+    } else {
+        return parent::render($request, $exception);
+    }
+    }
 }

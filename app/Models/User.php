@@ -10,10 +10,11 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable Implements JWTSubject
+class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,softDeletes;
+    use HasApiTokens, HasFactory, Notifiable,softDeletes,HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -21,10 +22,12 @@ class User extends Authenticatable Implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'full_name',
         'email',
+        'status',
         'password',
+        'social_id',
+        'social_type'
     ];
 
     /**
@@ -33,7 +36,6 @@ class User extends Authenticatable Implements JWTSubject
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -46,14 +48,9 @@ class User extends Authenticatable Implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function getJWTIdentifier()
+    public function applications()
     {
-        return $this->getKey();
+        return $this->hasMany(Application::class);
     }
 
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
 }
