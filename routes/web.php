@@ -59,10 +59,12 @@ Route::controller(FormController::class)->group(function(){
    Route::get('/formulaire','index');
 });
 Route::controller(FormControllerL::class)->group(function(){
+    Route::post('/formulaire-ANL-L/{personel_id}','storeInfo')->name('store.InformationL');
     Route::get('/formulaire-ANL-L','index');
  });
 
 Route::controller(FormControllerR::class)->group(function(){
+    Route::post('/formulaire-ANL-R/{personel_id}','storeInfo')->name('store.InformationR');
     Route::get('/formulaire-ANL-R', 'index');
 });
 

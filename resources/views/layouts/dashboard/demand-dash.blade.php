@@ -49,21 +49,18 @@
                     </td>
                     <td>
                         @if($item->type =="A")
-                        A
                         <form  action="{{route('store.Information',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
                             @csrf
                             <button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
                         </form> 
                         @endif
                         @if($item->type =="L")
-                        L
                         <form  action="{{route('store.InformationR',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
                             @csrf
                             <button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
                         </form> 
                         @endif
                         @if($item->type =="R")
-                        R
                         <form  action="{{route('store.InformationL',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
                             @csrf
                             <button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
