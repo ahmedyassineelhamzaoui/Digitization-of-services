@@ -39,7 +39,7 @@
     <img id="image-container " width="400px"  src="{{ public_path("assets/images/logo/logo1.jpg")}}" alt="">
     <div id="text-container"  style="text-align: center"><p>REPUBLIQUE DE COTE D'IVOIRE</p><p>Union-Discipline-Travail</p><p>------------</p></div>
     <h2 style="text-align: center;background-color: rgb(243, 163, 58);height:40px;line-height: 40px;align-items:center;    align-items: center;
-    ">Reçu d'inscription</h2>
+    ">Formulaire d'inscription</h2>
     <h3 style="text-decoration: underline">Les informations personnelles :</h3> 
             <div class="">
                 <pre><span style="font-weight: bold;">Matricule : </span> {{$personelinfo->matricule}}<span style="font-weight: bold">            Nom :</span>  {{$personelinfo->nom }}<span style="font-weight: bold">            Prénom : </span> {{$personelinfo->prenom}}</pre> 
