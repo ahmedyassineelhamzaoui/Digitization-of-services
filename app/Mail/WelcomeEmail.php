@@ -51,7 +51,7 @@ class WelcomeEmail extends Mailable
 
     public function build()
     {
-        return  $this->from('support@anl-civ.com', 'Sonapie')
+        return  $this->from('support@sonapie.anl-civ.com', 'Sonapie')
         ->markdown('emails.welcome')
         ->with([
             'user' => $this->user,
