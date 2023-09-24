@@ -48,10 +48,27 @@
                        </form>
                     </td>
                     <td>
+                        @if($item->type =="A")
+                        A
                         <form  action="{{route('store.Information',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
                             @csrf
                             <button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
                         </form> 
+                        @endif
+                        @if($item->type =="L")
+                        L
+                        <form  action="{{route('store.InformationR',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
+                            @csrf
+                            <button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
+                        </form> 
+                        @endif
+                        @if($item->type =="R")
+                        R
+                        <form  action="{{route('store.InformationL',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
+                            @csrf
+                            <button type="submit" name="print_payment" class="btn btn-success"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
+                        </form> 
+                        @endif
                     </td>
                     <td class="ps-3">
                         <button data-files-id="{{ implode(',', $files[$i]->pluck('id')->toArray()) }}" data-bs-target="#show-joinedFile" data-bs-toggle="modal" name="print_info" class="btn show-allfiles" style="background-color:rgb(149, 0, 255);  color:white;"><span class="me-2"><i class="fa-solid fa-eye"></i></span> ouvrir</button>
