@@ -42,7 +42,7 @@ class SendMailLink extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Reset Password',
+            subject: 'réinitialiser le mot de passe',
         );
     }
 
@@ -60,7 +60,7 @@ class SendMailLink extends Mailable
 
     public function build()
     {
-            return   $this->from('sonapie@gmail.com', 'Sonapie')
+            return   $this->from('support@sonapie.anl-civ.com', 'Sonapie')
             ->markdown('emails.passwordReset')
             ->with([
                 'token' => $this->token,
