@@ -64,110 +64,6 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <label for="birth-date" class="form-label">Date naissance</label>
-                    <input type="date" class="form-control" wire:model="date_de_naissance" name="date_de_naissance"
-                        id="date_de_naissance" required>
-                    @error('date_de_naissance')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="place-birth" class="form-label">Lieu de naissance</label>
-                    <select id="place-birth" name="place_birth" wire:model="place_birth" class="form-select">
-                        <option value="abengourou">Abengourou</option>
-                        <option value="abidjan">Abidjan</option>
-                        <option value="aboisso">Aboisso</option>
-                        <option value="adzope">Adzopé</option>
-                        <option value="agboville">Agboville</option>
-                        <option value="akoupe">Akoupé</option>
-                        <option value="anyama">Anyama</option>
-                        <option value="bangolo">Bangolo</option>
-                        <option value="beoumi">Béoumi</option>
-                        <option value="biankouma">Biankouma</option>
-                        <option value="bingerville">Bingerville</option>
-                        <option value="bondoukou">Bondoukou</option>
-                        <option value="bongouanou">Bongouanou</option>
-                        <option value="bouafle">Bouaflé</option>
-                        <option value="bouake">Bouaké</option>
-                        <option value="boundiali">Boundiali</option>
-                        <option value="dabakala">Dabakala</option>
-                        <option value="dabou">Dabou</option>
-                        <option value="daloa">Daloa</option>
-                        <option value="danane">Danané</option>
-                        <option value="daoukro">Daoukro</option>
-                        <option value="dimbokro">Dimbokro</option>
-                        <option value="divo">Divo</option>
-                        <option value="duekoue">Duékoué</option>
-                        <option value="gagnoa">Gagnoa</option>
-                        <option value="grand_bassam">Grand Bassam</option>
-                        <option value="guiglo">Guiglo</option>
-                        <option value="issia">Issia</option>
-                        <option value="jacqueville">Jacqueville</option>
-                        <option value="katiola">Katiola</option>
-                        <option value="korhogo">Korhogo</option>
-                        <option value="lakota">Lakota</option>
-                        <option value="man">Man</option>
-                        <option value="mankono">Mankono</option>
-                        <option value="minignan">Minignan</option>
-                        <option value="nassian">Nassian</option>
-                        <option value="odienné">Odienné</option>
-                        <option value="ouangolodougou">Ouangolodougou</option>
-                        <option value="oume">Oumé</option>
-                        <option value="prikro">Prikro</option>
-                        <option value="sassandra">Sassandra</option>
-                        <option value="seguela">Séguéla</option>
-                        <option value="sinfra">Sinfra</option>
-                        <option value="soubre">Soubré</option>
-                        <option value="tabou">Tabou</option>
-                        <option value="tanda">Tanda</option>
-                        <option value="tiassale">Tiassalé</option>
-                        <option value="touba">Touba</option>
-                        <option value="toulepleu">Toulepleu</option>
-                        <option value="yamoussoukro">Yamoussoukro</option>
-                        <option value="zouan_hounien">Zouan-Hounien</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="person-email" class="form-label">Email</label>
-                    <input type="email" style="text-transform: uppercase" class="form-control" wire:model="email"
-                        name="email" id="email" placeholder="example@gmail.com" required>
-                    @error('email')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-2">
-                    <label for="person-telephone" class="form-label">Téléphone</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control" name="télephone"
-                        wire:model="télephone" id="télephone" placeholder="n° Téléphone" required>
-                    @error('télephone')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="person-adresse" class="form-label">Adresse</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        wire:model="adresse" name="adresse" id="adresse" required>
-                    @error('adresse')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-6">
-                    <label for="document-type" class="form-label">Type de pièce</label>
-                    <select id="document-type" name="document_type" wire:model="document_type" class="form-select">
-                        <option value="carte">Carte nationale d'identité</option>
-                        <option value="passeport">Passeport</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="document-number" class="form-label">Numéro de la pièce</label>
-                    <input type="text" style="text-transform: uppercase" wire:model="Numéro_du_pièce"
-                        class="form-control" name="Numéro_du_pièce" id="Numéro_du_pièce"
-                        placeholder="N° de la pièce d'identité" required>
-                    @error('Numéro_du_pièce')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
                     <label for="person-region" class="form-label">Région</label>
                     <select id="person-region" name="person_region" wire:model="person_region" class="form-select">
                         <option value="Agnéby">Agnéby</option>
@@ -251,7 +147,6 @@
                 <div class="col-md-4">
                     <label for="person-body" class="form-label">Corps</label>
                     <select id="person-body" name="person_body" wire:model="person_body" class="form-select">
-                        <option value="Aucun Corps">Aucun Corps</option>
                         <option value="Avocat">Avocat(e)</option>
                         <option value="Architecte">Architecte</option>
                         <option value="Artiste">Artiste</option>
@@ -302,8 +197,7 @@
                         <option value="Vendeur">Vendeur(euse)</option>
                     </select>
                 </div>
-
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <label for="person-ministry" class="form-label">Ministère</label>
                     <select id="person-ministry" name="person_ministry" wire:model="person_ministry"
                         class="form-select">
@@ -369,6 +263,59 @@
                     </select>
                 </div>
                 <div class="col-md-4">
+                    <label for="anterior-body" class="form-label">Corps Antérieur</label>
+                    <select id="anterior-body" name="anterior_body" class="form-select">
+                        <option value="Avocat">Avocat(e)</option>
+                        <option value="Architecte">Architecte</option>
+                        <option value="Artiste">Artiste</option>
+                        <option value="Agriculteur">Agriculteur(rice)</option>
+                        <option value="Banquier">Banquier(ière)</option>
+                        <option value="Bibliothécaire">Bibliothécaire</option>
+                        <option value="Boucher">Boucher(ère)</option>
+                        <option value="Boulanger">Boulanger(ère)</option>
+                        <option value="Chirurgien">Chirurgien(ne)</option>
+                        <option value="Chercheur">Chercheur(euse)</option>
+                        <option value="Comptable">Comptable</option>
+                        <option value="Consultant">Consultant(e)</option>
+                        <option value="Cuisinier">Cuisinier(ère)</option>
+                        <option value="Dentiste">Dentiste</option>
+                        <option value="Designer">Designer</option>
+                        <option value="Développeur web">Développeur(euse) web</option>
+                        <option value="Écrivain">Écrivain(e)</option>
+                        <option value="Électricien">Électricien(ne)</option>
+                        <option value="Enseignant">Enseignant(e)</option>
+                        <option value="Entrepreneur">Entrepreneur(euse)</option>
+                        <option value="Étudiant">Étudiant(e)</option>
+                        <option value="Facteur">Facteur(trice)</option>
+                        <option value="Gestionnaire">Gestionnaire</option>
+                        <option value="Graphiste">Graphiste</option>
+                        <option value="Ingénieur">Ingénieur(e)</option>
+                        <option value="Infirmier">Infirmier(ère)</option>
+                        <option value="Journaliste">Journaliste</option>
+                        <option value="Juge">Juge</option>
+                        <option value="Kinésithérapeute">Kinésithérapeute</option>
+                        <option value="Maçon">Maçon(ne)</option>
+                        <option value="Mécanicien">Mécanicien(ne)</option>
+                        <option value="Médecin">Médecin</option>
+                        <option value="Musicien">Musicien(ne)</option>
+                        <option value="Notaire">Notaire</option>
+                        <option value="Opticien">Opticien(ne)</option>
+                        <option value="Pharmacien">Pharmacien(ne)</option>
+                        <option value="Photographe">Photographe</option>
+                        <option value="Plombier">Plombier(ère)</option>
+                        <option value="Policier">Policier(ère)</option>
+                        <option value="Professeur">Professeur(e)</option>
+                        <option value="Psychologue">Psychologue</option>
+                        <option value="Réalisateur">Réalisateur(trice)</option>
+                        <option value="Scientifique">Scientifique</option>
+                        <option value="Secrétaire">Secrétaire</option>
+                        <option value="Soudeur">Soudeur(euse)</option>
+                        <option value="Technicien">Technicien(ne)</option>
+                        <option value="Traducteur">Traducteur(trice)</option>
+                        <option value="Vendeur">Vendeur(euse)</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
                     <label for="person-job" class="form-label">Fonction</label>
                     <input type="text" style="text-transform: uppercase" class="form-control" id="Fonction"
                         name="Fonction" wire:model="Fonction" required>
@@ -386,7 +333,7 @@
                     @enderror
                 </div>
                 <div class="col-md-6">
-                    <label for="person-judgment" class="form-label">Décret/Arret</label>
+                    <label for="person-judgment" class="form-label">Décret</label>
                     <input type="text" id="Arret" style="text-transform: uppercase" name="Arret"
                         wire:model="Arret" class="form-control" required>
                     @error('Arret')
@@ -394,10 +341,10 @@
                     @enderror
                 </div>
                 <div class="col-md-6">
-                    <label for="person-nomination" class="form-label">Date nommination</label>
-                    <input type="date" style="text-transform: uppercase" class="form-control"
-                        name="Date_nomination" wire:model="Date_nomination" id="Date_nomination" required>
-                    @error('Date_nomination')
+                    <label for="end-date" class="form-label">Date de decret</label>
+                    <input type="date" class="form-control" id="Date_decret" wire:model="Date_decret"
+                        name="Date_decret" required>
+                    @error('Date_decret')
                         <span class="text-danger fs-7">{{ $message }}</span>
                     @enderror
                 </div>
@@ -410,397 +357,20 @@
                     @enderror
                 </div>
                 <div class="col-md-4">
-                    <label for="end-date" class="form-label">Date de fin</label>
-                    <input type="date" class="form-control" id="Numéro_du_pièce" wire:model="Date_fin"
+                    <label for="Date_fin" class="form-label">Date de fin</label>
+                    <input type="date" class="form-control" id="Date_fin" wire:model="Date_fin"
                         name="Date_fin" required>
                     @error('Date_fin')
                         <span class="text-danger fs-7">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-md-4">
-                    <label for="marital-status" class="form-label">Situation matrimoniale</label>
-                    <select id="marital-status" name="marital_status" wire:model="marital_status"
-                        class="form-select">
-                        <option value="Marié.e">Marié.e</option>
-                        <option value="Célibataire">Célibataire</option>
-                        <option value="veuve">veuve</option>
-                        <option value="veuf">veuf</option>
-                        <option value="divorcé.e">divorcé.e</option>
-                    </select>
-                </div>
-                <h3 class="mt-5">Informations conjoint.e</h3>
-                <div class="col-md-4">
-                    <label for="full-name" class="form-label"> Nom & Prénom</label>
-                    <input type="text" style="text-transform: uppercase" wire:model="Nom_Prénom"
-                        class="form-control" name="Nom_Prénom" id="Nom_Prénom" required>
-                    @error('Nom_Prénom')
+                    <label for="Date_fin" class="form-label">Date de Retrait</label>
+                    <input type="date" class="form-control" id="Date_retrait" wire:model="Date_retrait"
+                        name="Date_retrait" required>
+                    @error('Date_retrait')
                         <span class="text-danger fs-7">{{ $message }}</span>
                     @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="spouse-job" class="form-label">Fonction</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        wire:model="Conjoint_Fonction" name="Conjoint_Fonction" id="Conjoint_Fonction" required>
-                    @error('Conjoint_Fonction')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="spouse-registrationNumber" class="form-label">Matricule</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        name="Conjoint_Matricule" wire:model="Conjoint_Matricule" id="Conjoint_Matricule" required>
-                    @error('Conjoint_Matricule')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="employer-department" class="form-label"> Service employeur</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        name="Service_employeur" wire:model="Service_employeur" id="Service_employeur" required>
-                    @error('Service_employeur')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="hire-date" class="form-label">Date d'embauche</label>
-                    <input type="date" class="form-control" name="Date_embauche" wire:model="Date_embauche"
-                        id="Date_embauche" required>
-                    @error('Date_embauche')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="spouse-job" class="form-label">Adresse</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        wire:model="Conjoint_adresse" name="Conjoint_adresse" id="Conjoint_adresse" required>
-                    @error('Conjoint_adresse')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-6">
-                    <label for="spouse-regime" class="form-label">Régime</label>
-                    <input type="text" style="text-transform: uppercase" wire:model="Conjoint_régime"
-                        id="Conjoint_régime" name="Conjoint_régime" class="form-control" required>
-                    @error('Conjoint_régime')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-6">
-                    <label for="compensation-rate" class="form-label">Taux d'indemnité</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        name="Taux_indemnité" wire:model="Taux_indemnité" id="Taux_indemnité" required>
-                    @error('Taux_indemnité')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <h3>Habitation précédante</h3>
-                <div class="col-md-3">
-                    <label for="previous-city" class="form-label">Ville</label>
-                    <select style="text-transform: uppercase" class="form-select" id="ville_précédant" name="ville_précédant" wire:model="villePrecedant">
-                        <option value="Abidjan">Abidjan</option>
-                        <option value="Bouaké">Bouaké</option>
-                        <option value="Yamoussoukro">Yamoussoukro</option>
-                        <option value="Daloa">Daloa</option>
-                        <option value="San Pedro">San Pedro</option>
-                        <option value="Korhogo">Korhogo</option>
-                        <option value="Man">Man</option>
-                        <option value="Divo">Divo</option>
-                        <option value="Gagnoa">Gagnoa</option>
-                        <option value="Abengourou">Abengourou</option>
-                        <option value="Anyama">Anyama</option>
-                        <option value="Agboville">Agboville</option>
-                        <option value="Séguéla">Séguéla</option>
-                        <option value="Odienné">Odienné</option>
-                        <option value="Toumodi">Toumodi</option>
-                        <option value="Ferkessédougou">Ferkessédougou</option>
-                        <option value="Issia">Issia</option>
-                        <option value="Sassandra">Sassandra</option>
-                        <option value="Boundiali">Boundiali</option>
-                        <option value="Grand-Bassam">Grand-Bassam</option>
-                        <option value="Dabou">Dabou</option>
-                        <option value="Dimbokro">Dimbokro</option>
-                        <option value="Aboisso">Aboisso</option>
-                        <option value="Bingerville">Bingerville</option>
-                        <option value="Duekoué">Duekoué</option>
-                        <option value="Adzopé">Adzopé</option>
-                        <option value="Guiglo">Guiglo</option>
-                        <option value="Touba">Touba</option>
-                        <option value="Sinfra">Sinfra</option>
-                        <option value="Tengrela">Tengrela</option>
-                        <option value="Vavoua">Vavoua</option>
-                        <option value="Katiola">Katiola</option>
-                        <option value="Tiassalé">Tiassalé</option>
-                        <option value="Akoupé">Akoupé</option>
-                        <option value="Daoukro">Daoukro</option>
-                        <option value="Sakassou">Sakassou</option>
-                        <option value="Bouaflé">Bouaflé</option>
-                        <option value="Sinématiali">Sinématiali</option>
-                        <option value="Jacqueville">Jacqueville</option>
-                        <option value="Bouna">Bouna</option>
-                        <option value="Oumé">Oumé</option>
-                        <option value="Bongouanou">Bongouanou</option>
-                        <option value="Séguélon">Séguélon</option>
-                        <option value="Taabo">Taabo</option>
-                        <option value="Bonoua">Bonoua</option>
-                        <option value="Bangolo">Bangolo</option>
-                        <option value="Tanda">Tanda</option>
-                        <option value="Biankouma">Biankouma</option>
-                        <option value="Zuénoula">Zuénoula</option>
-                        <option value="Lakota">Lakota</option>
-                        <option value="Fresco">Fresco</option>
-                        <option value="Ayamé">Ayamé</option>
-                        <option value="Issia">Issia</option>
-                        <option value="Mankono">Mankono</option>
-                        <option value="Soubre">Soubre</option>
-                        <option value="Tabou">Tabou</option>
-                        <option value="Bondoukou">Bondoukou</option>
-                        <option value="Agnibilékrou">Agnibilékrou</option>
-                        <option value="Jacqueville">Jacqueville</option>
-                        <option value="Akoupé">Akoupé</option>
-                        <option value="Béoumi">Béoumi</option>
-                        <option value="Béoumi">Béoumi</option>
-                        <option value="Duekoué">Duekoué</option>
-                        <option value="Tengrela">Tengrela</option>
-                        <option value="Bouaké">Bouaké</option>
-                        <option value="Toumodi">Toumodi</option>
-                        <option value="Korhogo">Korhogo</option>
-                        <option value="Man">Man</option>
-                        <option value="Divo">Divo</option>
-                        <option value="Gagnoa">Gagnoa</option>
-                        <option value="San Pedro">San Pedro</option>
-                        <option value="Bouna">Bouna</option>
-                        <option value="Zuénoula">Zuénoula</option>
-                        <option value="Ferkessédougou">Ferkessédougou</option>
-                        <option value="Boundiali">Boundiali</option>
-                        <option value="Odienné">Odienné</option>
-                        <option value="Katiola">Katiola</option>
-                        <option value="Grand-Bassam">Grand-Bassam</option>
-                        <option value="Sassandra">Sassandra</option>
-                        <option value="Dabou">Dabou</option>
-                        <option value="Dimbokro">Dimbokro</option>
-                        <option value="Aboisso">Aboisso</option>
-                        <option value="Bingerville">Bingerville</option>
-                        <option value="Adzopé">Adzopé</option>
-                        <option value="Séguéla">Séguéla</option>
-                        <option value="Touba">Touba</option>
-                        <option value="Guiglo">Guiglo</option>
-                        <option value="Sinfra">Sinfra</option>
-                        <option value="Tanda">Tanda</option>
-                        <option value="Vavoua">Vavoua</option>
-                        <option value="Bouaflé">Bouaflé</option>
-                        <option value="Sinématiali">Sinématiali</option>
-                        <option value="Taabo">Taabo</option>
-                        <option value="Bongouanou">Bongouanou</option>
-                        <option value="Bonoua">Bonoua</option>
-                        <option value="Oumé">Oumé</option>
-                        <option value="Sakassou">Sakassou</option>
-                        <option value="Bangolo">Bangolo</option>
-                        <option value="Biankouma">Biankouma</option>
-                        <option value="Zuénoula">Zuénoula</option>
-                        <option value="Lakota">Lakota</option>
-                        <option value="Fresco">Fresco</option>
-                        <option value="Ayamé">Ayamé</option>
-                        <option value="Issia">Issia</option>
-                        <option value="Mankono">Mankono</option>
-                        <option value="Soubre">Soubre</option>
-                        <option value="Tabou">Tabou</option>
-                        <option value="Bondoukou">Bondoukou</option>
-                        <option value="Agnibilékrou">Agnibilékrou</option>
-                    </select>
-                    @error('ville_précédant')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-3">
-                    <label for="previous-neighborhood" class="form-label">Quartier</label>
-                    <input type="number"style="text-transform: uppercase" class="form-control"
-                        wire:model="quartier_précédant" name="quartier_précédant" id="quartier_précédant" required>
-                    @error('quartier_précédant')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-3">
-                    <label for="previous-batch" class="form-label">Lot n°</label>
-                    <input type="number" style="text-transform: uppercase" id="lot_n°_précédant"
-                        wire:model="lot_n°_précédant" name="lot_n°_précédant" class="form-control" required>
-                    @error('lot_n°_précédant')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-3">
-                    <label for="release-date" class="form-label">Date libération</label>
-                    <input type="date" class="form-control" name="Date_libération" wire:model="Date_libération"
-                        id="Date_libération" required>
-                    @error('Date_libération')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <h3>Habitation actuelle</h3>
-                <div class="col-md-3">
-                    <label for="current-city" class="form-label">Ville</label>
-                    <select  class="form-select" style="text-transform: uppercase" id="ville_actuelle"
-                    wire:model="ville_actuelle" name="ville_actuelle">
-                        <option value="Abidjan">Abidjan</option>
-                        <option value="Bouaké">Bouaké</option>
-                        <option value="Yamoussoukro">Yamoussoukro</option>
-                        <option value="Daloa">Daloa</option>
-                        <option value="San Pedro">San Pedro</option>
-                        <option value="Korhogo">Korhogo</option>
-                        <option value="Man">Man</option>
-                        <option value="Divo">Divo</option>
-                        <option value="Gagnoa">Gagnoa</option>
-                        <option value="Abengourou">Abengourou</option>
-                        <option value="Anyama">Anyama</option>
-                        <option value="Agboville">Agboville</option>
-                        <option value="Séguéla">Séguéla</option>
-                        <option value="Odienné">Odienné</option>
-                        <option value="Toumodi">Toumodi</option>
-                        <option value="Ferkessédougou">Ferkessédougou</option>
-                        <option value="Issia">Issia</option>
-                        <option value="Sassandra">Sassandra</option>
-                        <option value="Boundiali">Boundiali</option>
-                        <option value="Grand-Bassam">Grand-Bassam</option>
-                        <option value="Dabou">Dabou</option>
-                        <option value="Dimbokro">Dimbokro</option>
-                        <option value="Aboisso">Aboisso</option>
-                        <option value="Bingerville">Bingerville</option>
-                        <option value="Duekoué">Duekoué</option>
-                        <option value="Adzopé">Adzopé</option>
-                        <option value="Guiglo">Guiglo</option>
-                        <option value="Touba">Touba</option>
-                        <option value="Sinfra">Sinfra</option>
-                        <option value="Tengrela">Tengrela</option>
-                        <option value="Vavoua">Vavoua</option>
-                        <option value="Katiola">Katiola</option>
-                        <option value="Tiassalé">Tiassalé</option>
-                        <option value="Akoupé">Akoupé</option>
-                        <option value="Daoukro">Daoukro</option>
-                        <option value="Sakassou">Sakassou</option>
-                        <option value="Bouaflé">Bouaflé</option>
-                        <option value="Sinématiali">Sinématiali</option>
-                        <option value="Jacqueville">Jacqueville</option>
-                        <option value="Bouna">Bouna</option>
-                        <option value="Oumé">Oumé</option>
-                        <option value="Bongouanou">Bongouanou</option>
-                        <option value="Séguélon">Séguélon</option>
-                        <option value="Taabo">Taabo</option>
-                        <option value="Bonoua">Bonoua</option>
-                        <option value="Bangolo">Bangolo</option>
-                        <option value="Tanda">Tanda</option>
-                        <option value="Biankouma">Biankouma</option>
-                        <option value="Zuénoula">Zuénoula</option>
-                        <option value="Lakota">Lakota</option>
-                        <option value="Fresco">Fresco</option>
-                        <option value="Ayamé">Ayamé</option>
-                        <option value="Issia">Issia</option>
-                        <option value="Mankono">Mankono</option>
-                        <option value="Soubre">Soubre</option>
-                        <option value="Tabou">Tabou</option>
-                        <option value="Bondoukou">Bondoukou</option>
-                        <option value="Agnibilékrou">Agnibilékrou</option>
-                        <option value="Jacqueville">Jacqueville</option>
-                        <option value="Akoupé">Akoupé</option>
-                        <option value="Béoumi">Béoumi</option>
-                        <option value="Béoumi">Béoumi</option>
-                        <option value="Duekoué">Duekoué</option>
-                        <option value="Tengrela">Tengrela</option>
-                        <option value="Bouaké">Bouaké</option>
-                        <option value="Toumodi">Toumodi</option>
-                        <option value="Korhogo">Korhogo</option>
-                        <option value="Man">Man</option>
-                        <option value="Divo">Divo</option>
-                        <option value="Gagnoa">Gagnoa</option>
-                        <option value="San Pedro">San Pedro</option>
-                        <option value="Bouna">Bouna</option>
-                        <option value="Zuénoula">Zuénoula</option>
-                        <option value="Ferkessédougou">Ferkessédougou</option>
-                        <option value="Boundiali">Boundiali</option>
-                        <option value="Odienné">Odienné</option>
-                        <option value="Katiola">Katiola</option>
-                        <option value="Grand-Bassam">Grand-Bassam</option>
-                        <option value="Sassandra">Sassandra</option>
-                        <option value="Dabou">Dabou</option>
-                        <option value="Dimbokro">Dimbokro</option>
-                        <option value="Aboisso">Aboisso</option>
-                        <option value="Bingerville">Bingerville</option>
-                        <option value="Adzopé">Adzopé</option>
-                        <option value="Séguéla">Séguéla</option>
-                        <option value="Touba">Touba</option>
-                        <option value="Guiglo">Guiglo</option>
-                        <option value="Sinfra">Sinfra</option>
-                        <option value="Tanda">Tanda</option>
-                        <option value="Vavoua">Vavoua</option>
-                        <option value="Bouaflé">Bouaflé</option>
-                        <option value="Sinématiali">Sinématiali</option>
-                        <option value="Taabo">Taabo</option>
-                        <option value="Bongouanou">Bongouanou</option>
-                        <option value="Bonoua">Bonoua</option>
-                        <option value="Oumé">Oumé</option>
-                        <option value="Sakassou">Sakassou</option>
-                        <option value="Bangolo">Bangolo</option>
-                        <option value="Biankouma">Biankouma</option>
-                        <option value="Zuénoula">Zuénoula</option>
-                        <option value="Lakota">Lakota</option>
-                        <option value="Fresco">Fresco</option>
-                        <option value="Ayamé">Ayamé</option>
-                        <option value="Issia">Issia</option>
-                        <option value="Mankono">Mankono</option>
-                        <option value="Soubre">Soubre</option>
-                        <option value="Tabou">Tabou</option>
-                        <option value="Bondoukou">Bondoukou</option>
-                        <option value="Agnibilékrou">Agnibilékrou</option>
-                    </select>
-                    @error('ville_actuelle')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-3">
-                    <label for="current-neighborhood" class="form-label">Quartier</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        wire:model="quartier_actuelle" name="quartier_actuelle" id="quartier_actuelle" required>
-                    @error('quartier_actuelle')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-3">
-                    <label for="current-batch" class="form-label">Lot n°</label>
-                    <input type="number" style="text-transform: uppercase" id="lot_n°_actuelle"
-                        wire:model="lot_n°_actuelle" name="lot_n°_actuelle" class="form-control" required>
-                    @error('lot_n°_actuelle')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-3">
-                    <label for="occupancy-date" class="form-label">Date d'occupation</label>
-                    <input type="date" class="form-control" name="Date_occupation" wire:model="Date_occupation"
-                        id="Date_occupation" required>
-                    @error('Date_occupation')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label">Etes-vous hébergé par un parent ou un ami ?</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" wire:model="hébergement"
-                            id="response-oui" value="oui" required>
-                        <label class="form-check-label" for="response-oui">
-                            Oui
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" wire:model="hébergement"
-                            id="response-non" value="non" required>
-                        <label class="form-check-label" for="response-non">
-                            Non
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <label for="parent-name" class="form-label">Nom de ce parent ou ami</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control" name="parent_name"
-                        wire:model="parent_name" id="parent_name" required
-                        @if ($hébergement == 'non') disabled @endif>
-                    <span class="text-danger fs-7" id="error-parentname"></span>
                 </div>
             </div>
         </div>

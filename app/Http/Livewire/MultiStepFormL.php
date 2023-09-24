@@ -109,9 +109,7 @@ class MultiStepFormL extends Component
     
     public function render()
     {
-        return view('livewire.multi-step-form',[
-            'cities' => Ville::all(),
-        ]);
+        return view('livewire.multi-step-form-l');
     }
     public function decreseStep()
     {
