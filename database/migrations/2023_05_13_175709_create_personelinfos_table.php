@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('sexe');
-            $table->date('date_naissance');
-            $table->string('lieu_naissance');
-            $table->string('email');
-            $table->string('telephone');
-            $table->string('adresse');
-            $table->string('type_piece');
-            $table->string('numero_piece');
+            $table->date('date_naissance')->nullable();
+            $table->string('lieu_naissance')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('adresse')->nullable();
+            $table->string('type_piece')->nullable();
+            $table->string('numero_piece')->nullable();
             $table->string('region');
             $table->string('localite');
             $table->string('corps_anterieur')->nullable();
@@ -36,10 +36,12 @@ return new class extends Migration
             $table->string('fonction_anterieur')->nullable();
             $table->string('service');
             $table->string('arret');
-            $table->date('date_nomination');
+            $table->date('date_nomination')->nullable();
             $table->date('date_effet');
             $table->date('date_fin');
-            $table->string('situation_matrimoniale');
+            $table->date('date_decret')->nullable();
+            $table->date('date_retrait')->nullable();
+            $table->string('situation_matrimoniale')->nullable();
             $table->timestamps();
         });
     }
