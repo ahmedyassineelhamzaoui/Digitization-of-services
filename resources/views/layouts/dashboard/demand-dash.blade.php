@@ -54,7 +54,7 @@
                         <button type="submit" name="print_info" class="btn btn-primary"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
                        </form>
                        @endif
-                       @if($item->type =="R")
+                       @if($item->type =="L")
                        <form  action="{{route('store.InformationL',['personel_id' => encrypt($userPersonelinfos[$i]->id)])}}" method="post" class="mb-3">
                         @csrf
                         <button type="submit" name="print_info" class="btn btn-primary"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
