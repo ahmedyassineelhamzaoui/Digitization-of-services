@@ -255,6 +255,7 @@ class MultiStepFormL extends Component
                         ]);
                         $application = new Application();
                         $application->id = $personelinfo->id;
+                        $application->type = "L";
                         $application->status ='en attente';
                         $application->user_id =auth()->user()->id;
                         $application->editable1 = 'yes';
