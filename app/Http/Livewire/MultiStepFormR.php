@@ -25,8 +25,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
-use App\models\Quartier;
-use App\models\Ville;
+
 
 
 class MultiStepFormR extends Component

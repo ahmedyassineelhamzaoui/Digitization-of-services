@@ -25,8 +25,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
-use App\models\Quartier;
-use App\models\Ville;
+
 
 class MultiStepForm extends Component
 {
@@ -110,9 +109,7 @@ class MultiStepForm extends Component
     
     public function render()
     {
-        return view('livewire.multi-step-form',[
-            'cities' => Ville::all(),
-        ]);
+        return view('livewire.multi-step-form');
     }
     public function decreseStep()
     {
