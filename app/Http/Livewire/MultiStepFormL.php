@@ -192,32 +192,7 @@ class MultiStepFormL extends Component
                         'date_fin' => strtoupper($this->Date_fin ),
                         'date_retrait' => strtoupper($this->Date_retrait ),
                     ]);
-                    Conjoint::create([
-                        'personelinfos_id' => $personelinfo->id,
-                        'nom_prenom' => strtoupper($this->Nom_Prénom),
-                        'fonction' => strtoupper($this->Conjoint_Fonction),
-                        'matricule_Conjoint' => strtoupper($this->Conjoint_Matricule),
-                        'service_empolyeur' => strtoupper($this->Service_employeur),
-                        'date_embauche' => strtoupper($this->Date_embauche),
-                        'adress_conjoint' => strtoupper($this->Conjoint_adresse),
-                        'regime' => strtoupper($this->Conjoint_régime),
-                        'taux_indemnite' => strtoupper($this->Taux_indemnité)
-                    ]);
-                    Previous::create([
-                        'personelinfos_id' => $personelinfo->id,
-                        'ville_precedant' => strtoupper($this->villePrecedant ),
-                        'quartier_precedant' => strtoupper($this->quartier_précédant ),
-                        'lot_precedant' => strtoupper($this->lot_n°_précédant ),
-                        'date_liberation' => strtoupper($this->Date_libération)
-                    ]);
-                    Current::create([
-                        'personelinfos_id' => $personelinfo->id,
-                        'ville_actuelle' => strtoupper($this->ville_actuelle),
-                        'quartier_actuelle' => strtoupper($this->quartier_actuelle),
-                        'lot_actuelle' => strtoupper($this->lot_n°_actuelle),
-                        'date_occupation' => strtoupper($this->Date_occupation),
-                        'nom_parent' => strtoupper($this->parent_name)
-                    ]);                       
+                               
                         $nomination = Str::random(10).$this->Décision_de_nomination->getClientOriginalName();
                         $this->Décision_de_nomination->storeAs('files',$nomination);
             
