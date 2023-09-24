@@ -114,12 +114,6 @@ Route::get('anl-detail-L',function () {
 });
 
 
-// go to form type R
-Route::get('formulaire-type-R',function () {
-    return view('livewire.multi-step-form-R');
-});
-
-
 
 
 Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
