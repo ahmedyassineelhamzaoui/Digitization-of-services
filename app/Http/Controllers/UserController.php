@@ -81,7 +81,7 @@ class UserController extends Controller
                     }else{
                         return response()->json([
                             'status'  => 'error',
-                            'message' => 'email has already been token',
+                            'message' => 'l\'e-mail a déjà été un jeton',
                         ]);
                     }
                 }else{
@@ -91,12 +91,12 @@ class UserController extends Controller
             $user->save();
             return response()->json([
                 'status' => 'success',
-                'message' => 'info updated successfuly'
+                'message' => 'informations mises à jour avec succès'
             ]);
          }
          return response()->json([
               'status' => 'error',
-              'message' => 'user not found'
+              'message' => 'utilisateur non trouvé'
          ]);
     }
     public function deleteProfile(Request $request)
@@ -106,12 +106,12 @@ class UserController extends Controller
              $userAuth->delete();
              return response()->json([
                 'status' => 'success',
-                'message' => 'Profile has been delete successfuly'
+                'message' => 'Le profil a été supprimé avec succès'
              ]);
         }
         return response()->json([
             'status' => 'error',
-            'message' => 'user not found'
+            'message' => 'utilisateur non trouvé'
         ]);
     }
     public function deleteUser(Request $request)
@@ -128,7 +128,7 @@ class UserController extends Controller
         $request->validate([
             'full_name' => 'required|string|max:255|min:3',
             'email' => 'required|string|email|max:255',
-            'password' => 'nullable|string|min:8', // Change to 'nullable'
+            'password' => 'nullable|string|min:8', 
         ]);
 
         $user = User::find($request->user_editId);
@@ -151,7 +151,7 @@ class UserController extends Controller
             if ($useremail && $useremail->email !== $user->email) {
                 return response()->json([
                     'status'  => 'error',
-                    'message' => 'cet e-mail a déjà été pris',
+                    'message' => 'E-mail a déjà été pris',
                 ]);
             }
             $user->email = $request->email;

@@ -40,7 +40,7 @@ namespace App\Http\Controllers;
                 'profile_image' => 'assets/images/default.png',
             ]);
             $user->assignRole('utilisateur');
-            return redirect()->route('login')->with('success','user created succesfuly');
+            return redirect()->route('login')->with('success','utilisateur créé avec succès');
         }
 
 
@@ -55,7 +55,7 @@ namespace App\Http\Controllers;
             $token = Auth::attempt($credentials);
 
             if (!$token) {
-                return redirect()->back()->with('error', 'Invalid email or password')->withInput();
+                return redirect()->back()->with('error', 'email ou mot de passe invalide')->withInput();
 
             }
 
@@ -116,11 +116,6 @@ namespace App\Http\Controllers;
             $user = Auth::user();
 
             if ($request->hasFile('profile_image')) {
-                // $image = $request->file('profile_image');
-                // $imagePath = $image->store('profile_images', 'public');
-                // $user->profile_image = $imagePath;
-                // $user->save();
-
                 $file= $request->file('profile_image');
                 $filename= date('YmdHi').$file->getClientOriginalName();
                 $file->move(public_path('assets/images'), $filename);

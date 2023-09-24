@@ -365,7 +365,7 @@
                     @enderror
                 </div>
                 <div class="col-md-4">
-                    <label for="Date_fin" class="form-label">Date de Retrait</label>
+                    <label for="Date_retrait" class="form-label">Date de Retrait</label>
                     <input type="date" class="form-control" id="Date_retrait" wire:model="Date_retrait"
                         name="Date_retrait" required>
                     @error('Date_retrait')

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire;
 
 use Livewire\Component;
@@ -27,8 +26,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Str;
 
 
-
-class MultiStepFormR extends Component
+class MultiStepFormL extends Component
 {
     use WithFileUploads;
 
@@ -85,11 +83,9 @@ class MultiStepFormR extends Component
     public $quartiers = null;
 
     
-
-
     public function render()
     {
-        return view('livewire.multi-step-form-R');
+        return view('livewire.multi-step-form-l');
     }
     public function decreseStep()
     {
@@ -258,7 +254,7 @@ class MultiStepFormR extends Component
                         ]);
                         $application = new Application();
                         $application->id = $personelinfo->id;
-                        $application->type = "R";
+                        $application->type = "L";
                         $application->status ='en attente';
                         $application->user_id =auth()->user()->id;
                         $application->editable1 = 'yes';

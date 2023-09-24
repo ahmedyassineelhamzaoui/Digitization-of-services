@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ville extends Model
+class PersonelinfoL extends Model
 {
     use HasFactory;
-    
-    public function quartiers()
-    {
-        return $this->hasMany(Quartier::class);
-    }
 }
