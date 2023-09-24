@@ -1,8 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
+use App\Models\Conjoint;
+use App\Models\Current;
+use App\Models\File;
+use App\Models\Personelinfo;
+use App\Models\Previous;
+use App\Models\Paiment;
+use App\Models\PaimentStatus;
+use App\Models\Application;
+use Dompdf\Dompdf;
+use App\Notifications\documentAdded;
+use Illuminate\Support\Facades\Notification;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
+use PDF;
+use Illuminate\Support\Facades\Storage;
+// use App\Mail\OrderCreated;
+
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
+
+
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+
 
 class FormControllerL extends Controller
 {
