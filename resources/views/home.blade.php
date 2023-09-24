@@ -48,7 +48,7 @@
                     <div class="card highlight h-100">
                         <div class="h-caption text-center">
                         <a href="anl-detail-R">
-                            <img src="assets/images/ANL_D.png" alt="" class="img-fluid" width="200" height="200">
+                            <img src="assets/images/ANL_R.png" alt="" class="img-fluid" width="200" height="200">
                         </a>
                         <h4>Attestation de type R</h4>
                         </div>
@@ -62,7 +62,7 @@
                     <div class="card highlight h-100">
                         <div class="h-caption text-center">
                         <a href="anl-detail-L">
-                            <img src="assets/images/ANL_C.png" alt="" class="img-fluid" width="200" height="200">
+                            <img src="assets/images/ANL_L.jpg" alt="" class="img-fluid" width="200" height="200">
                         </a>
                         <h4>Attestation de type L</h4>
                         </div>
