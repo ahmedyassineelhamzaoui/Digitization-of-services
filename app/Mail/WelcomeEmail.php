@@ -34,9 +34,7 @@ class WelcomeEmail extends Mailable
      */
     public function envelope()
     {
-        return new Envelope(
-            subject: 'Welcome Email',
-        );
+        return new Envelope(       subject: 'Suivi de votre demande',);
     }
 
     /**
@@ -53,7 +51,7 @@ class WelcomeEmail extends Mailable
 
     public function build()
     {
-        return  $this->from('sonapie@gmail.com', 'Sonapie')
+        return  $this->from('support@sonapie.anl-civ.com', 'Sonapie')
         ->markdown('emails.welcome')
         ->with([
             'user' => $this->user,
