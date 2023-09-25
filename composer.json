@@ -8,6 +8,8 @@
         "php": "^8.0.2",
         "barryvdh/laravel-dompdf": "^2.0",
         "fx3costa/laravelchartjs": "^3.0",
+        "guzzlehttp/guzzle": "^7.8",
+        "illuminate/mail": "*",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/socialite": "^5.6",

@@ -78,11 +78,11 @@ body{
       content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'><path stroke='none' d='M0 0h24v24H0z'/><path d='M5 12l5 5l10 -10'/></svg>");
       display: inline-block;
       vertical-align: middle;
-      margin-top: 20%; 
+      margin-top: 20%;
       margin-left: 5%;
-      font-weight: bold; 
+      font-weight: bold;
   }
-  
+
   .secondtwidth{
     width:50% !important;
   }
@@ -121,27 +121,27 @@ div.online-indicator {
   width: 15px;
   height: 15px;
   margin-right: 10px;
-  
+
   background-color: #0fcc45;
   border-radius: 50%;
-  
+
   position: relative;
 }
 span.blink {
   display: block;
   width: 15px;
   height: 15px;
-  
+
   background-color: #0fcc45;
   opacity: 0.7;
   border-radius: 50%;
-  
+
   animation: blink 1s linear infinite;
-}  
+}
 /*Animations*/
 
 @keyframes blink {
-  100% { transform: scale(2, 2); 
+  100% { transform: scale(2, 2);
           opacity: 0;
         }
 }
@@ -238,14 +238,14 @@ nav.navbar .navbar-brand img{
 .navbar .register .sign-in{
     border: 1px solid var(--btn-color);
     color: var(--white-color);
-     background-color: var(--btn-color); 
+     background-color: var(--btn-color);
 }
 
 .navbar .register .sign-in:hover,
 .navbar .register .sign-in:focus{
     border: 1px solid var(--btn-color);
     color: var(--btn-color);
-    background-color: var(--white-color); 
+    background-color: var(--white-color);
     transition: all 0.3s ease-in;
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
@@ -277,10 +277,30 @@ header .header-title p{
     margin-left: 2rem;
 }
 
-/* styling the main sections */
+/* style  the section => about us */
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about .about-section{
+    text-align: center;
+    width: 80%;
+    padding: 20px;
+}
+
+.about .about-section h2{
+    font-weight: 500;
+}
+
+.about .about-section p{
+    font-size: 16px;
+}
+
+/* styling the  section => services */
 main .procedure .procedure-btn a{
      background-color: var(--btn-color);
-    
+
     color: var(--white-color);
     margin-bottom: 5rem;
     padding: 1rem 3rem;
@@ -347,6 +367,113 @@ main .procedure .procedure-cards .highlight .h-body p a{
     -moz-border-radius: 0;
     -ms-border-radius: 0;
     -o-border-radius: 0;
+}
+
+
+/*************** styling section contact**************/
+.contact{
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+.contact .container{
+    background: #fff;
+    /* box-shadow: 0 0 30px #ededed; */
+    box-shadow: 0 0 30px #bfbebe;
+
+    padding: 60px 40px;
+}
+.contact h5{
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 40px;
+    font-size: 35px;
+    color: #000;
+    font-weight: 500;
+}
+.contact .form form .form-group input,
+.contact .form form .form-group textarea{
+    font-size: 18px;
+    line-height: 35px;
+    border-radius: 3px;
+    border: 2px solid #f1f1f1;
+    color: #2f2c2c;
+    padding-left: 40px;
+}
+.contact .form form .form-group input:focus,
+.contact .form form .form-group textarea:focus{
+    border: 1px solid var(--primary-color);
+    outline: 1px solid var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color); /* Add a box shadow to create the new outline */
+
+}
+.contact .form form .form-group textarea{
+    min-height: 220px;
+    max-height: 220px;
+}
+.contact .form form .form-group{
+    position: relative;
+}
+.contact .form form .form-group::before{
+    font-size: 18px;
+    line-height: 25px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    font-family: FontAwesome;
+    /* color: #00B4D9; */
+    color: var(--primary-color);
+    display: inline-block;
+}
+.contact .form form .form-group:first-of-type::before{
+    content: "\f007";
+}
+.contact .form form .form-group:nth-of-type(2)::before{
+    content: "\f0e0";
+}
+.contact .form form button{
+    font-size: 24px;
+    line-height: 25px;
+    /* color: #00B4D9; */
+    color: var(--primary-color);
+    background-color: #ffffff;
+    padding: 10px 70px;
+    /* border: 2px solid #00B4D9; */
+    border: 2px solid var(--primary-color);
+    border-radius: 3px;
+    /* margin-left: 15px; */
+}
+.contact form .error{
+    color: red;
+}
+.contact ul.contact-us li{
+    font-size: 16px;
+    line-height: 30px;
+    /* color: #00B4D9; */
+    color: var(--primary-color);
+}
+.contact ul{
+    padding: 0px;
+}
+.contact ul.social li a i{
+    background-color: #ffc527;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+.contact ul.social li a i:hover,
+.contact ul.social li a i:focus,
+.contact ul.social li a i:active{
+    /* background-color: #00B4D9; */
+    background-color: var(--primary-color);
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
 }
 
 
