@@ -65,11 +65,24 @@
                                 <div class="invalid-feedback text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-outline mb-4">
+                    {{-- <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example28">Mot de Passe</label>
                         <input type="password" name="password" value="{{ old('password') }}" id="form2Example28" class="form-control form-control-lg @error('password') is-invalid @enderror"/>
                         @error('password')
                                 <div class="invalid-feedback text-danger">{{ $message }}</div>
+                        @enderror
+                    </div> --}}
+
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example28">Mot de Passe</label>
+                        <div class="input-group">
+                            <input type="password" name="password" value="{{ old('password') }}" id="form2Example28" class="form-control form-control-lg @error('password') is-invalid @enderror"/>
+                            <button class="btn btn-secondary" type="button" id="showPasswordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        @error('password')
+                            <div class="invalid-feedback text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -94,4 +107,21 @@
         </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+<script>
+    const passwordInput = document.getElementById("form2Example28");
+    const toggleButton = document.getElementById("showPasswordToggle");
+
+    toggleButton.addEventListener("click", function() {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordInput.value = passwordInput.value; // Show the password value
+        } else {
+            passwordInput.type = "password";
+        }
+        toggleButton.classList.toggle("active");
+    });
+</script>
 @endsection
