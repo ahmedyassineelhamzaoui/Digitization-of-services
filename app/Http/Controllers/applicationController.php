@@ -184,7 +184,7 @@ class applicationController extends Controller
             $application->save();
             $operation = $request->input('status_name');
 
-            $personelinfo = personelinfo::where('id', $application->id)->first();
+            $personelinfo = Personelinfo::where('id', $application->id)->first();
             $previous = Previous::where('personelinfos_id', $personelinfo->id)->first();
             $current = Current::where('personelinfos_id', $personelinfo->id)->first();
             $conjoint = Conjoint::where('personelinfos_id', $personelinfo->id)->first();
