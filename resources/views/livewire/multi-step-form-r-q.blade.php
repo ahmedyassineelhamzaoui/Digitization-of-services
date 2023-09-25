@@ -37,10 +37,11 @@
                 <div  class="col-md-3 form-check "> <input class="form-check-input" wire:model="statut" name="statut" type="radio" value="privé" id="privé"> <label class="form-check-label" for="privé"> Privé</label> </div>
                 <div class="col-md-3 form-check"> <input class="form-check-input" wire:model="statut"  name="statut" type="radio" value="public" id="public"> <label class="form-check-label" for="public"> Public </label> </div> 
                 <div class="col-md-6">
-                    <label for="registration-number" class="form-label">Secteur d'acctivité</label>
-                    <input type="text" class="form-control" style="text-transform: uppercase" name="secteur_ac􀆟vite"
-                        id="secteur_ac􀆟vite" wire:model="secteur_ac􀆟vite">
-                    @error('secteur_ac􀆟vite')
+                    <label for="Secteur_activite" class="form-label">Secteur d’activité</label>
+                    <input type="text" style="text-transform: uppercase" class="form-control"
+                        id="Secteur_activite" wire:model="Secteur_activite" name="Secteur_activite"
+                        required>
+                    @error('Secteur_activite')
                         <span class="text-danger fs-7">{{ $message }}</span>
                     @enderror
                 </div>
@@ -136,104 +137,6 @@
                         <span class="text-danger fs-7">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-md-4">
-                    <label for="Contact" class="form-label">Contact (Tel/Cel)</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        id="Contact" wire:model="Contact" name="Contact"
-                        required>
-                    @error('Contact')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="Adresse" class="form-label">Adresse</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        id="Adresse" wire:model="Adresse" name="Adresse"
-                        required>
-                    @error('Adresse')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="Mail" class="form-label">Mail</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        id="Mail" wire:model="Mail" name="Mail"
-                        required>
-                    @error('Mail')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="Ville" class="form-label">Ville</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        id="Ville" wire:model="Ville" name="Ville"
-                        required>
-                    @error('Ville')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="Quartier" class="form-label">Quartier</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        id="Quartier" wire:model="Quartier" name="Quartier"
-                        required>
-                    @error('Quartier')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="type_batiment" class="form-label">Type de batimment</label>
-                    <select id="type_batiment" name="type_batiment" wire:model="type_batiment" class="form-select">
-                        <option value="Immeuble">Immeuble</option>
-                        <option value="Duplex">Duplex</option>
-                        <option value="Villabasse">Villabasse</option>
-                        <option value="Maison en bande">Maison en bande</option>
-                        <option value="Magasin">Magasin</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="Standing" class="form-label">Standing</label>
-                    <select id="Standing" name="Standing" wire:model="Standing" class="form-select">
-                        <option value="Haut">Haut</option>
-                        <option value="Moyen">Moyen</option>
-                        <option value="Modéré">Modéré</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="ILot" class="form-label">ILot</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        id="ILot" wire:model="ILot" name="ILot"
-                        required>
-                    @error('ILot')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-3">
-                    <label for="Lot" class="form-label">Lot</label>
-                    <input type="text" style="text-transform: uppercase" class="form-control"
-                        id="Lot" wire:model="Lot" name="Lot"
-                        required>
-                    @error('Lot')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-md-3">
-                    <label for="Usage" class="form-label">Usage</label>
-                    <select id="Usage" name="Usage" wire:model="Usage" class="form-select">
-                        <option value="Bureau">Bureau</option>
-                        <option value="Habita􀆟on">Habita􀆟on</option>
-                        <option value="Autres">Autres</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="date_occupation" class="form-label">Date d’occupa􀆟on</label>
-                    <input type="date" class="form-control" id="date_occupation" wire:model="date_occupation"
-                        name="date_occupation" required>
-                    @error('date_occupation')
-                        <span class="text-danger fs-7">{{ $message }}</span>
-                    @enderror
-                </div>
-               
                 @endif
                 @if($radio=="physique")
                 <div  class="col-md-6 form-check "> <input class="form-check-input" wire:model="statut" name="statut" type="radio" value="privé" id="privé"> <label class="form-check-label" for="privé"> Privé</label> </div>
@@ -339,6 +242,16 @@
                         <span class="text-danger fs-7">{{ $message }}</span>
                     @enderror
                 </div>
+                @endif
+                <div class="col-md-4">
+                    <label for="Contact" class="form-label">Contact (Tel/Cel)</label>
+                    <input type="text" style="text-transform: uppercase" class="form-control"
+                        id="Contact" wire:model="Contact" name="Contact"
+                        required>
+                    @error('Contact')
+                        <span class="text-danger fs-7">{{ $message }}</span>
+                    @enderror
+                </div>
                 <div class="col-md-4">
                     <label for="Adresse" class="form-label">Adresse</label>
                     <input type="text" style="text-transform: uppercase" class="form-control"
@@ -428,8 +341,6 @@
                     @enderror
                 </div>
                
-                @endif
-                
             </div> 
         </div>
     @endif

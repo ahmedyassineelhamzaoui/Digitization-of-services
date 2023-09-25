@@ -36,10 +36,24 @@ class MultiStepFormRQ extends Component
 
     //user info
 
-
-    
-
-
+    public $Secteur_activite;
+    public $person_ministry;
+    public $Service_Etablissement;
+    public $raison_sociale;
+    public $Sigle;
+    public $Contact;
+    public $Adresse;
+    public $Mail;
+    public $Ville;
+    public $Quartier;
+    public $type_batiment;
+    public $Standing;
+    public $ILot;
+    public $Lot;
+    public $Usage;
+    public $date_occupation; 
+    public $Fonctionaire;
+    public $Matricule;
 
     // files
     public $Décision_de_nomination;
@@ -61,6 +75,7 @@ class MultiStepFormRQ extends Component
     public $nature_recette;
     public $numéro_avis_de_recette;
     public $montant_total;
+    public $statut;
 
     public $displayerrors = false;
     public $errormessage = '';
@@ -96,18 +111,38 @@ class MultiStepFormRQ extends Component
     public function validateData()
     {
         if($this->curentStep == 1){
-            $this->validate([
-                'Matricule' => 'required|string',
-                'Nom' => 'required|string|min:2',
-                'Prenom' => 'required|string|min:2',
-                'Fonction' => 'required|string|min:4',
-                'Service_Etablissement' => 'required|string|min:4',
-                'Arret' => 'required|string',
-                'Date_retrait' => 'required',
-                'Date_decret'  => 'required',
-                'Date_effet' => 'required',
-                'Date_fin' => 'required',
-            ]);
+            if($this->radio =="physique"){
+                $this->validate([
+                    'Matricule' => 'required|string',
+                    'Fonctionaire' => 'required|string|min:2',
+                    'Lot' => 'required|string|min:4',
+                    'Service_Etablissement' => 'required|string|min:4',
+                    'ILot' => 'required|string',
+                    'date_occupation' => 'required',
+                    'Quartier' => 'required',
+                    'Ville'  => 'required',
+                    'Mail' => 'required',
+                    'Adresse' => 'required',
+                    'Contact'  => 'required',
+                    'Secteur_activite' => 'required'
+                ]);
+            }else{
+                $this->validate([
+                    'Lot' => 'required|string|min:4',
+                    'Service_Etablissement' => 'required|string|min:4',
+                    'ILot' => 'required|string',
+                    'date_occupation' => 'required',
+                    'Quartier' => 'required',
+                    'Ville'  => 'required',
+                    'Mail' => 'required',
+                    'Adresse' => 'required',
+                    'Contact'  => 'required',
+                    'Sigle' => 'required',
+                    'raison_sociale' => 'required',
+                    'Secteur_activite' => 'required'
+                ]);
+            }
+            
         }else if($this->curentStep == 2){
             $this->validate([
                 'Décision_de_nomination' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
@@ -160,26 +195,49 @@ class MultiStepFormRQ extends Component
                 $responseData = $response->getBody()->getContents();
                 $responseMesssage = json_decode($responseData, true)['response_message'];
                 $responseCode = json_decode($responseData, true)['response_code'];
-                if ($responseCode == 1) {       
-                    
+                if ($responseCode == 1) {    
+                       
+                    if($this->radio =="physique"){
                     $personelinfo=personelinfo::create([
-                        'matricule' => strtoupper($this->Matricule),
-                        'nom' => strtoupper($this->Nom ),
-                        'prenom' => strtoupper($this->Prenom ),
-                        'sexe' => strtoupper($this->person_sexe ),
-                        'region' => strtoupper($this->person_region ),
-                        'localite' => strtoupper($this->person_locality ),
-                        'corps_anterieur' => strtoupper($this->anterior_body ),
-                        'corps' => strtoupper($this->person_body),
-                        'minstere' => strtoupper($this->person_ministry ),
-                        'fonction' => strtoupper($this->Fonction ),
-                        'service' => strtoupper($this->Service_Etablissement ),
-                        'arret' => strtoupper($this->Arret ),
-                        'date_decret' => strtoupper($this->Date_decret ),
-                        'date_effet' => strtoupper($this->Date_effet ),
-                        'date_fin' => strtoupper($this->Date_fin ),
-                        'date_retrait' => strtoupper($this->Date_retrait ),
+                                'Matricule' => strtoupper($this->Matricule),
+                                'Fonctionaire' => strtoupper($this->Fonctionaire),
+                                'Lot' => strtoupper($this->Lot),
+                                'service' => strtoupper($this->Service_Etablissement),
+                                'ILot' => strtoupper($this->ILot),
+                                'date_occupation' => strtoupper($this->date_occupation),
+                                'Quartier' => strtoupper($this->Quartier),
+                                'Ville'  => strtoupper($this->Ville),
+                                'email' => strtoupper($this->Mail),
+                                'Adresse' => strtoupper($this->Adresse),
+                                'telephone'  => strtoupper($this->Contact),
+                                'raisonsociale' => strtoupper($this->raison_sociale),
+                                'secteur' => strtoupper($this->Secteur_activite),
+                                'minstere' => strtoupper($this->person_ministry),
+                                'Standing' => strtoupper($this->Standing),
+                                'type_batiment' => strtoupper($this->type_batiment),
+                                'Usage' => strtoupper($this->Usage),
                     ]);
+                }else{
+                    $personelinfo=personelinfo::create([
+                            'Lot' => strtoupper($this->Lot),
+                            'service' => strtoupper($this->Service_Etablissement),
+                            'ILot' => strtoupper($this->ILot),
+                            'date_occupation' => strtoupper($this->date_occupation),
+                            'Quartier' => strtoupper($this->Quartier),
+                            'Ville'  => strtoupper($this->Ville),
+                            'Mail' => strtoupper($this->Mail),
+                            'Adresse' => strtoupper($this->Adresse),
+                            'telephone'  => strtoupper($this->Contact),
+                            'Sigle' => strtoupper($this->Sigle),
+                            'raisonsociale' => strtoupper($this->raison_sociale),
+                            'secteur' => strtoupper($this->Secteur_activite),
+                            'minstere' => strtoupper($this->person_ministry),
+                            'Standing' => strtoupper($this->Standing),
+                            'type_batiment' => strtoupper($this->type_batiment),
+                            'Usage' => strtoupper($this->Usage),
+                            
+                ]);         
+                }
                                
                         $nomination = Str::random(10).$this->Décision_de_nomination->getClientOriginalName();
                         $this->Décision_de_nomination->storeAs('files',$nomination);

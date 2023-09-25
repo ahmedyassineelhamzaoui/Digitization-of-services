@@ -34,22 +34,22 @@ class UserSeeder extends Seeder
            
             $controller1 = User::create([
                 'full_name' => 'Coulibaly Fanta', 
-                'email' => 'Coulibaly@gmail.com',
-                'password' => bcrypt('Coulibaly@gmail.com'),
+                'email' => 'Marie-Laure@gmail.com',
+                'password' => bcrypt('Marie-Laure@gmail.com'),
             ]);
         
             $controller1->assignRole('controleur 1');
 
             $controller2 = User::create([
                 'full_name' => 'Koffi Abiba', 
-                'email' => 'Abiba@gmail.com',
+                'email' => 'Momonicamara@gmail.com',
                 'password' => bcrypt('Abiba@gmail.com'),
             ]);
         
             $controller2->assignRole('controleur 2');
             $controller3 = User::create([
                 'full_name' => 'Diarrassouba Bakary', 
-                'email' => 'Bakary@gmail.com',
+                'email' => 'Konéponseni@gmail.com',
                 'password' => bcrypt('Bakary@gmail.com'),
             ]);
         
