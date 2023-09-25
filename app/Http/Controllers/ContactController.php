@@ -26,6 +26,6 @@ class ContactController extends Controller
         Mail::to('toufikshima98@gmail.com')->send(new ContactFormMail($validatedData));
 
         // Optionally, you can flash a success message or redirect the user to a thank you page
-        return redirect()->back()->with('success', 'Your message has been sent successfully!');
+        return redirect()->back()->with('success', 'Votre message a été envoyé avec succès!');
     }
 }
