@@ -14,14 +14,18 @@ return [
     |
     */
     'google' => [
-        'client_id' => '393516152554-l5ojrqgb6ujutn42gqjq4rhcguj0mfm2.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'https://anl-civ.com/auth/google/callback'
+        'client_id' => '349593428391-jtli5lqh00pusejrlntjivv9fju9tu4j.apps.googleusercontent.com',
+        'client_secret' => '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',
+        // 'redirect' => 'https://anl-civ.com/auth/google/callback'
+        'redirect' => 'http://127.0.0.1:8000/auth/google/callback'
+
     ],
     'facebook' => [
-        'client_id' => '657858242717609',
-        'client_secret' => 'c06ca6d4f70e3347d6641677975bd718',
-        'redirect' => 'https://anl-civ.com/auth/facebook/callback'
+        'client_id' => '871763501027609',
+        'client_secret' => 'c663bfcf012f1e8c287f682e4e96895e',
+        // 'redirect' => 'https://anl-civ.com/auth/facebook/callback'
+        'redirect' => 'http://127.0.0.1:8000/auth/facebook/callback'
+
     ],
 
     'mailgun' => [
@@ -41,6 +45,6 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    
+
 
 ];
