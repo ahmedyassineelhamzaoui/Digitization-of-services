@@ -35,8 +35,8 @@ class FormControllerRQ extends Controller
         }
 
         public function index()
-        {
-            return view('personelInfo-r');
+        {                
+            return view('personelInfoRQ');
         }
            public function storeInfo(Request $request, $personel_id)
         {

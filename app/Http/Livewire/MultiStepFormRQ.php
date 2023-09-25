@@ -35,23 +35,9 @@ class MultiStepFormRQ extends Component
     public $totalSteps=3;
 
     //user info
-    public $Matricule;
-    public $Nom;
-    public $Prenom;
-    public $person_sexe;
 
-    public $person_region;
-    public $person_locality;
-    public $anterior_body;
-    public $person_body;
-    public $person_ministry;
-    public $Fonction;
-    public $Service_Etablissement;
-    public $Arret;
-    public $Date_effet;
-    public $Date_fin;
-    public $Date_retrait;
-    public $Date_decret;
+
+    
 
 
 
@@ -82,7 +68,7 @@ class MultiStepFormRQ extends Component
     public $isLoading = false;
 
     public $quartiers = null;
-
+    public $radio ="physique";
     
 
 
