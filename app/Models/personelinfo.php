@@ -49,7 +49,7 @@ class personelinfo extends Model
         'Fonctionaire',
         'date_decret',
         'date_retrait',
-        
+        'person',
  ];
 
     public function application()

@@ -50,6 +50,7 @@ return new class extends Migration
             $table->string('Ville')->nullable();
             $table->string('date_occupation')->nullable();
             $table->string('Fonctionaire')->nullable();
+            $table->string('person')->nullable();
 
 
             $table->date('date_nomination')->nullable();

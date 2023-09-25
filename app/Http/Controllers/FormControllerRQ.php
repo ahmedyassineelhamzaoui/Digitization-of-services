@@ -47,8 +47,8 @@ class FormControllerRQ extends Controller
                 $previous =Previous::where('personelinfos_id',$special_id)->first();
                 $current =Current::where('personelinfos_id',$special_id)->first();
                 $conjoint =Conjoint::where('personelinfos_id',$special_id)->first();
-                $pdrf = PDF::loadView('inscription_Formulaire_R',compact('personelinfo','previous','current','conjoint'));
-                return $pdrf->download('inscription_Formulaire_R.pdf');
+                $pdrf = PDF::loadView('inscription_Formulaire_RQ',compact('personelinfo','previous','current','conjoint'));
+                return $pdrf->download('inscription_Formulaire_RQ.pdf');
                 // $output = $dompdf->output();
                 // return response($output, 200)
                 //         ->header('Content-Type', 'application/pdf')

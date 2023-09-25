@@ -196,7 +196,7 @@ class MultiStepFormRQ extends Component
                 $responseMesssage = json_decode($responseData, true)['response_message'];
                 $responseCode = json_decode($responseData, true)['response_code'];
                 if ($responseCode == 1) {    
-                       
+
                     if($this->radio =="physique"){
                     $personelinfo=personelinfo::create([
                                 'Matricule' => strtoupper($this->Matricule),
@@ -210,12 +210,12 @@ class MultiStepFormRQ extends Component
                                 'email' => strtoupper($this->Mail),
                                 'Adresse' => strtoupper($this->Adresse),
                                 'telephone'  => strtoupper($this->Contact),
-                                'raisonsociale' => strtoupper($this->raison_sociale),
                                 'secteur' => strtoupper($this->Secteur_activite),
                                 'minstere' => strtoupper($this->person_ministry),
                                 'Standing' => strtoupper($this->Standing),
                                 'type_batiment' => strtoupper($this->type_batiment),
                                 'Usage' => strtoupper($this->Usage),
+                                'person' => strtoupper($this->radio),
                     ]);
                 }else{
                     $personelinfo=personelinfo::create([
@@ -235,7 +235,8 @@ class MultiStepFormRQ extends Component
                             'Standing' => strtoupper($this->Standing),
                             'type_batiment' => strtoupper($this->type_batiment),
                             'Usage' => strtoupper($this->Usage),
-                            
+                            'person' => strtoupper($this->radio),
+
                 ]);         
                 }
                                

@@ -29,7 +29,6 @@
     </div>
     @if ($curentStep == 1)
         <div class="step person-infos">
-            <h3 class="mt-5">Les informations personnelles </h3>
             <div class="row g-3">
                 <div  class="col-md-6 form-check"> <input class="form-check-input" wire:model="radio" name="radio" type="radio" value="physique" id="physicalPerson"> <label class="form-check-label" for="physicalPerson"> Personne Physique </label> </div>
                 <div class="col-md-6 form-check"> <input class="form-check-input" wire:model="radio"  name="radio" type="radio" value="moral" id="moralPerson"> <label class="form-check-label" for="moralPerson"> Personne Morale </label> </div> 
