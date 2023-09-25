@@ -34,7 +34,22 @@ class personelinfo extends Model
         'date_nomination' ,
         'date_effet',
         'date_fin',
-        'situation_matrimoniale'
+        'situation_matrimoniale',
+        'secteur',
+        'raisonsociale',
+        'Sigle',
+        'type_batiment',
+        'Quartier',
+        'Standing',
+        'ILot',
+        'Lot',
+        'Usage',
+        'Ville',
+        'date_occupation',
+        'Fonctionaire',
+        'date_decret',
+        'date_retrait',
+        'person',
  ];
 
     public function application()
