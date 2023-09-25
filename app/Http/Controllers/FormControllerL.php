@@ -44,7 +44,7 @@ class FormControllerL extends Controller
         
         if($request->has('print_info')){
             $special_id = decrypt($personel_id);
-            $personelinfo = personelinfo::where('id',$special_id)->first();
+            $personelinfo = Personelinfo::where('id',$special_id)->first();
             $previous =Previous::where('personelinfos_id',$special_id)->first();
             $current =Current::where('personelinfos_id',$special_id)->first();
             $conjoint =Conjoint::where('personelinfos_id',$special_id)->first();

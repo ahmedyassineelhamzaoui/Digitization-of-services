@@ -217,7 +217,7 @@ class MultiStepForm extends Component
                 $responseCode = json_decode($responseData, true)['response_code'];
                 if ($responseCode == 1) {       
                     
-                    $personelinfo=personelinfo::create([
+                    $personelinfo=Personelinfo::create([
                         'matricule' => strtoupper($this->Matricule),
                         'nom' => strtoupper($this->Nom ),
                         'prenom' => strtoupper($this->Prenom ),

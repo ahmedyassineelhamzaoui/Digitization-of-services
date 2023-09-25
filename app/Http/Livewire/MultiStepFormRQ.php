@@ -198,7 +198,7 @@ class MultiStepFormRQ extends Component
                 if ($responseCode == 1) {    
 
                     if($this->radio =="physique"){
-                    $personelinfo=personelinfo::create([
+                    $personelinfo=Personelinfo::create([
                                 'Matricule' => strtoupper($this->Matricule),
                                 'Fonctionaire' => strtoupper($this->Fonctionaire),
                                 'Lot' => strtoupper($this->Lot),
@@ -218,7 +218,7 @@ class MultiStepFormRQ extends Component
                                 'person' => strtoupper($this->radio),
                     ]);
                 }else{
-                    $personelinfo=personelinfo::create([
+                    $personelinfo=Personelinfo::create([
                             'Lot' => strtoupper($this->Lot),
                             'service' => strtoupper($this->Service_Etablissement),
                             'ILot' => strtoupper($this->ILot),
