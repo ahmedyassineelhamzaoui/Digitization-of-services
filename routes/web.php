@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FormControllerL;
 use App\Http\Controllers\FormControllerR;
+use App\Http\Controllers\FormControllerRQ;
+
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\ApplicationController;
@@ -68,7 +70,10 @@ Route::controller(FormControllerR::class)->group(function(){
     Route::post('/formulaire-ANL-R/{personel_id}','storeInfo')->name('store.InformationR');
     Route::get('/formulaire-ANL-R', 'index');
 });
-
+Route::controller(FormControllerRQ::class)->group(function(){
+    Route::post('/formulaire-ANL-RQ/{personel_id}','storeInfo')->name('store.InformationRQ');
+    Route::get('/formulaire-ANL-RQ', 'index');
+});
 Route::controller(RoleController::class)->group(function(){
    Route::get('roles','getRoles');
    Route::post('roles','createRole')->name('create.role');
@@ -117,6 +122,10 @@ Route::get('anl-detail-L',function () {
     return view('anl-detail-L');
 });
 
+// anl detail route type RQ
+Route::get('anl-detail-R-Q',function () {
+    return view('anl-detail-R-Q');
+});
 
 // route for contact form
 
