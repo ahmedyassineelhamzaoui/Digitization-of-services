@@ -86,7 +86,7 @@ class AnalyticController extends Controller
         $endDate = date('Y-m-d', strtotime('sunday this week'));
         // Get the number of applications by day of the week for the current week
         $ordersByDayOfWeek = [0,0,0,0,0,0,0];
-        
+
         $myapplications =  DB::table('applications')
         ->select(DB::raw('DATE(created_at) as day'), DB::raw('CAST(COUNT(*) AS UNSIGNED) as count'))
         ->whereBetween('created_at', [$startDate.' 00:00:00', $endDate.' 23:59:59'])

@@ -13,6 +13,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AnalyticController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ContactController;
 
 
 // use App\Http\Livewire\SearchApplications;
@@ -116,6 +117,11 @@ Route::get('anl-detail-L',function () {
     return view('anl-detail-L');
 });
 
+
+// route for contact form
+
+// Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
 
 
 
