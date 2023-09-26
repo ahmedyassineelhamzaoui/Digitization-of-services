@@ -17,8 +17,8 @@ return [
         'client_id' => '349593428391-jtli5lqh00pusejrlntjivv9fju9tu4j.apps.googleusercontent.com',
         'client_secret' => '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',
         // 'redirect' => 'https://anl-civ.com/auth/google/callback'
-        // 'redirect' => 'http://127.0.0.1:8000/auth/google/callback'
-        'redirect' => 'https://sonapie.anl-civ.com/auth/google/callback'
+        'redirect' => 'http://127.0.0.1:8000/auth/google/callback'
+        // 'redirect' => 'https://sonapie.anl-civ.com/auth/google/callback'
 
     ],
     'facebook' => [
