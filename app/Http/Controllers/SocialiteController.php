@@ -21,10 +21,10 @@ class SocialiteController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    // public function redirectToFacebook()
-    // {
-    //     return Socialite::driver('facebook')->redirect();
-    // }
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -51,7 +51,7 @@ class SocialiteController extends Controller
                     'social_type' => 'google'
                 ]);
                 $new_user->assignRole('utilisateur');
-        
+
                 Auth::login($new_user);
                 // return redirect('/home');
                 return redirect()->route('home')->with('success', 'Welcome '. $new_user->full_name);
@@ -63,36 +63,36 @@ class SocialiteController extends Controller
         }
     }
 
-    // public function handleFacebookCallback()
-    // {
-    //     try {
-    //         $user = Socialite::driver('facebook')->user();
-    //         $finduser = User::where('social_id', $user->id)->first();
+    public function handleFacebookCallback()
+    {
+        try {
+            $user = Socialite::driver('facebook')->user();
+            $finduser = User::where('social_id', $user->id)->first();
 
-    //         if($finduser) {
-    //             Auth::login($finduser);
-    //             // return redirect('/home');
-    //             return redirect()->route('home')->with('success', 'Welcome '. $finduser->full_name);
+            if($finduser) {
+                Auth::login($finduser);
+                // return redirect('/home');
+                return redirect()->route('home')->with('success', 'Welcome '. $finduser->full_name);
 
-    //         }else{
-    //             $new_user = User::create([
-    //                 'full_name' => $user->name,
-    //                 'email' => $user->email,
-    //                 'password' => Hash::make('my-facebook'),
-    //                 'social_id' => $user->id,
-    //                 'social_type' => 'facebook'
-    //             ]);
+            }else{
+                $new_user = User::create([
+                    'full_name' => $user->name,
+                    'email' => $user->email,
+                    'password' => Hash::make('my-facebook'),
+                    'social_id' => $user->id,
+                    'social_type' => 'facebook'
+                ]);
 
-    //             Auth::login($new_user);
-    //             // return redirect('/home');
-    //             return redirect()->route('home')->with('success', 'Welcome '. $new_user->full_name);
+                Auth::login($new_user);
+                // return redirect('/home');
+                return redirect()->route('home')->with('success', 'Welcome '. $new_user->full_name);
 
 
-    //         }
-    //     } catch (\Exception $e) {
-    //         dd($e->getMessage());
-    //     }
-    // }
+            }
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
 
     /**
      * Store a newly created resource in storage.
