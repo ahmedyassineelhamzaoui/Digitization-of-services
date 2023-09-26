@@ -114,7 +114,7 @@
         <!--section contact-->
         <section class="contact" id="contact">
             <div class="container">
-                <h5 class="text-center">contact me</h5>
+                <h5 class="text-center">Contactez-nous</h5>
                 <div class="row wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" style="visibility: visible;">
                     <div class="col-md-8">
                         <div class="form">
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="col-6">
                                     <button type="submit" value="submit" name="submit"
-                                        class="btn btn-lg btn-outline-primary submit form-submit">send</button>
+                                        class="btn btn-lg btn-outline-primary submit form-submit">envoyer</button>
                                 </div>
                             </form>
                         </div>
@@ -156,7 +156,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
-                                nouhi073@gmail.com
+                                sonapie@gmail.com
                             </li>
                         </ul>
                         <hr>
