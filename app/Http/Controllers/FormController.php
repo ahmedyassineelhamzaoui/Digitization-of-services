@@ -63,6 +63,31 @@ class FormController extends Controller
             }
 
         }
+        public function storebordeareu(Request $request)
+        {
+            
+            if($request->has('print_bordereau')){
+                $personelinfo = Personelinfo::all();
+                $previous =Previous::all();
+                $current =Current::all();
+                $conjoint =Conjoint::all();
+                $pdrf =  PDF::loadView('bordereaux', compact('personelinfo','current','previous','conjoint'))
+           ->setPaper('a4', 'landscape')  
+           ->setOrientation('landscape');
+                return $pdrf->download('bordereaux.pdf');
+                // $output = $dompdf->output();
+                // return response($output, 200)
+                //         ->header('Content-Type', 'application/pdf')
+                //         ->header('Content-Disposition', 'attachment; filename="inscription.pdf"');
+                // return redirect()->back()->with('succès','votre demnade a été bien télecharger');
+            }
+            if($request->has('print_payment')){
+                $paiment =Paiment::where('personelinfos_id',decrypt($personel_id))->first();
+                $pdf = PDF::loadView('paiment',compact('paiment'));
+                return $pdf->download('paiment.pdf');
+            }
+
+        }
         public function download($file)
         {
             

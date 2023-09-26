@@ -20,7 +20,12 @@
         </button>
     </div>
     @endif
-   
+    <div class="d-flex justify-content-end">
+    <form action="{{route('store.Bordeaureu')}}"  method="post" class="mb-3">
+        @csrf
+        <button type="submit" name="print_bordereau" class="btn btn-primary"><span class="me-2"><i class="fa-solid fa-file-invoice"></i></span> Télécharger</button>
+    </form>
+    </div>
     <div class="table-responsive border border-primary shadow-lg p-3 mb-5 bg-body rounded">
         <input type="search" id="search-demande" name="search_demande" class="form-control mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 ps-10 py-2.5" placeholder="Chercher par nom ou par statut" required>
         <table class="table">

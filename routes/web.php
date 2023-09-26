@@ -59,6 +59,8 @@ Route::controller(UserController::class)->group(function(){
 });
 Route::controller(FormController::class)->group(function(){
    Route::post('/formulaire/{personel_id}','storeInfo')->name('store.Information');
+   Route::post('/formulaire','storebordeareu')->name('store.Bordeaureu');
+
    Route::get('/formulaire','index');
 });
 Route::controller(FormControllerL::class)->group(function(){
