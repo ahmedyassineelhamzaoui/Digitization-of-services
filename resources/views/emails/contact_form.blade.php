@@ -3,7 +3,6 @@
 
 <head>
     <title>ANL Contact Form Submission</title>
-    <!-- Link Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
@@ -59,7 +58,6 @@
             </div>
         </div>
     </div>
-    <!-- Link Bootstrap JS (Optional if you need JavaScript functionality) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
