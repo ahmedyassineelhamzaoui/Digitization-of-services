@@ -34,11 +34,6 @@
                 <a href="/login" class="btn btn-outline-success sign-in">Connexion</a>
             </div>
         @endif
-
-        {{-- <div class="d-flex register" role="search">
-            <a href="/register" class="btn btn-outline-success me-3 sign-up">Sign Up</a>
-            <a href="/login" class="btn btn-outline-success sign-in">Sign In</a>
-        </div> --}}
     </div>
     </div>
 </nav>
