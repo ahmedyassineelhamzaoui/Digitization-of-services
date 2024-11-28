@@ -11,11 +11,13 @@ use Illuminate\Validation\Rule;
 
 class RoleController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     
+    private $roleService;
+
+    public function __construct(RoleService $roleService)
+    {
+        $this->roleService = $roleService;
+    }
 
     public function getRoles()
     {
@@ -31,40 +33,26 @@ class RoleController extends Controller
         }
         return view('errors.403');
     }
-   
-    
-    
+
+
     public function updateRole(Request $request)
     {
-        $user=auth()->user();
-        if(!$user){
+        $user = auth()->user();
+        if (!$user) {
             return view('errors.404');
         }
-        if($user->hasPermissionTo('modifier-rôle')){
-         
-            $role = Role::find($request->role_editId);
-            $role_exist = Role::where('name',$request->name)->first();
-            if($role_exist){
-                if($role_exist->name == $role->name){
-                    $role->name = $request->name;
-                    $role->syncPermissions($request->permission);
-                    $role->save();
-            
-                    return response()->json([
-                        'message' => 'le rôle a été bien modifier '
-                    ]);
-                }
-                return response()->json([
-                    'error' => 'ce rôle déja existe '
-                ]);
-            }else{
-                $role->syncPermissions($request->permission);
-                $role->save();
-                return response()->json([
-                    'message' => 'le rôle a été bien modifier '
-                ]);
+
+        if ($user->hasPermissionTo('modifier-rôle')) {
+
+            $result = $this->roleService->updateRole($request->role_editId, $request->name, $request->permission);
+
+            if (isset($result['error'])) {
+                return response()->json(['error' => $result['error']]);
             }
+
+            return response()->json(['message' => $result['message']]);
         }
+
         return view('errors.403');
     }
 }
