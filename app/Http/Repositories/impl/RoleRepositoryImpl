@@ -1,0 +1,33 @@
+<?php
+
+
+namespace App\Http\Repositories\impl;
+
+use Spatie\Permission\Models\Role;
+
+class RoleRepository implements RoleRepositoryInterface
+{
+    public function getAllRoles()
+    {
+        return Role::all();
+    }
+    public function findById($id)
+    {
+        return Role::find($id);
+    }
+
+    public function findByName($name)
+    {
+        return Role::where('name', $name)->first();
+    }
+
+    public function syncPermissions(Role $role, array $permissions)
+    {
+        $role->syncPermissions($permissions);
+    }
+
+    public function save(Role $role)
+    {
+        return $role->save();
+    }
+}
