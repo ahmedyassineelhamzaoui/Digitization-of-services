@@ -6,6 +6,8 @@ namespace App\Http\Services;
 use App\Http\Repositories\RoleRepository;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 class RoleService
 {
     private $roleRepository;
