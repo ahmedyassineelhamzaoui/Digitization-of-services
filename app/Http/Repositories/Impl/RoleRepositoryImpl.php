@@ -7,17 +7,10 @@ use Spatie\Permission\Models\Role;
 
 class RoleRepositoryImpl implements RoleRepository
 {
-    public function getAllRoles()
-    {
-        return Role::all();
-    }
+    
     public function getPaginatedRoles($perPage = 5)
     {
         return Role::paginate($perPage);
-    }
-    public function getAllPermissions()
-    {
-        return Permission::all();
     }
     public function findById($id)
     {
