@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Http\Repositories\impl;
+namespace App\Http\Repositories\Impl;
 
 use Spatie\Permission\Models\Role;
 
-class RoleRepository implements RoleRepository
+class RoleRepositoryImpl implements RoleRepository
 {
     public function getAllRoles()
     {
