@@ -3,14 +3,14 @@
 
 namespace App\Http\Services;
 
-use App\Repositories\RoleRepositoryInterface;
+use App\Http\Repositories\RoleRepository;
 use Spatie\Permission\Models\Role;
 
 class RoleService
 {
     private $roleRepository;
 
-    public function __construct(RoleRepositoryInterface $roleRepository)
+    public function __construct(RoleRepository $roleRepository)
     {
         $this->roleRepository = $roleRepository;
     }

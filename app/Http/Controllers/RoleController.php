@@ -8,6 +8,7 @@ use Spatie\Permission\Middlewares\RoleOrPermissionMiddleware;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Validation\Rule;
+use App\Http\Services\RoleService;
 
 class RoleController extends Controller
 {

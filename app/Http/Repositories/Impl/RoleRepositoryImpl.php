@@ -4,6 +4,7 @@
 namespace App\Http\Repositories\Impl;
 
 use Spatie\Permission\Models\Role;
+use App\Http\Repositories\RoleRepository;
 
 class RoleRepositoryImpl implements RoleRepository
 {
