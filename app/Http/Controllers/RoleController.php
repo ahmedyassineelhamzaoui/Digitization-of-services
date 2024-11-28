@@ -15,18 +15,7 @@ class RoleController extends Controller
     {
         $this->middleware('auth');
     }
-    public function showCreateRoleForm()
-    {
-        $user=auth()->user();
-        if(!$user){
-            return view('errors.404');
-         }
-        if(!$user->hasPermissionTo('role-create')){
-            return view('errors.403');
-        }
-        $permissions=Permission::all();
-        return view('pages.create-role',compact('permissions'));
-    }
+    
 
     public function getRoles()
     {
@@ -42,24 +31,7 @@ class RoleController extends Controller
         }
         return view('errors.403');
     }
-    public function createRole(Request $request)
-    {
-        $user=auth()->user();
-        if(!$user){
-            return view('errors.404');
-         }
-        if(!$user->hasPermissionTo('créer-rôle')){
-            return view('errors.403');
-        }
-        $request->validate([
-            'name' => 'required|unique:roles,name',
-        ]);
-        $role = Role::create(['name' => $request->name]);
-        $role->syncPermissions($request->permission);
-        return response()->json([
-            'message' => 'le rôle a été bien créer'
-        ]);
-    }
+   
     public function showRole($id)
     {
         $user=auth()->user();
