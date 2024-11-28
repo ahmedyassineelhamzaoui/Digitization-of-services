@@ -12,6 +12,7 @@ class RoleRepositoryImpl implements RoleRepository
     {
         return Role::paginate($perPage);
     }
+    
     public function findById($id)
     {
         return Role::find($id);

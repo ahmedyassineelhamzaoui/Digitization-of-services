@@ -4,7 +4,7 @@ namespace App\Http\Repositories;
 
 interface RoleRepository
 {
-    public function getAllRoles();
+    public function getPaginatedRoles($perPage);
 
     public function findById($id);
 
