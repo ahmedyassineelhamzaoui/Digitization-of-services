@@ -5,6 +5,7 @@ namespace App\Http\Services;
 
 use App\Http\Repositories\RoleRepository;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -37,9 +38,7 @@ class RoleService
         ];
     }
 
-    public function updateRole($roleId, $name, $permissions)
-    {
-
+    public function showRole($id){
         $user = Auth::user();
         if(!$user){
             Log::error("User not found");
@@ -49,6 +48,32 @@ class RoleService
         if (!$user->hasPermissionTo('modifier-rôle')) {
             Log::error("Forbidden ".$user->full_name." dosn't have permission to update roles");
             return ['error' => 'Forbidden'];
+        }
+
+        $role = $this->roleRepository->findById($id);
+
+        if (!$role) {
+            Log::error("Role with ID {$id} not found");
+            return ['error' => 'Role not found'];
+        }
+
+        $permissions = Permission::all();
+        $rolePermissions = $role->permissions()->pluck('name')->toArray();
+        
+        return [
+            'role' => $role,
+            'permissions' => $permissions,
+            'rolePermissions' => $rolePermissions
+        ];
+    }
+
+    public function updateRole($roleId, $name, $permissions)
+    {
+
+        $user = Auth::user();
+        if(!$user){
+            Log::error("User not found");
+            return ['error' => 'unauthenticated'];
         }
 
         $role = $this->roleRepository->findById($roleId);

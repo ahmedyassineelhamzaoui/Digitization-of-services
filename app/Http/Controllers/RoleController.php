@@ -37,7 +37,25 @@ class RoleController extends Controller
             'roles' => $result['roles'],
         ]);
     }
-
+    public function showRole($id)
+    {
+        
+        $result = $this->roleService->showRole($id);
+        if (isset($result['error'])) {
+            if ($result['error'] === 'Forbidden') {
+                return view('errors.403');
+            } elseif ($result['error'] === 'unauthenticated') {
+                return view('errors.403');
+            } elseif ($result['error'] === 'Role not found') {
+                return view('errors.404');
+            }
+        }
+        return response()->json([
+            'role' => $result['role'],
+            'permissions' => $result['permissions'],
+            'rolePermissions' => $result['rolePermissions']
+        ]);
+    }
     public function updateRole(Request $request)
     {
 
