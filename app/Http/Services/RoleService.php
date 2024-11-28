@@ -28,11 +28,8 @@ class RoleService
         }
 
         $roles = $this->roleRepository->getPaginatedRoles(5);
-        $permissions = $this->roleRepository->getAllPermissions();
-
         return [
-            'roles' => $roles,
-            'permissions' => $permissions,
+            'roles' => $roles
         ];
     }
 

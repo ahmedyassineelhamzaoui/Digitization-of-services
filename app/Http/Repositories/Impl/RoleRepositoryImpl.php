@@ -11,6 +11,14 @@ class RoleRepositoryImpl implements RoleRepository
     {
         return Role::all();
     }
+    public function getPaginatedRoles($perPage = 5)
+    {
+        return Role::paginate($perPage);
+    }
+    public function getAllPermissions()
+    {
+        return Permission::all();
+    }
     public function findById($id)
     {
         return Role::find($id);
