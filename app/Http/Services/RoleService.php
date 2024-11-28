@@ -17,17 +17,13 @@ class RoleService
 
     public function getRoles()
     {
-        $user = Auth::user();
-
-        if (!$user) {
-            Log::error("User not authenticated");
-            return ['error' => 'unauthenticated'];
-        }
+        isAuthenticated();
 
         if (!$user->hasPermissionTo('lister-rôles')) {
             Log::error("Forbidden "+$user->full_name+" dosn't have permission to list roles");
             return ['error' => 'Forbidden'];
         }
+
         Log::info("User "+$user->full_name+" existe and has permission to list roles");
         $roles = $this->roleRepository->getPaginatedRoles(5);
         return [
@@ -37,8 +33,11 @@ class RoleService
 
     public function updateRole($roleId, $name, $permissions)
     {
+
+        isAuthenticated();
+
         $role = $this->roleRepository->findById($roleId);
-        
+
         if (!$role) {
             Log::error("Role not found");
             return ['error' => 'Role not found'];
@@ -63,5 +62,14 @@ class RoleService
         $this->roleRepository->save($role);
 
         return ['message' => 'Role has been successfully updated'];
+    }
+
+    public function isAuthenticated(){
+        $user = Auth::user();
+        if (!$user) {
+            Log::error("User not authenticated");
+            return ['error' => 'unauthenticated'];
+        }
+        return $user;
     }
 }
