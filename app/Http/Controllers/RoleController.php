@@ -32,24 +32,7 @@ class RoleController extends Controller
         return view('errors.403');
     }
    
-    public function showRole($id)
-    {
-        $user=auth()->user();
-        if(!$user){
-            return view('errors.404');
-         }
-        if(!$user->hasPermissionTo('modifier-rôle')){
-            return view('errors.403');
-        }
-        $role = Role::find($id);
-        $permissions = Permission::all();
-        $rolePermissions = $role->permissions()->pluck('name')->toArray();
-        return response()->json([
-            'role' => $role,
-            'permissions' => $permissions,
-            'rolePermissions' => $rolePermissions
-        ]);
-    }
+    
     
     public function updateRole(Request $request)
     {
