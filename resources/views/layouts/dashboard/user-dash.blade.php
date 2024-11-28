@@ -1,8 +1,14 @@
 @extends('layouts.dashboard.common-dash')
 
 @section('title', 'utilisateur')
-@section('button-name','ajouter utilisateur')
 @section('button-link','#add-user')
+@section('addbotton')
+    @can('créer-utilisateur')
+        <div class="ms-auto">
+            <a href="#add-user" id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i>ajouter</a>
+        </div>
+    @endcan
+@endsection
 @section('content')
     @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show">

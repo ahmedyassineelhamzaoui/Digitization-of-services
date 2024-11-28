@@ -10,16 +10,12 @@
     <link rel="icon" href="{{asset('assets/images/icoSonapie.png')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- ================== BEGIN core-css ================== -->
-    {{-- <link rel="stylesheet" href="assets/css/vendor.min.css"> --}}
     <link rel="stylesheet" href={{url('assets/css/vendor.min.css')}}>
     <link rel="stylesheet" href="css/app.css">
-        {{-- <link rel="stylesheet" href="assets/css/default/app.min.css"> --}}
     <link rel="stylesheet" href={{url('assets/css/default/app.min.css')}}>
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    {{-- <link rel="stylesheet" href={{url('css/style.css')}}> --}}
-    {{-- @livewireStyles --}}
 
 
 	<!-- ================== END core-css ================== -->
@@ -240,20 +236,8 @@
                     </div>
                     <div id="alert-updatedhiddingmessage" class="ms-auto" >
                     </div>
-                    @if($bottonName == 'Ajouter Rôle')
-                    @can('créer-rôle')
-                    <div class="ms-auto">
-                    <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i>@yield('button-name')</a>
-                    </div>
-                    @endcan
-                    @endif
-                    @if($bottonName == 'utilisateur')
-                    @can('créer-utilisateur')
-                    <div class="ms-auto">
-                    <a href='@yield('button-link')' id="addButton" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i>@yield('button-name')</a>
-                    </div>
-                    @endcan
-                    @endif
+
+                    @yield('addbotton')
                 </div>
 
 
