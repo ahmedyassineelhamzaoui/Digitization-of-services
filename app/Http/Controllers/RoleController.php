@@ -39,22 +39,24 @@ class RoleController extends Controller
 
     public function updateRole(Request $request)
     {
-        $user = auth()->user();
-        if (!$user) {
-            return view('errors.404');
-        }
 
-        if ($user->hasPermissionTo('modifier-rôle')) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'permission' => 'required|array',
+            'role_editId' => 'required|integer',
+        ]);
 
-            $result = $this->roleService->updateRole($request->role_editId, $request->name, $request->permission);
+        $result = $this->roleService->updateRole($request->role_editId, $request->name, $request->permission);
 
-            if (isset($result['error'])) {
-                return response()->json(['error' => $result['error']]);
+        if (isset($result['error'])) {
+            if ($result['error'] === 'unauthenticated') {
+                return view('errors.403');
+            } elseif ($result['error'] === 'Forbidden') {
+                return view('errors.403');
+            } elseif ($result['error'] === 'Role not found') {
+                return view('errors.404');
             }
-
-            return response()->json(['message' => $result['message']]);
         }
-
-        return view('errors.403');
+        return response()->json(['success' => $result['success']]);
     }
 }
