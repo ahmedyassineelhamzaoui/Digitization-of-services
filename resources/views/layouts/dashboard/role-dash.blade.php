@@ -56,16 +56,10 @@
                     </td>
                     <th>
                         <div class="d-flex align-items-center">
-                            @can('supprimer-rôle')
-                            <button class="btn btn-danger  me-1" onclick="deleteRole({{$item->id}})" data-bs-toggle="modal" data-bs-target="#delete-role" >
-                                <i class="fa-regular fa-trash-can "></i>
-                            </button>
-                            @endcan
-
                             @can('modifier-rôle')
-                            <button class="btn btn-warning edit-rolebutton"  data-role-id="{{$item->id}}" data-bs-toggle="modal" data-bs-target="#edit-role">
-                                <i class="fa-solid fa-pen-to-square" ></i>
-                            </button>
+                                <button class="btn btn-warning edit-rolebutton"  data-role-id="{{$item->id}}" data-bs-toggle="modal" data-bs-target="#edit-role">
+                                    <i class="fa-solid fa-pen-to-square" ></i>
+                                </button>
                             @endcan
                         </div>
                     </th>
@@ -79,7 +73,6 @@
     </div>
     @endcan
 
-    {{-- @livewire('role-search') --}}
 
    
     @can('modifier-rôle')
@@ -114,33 +107,6 @@
                     <div class="modal-footer">
                         <a href="#" class="btn btn-white" data-bs-dismiss="modal">Anuller</a>
                         <button type="submit" name="update" class="btn btn-warning task-action-btn" >Modifier</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @endcan
-    @can('supprimer-rôle')
-    <div class="modal fade" id="delete-role">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <form action="{{route('delete.role')}}" method="POST" id="remove-role">
-                    @method('delete')
-                    @csrf
-                    <div class="d-flex align-items-center justify-content-between my-2 mx-3">
-                        <h5 class="modal-title">Confirmation</h5>
-                        <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
-                    </div>
-                    <div class="modal-body">
-                            <input type="hidden" name="role_deletedId" id="role_deletedId">
-                            <div class="my-3">
-                                <h5 class="form-label">voulez-vous variment supprimer ce Rôle ?</h5>
-                                <p class="text-danger" id="error_confirmMessageRole"></p>
-                            </div>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-end my-2 mx-3">
-                        <a href="#" class="btn btn-white me-2" data-bs-dismiss="modal">Anuller</a>
-                        <button id="delete_role_confirm_button" type="submit" name="save" class="btn btn-danger  task-action-btn" >Supprimer</button>
                     </div>
                 </form>
             </div>
