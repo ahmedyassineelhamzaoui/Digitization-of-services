@@ -20,7 +20,7 @@ class RoleService
         $user = Auth::user();
 
         if (!$user) {
-            return ['error' => 'User not found'];
+            return ['error' => 'unauthenticated'];
         }
 
         if (!$user->hasPermissionTo('lister-rôles')) {

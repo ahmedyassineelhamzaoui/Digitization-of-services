@@ -19,21 +19,23 @@ class RoleController extends Controller
         $this->roleService = $roleService;
     }
 
-    public function getRoles()
+    public function getRoles(Request $request)
     {
-        $user=auth()->user();
-        if(!$user){
-            return view('errors.404');
-         }
-        if($user->hasPermissionTo('lister-rôles')){
-            $roles = Role::paginate(5);
-            $permissions=Permission::all();
-            $bottonName = 'Ajouter Rôle';
-            return view('layouts.dashboard.role-dash', compact('roles','permissions','bottonName'));
-        }
-        return view('errors.403');
-    }
 
+        $result = $this->roleService->getRoles();
+
+        if (isset($result['error'])) {
+            if ($result['error'] === 'Forbidden') {
+                return view('errors.403');
+            } elseif ($result['error'] === 'unauthenticated') {
+                return view('errors.404');
+            }
+        }
+
+        return view('layouts.dashboard.role-dash', [
+            'roles' => $result['roles'],
+        ]);
+    }
 
     public function updateRole(Request $request)
     {
