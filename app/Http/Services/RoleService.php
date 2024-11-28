@@ -20,13 +20,15 @@ class RoleService
         $user = Auth::user();
 
         if (!$user) {
+            Log::error("User not authenticated");
             return ['error' => 'unauthenticated'];
         }
 
         if (!$user->hasPermissionTo('lister-rôles')) {
+            Log::error("Forbidden "+$user->full_name+" dosn't have permission to list roles");
             return ['error' => 'Forbidden'];
         }
-
+        Log::info("User "+$user->full_name+" existe and has permission to list roles");
         $roles = $this->roleRepository->getPaginatedRoles(5);
         return [
             'roles' => $roles
@@ -38,15 +40,23 @@ class RoleService
         $role = $this->roleRepository->findById($roleId);
         
         if (!$role) {
+            Log::error("Role not found");
             return ['error' => 'Role not found'];
         }
 
         // Check if a role with the same name exists
         $roleExist = $this->roleRepository->findByName($name);
 
+        Log::info("Role "+$role->name+" found");
+
         if ($roleExist && $roleExist->name !== $role->name) {
+
+            Log::info($roleExist->name+" This role already exist");
+
             return ['error' => 'This role already exists'];
         }
+
+        Log::info("Role "+$role->name+" will be updated");
 
         $role->name = $name;
         $this->roleRepository->syncPermissions($role, $permissions);
