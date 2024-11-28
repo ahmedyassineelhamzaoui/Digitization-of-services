@@ -4,11 +4,14 @@ namespace App\Http\Repositories;
 
 interface RoleRepository
 {
-    public function getAllRoles($perPage = 10);
+    public function getAllRoles();
 
-    public function findRoleById($id);
+    public function findById($id);
 
-    public function updateRole($id, array $data);
+    public function findByName($name);
 
-    public function deleteUser($id);
+    public function syncPermissions(Role $role, array $permissions);
+
+    public function save(Role $role);
+    
 }
