@@ -15,6 +15,27 @@ class RoleService
         $this->roleRepository = $roleRepository;
     }
 
+    public function getRoles()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return ['error' => 'User not found'];
+        }
+
+        if (!$user->hasPermissionTo('lister-rôles')) {
+            return ['error' => 'Forbidden'];
+        }
+
+        $roles = $this->roleRepository->getPaginatedRoles(5);
+        $permissions = $this->roleRepository->getAllPermissions();
+
+        return [
+            'roles' => $roles,
+            'permissions' => $permissions,
+        ];
+    }
+
     public function updateRole($roleId, $name, $permissions)
     {
         $role = $this->roleRepository->findById($roleId);
